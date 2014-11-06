@@ -1,0 +1,91 @@
+body{
+    margin: 0px auto;
+    padding: 0px;
+    font-family: Verdana;
+    font-size: 12px;
+    font-style:  normal;
+    font-weight: bold;
+   
+   background: url(../images/cr.png);
+ 
+   
+}
+
+.inPut {
+    font: normal 13px "Times New Roman";
+    width: 135px;
+    height: 12px;  
+    }
+
+fieldset{
+    color: #fff;
+    text-align: right;
+    text-shadow: 0 1px 0 #fff;
+    border-width: medium;
+    border-color: #5F7127;
+    /*box-shadow: 1px 2px 6px rgba(0,239,47,0.5);*/
+    border-style: inset;
+    border-radius: 8px;
+    width: 200px;
+    margin: 15px auto;
+    background-color: rgba(0, 233, 0, 0.5);
+   background: linear-gradient(210deg, #D6E88E, #475928);
+  /* transform: translate(30px, 30px) rotate(-45deg) skewy(355deg);*/
+}
+
+
+
+#inStay{
+    
+    
+}
+
+
+
+header {
+    text-align: center;
+    background-color: #57AC27;
+    color: #F8FEFF;
+    font-size: 20px;
+    margin:  0;
+    padding-bottom: 7px;
+    padding-top: 5px;
+    text-shadow: 0 1px 0 #fff;
+    
+}
+
+
+#subButton {
+    text-align: center;
+    background-color: #3D649C;
+    color: #F8FEFF;
+    font-family: Verdana;
+    font-style:  normal;
+    font-weight: bold;
+    height: 40px;
+    width: 165px;
+    border-radius: 7px;
+    margin-left: 90px;
+    border-color: #000000;
+}
+
+
+
+#block {
+    padding: 0;
+    margin: 0px auto;
+    max-width: 1000px;
+    border: 0px solid #000000;
+
+}
+
+#logo {
+    width: 249px;
+    height: 89px;
+    margin: 5px auto;
+    
+    
+}
+
+
+
