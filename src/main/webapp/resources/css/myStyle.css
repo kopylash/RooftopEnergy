@@ -1,57 +1,46 @@
 body{
     margin: 0px auto;
     padding: 0px;
-    font-family: Verdana;
-    font-size: 12px;
-    font-style:  normal;
+    font: 100%/1.5em Verdana, Helvetica, sans-serif;
     font-weight: bold;
-   
-   background: url(../images/cr.png);
- 
-   
+    background:  url(../images/gr.png);
+
+
+
 }
 
 .inPut {
-    font: normal 13px "Times New Roman";
-    width: 135px;
-    height: 12px;  
-    }
+    font: normal 0.85em "Times New Roman";
+    width: 150px;
+    height: 15px;
+}
 
 fieldset{
     color: #fff;
     text-align: right;
-    text-shadow: 0 1px 0 #fff;
-    border-width: medium;
+    /* text-shadow: 0 1px 0 #fff;*/
+    border-width: thin;
     border-color: #5F7127;
-    /*box-shadow: 1px 2px 6px rgba(0,239,47,0.5);*/
     border-style: inset;
     border-radius: 8px;
-    width: 200px;
-    margin: 15px auto;
+    width:35%;
+    margin: 50px auto;
     background-color: rgba(0, 233, 0, 0.5);
-   background: linear-gradient(210deg, #D6E88E, #475928);
-  /* transform: translate(30px, 30px) rotate(-45deg) skewy(355deg);*/
+    background: linear-gradient(210deg, #D6E88E, #475928);
+    padding-right: 12px;
 }
-
-
-
-#inStay{
-    
-    
-}
-
 
 
 header {
     text-align: center;
     background-color: #57AC27;
     color: #F8FEFF;
-    font-size: 20px;
+    font-size: 1.25em;
     margin:  0;
     padding-bottom: 7px;
     padding-top: 5px;
     text-shadow: 0 1px 0 #fff;
-    
+
 }
 
 
@@ -60,32 +49,131 @@ header {
     background-color: #3D649C;
     color: #F8FEFF;
     font-family: Verdana;
-    font-style:  normal;
+    font-style: normal;
+    font-size: larger;
     font-weight: bold;
     height: 40px;
     width: 165px;
     border-radius: 7px;
     margin-left: 90px;
     border-color: #000000;
+    margin-bottom: 20px;
 }
 
 
 
 #block {
-    padding: 0;
-    margin: 0px auto;
-    max-width: 1000px;
+
+
+    /* max-width: 1140px;*/
+    margin: 0 auto;
     border: 0px solid #000000;
+    min-height: 100%;
+    position: relative;
+
 
 }
 
 #logo {
     width: 249px;
     height: 89px;
-    margin: 5px auto;
-    
-    
+    margin: 15px auto;
+
+
 }
 
 
+
+#mainblock{
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background: linear-gradient(210deg, #D6E88E, #475928);
+    position: absolute;
+
+}
+
+@media screen and (max-width: 440px){
+    fieldset{
+        width: 90%;
+        font-size: 100%;
+        padding-left: 5px;
+
+
+    }
+
+    .inPut {
+        font: normal 0.82em "Times New Roman";
+        width: 135px;
+        height: 12px;
+    }
+
+}
+
+@media screen and (max-width: 550px) and (min-width: 450px){
+    fieldset{
+        width: 70%;
+        font-size: 110%;
+        padding-left: 10px;
+
+    }
+
+    .inPut {
+        font: normal 0.88em "Times New Roman";
+        width: 155px;
+        height: 12px;
+    }
+
+}
+
+@media screen and (max-width: 750px) and (min-width: 551px){
+    fieldset{
+        width: 50%;
+        font-size: 112%;
+        padding-left: 10px;
+
+    }
+
+    .inPut {
+        font: normal 0.88em "Times New Roman";
+        width: 155px;
+        height: 12px;
+    }
+
+}
+
+@media screen and (min-width: 1300px) {
+    fieldset {
+        width: 30%;
+        font-size: larger;
+        padding-left: 15px;
+        margin-top: 7%;
+        border-width: medium;
+
+    }
+
+    .inPut {
+        font: normal 0.95em "Times New Roman";
+        width: 200px;
+        height: 15px;
+    }
+
+    #subButton {
+
+        font-family: Verdana;
+        font-style: normal;
+        font-weight: bold;
+        height: 50px;
+        width: 200px;
+        border-radius: 9px;
+        margin-left: 90px;
+        margin-bottom: 20px;
+    }
+
+    #logo {
+
+        margin: 30px auto;
+    }
+}
 
