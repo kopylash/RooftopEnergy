@@ -1,9 +1,6 @@
-package nl.rooftopenergy.bionic.entities;
+package nl.rooftopenergy.bionic.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -12,8 +9,9 @@ import java.sql.Timestamp;
 @Entity
 public class Production {
     private int productionId;
-    private Timestamp date;
+    private Timestamp dateProduction;
     private Integer productionReading;
+    private Company company;
 
     @Id
     @Column(name = "ProductionID")
@@ -27,12 +25,12 @@ public class Production {
 
     @Basic
     @Column(name = "Date")
-    public Timestamp getDate() {
-        return date;
+    public Timestamp getDateProduction() {
+        return dateProduction;
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public void setDateProduction(Timestamp dateProduction) {
+        this.dateProduction = dateProduction;
     }
 
     @Basic
@@ -45,6 +43,16 @@ public class Production {
         this.productionReading = productionReading;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "CompanyID")
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,9 +61,10 @@ public class Production {
         Production that = (Production) o;
 
         if (productionId != that.productionId) return false;
-        if (date != null ? !date.equals(that.date) : that.date != null) return false;
+        if (dateProduction != null ? !dateProduction.equals(that.dateProduction) : that.dateProduction != null) return false;
         if (productionReading != null ? !productionReading.equals(that.productionReading) : that.productionReading != null)
             return false;
+        if (company != null ? !company.equals(that.company) : that.company != null) return false;
 
         return true;
     }
@@ -63,8 +72,9 @@ public class Production {
     @Override
     public int hashCode() {
         int result = productionId;
-        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (dateProduction != null ? dateProduction.hashCode() : 0);
         result = 31 * result + (productionReading != null ? productionReading.hashCode() : 0);
+        result = 31 * result + (company != null ? company.hashCode() : 0);
         return result;
     }
 }

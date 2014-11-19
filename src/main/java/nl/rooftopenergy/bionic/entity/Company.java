@@ -1,15 +1,13 @@
-package nl.rooftopenergy.bionic.entities;
+package nl.rooftopenergy.bionic.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by UFO on 17.11.2014.
  */
 @Entity
-public class Companies {
+@Table(name = "companies")
+public class Company {
     private int companyId;
     private String companyName;
     private String town;
@@ -71,14 +69,14 @@ public class Companies {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Companies companies = (Companies) o;
+        Company company = (Company) o;
 
-        if (companyId != companies.companyId) return false;
-        if (companyName != null ? !companyName.equals(companies.companyName) : companies.companyName != null)
+        if (companyId != company.companyId) return false;
+        if (companyName != null ? !companyName.equals(company.companyName) : company.companyName != null)
             return false;
-        if (street != null ? !street.equals(companies.street) : companies.street != null) return false;
-        if (town != null ? !town.equals(companies.town) : companies.town != null) return false;
-        if (zipcode != null ? !zipcode.equals(companies.zipcode) : companies.zipcode != null) return false;
+        if (street != null ? !street.equals(company.street) : company.street != null) return false;
+        if (town != null ? !town.equals(company.town) : company.town != null) return false;
+        if (zipcode != null ? !zipcode.equals(company.zipcode) : company.zipcode != null) return false;
 
         return true;
     }

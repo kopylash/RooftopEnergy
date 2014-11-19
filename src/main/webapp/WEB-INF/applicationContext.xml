@@ -11,9 +11,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/rooftopenergy?zeroDateTimeBehavior=convertToNull" />
-		<property name="username" value="root" />
-		<property name="password" value="12345" />
+		<property name="url" value="jdbc:mysql://localhost:3306/tomcat" />
+		<property name="username" value="rooftop" />
+		<property name="password" value="energy" />
 	</bean>
 
 

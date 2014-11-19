@@ -1,9 +1,6 @@
-package nl.rooftopenergy.bionic.entities;
+package nl.rooftopenergy.bionic.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by UFO on 17.11.2014.
@@ -14,6 +11,7 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private Company company;
 
     @Id
     @Column(name = "UserID")
@@ -55,6 +53,16 @@ public class User {
         this.email = email;
     }
 
+    @OneToOne
+    @JoinColumn(name = "CompanyID")
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,7 +74,7 @@ public class User {
         if (email != null ? !email.equals(user.email) : user.email != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
-
+        if (company != null ? !company.equals(user.company) : user.company != null) return false;
         return true;
     }
 
@@ -76,6 +84,7 @@ public class User {
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (company != null ? company.hashCode() : 0);
         return result;
     }
 }

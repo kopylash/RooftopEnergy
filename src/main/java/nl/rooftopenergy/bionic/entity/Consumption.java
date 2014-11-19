@@ -1,9 +1,6 @@
-package nl.rooftopenergy.bionic.entities;
+package nl.rooftopenergy.bionic.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -13,7 +10,8 @@ import java.sql.Timestamp;
 public class Consumption {
     private int consumptionId;
     private Timestamp dateReading;
-    private Integer consuptionReading;
+    private Integer consumptionReading;
+    private Company company;
 
     @Id
     @Column(name = "ConsumptionID")
@@ -36,13 +34,23 @@ public class Consumption {
     }
 
     @Basic
-    @Column(name = "ConsuptionReading")
-    public Integer getConsuptionReading() {
-        return consuptionReading;
+    @Column(name = "ConsumptionReading")
+    public Integer getConsumptionReading() {
+        return consumptionReading;
     }
 
-    public void setConsuptionReading(Integer consuptionReading) {
-        this.consuptionReading = consuptionReading;
+    public void setConsumptionReading(Integer consumptionReading) {
+        this.consumptionReading = consumptionReading;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "CompanyID")
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     @Override
@@ -53,10 +61,10 @@ public class Consumption {
         Consumption that = (Consumption) o;
 
         if (consumptionId != that.consumptionId) return false;
-        if (consuptionReading != null ? !consuptionReading.equals(that.consuptionReading) : that.consuptionReading != null)
+        if (consumptionReading != null ? !consumptionReading.equals(that.consumptionReading) : that.consumptionReading != null)
             return false;
         if (dateReading != null ? !dateReading.equals(that.dateReading) : that.dateReading != null) return false;
-
+        if (company != null ? !company.equals(that.company) : that.company != null) return false;
         return true;
     }
 
@@ -64,7 +72,8 @@ public class Consumption {
     public int hashCode() {
         int result = consumptionId;
         result = 31 * result + (dateReading != null ? dateReading.hashCode() : 0);
-        result = 31 * result + (consuptionReading != null ? consuptionReading.hashCode() : 0);
+        result = 31 * result + (consumptionReading != null ? consumptionReading.hashCode() : 0);
+        result = 31 * result + (company != null ? company.hashCode() : 0);
         return result;
     }
 }

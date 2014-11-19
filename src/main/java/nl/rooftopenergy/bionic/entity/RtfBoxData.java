@@ -1,36 +1,22 @@
-package nl.rooftopenergy.bionic.entities;
+package nl.rooftopenergy.bionic.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
  * Created by UFO on 17.11.2014.
  */
 @Entity
-public class RtfBox {
-    private int rtfBoxId;
+public class RtfBoxData {
     private int readingId;
     private Timestamp fromDt;
     private Timestamp toDt;
     private Integer reading1;
     private Integer reading2;
     private Timestamp created;
-    private Integer solarpanels;
+    private RtfBox rtfBox;
 
     @Id
-    @Column(name = "RTFBoxID")
-    public int getRtfBoxId() {
-        return rtfBoxId;
-    }
-
-    public void setRtfBoxId(int rtfBoxId) {
-        this.rtfBoxId = rtfBoxId;
-    }
-
-    @Basic
     @Column(name = "ReadingID")
     public int getReadingId() {
         return readingId;
@@ -90,14 +76,14 @@ public class RtfBox {
         this.created = created;
     }
 
-    @Basic
-    @Column(name = "Solarpanels")
-    public Integer getSolarpanels() {
-        return solarpanels;
+    @ManyToOne
+    @JoinColumn(name = "RTFBoxID")
+    public RtfBox getRtfBox() {
+        return rtfBox;
     }
 
-    public void setSolarpanels(Integer solarpanels) {
-        this.solarpanels = solarpanels;
+    public void setRtfBox(RtfBox rtfBox) {
+        this.rtfBox = rtfBox;
     }
 
     @Override
@@ -105,30 +91,28 @@ public class RtfBox {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RtfBox rtfBox = (RtfBox) o;
+        RtfBoxData that = (RtfBoxData) o;
 
-        if (readingId != rtfBox.readingId) return false;
-        if (rtfBoxId != rtfBox.rtfBoxId) return false;
-        if (created != null ? !created.equals(rtfBox.created) : rtfBox.created != null) return false;
-        if (fromDt != null ? !fromDt.equals(rtfBox.fromDt) : rtfBox.fromDt != null) return false;
-        if (reading1 != null ? !reading1.equals(rtfBox.reading1) : rtfBox.reading1 != null) return false;
-        if (reading2 != null ? !reading2.equals(rtfBox.reading2) : rtfBox.reading2 != null) return false;
-        if (solarpanels != null ? !solarpanels.equals(rtfBox.solarpanels) : rtfBox.solarpanels != null) return false;
-        if (toDt != null ? !toDt.equals(rtfBox.toDt) : rtfBox.toDt != null) return false;
+        if (readingId != that.readingId) return false;
+        if (created != null ? !created.equals(that.created) : that.created != null) return false;
+        if (fromDt != null ? !fromDt.equals(that.fromDt) : that.fromDt != null) return false;
+        if (reading1 != null ? !reading1.equals(that.reading1) : that.reading1 != null) return false;
+        if (reading2 != null ? !reading2.equals(that.reading2) : that.reading2 != null) return false;
+        if (toDt != null ? !toDt.equals(that.toDt) : that.toDt != null) return false;
+        if (rtfBox != null ? !rtfBox.equals(that.rtfBox) : that.rtfBox != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = rtfBoxId;
-        result = 31 * result + readingId;
+        int result = readingId;
         result = 31 * result + (fromDt != null ? fromDt.hashCode() : 0);
         result = 31 * result + (toDt != null ? toDt.hashCode() : 0);
         result = 31 * result + (reading1 != null ? reading1.hashCode() : 0);
         result = 31 * result + (reading2 != null ? reading2.hashCode() : 0);
         result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (solarpanels != null ? solarpanels.hashCode() : 0);
+        result = 31 * result + (rtfBox != null ? rtfBox.hashCode() : 0);
         return result;
     }
 }
