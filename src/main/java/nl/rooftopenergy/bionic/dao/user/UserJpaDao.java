@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Repository
-public class UserJpaDao extends JpaDao<User,Long> implements UserDao {
+public class UserJpaDao extends JpaDao<User,Integer> implements UserDao {
 	
 
     public UserJpaDao() {
@@ -31,7 +31,7 @@ public class UserJpaDao extends JpaDao<User,Long> implements UserDao {
         final CriteriaQuery<User> criteriaQuery = builder.createQuery(this.entityClass);
 
         Root<User> root = criteriaQuery.from(this.entityClass);
-        Path<String> namePath = root.get("name");
+        Path<String> namePath = root.get("username");
         criteriaQuery.where(builder.equal(namePath, name));
 
         TypedQuery<User> typedQuery = this.getEntityManager().createQuery(criteriaQuery);
