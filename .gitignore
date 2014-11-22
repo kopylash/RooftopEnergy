@@ -72,5 +72,7 @@ local.properties
 .buildpath
 
 ######################
-# Eclipse
+# Intellij Idea
 ######################
+.idea
+RoofTopEnergy.iml
