@@ -3,7 +3,7 @@ body{
     padding: 0px;
     font: 100%/1.5em Verdana, Helvetica, sans-serif;
     font-weight: bold;
-    background:  url(../images/gr.png);
+   background-color: #59AC28;
 
 
 
@@ -25,8 +25,8 @@ fieldset{
     border-radius: 8px;
     width:35%;
     margin: 50px auto;
-    background-color: rgba(0, 233, 0, 0.5);
-    background: linear-gradient(210deg, #D6E88E, #475928);
+    background-color: rgba(112, 176 , 124, 0.6);
+    /*background: linear-gradient(210deg, #D6E88E, #475928);*/
     padding-right: 12px;
 }
 
@@ -62,10 +62,12 @@ header {
 
 
 
+
+
 #block {
 
 
-    /* max-width: 1140px;*/
+   /* max-width: 1140px;*/
     margin: 0 auto;
     border: 0px solid #000000;
     min-height: 100%;
@@ -89,7 +91,7 @@ header {
     padding: 0;
     min-width: 100%;
     min-height: 100%;
-    background: linear-gradient(210deg, #D6E88E, #475928);
+    background: url(../images/background.jpg);
     position: absolute;
 
 }
