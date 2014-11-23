@@ -7,8 +7,9 @@ import java.sql.Timestamp;
  * Created by UFO on 17.11.2014.
  */
 @Entity
+@Table(name = "RTFBoxData")
 public class RtfBoxData {
-    private int readingId;
+    private Integer readingId;
     private Timestamp fromDt;
     private Timestamp toDt;
     private Integer reading1;
@@ -18,11 +19,11 @@ public class RtfBoxData {
 
     @Id
     @Column(name = "ReadingID")
-    public int getReadingId() {
+    public Integer getReadingId() {
         return readingId;
     }
 
-    public void setReadingId(int readingId) {
+    public void setReadingId(Integer readingId) {
         this.readingId = readingId;
     }
 
