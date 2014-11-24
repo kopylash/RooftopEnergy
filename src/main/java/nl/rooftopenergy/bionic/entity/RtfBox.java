@@ -21,6 +21,7 @@ public class RtfBox {
     public void setRtfBoxId(Integer rtfBoxId) {
         this.rtfBoxId = rtfBoxId;
     }
+
     @Basic
     @Column(name = "Solarpanels")
     public int getSolarPanels() {
@@ -30,6 +31,7 @@ public class RtfBox {
     public void setSolarPanels(int solarPanels) {
         this.solarPanels = solarPanels;
     }
+
     @ManyToOne
     @JoinColumn(name = "CompanyID")
     public Company getCompany() {

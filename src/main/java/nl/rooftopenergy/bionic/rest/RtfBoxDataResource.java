@@ -7,28 +7,27 @@ import nl.rooftopenergy.bionic.entity.RtfBoxData;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTimeComparator;
 import org.joda.time.DateTimeFieldType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by alex on 11/21/14.
  */
-
-@Component
+@RestController
 @Path("boxData")
 public class RtfBoxDataResource {
     private final Logger log = Logger.getLogger(RtfBoxDataResource.class.getName());
 
-    @Autowired
+    @Inject
     private RtfBoxDataDao rtfBoxDataDao;
 
-    @Autowired
+    @Inject
     private RtfBoxDao rtfBoxDao;
-
 
     /**
      * Returns value of energy has been received from solar panel for month.
@@ -54,7 +53,7 @@ public class RtfBoxDataResource {
         return totalNumber;
     }
     /**
-     * Returns list of measures (list of RTFBoxData instances) has been done by RTFBox for day.
+     * Returns list of measures (list of RTFBoxData instances)  has been done by RTFBox for day.
      * @param id Id of a company which uses this RTFBox.
      * @param date it is the month to look for day.
      * @return list of measures for day
@@ -64,7 +63,7 @@ public class RtfBoxDataResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<RtfBoxData> showDailyMeasures(@FormParam("id") String id, @FormParam("date") String date){
         Integer paramId = Integer.parseInt(id);
-        Timestamp paramDate = Timestamp.valueOf(date);
+        Timestamp paramDate =  Timestamp.valueOf(date);
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<RtfBoxData> listDailyData = new ArrayList<RtfBoxData>();
@@ -77,7 +76,7 @@ public class RtfBoxDataResource {
         return listDailyData;
     }
     /**
-     * Returns list of measures (list of RTFBoxData instances) has been done by RTFBox for month.
+     * Returns list of measures (list of RTFBoxData instances)  has been done by RTFBox for month.
      * @param id Id of a company which uses this RTFBox.
      * @param date it is the month to look for month.
      * @return list of measures for month
@@ -87,7 +86,7 @@ public class RtfBoxDataResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<RtfBoxData> showMonthlyMeasures(@FormParam("id") String id, @FormParam("date") String date){
         Integer paramId = Integer.parseInt(id);
-        Timestamp paramDate = Timestamp.valueOf(date);
+        Timestamp paramDate =  Timestamp.valueOf(date);
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<RtfBoxData> listDailyData = new ArrayList<RtfBoxData>();
@@ -100,7 +99,7 @@ public class RtfBoxDataResource {
         return listDailyData;
     }
     /**
-     * Returns list of measures (list of RTFBoxData instances) has been done by RTFBox for year.
+     * Returns list of measures (list of RTFBoxData instances)  has been done by RTFBox for year.
      * @param id Id of a company which uses this RTFBox.
      * @param date it is the month to look for year.
      * @return list of measures for year
@@ -110,7 +109,7 @@ public class RtfBoxDataResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<RtfBoxData> showYearlyMeasures(@FormParam("id") String id, @FormParam("date") String date){
         Integer paramId = Integer.parseInt(id);
-        Timestamp paramDate = Timestamp.valueOf(date);
+        Timestamp paramDate =  Timestamp.valueOf(date);
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<RtfBoxData> listDailyData = new ArrayList<RtfBoxData>();

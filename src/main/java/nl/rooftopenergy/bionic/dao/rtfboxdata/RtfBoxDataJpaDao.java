@@ -5,15 +5,17 @@ import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.RtfBoxData;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.Query;
+import java.sql.Date;
 import java.util.List;
 
 @Repository
-public class RtfBoxDataJpaDao extends JpaDao<RtfBoxData,Long> implements RtfBoxDataDao {
+public class RtfBoxDataJpaDao extends JpaDao<RtfBoxData,Integer> implements RtfBoxDataDao {
     public RtfBoxDataJpaDao() {
+
         super(RtfBoxData.class);
     }
-
     @Transactional
     public List<RtfBoxData> findByRtfBoxId(RtfBox rtfBox){
         String q = "SELECT r FROM RtfBoxData r WHERE r.rtfBox = :rtfBox";
@@ -22,4 +24,5 @@ public class RtfBoxDataJpaDao extends JpaDao<RtfBoxData,Long> implements RtfBoxD
         List<RtfBoxData> list = query.getResultList();
         return list;
     }
+
 }

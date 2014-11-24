@@ -4,11 +4,21 @@ import nl.rooftopenergy.bionic.dao.JpaDao;
 import nl.rooftopenergy.bionic.entity.RtfBox;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+<<<<<<< HEAD
 import javax.persistence.Query;
 import java.util.List;
 @Repository
 public class RtfBoxJpaDao extends JpaDao<RtfBox,Long> implements RtfBoxDao {
+=======
+
+import javax.persistence.Query;
+import java.util.List;
+
+@Repository
+public class RtfBoxJpaDao extends JpaDao<RtfBox,Integer> implements RtfBoxDao {
+>>>>>>> alex
     public RtfBoxJpaDao() {
+
         super(RtfBox.class);
     }
 
@@ -20,12 +30,20 @@ public class RtfBoxJpaDao extends JpaDao<RtfBox,Long> implements RtfBoxDao {
         List<RtfBox> list = query.getResultList();
         return list;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> alex
     @Transactional(readOnly = true)
     public RtfBox findByRtfBoxId(Integer rtfBoxID){
         String q = "SELECT r FROM RtfBox r WHERE r.rtfBoxId = :rtfBoxID";
         Query query = getEntityManager().createQuery(q);
         query.setParameter("rtfBoxID", rtfBoxID);
         RtfBox box = (RtfBox)query.getSingleResult();
+<<<<<<< HEAD
+=======
+
+>>>>>>> alex
         return box;
     }
 }
