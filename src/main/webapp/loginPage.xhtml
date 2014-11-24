@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<body>
+<div id="block">
+<div id="main">
+    <div id="logo"><h:graphicImage library="images" name="logo.jpg"/></div>
+    <h:outputStylesheet library="css" name="myStyle.css"  />
+    <h:form method="POST" id="logForm" name="loginForm" autocomplete="off">
+        <fieldset>
+            <h:panelGrid columns="2" style="margin-top:50px;">
+            <p><label>Login: <p:inputText value="#{loginBean.name}" id="name" required="true"
+                requiredMessage="Enter the login"></p:inputText></label></p>
+
+            <p><label>Pass: <p:password id="password" value="#{loginBean.password}" required="true"
+            requiredMessage="Enter the password"/></label></p>
+
+            <p><label>Stay logged or not<p:selectBooleanCheckbox name="stay" id="inStay" value="#{loginBean.rememberMe}"/></label></p>
+            <p:commandButton action="#{loginBean.login}" name="subButt" id="subButton"
+                             value="Login"/>
+            </h:panelGrid>
+        </fieldset>
+    </h:form>
+</div>
+</div>
+</body>
+
+</html>
