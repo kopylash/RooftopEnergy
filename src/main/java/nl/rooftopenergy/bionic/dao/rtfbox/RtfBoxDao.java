@@ -1,6 +1,5 @@
 package nl.rooftopenergy.bionic.dao.rtfbox;
 
-
 import nl.rooftopenergy.bionic.dao.Dao;
 import nl.rooftopenergy.bionic.entity.RtfBox;
 

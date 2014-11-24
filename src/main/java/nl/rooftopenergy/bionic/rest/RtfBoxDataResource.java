@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import org.joda.time.DateTimeComparator;
 import org.joda.time.DateTimeFieldType;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -40,11 +39,9 @@ public class RtfBoxDataResource {
     @Path("/monthTotal")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer showTotalMonthNumber(@FormParam("id") String id, @FormParam("date") String date){
-
         Integer param = Integer.parseInt(id);
         Timestamp paramCurrentMonth = Timestamp.valueOf(date);
         RtfBox box = rtfBoxDao.findByRtfBoxId(param);
-
         List<RtfBoxData> listData = rtfBoxDataDao.findByRtfBoxId(box);
         Integer totalNumber = 0;
         for (RtfBoxData data : listData){
@@ -52,12 +49,9 @@ public class RtfBoxDataResource {
             if (result == 0){
                 totalNumber += data.getReading1();
             }
-
         }
-
         return totalNumber;
     }
-
     /**
      * Returns list of measures (list of RTFBoxData instances)  has been done by RTFBox for day.
      * @param id Id of a company which uses this RTFBox.
@@ -71,7 +65,6 @@ public class RtfBoxDataResource {
         Integer paramId = Integer.parseInt(id);
         Timestamp paramDate =  Timestamp.valueOf(date);
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
-
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<RtfBoxData> listDailyData = new ArrayList<RtfBoxData>();
         for (RtfBoxData data : listAllData){
@@ -82,7 +75,6 @@ public class RtfBoxDataResource {
         }
         return listDailyData;
     }
-
     /**
      * Returns list of measures (list of RTFBoxData instances)  has been done by RTFBox for month.
      * @param id Id of a company which uses this RTFBox.
@@ -96,7 +88,6 @@ public class RtfBoxDataResource {
         Integer paramId = Integer.parseInt(id);
         Timestamp paramDate =  Timestamp.valueOf(date);
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
-
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<RtfBoxData> listDailyData = new ArrayList<RtfBoxData>();
         for (RtfBoxData data : listAllData){
@@ -107,7 +98,6 @@ public class RtfBoxDataResource {
         }
         return listDailyData;
     }
-
     /**
      * Returns list of measures (list of RTFBoxData instances)  has been done by RTFBox for year.
      * @param id Id of a company which uses this RTFBox.
@@ -121,7 +111,6 @@ public class RtfBoxDataResource {
         Integer paramId = Integer.parseInt(id);
         Timestamp paramDate =  Timestamp.valueOf(date);
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
-
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<RtfBoxData> listDailyData = new ArrayList<RtfBoxData>();
         for (RtfBoxData data : listAllData){
@@ -132,5 +121,4 @@ public class RtfBoxDataResource {
         }
         return listDailyData;
     }
-
 }

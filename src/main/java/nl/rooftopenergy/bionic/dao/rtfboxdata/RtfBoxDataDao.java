@@ -1,6 +1,5 @@
 package nl.rooftopenergy.bionic.dao.rtfboxdata;
 
-
 import nl.rooftopenergy.bionic.dao.Dao;
 import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.RtfBoxData;
@@ -15,5 +14,4 @@ public interface RtfBoxDataDao extends Dao<RtfBoxData, Integer> {
      * @return list of boxes;
      */
     public List<RtfBoxData> findByRtfBoxId(RtfBox rtfBox);
-
 }
