@@ -56,6 +56,13 @@ $("#month").click(function(){
         $("#main").css({'background-color':'#ff00ff'});
         var t = $("#datepicker").datepicker("getDate");
         t = $.datepicker.formatDate("yy-mm-dd", t);
+        if (!t) {
+            var d = new Date();
+            var month = d.getMonth()+1;
+            var day = d.getDate();
+            t = d.getFullYear() + "-" +(month < 10 ? '0' : '') + month + "-" +
+            (day < 10 ? '0' : '') + day;
+        }
         t = t + " 00:00:00";
 
         $.ajax({
