@@ -6,20 +6,22 @@ import javax.persistence.*;
  * Created by UFO on 17.11.2014.
  */
 @Entity
+@Table(name = "RTFBox")
 public class RtfBox {
-    private int rtfBoxId;
+    private Integer rtfBoxId;
     private Integer solarPanels;
     private Company company;
 
     @Id
     @Column(name = "RTFBoxID")
-    public int getRtfBoxId() {
+    public Integer getRtfBoxId() {
         return rtfBoxId;
     }
 
-    public void setRtfBoxId(int rtfBoxId) {
+    public void setRtfBoxId(Integer rtfBoxId) {
         this.rtfBoxId = rtfBoxId;
     }
+
     @Basic
     @Column(name = "Solarpanels")
     public int getSolarPanels() {
@@ -29,6 +31,7 @@ public class RtfBox {
     public void setSolarPanels(int solarPanels) {
         this.solarPanels = solarPanels;
     }
+
     @ManyToOne
     @JoinColumn(name = "CompanyID")
     public Company getCompany() {

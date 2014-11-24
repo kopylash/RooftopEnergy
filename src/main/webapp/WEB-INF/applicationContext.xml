@@ -44,7 +44,7 @@
 		INIT REST COMPONENTS
 	 -->
 
-	<context:component-scan base-package="nl.rooftopenergy.bionic.rest" />
+
 
 	<bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper" />
 

@@ -7,19 +7,20 @@ import java.sql.Timestamp;
  * Created by UFO on 17.11.2014.
  */
 @Entity
+@Table(name = "Production")
 public class Production {
-    private int productionId;
+    private Integer productionId;
     private Timestamp dateProduction;
     private Integer productionReading;
     private Company company;
 
     @Id
     @Column(name = "ProductionID")
-    public int getProductionId() {
+    public Integer getProductionId() {
         return productionId;
     }
 
-    public void setProductionId(int productionId) {
+    public void setProductionId(Integer productionId) {
         this.productionId = productionId;
     }
 

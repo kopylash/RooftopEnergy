@@ -6,9 +6,9 @@ import javax.persistence.*;
  * Created by UFO on 17.11.2014.
  */
 @Entity
-@Table(name = "company")
+@Table(name = "Company")
 public class Company {
-    private int companyId;
+    private Integer companyId;
     private String companyName;
     private String town;
     private String street;
@@ -16,11 +16,11 @@ public class Company {
 
     @Id
     @Column(name = "CompanyID")
-    public int getCompanyId() {
+    public Integer getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
 

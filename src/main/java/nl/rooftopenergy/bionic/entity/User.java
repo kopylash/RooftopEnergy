@@ -6,8 +6,9 @@ import javax.persistence.*;
  * Created by UFO on 17.11.2014.
  */
 @Entity
+@Table(name = "User")
 public class User {
-    private int userId;
+    private Integer userId;
     private String username;
     private String password;
     private String email;
@@ -15,11 +16,11 @@ public class User {
 
     @Id
     @Column(name = "UserID")
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
