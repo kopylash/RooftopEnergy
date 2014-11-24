@@ -1,16 +1,16 @@
-$(function(){
-$('#logForm').submit(function(e){
-
-    var login = $('#login1').val();
-    var password = $('#password1').val();
-    if((login != 'rooftop') || (password != 'energy')){
-        e.preventDefault();
-        $('#wrongInf').text("Wrong login or password").css({'color':'#ee0000','font-size':'20px'});
-        $('.inPut').css({'border-color':'#ff0000'});
-           } else {
-        e.preventDefault();
-        window.location = "loggedPage.html";
-    }
+//$(function(){
+//$('#logForm').submit(function(e){
+//
+//    var login = $('#login1').val();
+//    var password = $('#password1').val();
+//    if((login != 'rooftop') || (password != 'energy')){
+//        e.preventDefault();
+//        $('#wrongInf').text("Wrong login or password").css({'color':'#ee0000','font-size':'20px'});
+//        $('.inPut').css({'border-color':'#ff0000'});
+//           } else {
+//        e.preventDefault();
+//        window.location = "loggedPage.html";
+//    }
 
 
    //var str = form.serialize();
@@ -28,11 +28,11 @@ $('#logForm').submit(function(e){
    //             $('#password').css({'border-color':'#ff0000'});
    //         }
    //     });
-});
-});
+//});
+//});
 
 
-/*$(function(){
+$(function(){
     $('#logForm').submit(function(e){
         var name = $('#login1').val();
         var password = $('#password1').val();
@@ -52,8 +52,8 @@ $('#logForm').submit(function(e){
                 }
             }
         });
-        return true;
+        return false;
     });
-});*/
+});
 
 

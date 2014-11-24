@@ -7,6 +7,9 @@ $(function(){
 $("#max").click(function(){
     i +=1;
     if (i == 0){
+        var k = $("#datepicker").datepicker("getDate");
+        k = $.datepicker.formatDate("dd.mm.yy", k);//for current date
+
         $( "#dateBlock").text(k);
     }else {
         $("#datepicker").datepicker("setDate", +i);
@@ -19,6 +22,9 @@ $("#max").click(function(){
     $("#min").click(function(){
         i -=1;
         if (i == 0){
+            var k = $("#datepicker").datepicker("getDate");
+            k = $.datepicker.formatDate("dd.mm.yy", k);//for current date
+
             $( "#dateBlock").text(k);
         } else {
             $("#datepicker").datepicker("setDate", +i);
