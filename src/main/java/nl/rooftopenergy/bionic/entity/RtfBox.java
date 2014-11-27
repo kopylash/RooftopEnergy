@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class RtfBox {
     private Integer rtfBoxId;
     private Integer solarPanels;
+    private String panelType;
     private Company company;
 
     @Id
@@ -23,13 +24,23 @@ public class RtfBox {
     }
 
     @Basic
-    @Column(name = "Solarpanels")
-    public int getSolarPanels() {
+    @Column(name = "SolarPanels")
+    public Integer getSolarPanels() {
         return solarPanels;
     }
 
-    public void setSolarPanels(int solarPanels) {
+    public void setSolarPanels(Integer solarPanels) {
         this.solarPanels = solarPanels;
+    }
+
+    @Basic
+    @Column(name="PanelType")
+    public String getPanelType() {
+        return panelType;
+    }
+
+    public void setPanelType(String panelType) {
+        this.panelType = panelType;
     }
 
     @ManyToOne
@@ -53,6 +64,8 @@ public class RtfBox {
         if (rtfBoxId != rtfBox.rtfBoxId) return false;
         if (solarPanels != null ? !solarPanels.equals(rtfBox.solarPanels) : rtfBox.solarPanels != null) return false;
         if (company != null ? !company.equals(rtfBox.company) : rtfBox.company != null) return false;
+        if (panelType != null ? !panelType.equals(rtfBox.panelType) : rtfBox.panelType != null) return false;
+
 
         return true;
     }
@@ -62,6 +75,7 @@ public class RtfBox {
         int result = rtfBoxId;
         result = 31 * result + (solarPanels != null ? solarPanels.hashCode() : 0);
         result = 31 * result + (company != null ? company.hashCode() : 0);
+        result = 31 * result + (panelType != null ? panelType.hashCode() : 0);
         return result;
     }
 }

@@ -10,11 +10,9 @@ import java.sql.Timestamp;
 @Table(name = "RTFBoxData")
 public class RtfBoxData {
     private Integer readingId;
-    private Timestamp fromDt;
-    private Timestamp toDt;
-    private Integer reading1;
-    private Integer reading2;
-    private Timestamp created;
+    private Timestamp date;
+    private Integer production;
+    private Integer consumption;
     private RtfBox rtfBox;
 
     @Id
@@ -28,53 +26,34 @@ public class RtfBoxData {
     }
 
     @Basic
-    @Column(name = "FromDt")
-    public Timestamp getFromDt() {
-        return fromDt;
+    @Column(name = "Date")
+    public Timestamp getDate() {
+        return date;
     }
 
-    public void setFromDt(Timestamp fromDt) {
-        this.fromDt = fromDt;
+    public void setDate(Timestamp fromDt) {
+        this.date = fromDt;
+    }
+
+
+    @Basic
+    @Column(name = "Production")
+    public Integer getProduction() {
+        return production;
+    }
+
+    public void setProduction(Integer reading1) {
+        this.production = reading1;
     }
 
     @Basic
-    @Column(name = "ToDt")
-    public Timestamp getToDt() {
-        return toDt;
+    @Column(name = "Consumption")
+    public Integer getConsumption() {
+        return consumption;
     }
 
-    public void setToDt(Timestamp toDt) {
-        this.toDt = toDt;
-    }
-
-    @Basic
-    @Column(name = "Reading1")
-    public Integer getReading1() {
-        return reading1;
-    }
-
-    public void setReading1(Integer reading1) {
-        this.reading1 = reading1;
-    }
-
-    @Basic
-    @Column(name = "Reading2")
-    public Integer getReading2() {
-        return reading2;
-    }
-
-    public void setReading2(Integer reading2) {
-        this.reading2 = reading2;
-    }
-
-    @Basic
-    @Column(name = "Created")
-    public Timestamp getCreated() {
-        return created;
-    }
-
-    public void setCreated(Timestamp created) {
-        this.created = created;
+    public void setConsumption(Integer reading2) {
+        this.consumption = reading2;
     }
 
     @ManyToOne
@@ -95,11 +74,9 @@ public class RtfBoxData {
         RtfBoxData that = (RtfBoxData) o;
 
         if (readingId != that.readingId) return false;
-        if (created != null ? !created.equals(that.created) : that.created != null) return false;
-        if (fromDt != null ? !fromDt.equals(that.fromDt) : that.fromDt != null) return false;
-        if (reading1 != null ? !reading1.equals(that.reading1) : that.reading1 != null) return false;
-        if (reading2 != null ? !reading2.equals(that.reading2) : that.reading2 != null) return false;
-        if (toDt != null ? !toDt.equals(that.toDt) : that.toDt != null) return false;
+        if (date != null ? !date.equals(that.date) : that.date != null) return false;
+        if (production != null ? !production.equals(that.production) : that.production != null) return false;
+        if (consumption != null ? !consumption.equals(that.consumption) : that.consumption != null) return false;
         if (rtfBox != null ? !rtfBox.equals(that.rtfBox) : that.rtfBox != null) return false;
 
         return true;
@@ -108,11 +85,9 @@ public class RtfBoxData {
     @Override
     public int hashCode() {
         int result = readingId;
-        result = 31 * result + (fromDt != null ? fromDt.hashCode() : 0);
-        result = 31 * result + (toDt != null ? toDt.hashCode() : 0);
-        result = 31 * result + (reading1 != null ? reading1.hashCode() : 0);
-        result = 31 * result + (reading2 != null ? reading2.hashCode() : 0);
-        result = 31 * result + (created != null ? created.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (production != null ? production.hashCode() : 0);
+        result = 31 * result + (consumption != null ? consumption.hashCode() : 0);
         result = 31 * result + (rtfBox != null ? rtfBox.hashCode() : 0);
         return result;
     }
