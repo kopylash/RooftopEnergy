@@ -50,9 +50,9 @@ public class RtfBoxDataResource {
         Integer totalNumber = 0;
 
         for (RtfBoxData data : listData){
-            int result = DateTimeComparator.getInstance(DateTimeFieldType.monthOfYear()).compare(data.getCreated(), paramCurrentMonth);
+            int result = DateTimeComparator.getInstance(DateTimeFieldType.monthOfYear()).compare(data.getDate(), paramCurrentMonth);
             if (result == 0){
-                totalNumber += data.getReading1();
+                totalNumber += data.getProduction();
             }
         }
         return totalNumber;
@@ -77,10 +77,10 @@ public class RtfBoxDataResource {
         List<GraphDataTransfer> listDailyData = new ArrayList<GraphDataTransfer>();
 
         for (RtfBoxData data : listAllData){
-            int result = DateTimeComparator.getDateOnlyInstance().compare(data.getCreated(), paramDate);
+            int result = DateTimeComparator.getDateOnlyInstance().compare(data.getDate(), paramDate);
             if (result == 0){
-                graphData.setDate(data.getCreated());
-                graphData.setValue(data.getReading1());
+                graphData.setDate(data.getDate());
+                graphData.setValue(data.getProduction());
                 listDailyData.add(graphData);
             }
         }
@@ -106,10 +106,10 @@ public class RtfBoxDataResource {
         List<GraphDataTransfer> listDailyData = new ArrayList<GraphDataTransfer>();
 
         for (RtfBoxData data : listAllData){
-            int result = DateTimeComparator.getInstance(DateTimeFieldType.monthOfYear()).compare(data.getCreated(), paramDate);
+            int result = DateTimeComparator.getInstance(DateTimeFieldType.monthOfYear()).compare(data.getDate(), paramDate);
             if (result == 0){
-                graphData.setDate(data.getCreated());
-                graphData.setValue(data.getReading1());
+                graphData.setDate(data.getDate());
+                graphData.setValue(data.getProduction());
                 listDailyData.add(graphData);
             }
         }
@@ -135,10 +135,10 @@ public class RtfBoxDataResource {
         List<GraphDataTransfer> listDailyData = new ArrayList<GraphDataTransfer>();
 
         for (RtfBoxData data : listAllData){
-            int result = DateTimeComparator.getInstance(DateTimeFieldType.year()).compare(data.getCreated(), paramDate);
+            int result = DateTimeComparator.getInstance(DateTimeFieldType.year()).compare(data.getDate(), paramDate);
             if (result == 0){
-                graphData.setDate(data.getCreated());
-                graphData.setValue(data.getReading1());
+                graphData.setDate(data.getDate());
+                graphData.setValue(data.getProduction());
                 listDailyData.add(graphData);
             }
         }
