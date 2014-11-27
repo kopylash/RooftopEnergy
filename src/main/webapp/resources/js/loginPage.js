@@ -41,7 +41,7 @@ $(function(){
             type: 'post',
             url: '/rest/user/authenticate',
             crossDomain: true,
-            data: {'name': name, 'password': password},
+            data: {'username': name, 'password': password},
             error: function (data) {
                 $('#wrongInf').html(data.responseText);
             },
