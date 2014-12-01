@@ -71,6 +71,7 @@ footer{
     display: inline-block;
     width: 20%;
     background-color: #59AC28;
+    color: #FFFFFE;
 }
 
 .mainButtons:hover{

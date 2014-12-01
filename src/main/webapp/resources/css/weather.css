@@ -1,0 +1,121 @@
+main{
+    margin: 25px auto;
+    width: 90%;
+    height: 300px;
+    border: none;
+
+}
+
+#first {
+    margin: 10px auto;
+    width: 255px;
+    height: 335px;
+}
+
+#second {
+    width: 255px;
+    height: 335px;
+}
+
+#third {
+    margin:7px 10px;
+}
+
+#widget-frame {
+    margin: 0 auto;
+    width: 235px;
+    height: 216px;
+}
+
+@media screen and (max-height: 550px) and (min-height: 500px){
+    #widget-frame {
+        width: 235px;
+        height: 250px;
+    }
+    #first, #second {
+        width: 90%;
+        height: 120%;
+    }
+}
+
+@media screen and (max-height: 635px) and (min-height: 551px){
+    #widget-frame {
+        width: 235px;
+        height: 300px;
+    }
+    #first, #second {
+        width: 90%;
+        height: 140%;
+    }
+}
+
+@media screen and (max-height: 650px) and (min-height: 636px){
+    #widget-frame {
+        width: 235px;
+        height: 360px;
+    }
+    #first, #second {
+        width: 90%;
+        height: 160%;
+    }
+}
+
+@media screen and (max-height: 700px) and (min-height: 651px){
+    #widget-frame {
+        margin: 30px auto;
+        width: 235px;
+        height: 360px;
+    }
+    #first, #second {
+        width: 90%;
+        height: 178%;
+    }
+}
+
+@media screen and (max-height: 760px) and (min-height: 701px){
+    #widget-frame {
+        margin: 30px auto;
+        width: 235px;
+        height: 400px;
+    }
+    #first, #second {
+        width: 90%;
+        height: 200%;
+    }
+}
+
+@media screen and (max-height: 860px) and (min-height: 761px){
+    #widget-frame {
+        margin: 55px auto;
+        width: 235px;
+        height: 420px;
+    }
+    #first, #second {
+        width: 90%;
+        height: 235%;
+    }
+}
+
+@media screen and (max-height: 970px) and (min-height: 861px){
+    #widget-frame {
+        margin: 60px auto;
+        width: 235px;
+        height: 450px;
+    }
+    #first, #second {
+        width: 90%;
+        height: 250%;
+    }
+}
+
+@media screen and  (min-height: 971px){
+    #widget-frame {
+        margin: 70px auto;
+        width: 235px;
+        height: 480px;
+    }
+    #first, #second {
+        width: 90%;
+        height: 270%;
+    }
+}

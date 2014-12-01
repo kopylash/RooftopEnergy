@@ -24,20 +24,18 @@
 
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/font-awesome-4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="resources/css/jquery-ui.css">
     <link rel="stylesheet" href="resources/css/production.css">
+    <link rel="stylesheet" href="resources/css/weather.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
-
-    <script src="resources/js/loggedPage.js"></script>
-    <script src="resources/js/highcharts.js"></script>
-    <script src="resources/js/graph.js"></script>
     <script src="resources/js/pages.js"></script>
+
+
+
+
 
 </head>
 <body>
@@ -49,41 +47,32 @@
 <div class="container-fluid">
 
 
-    <header>Production</header>
-    <div id="log"><a href="loginPage.html"> <i class="fa fa-sign-out fa-2x ">log-out</i></a></div>
-
-    <div id="period">
-        <button type="button" class="btn btn-default btn-sm" id="day" >Day</button>
-        <button type="button" class="btn btn-default btn-sm" id="month">Month</button>
-        <button type="button" class="btn btn-default btn-sm" id="year">Year</button>
-        <button type="button" class="btn btn-default btn-sm" id="total">Total</button>
-    </div>
-
-    <div id="date">
-        <p id="pd">
-            <button id="min"><i class="fa fa-chevron-left"></i></button>
-            <span id="dateBlock" ></span>
-            <button id="max"><i class="fa fa-chevron-right"></i></button>
-            <input type="text" id="datepicker">
-        </p>
-
-    </div>
-    <main id="main"></main>
+    <header>Weather</header>
 
 
-    <div id="kwt">
-        <form action="#" method="POST" id="kwtForm" name="kwtForm" autocomplete="off">
-            <input type="text" name="text1" id="kwtInput" maxlength="25" placeholder="input production KWh" required="" >
-            <input type="submit" name="save1" id="kwtButton" value="Save" />
-        </form>
-    </div>
+
+
+
+    <main id="main">
+        <div id="first" style="font-family: Arial;background-color: #fbfbfb;border: 1px solid #e7e7e7;-moz-box-shadow: 0 0 2px 1px #e7e7e7;-webkit-box-shadow: 0 0 2px 1px #e7e7e7;box-shadow: 0 0 2px 1px #e7e7e7;overflow: hidden; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;">
+            <div id="second" ><div id="third">
+                <div style="color: #222222;font-family: Arial;font-size: 12px;font-weight: bold;margin: 0px 0px 7px 0px;line-height: 14px;">Weersverwachting<br/><span style="font-weight:normal;">Amsterdam</span></div>
+                <iframe id="widget-frame" src="http://www.weeronline.nl/Go/ExternalWidgetsNew/ThreeDaysCity?gid=4058223&sizeType=1&temperatureScale=Celsius&defaultSettings=True"  frameborder="0" scrolling="no" style="border: none;" allowtransparency="true"></iframe>
+                <a href="http://www.weeronline.nl/Europa/Nederland/Amsterdam/4058223" style="background: url(http://www.weeronline.nl/Shared/Images/list_icon_blue_trans.png) no-repeat scroll left 1px transparent;color: #0160b2;font-family: Arial;font-size: 12px;font-weight: normal;padding-left: 14px;margin: 7px 0px 5px 0px;line-height: 12px;outline: none;text-decoration: none;display: inline-block;" target="_blank">Weeronline.nl - Meer weer in Amsterdam</a>
+                <a href="http://www.weeronline.nl/" style="display: block;height: 25px;width: 113px;margin: 0px 10px 8px 0px;outline: none;text-decoration: none;" title="weeronline.nl Altijd jouw weer" target="_blank">
+                    <img src="http://www.weeronline.nl/Shared/Images/widget/new-widget-logo-color.png" width="113" height="25" alt="weeronline.nl Altijd jouw weer" style="border: none;background-color: transparent;box-shadow: none;" /></a></div></div></div>
+    <hr>
+    </main>
+
+
+
 
     <footer>
 
 
-        <div id="consumption" class="mainButtons"><i class="fa fa-plug   fa-4x"></i></div>
+        <div id="consumption" class="mainButtons"><i class="fa fa-plug  fa-4x"></i></div>
         <div id="loggedPage" class="mainButtons"><i class="fa fa-sun-o  fa-4x"></i></div>
-        <div id="weather" class="mainButtons"><i class="fa fa-cloud  fa-4x"></i></div>
+        <div id="weather" class="mainButtons"><i class="fa fa-cloud fa-4x"></i></div>
         <div id="rating" class="mainButtons"><i class="fa fa-star  fa-4x"></i></div>
         <div id="settings" class="mainButtons"><i class="fa fa-wrench  fa-4x"></i></div>
 
