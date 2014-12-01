@@ -1,18 +1,14 @@
 $(function(){
-    $("#loggedPage").css({ 'color': '#0062D2'});
+    var page = window.location;
+    page = page+"";
+    var first = page.lastIndexOf("/")+1;
+    var second = page.indexOf(".html");
+    var idi = page.slice(first, second);
+    $("#"+idi).css({ 'color': '#0062D2'});
 
     $(".mainButtons").click(function() {
-
-        //window.location = this.id + ".html";
-
-        //$(".mainButtons").css({ 'color': '#000000'});
-        //$(this).css({ 'color': '#0062D2'});
-
+        window.location = this.id + ".html";
     });
-
-
-
-
 
 
 });
