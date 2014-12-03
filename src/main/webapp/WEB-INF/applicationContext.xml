@@ -2,9 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<context:component-scan base-package="nl.rooftopenergy.bionic" />
 
@@ -47,5 +49,36 @@
 
 
 	<bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper" />
+
+	<!-- Spring Security Settings-->
+
+	<security:http entry-point-ref="restAuthenticationEntryPoint">
+		<security:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<security:intercept-url pattern="/logged*" access="ROLE_USER"/>
+		<security:intercept-url pattern="/rest/*" access="ROLE_USER"/>
+
+		<security:form-login
+				authentication-success-handler-ref="successHandler"
+				authentication-failure-handler-ref="failureHandler"/>
+		<security:remember-me key="iu123yr"/>
+		<security:logout delete-cookies="JSESSIONID"/>
+	</security:http>
+
+	<bean id="restAuthenticationEntryPoint"
+		  class="nl.rooftopenergy.bionic.security.RestAuthenticationEntryPoint"/>
+	<bean id="successHandler"
+		  class="nl.rooftopenergy.bionic.security.SecurityUrlAuthenticationSuccessHandler"/>
+	<bean id="failureHandler"
+		  class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"/>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="temporary" password="temporary" authorities="ROLE_ADMIN"/>
+				<security:user name="user" password="user" authorities="ROLE_USER"/>
+				<security:user name="rooftop" password="energy" authorities="ROLE_USER"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
 
 </beans>
