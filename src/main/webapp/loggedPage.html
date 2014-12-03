@@ -34,9 +34,12 @@
     <script src="resources/js/bootstrap.min.js"></script>
     <script src="resources/js/jquery-ui.js"></script>
 
-    <script src="resources/js/loggedPage.js"></script>
+
     <script src="resources/js/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
     <script src="resources/js/graph.js"></script>
+    <script src="resources/js/ajax.js"></script>
+    <script src="resources/js/loggedPage.js"></script>
     <script src="resources/js/pages.js"></script>
 
 </head>
@@ -53,6 +56,7 @@
     <div id="log"><a href="loginPage.html"> <i class="fa fa-sign-out fa-2x ">log-out</i></a></div>
 
     <div id="period">
+        <button type="button" class="btn btn-default btn-sm" id="day" >Day</button>
         <button type="button" class="btn btn-default btn-sm" id="month">Month</button>
         <button type="button" class="btn btn-default btn-sm" id="year">Year</button>
         <button type="button" class="btn btn-default btn-sm" id="total">Total</button>

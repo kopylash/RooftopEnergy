@@ -76,8 +76,8 @@ public class ConsumptionDataResource {
                                                    @FormParam("dateEnd") String dateEnd){
         Integer paramId = Integer.parseInt(id);
         Integer paramCurrentBox = Integer.parseInt(currentBox);
-        Date paramDateStart = Timestamp.valueOf(dateStart);
-        Date paramDateEnd = Timestamp.valueOf(dateEnd);
+        Date paramDateStart = new Timestamp(Long.parseLong(dateStart));
+        Date paramDateEnd = new Timestamp(Long.parseLong(dateEnd));
 
         RtfBox rtfBox = findBox(paramId, paramCurrentBox);
 
