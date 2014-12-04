@@ -92,8 +92,10 @@ header {
     min-width: 100%;
     min-height: 100%;
     background: url(../images/background.jpg);
+    -moz-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
+    -o-background-size: cover;  /*Opera 9.6+ */
+    background-size: cover; /* Современные браузеры */
     position: absolute;
-
 }
 
 @media screen and (max-width: 440px){
@@ -152,8 +154,9 @@ header {
         padding-left: 15px;
         margin-top: 7%;
         border-width: medium;
-
     }
+
+
 
     .inPut {
         font: normal 0.95em "Times New Roman";

@@ -1,5 +1,5 @@
-var endDate = new Date();
-function ajaxGraphQuery(strUrl,startDate) {
+//var endDate = new Date();
+function ajaxGraphQuery(strUrl,startDate,endDate) {
     $.ajax({
         type: 'post',
         url: strUrl,

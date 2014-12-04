@@ -54,7 +54,7 @@ $(function(){
         }
     });
 
-
+    $(window).resize();
 
 
 

@@ -43,12 +43,13 @@ $(function(){
             crossDomain: true,
             data: {'username': name, 'password': password},
             error: function (data) {
-                $('#wrongInf').html(data.responseText);
+                $('#wrongInf').html(data.responseText).css({'color':'#ff0000'});
             },
             statusCode: {
                 // HTTP 307 - redirect
                 307: function (data) {
                     document.location.href = data.responseText;
+                    $('#wrongInf').html("");
                 }
             }
         });
