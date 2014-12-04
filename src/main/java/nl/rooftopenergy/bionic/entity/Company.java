@@ -1,6 +1,7 @@
 package nl.rooftopenergy.bionic.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by UFO on 17.11.2014.
@@ -17,6 +18,7 @@ public class Company {
     private Integer zipcode;
     private String description;
     private Boolean publicStatus;
+    private List<RtfBox> rtfBoxList;
 
     @Id
     @Column(name = "CompanyID")
@@ -108,6 +110,15 @@ public class Company {
         this.description = description;
     }
 
+    @OneToMany(mappedBy = "company")
+    public List<RtfBox> getRtfBoxList() {
+        return rtfBoxList;
+    }
+
+    public void setRtfBoxList(List<RtfBox> rtfBoxList) {
+        this.rtfBoxList = rtfBoxList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -126,6 +137,7 @@ public class Company {
         if (description != null ? !description.equals(company.description) : company.description != null) return false;
         if (publicStatus != null ? !publicStatus.equals(company.publicStatus) : company.publicStatus != null)
             return false;
+        if (rtfBoxList != null ? !rtfBoxList.equals(company.rtfBoxList) : company.rtfBoxList != null) return false;
 
         return true;
     }
