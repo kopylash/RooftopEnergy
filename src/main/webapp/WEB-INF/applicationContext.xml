@@ -60,8 +60,12 @@
 		<security:form-login
 				authentication-success-handler-ref="successHandler"
 				authentication-failure-handler-ref="failureHandler"/>
-		<security:remember-me key="iu123yr"/>
-		<security:logout delete-cookies="JSESSIONID"/>
+		<security:remember-me
+				data-source-ref="dataSource"/>
+		<security:logout
+				invalidate-session="true"
+				delete-cookies="JSESSIONID"
+				logout-success-url="/loginPage.html"/>
 	</security:http>
 
 	<bean id="restAuthenticationEntryPoint"
@@ -75,7 +79,7 @@
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource"
 										users-by-username-query=
-												"select username,password, enabled from users where username=?"
+												"select username, password, enabled from users where username=?"
 										authorities-by-username-query=
 												"select username, role from user_roles where username =?  " />
 		</security:authentication-provider>
