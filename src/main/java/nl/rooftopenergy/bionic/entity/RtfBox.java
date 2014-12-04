@@ -1,7 +1,6 @@
 package nl.rooftopenergy.bionic.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by UFO on 17.11.2014.
@@ -13,7 +12,6 @@ public class RtfBox {
     private Integer solarPanels;
     private String panelType;
     private Company company;
-    private List<RtfBoxData> rtfBoxDataList;
 
     @Id
     @Column(name = "RTFBoxID")
@@ -53,15 +51,6 @@ public class RtfBox {
 
     public void setCompany(Company company) {
         this.company = company;
-    }
-
-    @OneToMany(mappedBy = "rtfBox")
-    public List<RtfBoxData> getRtfBoxDataList() {
-        return rtfBoxDataList;
-    }
-
-    public void setRtfBoxDataList(List<RtfBoxData> rtfBoxDataList) {
-        this.rtfBoxDataList = rtfBoxDataList;
     }
 
     @Override
