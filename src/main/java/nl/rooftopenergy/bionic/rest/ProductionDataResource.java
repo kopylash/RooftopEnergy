@@ -95,7 +95,7 @@ public class ProductionDataResource {
 
     private RtfBox findBox(Integer companyId, Integer boxId ){
 
-        Company company = companyDao.fundById(companyId);
+        Company company = companyDao.findById(companyId);
         List<RtfBox> rtfBoxList = rtfBoxDao.findByCompanyId(company);
 
         RtfBox rtfbox = null;
