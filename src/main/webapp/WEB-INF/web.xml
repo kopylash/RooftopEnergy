@@ -4,7 +4,7 @@
          id="WebApp_ID" version="3.0">
   <display-name>Archetype Created Web Application</display-name>
   <welcome-file-list>
-    <welcome-file>/loginPage.html</welcome-file>
+    <welcome-file>/loggedPage.html</welcome-file>
   </welcome-file-list>
   <!--       REST        -->
   <servlet>
