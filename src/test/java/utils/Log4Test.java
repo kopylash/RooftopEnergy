@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import org.testng.Reporter;
 
 /**
-
+ Improving standart log4j pattern with using singleton pattern to make logs easier
  */
 public class Log4Test {
     private Log4Test() {}

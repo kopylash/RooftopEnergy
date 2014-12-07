@@ -7,7 +7,9 @@ import selenium.WebDriverWrapper;
 import utils.PropertyLoader;
 
 /**
- *
+ *  Simplest test conditions before and after each test run
+ *  @BeforeSuite will execute each time before tests will run (In this case the browser will be chosen and window will be set up to maximum)
+ *  @AfterSuite will execute always after tests have finished their work (It this case driver will be shut down)
  */
 public class TestConditions {
     public static WebDriverWrapper driver;

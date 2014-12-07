@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- *
+ * Improving standart WebDriver to add Explicit Wait in findElements and FindElement conditions
  */
 public class WebDriverWrapper implements WebDriver {
 

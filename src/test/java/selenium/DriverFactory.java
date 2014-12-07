@@ -10,7 +10,7 @@ import utils.Log4Test;
 import java.io.File;
 
 /**
-
+    Choosing a browser to run tests
  */
 public class DriverFactory {
     public static final String CHROME = "chrome";
