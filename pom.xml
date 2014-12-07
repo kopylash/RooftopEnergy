@@ -12,6 +12,22 @@
 		<jersey.version>1.18.1</jersey.version>
 	</properties>
 
+	<!-- browsers for testing -->
+	<profiles>
+		<profile>
+			<id>firefox_local</id>
+			<properties>
+				<browser.name>firefox</browser.name>
+			</properties>
+		</profile>
+		<profile>
+			<id>chrome_local</id>
+			<properties>
+				<browser.name>chrome</browser.name>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -174,9 +190,35 @@
 			<version>2.5</version>
 		</dependency>
 
+		<!-- Dependency for Selenium -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8.8</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.42.2</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
+
+		<!-- Tracking for Application properties -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<finalName>RoofTopEnergy</finalName>
 		<plugins>
 			<plugin>
@@ -193,6 +235,19 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+
+			<!-- Plugins for Automation Testing -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>
