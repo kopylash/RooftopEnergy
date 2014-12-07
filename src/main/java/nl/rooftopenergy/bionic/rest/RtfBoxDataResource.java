@@ -4,6 +4,7 @@ import nl.rooftopenergy.bionic.dao.rtfbox.RtfBoxDao;
 import nl.rooftopenergy.bionic.dao.rtfboxdata.RtfBoxDataDao;
 import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.RtfBoxData;
+import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.GraphDataTransfer;
 import org.apache.log4j.Logger;
 import org.joda.time.DateTimeComparator;
@@ -31,17 +32,19 @@ public class RtfBoxDataResource {
     @Inject
     private RtfBoxDao rtfBoxDao;
 
+    @Inject
+    private PrincipalInformation principalInformation;
+
     /**
      * Returns value of energy has been received from solar panel for month.
-     * @param id Id of a company which uses this RTFBox.
      * @param date it is the month to look for data.
      * @return value of energy for month
      */
     @POST
     @Path("/monthTotal")
     @Produces(MediaType.APPLICATION_JSON)
-    public Integer showTotalMonthNumber(@FormParam("id") String id, @FormParam("date") String date){
-        Integer param = Integer.parseInt(id);
+    public Integer showTotalMonthNumber(@FormParam("date") String date){
+        Integer param = principalInformation.getCompany().getCompanyId();
         Timestamp paramCurrentMonth = Timestamp.valueOf(date);
 
         RtfBox box = rtfBoxDao.findByRtfBoxId(param);
@@ -60,15 +63,14 @@ public class RtfBoxDataResource {
 
     /**
      * Returns list of measures (list of GraphDataTransfer instances)  has been done by RTFBox for day.
-     * @param id Id of a company which uses this RTFBox.
      * @param date it is the month to look for day.
      * @return list of measures for day
      */
     @POST
     @Path("/day")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<GraphDataTransfer> showDailyMeasures(@FormParam("id") String id, @FormParam("date") String date){
-        Integer paramId = Integer.parseInt(id);
+    public List<GraphDataTransfer> showDailyMeasures(@FormParam("date") String date){
+        Integer paramId = principalInformation.getCompany().getCompanyId();
         Timestamp paramDate =  Timestamp.valueOf(date);
 
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
@@ -89,15 +91,14 @@ public class RtfBoxDataResource {
 
     /**
      * Returns list of measures (list of GraphDataTransfer instances)  has been done by RTFBox for month.
-     * @param id Id of a company which uses this RTFBox.
      * @param date it is the month to look for month.
      * @return list of measures for month
      */
     @POST
     @Path("/month")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<GraphDataTransfer> showMonthlyMeasures(@FormParam("id") String id, @FormParam("date") String date){
-        Integer paramId = Integer.parseInt(id);
+    public List<GraphDataTransfer> showMonthlyMeasures(@FormParam("date") String date){
+        Integer paramId = principalInformation.getCompany().getCompanyId();
         Timestamp paramDate =  Timestamp.valueOf(date);
 
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
@@ -118,15 +119,14 @@ public class RtfBoxDataResource {
 
     /**
      * Returns list of measures (list of GraphDataTransfer instances)  has been done by RTFBox for year.
-     * @param id Id of a company which uses this RTFBox.
      * @param date it is the month to look for year.
      * @return list of measures for year
      */
     @POST
     @Path("/year")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<GraphDataTransfer> showYearlyMeasures(@FormParam("id") String id, @FormParam("date") String date){
-        Integer paramId = Integer.parseInt(id);
+    public List<GraphDataTransfer> showYearlyMeasures(@FormParam("date") String date){
+        Integer paramId = principalInformation.getCompany().getCompanyId();
         Timestamp paramDate =  Timestamp.valueOf(date);
 
         RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);

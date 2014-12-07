@@ -3,11 +3,11 @@ package nl.rooftopenergy.bionic.rest;
 import nl.rooftopenergy.bionic.dao.company.CompanyDao;
 import nl.rooftopenergy.bionic.dao.rtfboxdata.RtfBoxDataDao;
 import nl.rooftopenergy.bionic.entity.Company;
+import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.ScoreDataTransfer;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -29,6 +29,9 @@ public class ScoreDataResource {
     @Inject
     private RtfBoxDataDao rtfBoxDataDao;
 
+    @Inject
+    private PrincipalInformation principalInformation;
+
     /**
      * Gets list of companies according to their energy production.
      * An {@code ScoreDataTransfer} contains company name and arrow status fields.
@@ -37,15 +40,13 @@ public class ScoreDataResource {
      * Arrow status is {@value 0} if production of couple companies is equal.
      * Arrow status is {@value -1} if production of current company greater than other one.
      * Arrow status is {@value 1} if production of current company less than other one.
-     * @param id company identifier number
      * @return list of {@code ScoreDataTransfer} objects.
      */
     @POST
     @Path("production")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ScoreDataTransfer> showProductionScore(@FormParam("id") String id){
-        Integer paramId = Integer.parseInt(id);
-        companyDao.findById(paramId);
+    public List<ScoreDataTransfer> showProductionScore(){
+        Integer paramId = principalInformation.getCompany().getCompanyId();
         Company company = companyDao.findById(paramId);
         List<Company> companyList = companyDao.findAllPublic();
         companyList.remove(company);
@@ -64,15 +65,13 @@ public class ScoreDataResource {
      * Arrow status is {@value 0} if production of couple companies is equal.
      * Arrow status is {@value -1} if production of current company greater than other one.
      * Arrow status is {@value 1} if production of current company less than other one.
-     * @param id company identifier number
      * @return list of {@code ScoreDataTransfer} objects.
      */
     @POST
     @Path("consumption")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ScoreDataTransfer> showConsumptionScore(@FormParam("id") String id){
-        Integer paramId = Integer.parseInt(id);
-        companyDao.findById(paramId);
+    public List<ScoreDataTransfer> showConsumptionScore(){
+        Integer paramId = principalInformation.getCompany().getCompanyId();
         Company company = companyDao.findById(paramId);
         List<Company> companyList = companyDao.findAllPublic();
         companyList.remove(company);
