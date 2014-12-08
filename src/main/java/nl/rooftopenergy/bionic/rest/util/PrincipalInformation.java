@@ -52,7 +52,7 @@ public class PrincipalInformation {
         Company company;
         String principalName = getPrincipalName();
         User user = userDao.findByName(principalName);
-        company = companyDao.findById(user.getCompany().getCompanyId());
+        company = user.getCompany();
         return company;
     }
 
