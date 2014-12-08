@@ -5,19 +5,23 @@
             arr[i] =  [data[i]["date"], data[i]["value"]/1000];
         }
 
-
         Highcharts.setOptions({
             global: {
                 useUTC: false
             }
 
         });
+
         $('main').highcharts({
+
             chart: {
                 zoomType: 'x'
             },
             title: {
                 text: 'ROOFTOP ENERGY'
+            },
+            credits: {
+                enabled: false
             },
 
             xAxis: {
@@ -39,8 +43,8 @@
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                            [0, Highcharts.getOptions().colors[0]],
-                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            [0, Highcharts.getOptions().colors[2]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[2]).setOpacity(0.8).get('rgba')]
                         ]
                     },
                     marker: {
@@ -55,6 +59,8 @@
                     threshold: null
                 }
             },
+
+            colors:['#00ff33'],
 
             series: [{
                 type: 'area',

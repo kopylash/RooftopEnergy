@@ -21,10 +21,13 @@ function allDateButtons(Url1){
             $("#datepicker").datepicker("setDate", +ii);
             var r = $("#datepicker").datepicker("getDate");
             //console.log(r);
+            var hour = 23;
+            var minutes = 59;
+            var sec = 59;
             var year = r.getFullYear();
             var month = r.getMonth();
             var day = r.getDate();
-            t2 = new Date(year, month, day, 23, 59, 59);
+            t2 = new Date(year, month, day, hour, minutes, sec);
             console.log(t2);
             r = $.datepicker.formatDate("dd.mm.yy", r);
             $("#dateBlock").text(r);
@@ -32,6 +35,7 @@ function allDateButtons(Url1){
     };
 
     var buttonClicker = function(url2, x){
+
         var date = new Date();
         var year = 1970;
         var month = 0;
@@ -45,12 +49,13 @@ function allDateButtons(Url1){
                 year = date.getFullYear();
                 break;
             default :
-                var ttt = 141;
+            // var ttt = 141;
         }
 
         var t = new Date(year, month, day,0, 0, 0);
         ajaxGraphQuery(url2,t,t2);
     };
+
 
         buttonClicker(Url1,1,t2);
 

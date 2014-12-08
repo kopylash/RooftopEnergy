@@ -13,6 +13,7 @@ body{
     font: normal 0.85em "Times New Roman";
     width: 150px;
     height: 15px;
+
 }
 
 fieldset{
@@ -25,7 +26,7 @@ fieldset{
     border-radius: 8px;
     width:35%;
     margin: 50px auto;
-    background-color: rgba(112, 176 , 124, 0.6);
+    background-color: rgba(90, 210 , 124, 0.2);
     /*background: linear-gradient(210deg, #D6E88E, #475928);*/
     padding-right: 12px;
 }
