@@ -1,16 +1,16 @@
 package pages;
 
-import selenium.WebDriverWrapper;
+import org.openqa.selenium.WebDriver;
 
 /**
  * Created by Time To on 08.12.2014.
  */
 public class BasePage {
 
-    WebDriverWrapper driver;
-    private String url;
+    WebDriver driver;
+    private String url = "http://tomcat-rooftopenergy.rhcloud.com/loginPage.html";
 
-    public BasePage(WebDriverWrapper driver){
+    public BasePage(WebDriver driver){
         this.driver = driver;
     }
 

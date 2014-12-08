@@ -12,9 +12,7 @@ import pages.MainPage;
  */
 public class AuthenticationTest extends TestConditions {
 
-    private String url;
-
-
+    private String url = "http://tomcat-rooftopenergy.rhcloud.com/loginPage.html";
 
     @DataProvider(name = "auth")
         public Object[][] provideData() {
@@ -30,7 +28,7 @@ public class AuthenticationTest extends TestConditions {
         LoginPage loginpage = new LoginPage(driver);
         MainPage mainpage = new MainPage(driver);
 
-        loginpage.open();
+        loginpage.open(url);
         loginpage.loginIntup(login);
         loginpage.passwordInput(password);
         loginpage.confirm();

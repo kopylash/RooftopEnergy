@@ -1,7 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
-import selenium.WebDriverWrapper;
+import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +15,7 @@ public class LoginPage extends BasePage{
     private static final By lOGININPUT = By.id("login1");
     private static final By PASSWORDINPUT = By.id("password1");
 
-    public LoginPage(WebDriverWrapper driver){
+    public LoginPage(WebDriver driver){
         super(driver);
     }
 
