@@ -23,7 +23,7 @@ $(function(){
         if (screen.width <= 768) {
             $('main').html(code2);
         } else {
-            $('main').html(code).css(" ");
+            $('main').html(code);
 
         }
     });

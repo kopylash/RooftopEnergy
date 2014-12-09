@@ -1,31 +1,31 @@
 main{
     margin: 25px auto;
-    width: 90%;
+    width: 95%;
     height: 300px;
     border: none;
 
 }
 
-#first {
-    margin: 10px auto;
-    width: 255px;
-    height: 335px;
-}
+/*#first {*/
+    /*margin: 10px auto;*/
+    /*width: 255px;*/
+    /*height: 335px;*/
+/*}*/
 
-#second {
-    width: 255px;
-    height: 335px;
-}
+/*#second {*/
+    /*width: 255px;*/
+    /*height: 335px;*/
+/*}*/
 
-#third {
-    margin:7px 10px;
-}
+/*#third {*/
+    /*margin:7px 10px;*/
+/*}*/
 
-#widget-frame {
-    margin: 0 auto;
-    width: 235px;
-    height: 216px;
-}
+/*#widget-frame {*/
+    /*margin: 0 auto;*/
+    /*width: 235px;*/
+    /*height: 216px;*/
+/*}*/
 
 @media screen and (max-height: 550px) and (min-height: 500px){
     #widget-frame {
