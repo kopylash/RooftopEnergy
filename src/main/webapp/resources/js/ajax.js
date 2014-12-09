@@ -4,7 +4,7 @@ function ajaxGraphQuery(strUrl,startDate,endDate) {
         type: 'post',
         url: strUrl,
         crossDomain: true,
-        data: {'id':"1", 'currentBox': "1", 'dateStart': startDate.getTime(), 'dateEnd': endDate.getTime()},
+        data: { 'currentBox': "1", 'dateStart': startDate.getTime(), 'dateEnd': endDate.getTime()},
         error: function (data) {
             $('#login_message').html(data.responseText);
         },

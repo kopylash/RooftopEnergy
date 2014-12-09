@@ -2,7 +2,7 @@ function allDateButtons(Url1){
     var i = 0;
     var t2 = new Date();
     var season = 1;
-    var productionPeriodUrl = '/rest/consumption/consumption_period';
+    //var productionPeriodUrl = '/rest/consumption/consumption_period';
 
     var buttonStyles = function(buttId){
         $("#period button").css({'background-color': '#108F38', 'color': '#fffffe'});

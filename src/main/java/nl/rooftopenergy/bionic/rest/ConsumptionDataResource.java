@@ -88,9 +88,11 @@ public class ConsumptionDataResource {
         List<RtfBoxData> dataList = rtfBoxDataDao.findByPeriod(rtfBox, paramDateStart, paramDateEnd);
         List<GraphDataTransfer> resultList = new ArrayList<GraphDataTransfer>();
         GraphDataTransfer graphData;
-        for (RtfBoxData data : dataList){
-            Integer value = data.getConsumption();
-            Date date = data.getDate();
+        for (int i = 1; i < dataList.size(); i++){
+            int firstConsumption = dataList.get(i-1).getConsumption();
+            int secondConsumption = dataList.get(i).getConsumption();
+            Integer value = secondConsumption - firstConsumption;
+            Date date = dataList.get(i).getDate();
             graphData = new GraphDataTransfer(date, value);
             resultList.add(graphData);
         }
