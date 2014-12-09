@@ -6,6 +6,7 @@ import nl.rooftopenergy.bionic.dao.rtfboxdata.RtfBoxDataDao;
 import nl.rooftopenergy.bionic.entity.Company;
 import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.RtfBoxData;
+import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.GraphDataTransfer;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,17 +44,19 @@ public class ConsumptionDataResource {
     @Inject
     private CompanyDao companyDao;
 
+    @Inject
+    private PrincipalInformation principalInformation;
+
     /**
      * Gets total number of consumption whole working period.
-     * @param id identifier number of the company that uses this panels;
+     * @param currentBox identifier number of RTF Box
      * @return total number of consuming energy.
      */
     @POST
     @Path("total_consumption")
     @Produces(MediaType.APPLICATION_JSON)
-    public Integer showTotalConsumption(@FormParam("id") String id,
-                                        @FormParam("currentBox") String currentBox){
-        Integer paramId = Integer.parseInt(id);
+    public Integer showTotalConsumption(@FormParam("currentBox") String currentBox){
+        Integer paramId = principalInformation.getCompany().getCompanyId();
         Integer paramCurrentBox = Integer.parseInt(currentBox);
 
         RtfBox rtfBox = findBox(paramId, paramCurrentBox);
@@ -64,17 +67,18 @@ public class ConsumptionDataResource {
 
     /**
      * Gets list notes that describe consumption during current day.
-     * @param id identifier number of the company that uses this panels;
+     * @param currentBox identifier number of RTF Box
+     * @param dateStart the date like {@value 'yyyy-mm-dd hh:MM:ss'} when period is started.
+     * @param dateEnd the date like {@value 'yyyy-mm-dd hh:MM:ss'} when period should be finished.
      * @return list notes describing consumption.
      */
     @POST
     @Path("consumption_period")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<GraphDataTransfer> showConsumption(@FormParam("id") String id,
-                                                   @FormParam("currentBox") String currentBox,
+    public List<GraphDataTransfer> showConsumption(@FormParam("currentBox") String currentBox,
                                                    @FormParam("dateStart") String dateStart,
                                                    @FormParam("dateEnd") String dateEnd){
-        Integer paramId = Integer.parseInt(id);
+        Integer paramId = principalInformation.getCompany().getCompanyId();
         Integer paramCurrentBox = Integer.parseInt(currentBox);
         Date paramDateStart = new Timestamp(Long.parseLong(dateStart));
         Date paramDateEnd = new Timestamp(Long.parseLong(dateEnd));
@@ -95,7 +99,7 @@ public class ConsumptionDataResource {
 
     private RtfBox findBox(Integer companyId, Integer boxId ){
 
-        Company company = companyDao.fundById(companyId);
+        Company company = companyDao.findById(companyId);
         List<RtfBox> rtfBoxList = rtfBoxDao.findByCompanyId(company);
 
         RtfBox rtfbox = null;

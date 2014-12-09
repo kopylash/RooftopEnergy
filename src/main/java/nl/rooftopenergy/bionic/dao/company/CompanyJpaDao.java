@@ -8,9 +8,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.Query;
+import java.util.List;
 
 @Repository
-public class CompanyJpaDao extends JpaDao<Company,Integer> implements CompanyDao {
+public class CompanyJpaDao extends JpaDao<Company, Integer> implements CompanyDao {
 
     private static final Logger logger = Logger.getLogger(CompanyJpaDao.class.getName());
 
@@ -21,17 +22,24 @@ public class CompanyJpaDao extends JpaDao<Company,Integer> implements CompanyDao
 
     @Override
     @Transactional(readOnly = true)
-    public Company fundById(Integer id) {
+    public Company findById(Integer id) {
         Company company = null;
         try {
             String q = "SELECT c FROM Company c WHERE c.companyId = :id";
             Query query = getEntityManager().createQuery(q);
             query.setParameter("id", id);
             company = (Company) query.getSingleResult();
-        }catch(RuntimeException e){
+        } catch (RuntimeException e) {
             logger.error(e.getMessage(), e);
         }
         return company;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Company> findAllPublic() {
+        return getEntityManager().createQuery("SELECT c FROM Company c WHERE c.publicStatus = true").getResultList();
+
     }
 
 }

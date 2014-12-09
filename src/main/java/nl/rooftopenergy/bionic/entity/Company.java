@@ -1,13 +1,16 @@
 package nl.rooftopenergy.bionic.entity;
 
 import javax.persistence.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by UFO on 17.11.2014.
  */
 @Entity
 @Table(name = "Company")
-public class Company {
+public class /**/Company {
     private Integer companyId;
     private String companyName;
     private String country;
@@ -17,6 +20,7 @@ public class Company {
     private Integer zipcode;
     private String description;
     private Boolean publicStatus;
+    private List<RtfBox> rtfBoxList;
 
     @Id
     @Column(name = "CompanyID")
@@ -108,6 +112,15 @@ public class Company {
         this.description = description;
     }
 
+    @OneToMany(mappedBy = "company",fetch = FetchType.EAGER)
+    public List<RtfBox> getRtfBoxList() {
+        return rtfBoxList;
+    }
+
+    public void setRtfBoxList(List<RtfBox> rtfBoxList) {
+        this.rtfBoxList = rtfBoxList;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -126,6 +139,8 @@ public class Company {
         if (description != null ? !description.equals(company.description) : company.description != null) return false;
         if (publicStatus != null ? !publicStatus.equals(company.publicStatus) : company.publicStatus != null)
             return false;
+        //commented because we have some problems with equals through lazy loading
+        //if (rtfBoxList != null ? !rtfBoxList.equals(company.rtfBoxList) : company.rtfBoxList != null) return false;
 
         return true;
     }
@@ -143,4 +158,5 @@ public class Company {
         result = 31 * result + (publicStatus != null ? publicStatus.hashCode() : 0);
         return result;
     }
-}
+
+  }

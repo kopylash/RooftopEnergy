@@ -7,7 +7,10 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-
+/**
+ * @Depricated as Spring security was implemented.
+ */
+@Deprecated
 @Component
 @Path("/user")
 public class UserResource
