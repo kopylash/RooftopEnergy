@@ -3,7 +3,7 @@ package nl.rooftopenergy.bionic.entity;
 import javax.persistence.*;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 /**
  * Created by UFO on 17.11.2014.
