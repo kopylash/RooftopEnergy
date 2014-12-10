@@ -8,6 +8,7 @@ import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.RtfBoxData;
 import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.GraphDataTransfer;
+import org.joda.time.DateTime;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Provides REST API to get information about production of energy by
@@ -98,6 +100,72 @@ public class ProductionDataResource {
         }
         return resultList;
     }
+
+    @POST
+    @Path("production_daily")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<GraphDataTransfer> dailyProduction(Date thisDay) {
+
+        //MOCK Implementation!!!
+        Random rnd = new Random(47);
+        DateTime date = new DateTime(thisDay);
+        String dateStr = date.getYear() + "-" + date.getMonthOfYear() + "-" + date.getDayOfMonth() + " 00:59:59";
+        DateTime day = new DateTime(Timestamp.valueOf(dateStr));
+        List<GraphDataTransfer> list = new ArrayList<GraphDataTransfer>();
+        for (int i = 0; i < 23; i++){
+            Integer value = 0;
+            int hour = day.getHourOfDay();
+            if (hour < 18 &&  hour > 8) {
+                value = rnd.nextInt(30) + 10;
+            }
+            GraphDataTransfer graphDataTransfer = new GraphDataTransfer(day.toDate(), value);
+            day = day.plusHours(1);
+            list.add(graphDataTransfer);
+        }
+        return list;
+    }
+
+    @POST
+    @Path("production_monthly")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<GraphDataTransfer> monthlyProduction(Date thisMonth) {
+
+        //MOCK Implementation!!!
+        Random rnd = new Random(17);
+        DateTime date = new DateTime(thisMonth);
+        String dateStr = date.getYear() + "-" + date.getMonthOfYear() + "-" + 1 + " 00:59:59";
+        DateTime day = new DateTime(Timestamp.valueOf(dateStr));
+        List<GraphDataTransfer> list = new ArrayList<GraphDataTransfer>();
+        do{
+            Integer value = rnd.nextInt(400) + 100;
+            GraphDataTransfer graphDataTransfer = new GraphDataTransfer(day.toDate(), value);
+            day = day.plusDays(1);
+            list.add(graphDataTransfer);
+        } while (day.getDayOfMonth() != 1);
+        return list;
+    }
+
+    @POST
+    @Path("production_yearly")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<GraphDataTransfer> yearlyProduction(Date thisMonth) {
+
+        //MOCK Implementation!!!
+        Random rnd = new Random(23);
+        DateTime date = new DateTime(thisMonth);
+        String dateStr = date.getYear() + "-" + 1 + "-" + 1 + " 00:59:59";
+        DateTime day = new DateTime(Timestamp.valueOf(dateStr));
+        List<GraphDataTransfer> list = new ArrayList<GraphDataTransfer>();
+        do{
+            Integer value = rnd.nextInt(500) + 200;
+            GraphDataTransfer graphDataTransfer = new GraphDataTransfer(day.toDate(), value);
+            day = day.plusMonths(1);
+            list.add(graphDataTransfer);
+        } while (day.getMonthOfYear() != 1);
+        return list;
+    }
+
+
 
     private RtfBox findBox(Integer companyId, Integer boxId ){
 
