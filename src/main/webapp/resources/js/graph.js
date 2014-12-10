@@ -8,14 +8,19 @@
         Highcharts.setOptions({
             global: {
                 useUTC: false
-            }
+
+            },
+            colors: ['#59AC28']
 
         });
 
         $('main').highcharts({
 
             chart: {
-                zoomType: 'x'
+                zoomType: 'x',
+                borderWidth: 1,
+                borderColor: '#108f38',
+                marginRight: 15
             },
             title: {
                 text: 'ROOFTOP ENERGY'
@@ -25,8 +30,8 @@
             },
 
             xAxis: {
-                type: 'datetime'
-                //minRange:  300000 // 5 min
+                type: 'datetime',
+                minRange:  12 * 300000 // 5 min
 
             },
             yAxis: {
@@ -43,8 +48,9 @@
                     fillColor: {
                         linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
                         stops: [
-                            [0, Highcharts.getOptions().colors[2]],
-                            [1, Highcharts.Color(Highcharts.getOptions().colors[2]).setOpacity(0.8).get('rgba')]
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.75).get('rgba')]
+
                         ]
                     },
                     marker: {
@@ -60,12 +66,12 @@
                 }
             },
 
-            colors:['#00ff33'],
+            colors:['#59AC28'],
 
             series: [{
                 type: 'area',
                 name: 'Energy (KWh)',
-                //pointInterval:  300 * 1000,
+                pointInterval:  12*300 * 1000,
                 //pointStart: arrDate[0],
                 data: arr
 

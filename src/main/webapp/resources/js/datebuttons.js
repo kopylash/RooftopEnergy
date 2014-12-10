@@ -9,18 +9,24 @@ function allDateButtons(Url1){
         $("#"+buttId).css({'background-color': '#fffff0', 'color': '#108F38'});
     };
 
-    $( "#datepicker" ).datepicker();
-    $("#datepicker").datepicker("setDate");
-    var k = $.datepicker.formatDate("dd.mm.yy", new Date());
-    $( "#dateBlock").text(k);
+      $( "#datepicker" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+          dateFormat: "dd-mm-yy"
 
-    var picButtons = function(ii){
-        if (ii == 0){
-            $( "#dateBlock").text(k);
-        }else {
-            $("#datepicker").datepicker("setDate", +ii);
+    });
+    $("#datepicker").datepicker("setDate", "dd-mm-yy");
+    var k = $.datepicker.formatDate("dd-mm-yy", new Date());
+    $( "#datepicker").text(k);
+
+    var picButtons = function(){
+        console.log("Hello");
+        //if (ii == 0){
+        //    $( "#datepicker").text(k);
+        //}else {
+            //$("#datepicker").datepicker("setDate");
             var r = $("#datepicker").datepicker("getDate");
-            //console.log(r);
+            console.log(r);
             var hour = 23;
             var minutes = 59;
             var sec = 59;
@@ -28,10 +34,10 @@ function allDateButtons(Url1){
             var month = r.getMonth();
             var day = r.getDate();
             t2 = new Date(year, month, day, hour, minutes, sec);
-            console.log(t2);
-            r = $.datepicker.formatDate("dd.mm.yy", r);
-            $("#dateBlock").text(r);
-        }
+            //console.log(t2);
+            //r = $.datepicker.formatDate("dd-mm-yy", r);
+            //$("#datepicker").text(r);
+        //}
     };
 
     var buttonClicker = function(url2, x){
@@ -89,17 +95,23 @@ function allDateButtons(Url1){
 
     });
 
-    $("#max").click(function(){
-        i +=1;
-        picButtons(i);
+    //$("#max").click(function(){
+    //    i +=1;
+    //    picButtons(i);
+    //    buttonClicker(Url1,season,t2);
+    //});
+    //
+    //$("#min").click(function(){
+    //    i -=1;
+    //    picButtons(i);
+    //    buttonClicker(Url1,season,t2);
+    //});
+    $("#datepicker").change(function(){
+        //alert('hello');
+        picButtons();
         buttonClicker(Url1,season,t2);
     });
 
-    $("#min").click(function(){
-        i -=1;
-        picButtons(i);
-        buttonClicker(Url1,season,t2);
-    });
 }
 
 
