@@ -57,9 +57,10 @@ public class ConsumptionDataResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Integer showTotalConsumption(@FormParam("currentBox") String currentBox){
         Integer paramId = principalInformation.getCompany().getCompanyId();
+        // why we need currentBox param???
         Integer paramCurrentBox = Integer.parseInt(currentBox);
 
-        RtfBox rtfBox = findBox(paramId, paramCurrentBox);
+        RtfBox rtfBox = companyDao.findById(paramId).getRtfBox();
 
         Integer result = rtfBoxDataDao.findTotalConsumption(rtfBox);
         return result;
@@ -83,7 +84,7 @@ public class ConsumptionDataResource {
         Date paramDateStart = new Timestamp(Long.parseLong(dateStart));
         Date paramDateEnd = new Timestamp(Long.parseLong(dateEnd));
 
-        RtfBox rtfBox = findBox(paramId, paramCurrentBox);
+        RtfBox rtfBox = companyDao.findById(paramId).getRtfBox();
 
         List<RtfBoxData> dataList = rtfBoxDataDao.findByPeriod(rtfBox, paramDateStart, paramDateEnd);
         List<GraphDataTransfer> resultList = new ArrayList<GraphDataTransfer>();
@@ -97,21 +98,6 @@ public class ConsumptionDataResource {
             resultList.add(graphData);
         }
         return resultList;
-    }
-
-    private RtfBox findBox(Integer companyId, Integer boxId ){
-
-        Company company = companyDao.findById(companyId);
-        List<RtfBox> rtfBoxList = rtfBoxDao.findByCompanyId(company);
-
-        RtfBox rtfbox = null;
-        for (RtfBox box : rtfBoxList){
-            if (box.getRtfBoxId().equals(boxId)){
-                rtfbox = box;
-                break;
-            }
-        }
-        return rtfbox;
     }
 
 }
