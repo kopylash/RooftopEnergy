@@ -33,6 +33,11 @@ body {
     color: #FFFFFE;
 }
 
+.btn:hover {
+    background-color: #23527c;
+    color: #FFFFFE;
+}
+
 
 #day{
     background-color: #FFFFFE;
@@ -121,7 +126,7 @@ body {
 main{
     margin: 10px auto;
     width: 90%;
-    height: 270px;
+    height: 300px;
     /*border: 2px solid #E8E8E8;*/
 }
 

@@ -33,28 +33,43 @@
 
 
 $(function(){
-    $('#logForm').submit(function(e){
-        var name = $('#login1').val();
-        var password = $('#password1').val();
-
-        $.ajax({
-            type: 'post',
-            url: '/rest/user/authenticate',
-            crossDomain: true,
-            data: {'username': name, 'password': password},
-            error: function (data) {
-                $('#wrongInf').html(data.responseText).css({'color':'#ff0000'});
-            },
-            statusCode: {
-                // HTTP 307 - redirect
-                307: function (data) {
-                    document.location.href = data.responseText;
-                    $('#wrongInf').html("");
-                }
+    //$('#logForm').submit(function(e){
+    //    var name = $('#login1').val();
+    //    var password = $('#password1').val();
+    //
+    //    $.ajax({
+    //        type: 'post',
+    //        url: '/rest/user/authenticate',
+    //        crossDomain: true,
+    //        data: {'username': name, 'password': password},
+    //        error: function (data) {
+    //            $('#wrongInf').html(data.responseText).css({'color':'#ff0000'});
+    //        },
+    //        statusCode: {
+    //            // HTTP 307 - redirect
+    //            307: function (data) {
+    //                document.location.href = data.responseText;
+    //                $('#wrongInf').html("");
+    //
+    //            }
+    //        }
+    //    });
+    //    return false;
+    //});
+   var loginState = "data";
+        var query = window.location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split('=');
+            if (decodeURIComponent(pair[0]) == loginState) {
+                var wrongData = "<p>Incorrect login or password!</p>";
+                $("#wrongInf").html(wrongData).css({'visibility':'visible'});
+                //$("#login1, #password1").css({'border':'1px solid #ff0000'});
             }
-        });
-        return false;
-    });
+        }
+
+
+
 });
 
 

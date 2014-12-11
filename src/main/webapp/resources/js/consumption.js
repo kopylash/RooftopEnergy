@@ -1,5 +1,5 @@
 $(function(){
-    var consumptionPeriodUrl = '/rest/consumption/consumption_period';
+    var consumptionPeriodUrl = '/rest/consumption';
     allDateButtons(consumptionPeriodUrl);
 
 

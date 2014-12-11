@@ -102,13 +102,14 @@ public class ConsumptionDataResource {
     }
 
     @POST
-    @Path("consumption_daily")
+    @Path("daily")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<GraphDataTransfer> dailyConsumption(Date thisDay) {
+    public List<GraphDataTransfer> dailyConsumption(@FormParam("date")String thisDay) {
 
         //MOCK Implementation!!!
-        Random rnd = new Random(0);
-        DateTime date = new DateTime(thisDay);
+        long thoseDay = Long.parseLong(thisDay);
+        Random rnd = new Random();
+        DateTime date = new DateTime(thoseDay);
         String dateStr = date.getYear() + "-" + date.getMonthOfYear() + "-" + date.getDayOfMonth() + " 00:59:59";
         DateTime day = new DateTime(Timestamp.valueOf(dateStr));
         List<GraphDataTransfer> list = new ArrayList<GraphDataTransfer>();
@@ -126,13 +127,14 @@ public class ConsumptionDataResource {
     }
 
     @POST
-    @Path("consumption_monthly")
+    @Path("monthly")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<GraphDataTransfer> monthlyConsumption(Date thisMonth) {
+    public List<GraphDataTransfer> monthlyConsumption(@FormParam("date") String thisMonth) {
 
         //MOCK Implementation!!!
-        Random rnd = new Random(3);
-        DateTime date = new DateTime(thisMonth);
+        long thoseMonth = Long.parseLong(thisMonth);
+        Random rnd = new Random();
+        DateTime date = new DateTime(thoseMonth);
         String dateStr = date.getYear() + "-" + date.getMonthOfYear() + "-" + 1 + " 00:59:59";
         DateTime day = new DateTime(Timestamp.valueOf(dateStr));
         List<GraphDataTransfer> list = new ArrayList<GraphDataTransfer>();
@@ -146,13 +148,14 @@ public class ConsumptionDataResource {
     }
 
     @POST
-    @Path("consumption_yearly")
+    @Path("yearly")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<GraphDataTransfer> yearlyConsumption(Date thisMonth) {
+    public List<GraphDataTransfer> yearlyConsumption(@FormParam("date")String thisYear) {
 
         //MOCK Implementation!!!
+        long thoseYear = Long.parseLong(thisYear);
         Random rnd = new Random(23);
-        DateTime date = new DateTime(thisMonth);
+        DateTime date = new DateTime(thoseYear);
         String dateStr = date.getYear() + "-" + 1 + "-" + 1 + " 00:59:59";
         DateTime day = new DateTime(Timestamp.valueOf(dateStr));
         List<GraphDataTransfer> list = new ArrayList<GraphDataTransfer>();
