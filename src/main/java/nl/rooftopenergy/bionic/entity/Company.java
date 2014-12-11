@@ -20,7 +20,7 @@ public class /**/Company {
     private Integer zipcode;
     private String description;
     private Boolean publicStatus;
-    private List<RtfBox> rtfBoxList;
+    private RtfBox rtfBox;
 
     @Id
     @Column(name = "CompanyID")
@@ -112,13 +112,13 @@ public class /**/Company {
         this.description = description;
     }
 
-    @OneToMany(mappedBy = "company",fetch = FetchType.EAGER)
-    public List<RtfBox> getRtfBoxList() {
-        return rtfBoxList;
+    @OneToOne(mappedBy = "company")
+    public RtfBox getRtfBox() {
+        return rtfBox;
     }
 
-    public void setRtfBoxList(List<RtfBox> rtfBoxList) {
-        this.rtfBoxList = rtfBoxList;
+    public void setRtfBox(RtfBox rtfBox) {
+        this.rtfBox = rtfBox;
     }
 
     @Override
