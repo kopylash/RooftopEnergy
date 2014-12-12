@@ -1,5 +1,6 @@
 $(function(){
-    var productionPeriodUrl = '/rest/production/production_period';
+    //var productionPeriodUrl = '/rest/production/production_period';
+    var productionPeriodUrl = '/rest/production';
     allDateButtons(productionPeriodUrl);
 
 });

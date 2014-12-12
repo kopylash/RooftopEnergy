@@ -20,10 +20,10 @@ fieldset{
     color: #fff;
     text-align: right;
     /* text-shadow: 0 1px 0 #fff;*/
-    border-width: thin;
-    border-color: #5F7127;
+    border-width: 1px;
+    border-color: #108f38;
     border-style: inset;
-    border-radius: 8px;
+    border-radius: 0;
     width:35%;
     margin: 50px auto;
     background-color: rgba(90, 210 , 124, 0.2);
@@ -55,7 +55,7 @@ header {
     font-weight: bold;
     height: 40px;
     width: 165px;
-    border-radius: 7px;
+    border-radius: 0;
     margin-left: 90px;
     border-color: #000000;
     margin-bottom: 20px;

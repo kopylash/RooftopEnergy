@@ -24,17 +24,19 @@
 
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/font-awesome-4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="resources/css/jquery-ui.css">
+    <link rel="stylesheet" href="resources/css/jquery-ui1.theme.min.css">
+    <link rel="stylesheet" href="resources/css/jquery-ui1.css">
     <link rel="stylesheet" href="resources/css/production.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
+    <script src="resources/js/jquery-ui1.min.js"></script>
 
     <script src="resources/js/highcharts.js"></script>
+    <script src="http://code.highcharts.com/stock/highstock.js"></script>
+    <!--<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>-->
     <!--<script src="resources/js/exporting.js"></script>-->
     <script src="resources/js/graph.js"></script>
     <script src="resources/js/ajax.js"></script>
@@ -64,10 +66,11 @@
 
     <div id="date">
         <p id="pd">
-            <button id="min"><i class="fa fa-chevron-left"></i></button>
-            <span id="dateBlock" ></span>
-            <button id="max"><i class="fa fa-chevron-right"></i></button>
-            <input type="text" id="datepicker">
+            <!--<button id="min"><i class="fa fa-chevron-left"></i></button>-->
+            <!--<span id="dateBlock" ></span>-->
+            <input type="text" id="datepicker" readonly>
+            <!--<button id="max"><i class="fa fa-chevron-right"></i></button>-->
+
         </p>
 
     </div>

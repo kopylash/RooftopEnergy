@@ -1,12 +1,12 @@
 //var endDate = new Date();
-function ajaxGraphQuery(strUrl,startDate,endDate) {
+function ajaxGraphQuery(strUrl,endDate) {
     $.ajax({
         type: 'post',
         url: strUrl,
         crossDomain: true,
-        data: { 'currentBox': "1", 'dateStart': startDate.getTime(), 'dateEnd': endDate.getTime()},
+        data: { 'date': endDate.getTime()},
         error: function (data) {
-            $('#login_message').html(data.responseText);
+            $('#main').html(data.responseText);
         },
         statusCode: {
             200: function (data) {
