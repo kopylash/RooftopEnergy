@@ -164,10 +164,10 @@ public class ScoreDataResource {
             div2 = production2.doubleValue() / consumption2.doubleValue();
         }
         if (div1 > div2) {
-            return 1;
+            return -1;
         }
         if (div1 < div2) {
-            return -1;
+            return 1;
         }
         return 0;
     }
