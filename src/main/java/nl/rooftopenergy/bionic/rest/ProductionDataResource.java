@@ -60,7 +60,7 @@ public class ProductionDataResource {
         Integer paramId = principalInformation.getCompany().getCompanyId();
         Integer paramCurrentBox = Integer.parseInt(currentBox);
 
-        RtfBox rtfBox = companyDao.findById(paramId).getRtfBox();
+        RtfBox rtfBox = companyDao.find(paramId).getRtfBox();
 
         Integer result = rtfBoxDataDao.findTotalProduction(rtfBox);
         return result;
@@ -84,7 +84,7 @@ public class ProductionDataResource {
         Date paramDateStart = new Timestamp(Long.parseLong(dateStart));
         Date paramDateEnd = new Timestamp(Long.parseLong(dateEnd));
 
-        RtfBox rtfBox = companyDao.findById(paramId).getRtfBox();
+        RtfBox rtfBox = companyDao.find(paramId).getRtfBox();
 
         List<RtfBoxData> dataList = rtfBoxDataDao.findByPeriod(rtfBox, paramDateStart, paramDateEnd);
         List<GraphDataTransfer> resultList = new ArrayList<GraphDataTransfer>();

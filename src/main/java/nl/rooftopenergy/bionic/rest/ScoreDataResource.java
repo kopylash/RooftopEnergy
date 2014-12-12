@@ -48,7 +48,7 @@ public class ScoreDataResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<ScoreDataTransfer> showProductionScore(){
         Integer paramId = principalInformation.getCompany().getCompanyId();
-        Company company = companyDao.findById(paramId);
+        Company company = companyDao.find(paramId);
         List<Company> companyList = companyDao.findAllPublic();
         companyList.remove(company);
         List<ScoreDataTransfer> resultList= new ArrayList<ScoreDataTransfer>();
@@ -74,7 +74,7 @@ public class ScoreDataResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<ScoreDataTransfer> showConsumptionScore(){
         Integer paramId = principalInformation.getCompany().getCompanyId();
-        Company company = companyDao.findById(paramId);
+        Company company = companyDao.find(paramId);
         List<Company> companyList = companyDao.findAllPublic();
         companyList.remove(company);
         List<ScoreDataTransfer> resultList= new ArrayList<ScoreDataTransfer>();
