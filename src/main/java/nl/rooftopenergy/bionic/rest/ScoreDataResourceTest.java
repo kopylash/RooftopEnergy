@@ -33,6 +33,11 @@ public class ScoreDataResourceTest {
         securityContext.setAuthentication(auth);
     }
 
+     /*Test works only for the current DB state.
+     * It will fail if the data in db will be changed.
+     * Current values are shown in comments in every method
+     */
+
     @Test
     public void testShowProductionScore() throws Exception {
         List<ScoreDataTransfer> scoreList = scoreDataResource.showProductionScore();
