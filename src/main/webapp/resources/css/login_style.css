@@ -351,26 +351,118 @@ body {
     position: absolute;
 }
 
-@media screen and (max-width: 369px){
-.login{
-    width: 90%;
-}
+
+
+@media screen and (min-width: 331px) and (max-width: 369px){
+    .login{
+        width: 90%;
+    }
     .form .field {
-        width: 85%;
+        width: 80%;
         margin: 0 auto;
     }
 
     .form input[type=text],
     .form input[type=password]{
-        width: 60%;
-     }
+        width: 70%;
+    }
+
+    .form button[type=submit]{
+        width: 78%;
+        margin: 15px 21% 15px 10%;
+    }
+
+    #rem {
+     position: fixed;
+    left: 0;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 330px){
+    .login{
+        width: 90%;
+    }
+    .form .field {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .form input[type=text],
+    .form input[type=password]{
+        width: 70%;
+    }
 
     .form button[type=submit]{
         width: 80%;
-        margin: 5px auto;
+        margin: 15px 21% 15px 10%;
+    }
+    .remember {
+    margin-left: -7%;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px){
+    .login{
+        margin-top: 70px;
+        width: 440px;
+        height: 375px;
+        font-size: 20px;
+    }
+    form{
+        padding-top: 27px;
+    }
+    .form button[type=submit] {
+        margin-top: 25px;
+        width: 77%;
+        font-size: 20px;
+        padding: 9px 0;
+        /*margin-left: -8%;*/
+    }
+    .form input[type=text],
+    .form input[type=password] {
+        font-size: 16px;
+        font-weight: 500;
+        /*width: 233px;*/
+        width: 79%;
+    }
+    #lab {
+      font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 1201px){
+    .login{
+        margin-top: 120px;
+        width: 510px;
+        height: 435px;
+        font-size: 24px;
+    }
+    form{
+        padding-top: 35px;
+    }
+    .form button[type=submit] {
+        margin-top: 35px;
+        width: 80%;
+        font-size: 24px;
+        padding: 9px 0;
+        /*margin-left: -8%;*/
+    }
+    .form input[type=text],
+    .form input[type=password] {
+        font-size: 18px;
+        font-weight: 500;
+        /*width: 233px;*/
+        width: 83%;
+    }
+    #lab {
+        font-size: 20px;
     }
 
+    .remember{
+        margin-top: 10%;
     }
+}
 
 #wrongInf{
     padding-top: 7px;
