@@ -22,21 +22,6 @@ public class CompanyJpaDao extends JpaDao<Company, Integer> implements CompanyDa
 
     @Override
     @Transactional(readOnly = true)
-    public Company findById(Integer id) {
-        Company company = null;
-        try {
-            String q = "SELECT c FROM Company c WHERE c.companyId = :id";
-            Query query = getEntityManager().createQuery(q);
-            query.setParameter("id", id);
-            company = (Company) query.getSingleResult();
-        } catch (RuntimeException e) {
-            logger.error(e.getMessage(), e);
-        }
-        return company;
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<Company> findAllPublic() {
         return getEntityManager().createQuery("SELECT c FROM Company c WHERE c.publicStatus = true").getResultList();
 

@@ -9,14 +9,9 @@ import java.util.List;
 public interface RtfBoxDao extends Dao<RtfBox, Integer> {
 
     /**
-     * Returns list of boxes which belong to company.
-     * @returns list of boxes;
+     * Returns rtfBox which belongs to company.
+     * @returns box;
      */
-    public List<RtfBox> findByCompanyId(Company company);
+    public RtfBox findByCompanyId(Company company);
 
-    /**
-     * Returns box which belongs to company.
-     * @returns  box;
-     */
-    public RtfBox findByRtfBoxId(Integer rtfBoxID);
 }

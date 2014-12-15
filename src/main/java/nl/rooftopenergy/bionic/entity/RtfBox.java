@@ -45,7 +45,7 @@ public class RtfBox {
         this.panelType = panelType;
     }
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "CompanyID")
     public Company getCompany() {
         return company;

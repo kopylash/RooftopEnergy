@@ -47,7 +47,7 @@ public class RtfBoxDataResource {
         Integer param = principalInformation.getCompany().getCompanyId();
         Timestamp paramCurrentMonth = Timestamp.valueOf(date);
 
-        RtfBox box = rtfBoxDao.findByRtfBoxId(param);
+        RtfBox box = rtfBoxDao.find(param);
 
         List<RtfBoxData> listData = rtfBoxDataDao.findByRtfBoxId(box);
         Integer totalNumber = 0;
@@ -73,7 +73,7 @@ public class RtfBoxDataResource {
         Integer paramId = principalInformation.getCompany().getCompanyId();
         Timestamp paramDate =  Timestamp.valueOf(date);
 
-        RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
+        RtfBox box = rtfBoxDao.find(paramId);
 
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<GraphDataTransfer> listDailyData = new ArrayList<GraphDataTransfer>();
@@ -101,7 +101,7 @@ public class RtfBoxDataResource {
         Integer paramId = principalInformation.getCompany().getCompanyId();
         Timestamp paramDate =  Timestamp.valueOf(date);
 
-        RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
+        RtfBox box = rtfBoxDao.find(paramId);
 
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<GraphDataTransfer> listDailyData = new ArrayList<GraphDataTransfer>();
@@ -129,7 +129,7 @@ public class RtfBoxDataResource {
         Integer paramId = principalInformation.getCompany().getCompanyId();
         Timestamp paramDate =  Timestamp.valueOf(date);
 
-        RtfBox box = rtfBoxDao.findByRtfBoxId(paramId);
+        RtfBox box = rtfBoxDao.find(paramId);
 
         List<RtfBoxData> listAllData = rtfBoxDataDao.findByRtfBoxId(box);
         List<GraphDataTransfer> listDailyData = new ArrayList<GraphDataTransfer>();

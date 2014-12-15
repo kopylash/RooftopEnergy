@@ -3,7 +3,7 @@ package nl.rooftopenergy.bionic.transfer;
 /**
  * Created by Владислав on 05.12.2014.
  */
-public class ScoreDataTransfer {
+public class ScoreDataTransfer implements Comparable<ScoreDataTransfer> {
     private String company;
     private Integer arrow;
 
@@ -57,5 +57,16 @@ public class ScoreDataTransfer {
      */
     public void setArrow(Integer arrow) {
         this.arrow = arrow;
+    }
+
+    @Override
+    public int compareTo(ScoreDataTransfer o) {
+        if (this.arrow > o.arrow) {
+            return 1;
+        }
+        if (this.arrow < o.arrow) {
+            return -1;
+        }
+        return 0;
     }
 }

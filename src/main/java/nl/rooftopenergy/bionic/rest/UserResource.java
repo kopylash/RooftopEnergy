@@ -24,10 +24,10 @@ public class UserResource
 	public Response authenticate(@FormParam("username") String username, @FormParam("password") String password)
 	{
         User user = userDao.findByName(username);
-        if (user == null || !user.getPassword().equals(password)) {
-            return Response.status(400).entity("Wrong authorization data").build();
-
-        }
+//        if (user == null || !user.getPassword().equals(password)) {
+//            return Response.status(400).entity("Wrong authorization data").build();
+//
+//        }
         return Response.status(307).entity("loggedPage.html")
                 .build();
 	}

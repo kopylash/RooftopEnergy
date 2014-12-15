@@ -59,9 +59,10 @@ public class ConsumptionDataResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Integer showTotalConsumption(@FormParam("currentBox") String currentBox){
         Integer paramId = principalInformation.getCompany().getCompanyId();
+        // why we need currentBox param???
         Integer paramCurrentBox = Integer.parseInt(currentBox);
 
-        RtfBox rtfBox = findBox(paramId, paramCurrentBox);
+        RtfBox rtfBox = companyDao.find(paramId).getRtfBox();
 
         Integer result = rtfBoxDataDao.findTotalConsumption(rtfBox);
         return result;
@@ -79,19 +80,19 @@ public class ConsumptionDataResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> showConsumption(@FormParam("currentBox") String currentBox,
                                                    @FormParam("dateStart") String dateStart,
-                                                   @FormParam("dateEnd") String dateEnd){
+                                                   @FormParam("dateEnd") String dateEnd) {
         Integer paramId = principalInformation.getCompany().getCompanyId();
         Integer paramCurrentBox = Integer.parseInt(currentBox);
         Date paramDateStart = new Timestamp(Long.parseLong(dateStart));
         Date paramDateEnd = new Timestamp(Long.parseLong(dateEnd));
 
-        RtfBox rtfBox = findBox(paramId, paramCurrentBox);
+        RtfBox rtfBox = companyDao.find(paramId).getRtfBox();
 
         List<RtfBoxData> dataList = rtfBoxDataDao.findByPeriod(rtfBox, paramDateStart, paramDateEnd);
         List<GraphDataTransfer> resultList = new ArrayList<GraphDataTransfer>();
         GraphDataTransfer graphData;
-        for (int i = 1; i < dataList.size(); i++){
-            int firstConsumption = dataList.get(i-1).getConsumption();
+        for (int i = 1; i < dataList.size(); i++) {
+            int firstConsumption = dataList.get(i - 1).getConsumption();
             int secondConsumption = dataList.get(i).getConsumption();
             Integer value = secondConsumption - firstConsumption;
             Date date = dataList.get(i).getDate();
@@ -166,21 +167,6 @@ public class ConsumptionDataResource {
             list.add(graphDataTransfer);
         } while (day.getMonthOfYear() != 1);
         return list;
-    }
-
-    private RtfBox findBox(Integer companyId, Integer boxId ){
-
-        Company company = companyDao.findById(companyId);
-        List<RtfBox> rtfBoxList = rtfBoxDao.findByCompanyId(company);
-
-        RtfBox rtfbox = null;
-        for (RtfBox box : rtfBoxList){
-            if (box.getRtfBoxId().equals(boxId)){
-                rtfbox = box;
-                break;
-            }
-        }
-        return rtfbox;
     }
 
 }
