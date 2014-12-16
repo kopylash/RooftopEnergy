@@ -27,16 +27,19 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="resources/css/jquery-ui.css">
     <link rel="stylesheet" href="resources/css/production.css">
+    <link rel="stylesheet" href="resources/css/score.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="resources/js/jquery-ui.js"></script>
 
-    <script src="resources/js/datebuttons.js"></script>
+    <!--<script src="resources/js/datebuttons.js"></script>-->
 
     <script src="resources/js/bootstrap.min.js"></script>
 
     <script src="resources/js/pages.js"></script>
+
+    <script src="resources/js/score.js"></script>
 
 </head>
 <body>
@@ -51,10 +54,18 @@
     <header class="header">Score</header>
     <div id="log"><a href="loginPage.html"> <i class="fa fa-sign-out fa-2x ">log-out</i></a></div>
 
+    <div id="cButtons">
+        <button type="button" class="btn btn-default btn-sm" id="cons" >Consumption</button>
+        <button type="button" class="btn btn-default btn-sm" id="overScore">Overall score</button>
+        <button type="button" class="btn btn-default btn-sm" id="prod">Production</button>
+    </div>
 
 
 
-    <main id="main"></main>
+    <main id="main">
+        <div id="head"><p>Your data compared to other companies</p></div>
+        <!--<div id="" class="rating">Company 1 <span class="ratingSymbol"><i class="fa fa-minus fa-1x "></i></span></div>-->
+    </main>
 
 
 
