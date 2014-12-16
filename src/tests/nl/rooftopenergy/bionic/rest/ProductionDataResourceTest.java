@@ -1,11 +1,6 @@
 package nl.rooftopenergy.bionic.rest;
 
-import static org.junit.Assert.*;
-
-import nl.rooftopenergy.bionic.dao.rtfbox.RtfBoxDao;
 import nl.rooftopenergy.bionic.dao.rtfboxdata.RtfBoxDataDao;
-import nl.rooftopenergy.bionic.entity.RtfBox;
-import nl.rooftopenergy.bionic.entity.RtfBoxData;
 import nl.rooftopenergy.bionic.transfer.GraphDataTransfer;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -19,21 +14,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.inject.Inject;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
+
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/applicationContextForUnitTests.xml"})
-public class ConsumptionDataResourceTest {
+public class ProductionDataResourceTest {
 
     @Inject
     private RtfBoxDataDao rtfBoxDataDao;
 
     @Inject
-    private RtfBoxDao rtfBoxDao;
-
-    @Inject
-    ConsumptionDataResource resource;
+    ProductionDataResource resource;
 
 
     /**
@@ -45,42 +39,35 @@ public class ConsumptionDataResourceTest {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(auth);
     }
-    @Test
-    public void testShowTotalConsumption() throws Exception {
-
-        Integer in = resource.showTotalConsumption();
-        assertNotNull(in);
-
-    }
 
     @Test
-    public void testShowConsumption() throws Exception {
-
-    }
-
-
-    @Test
-    public void testDailyConsumptionFake() throws Exception {
-
-        Date date = Timestamp.valueOf("2014-12-2 00:00:00");
-        List<GraphDataTransfer> list = resource.dailyConsumption(date.toString());
+    public void testDailyProduction() throws Exception {
+        long date = Timestamp.valueOf("2014-12-01 03:00:00").getTime();
+        List<GraphDataTransfer> list = resource.dailyProduction(String.valueOf(date));
         assertNotNull(list);
 
     }
 
     @Test
-    public void testMonthlyConsumptionFake() throws Exception {
-
-        Date date = Timestamp.valueOf("2014-12-2 00:00:00");
-        List<GraphDataTransfer> list = resource.monthlyConsumption(date.toString());
+    public void testMonthlyProduction() throws Exception {
+        long date = Timestamp.valueOf("2014-12-01 03:00:00").getTime();
+        List<GraphDataTransfer> list = resource.monthlyProduction(String.valueOf(date));
         assertNotNull(list);
 
     }
-    @Test
-    public void testYearlyConsumptionFake() throws Exception {
 
-        Date date = Timestamp.valueOf("2014-12-2 00:00:00");
-        List<GraphDataTransfer> list = resource.yearlyConsumption(date.toString());
+    @Test
+    public void testYearlyProduction() throws Exception {
+        long date = Timestamp.valueOf("2014-12-01 03:00:00").getTime();
+        List<GraphDataTransfer> list = resource.yearlyProduction(String.valueOf(date));
+        assertNotNull(list);
+
+    }
+
+    @Test
+    public void testTotallyProduction() throws Exception {
+        long date = Timestamp.valueOf("2014-12-07 03:00:00").getTime();
+        List<GraphDataTransfer> list = resource.totallyProduction(String.valueOf(date));
         assertNotNull(list);
 
     }

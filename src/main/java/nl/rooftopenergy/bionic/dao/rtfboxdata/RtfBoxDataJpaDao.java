@@ -81,4 +81,86 @@ public class RtfBoxDataJpaDao extends JpaDao<RtfBoxData,Integer> implements RtfB
         return list;
     }
 
+    @Override
+    public Integer findTotalProductionByPeriod(RtfBox rtfBox, Date startPeriod, Date endPeriod) {
+        Integer result = null;
+        try {
+            String q = "SELECT MAX(r.production) FROM RtfBoxData r WHERE r.rtfBox = :rtfBox AND" +
+                    " r.date >= :startPeriod AND r.date <= :endPeriod ";
+            Query query = getEntityManager().createQuery(q);
+            query.setParameter("rtfBox", rtfBox);
+            query.setParameter("startPeriod", startPeriod);
+            query.setParameter("endPeriod", endPeriod);
+            result = (Integer) query.getSingleResult();
+        } catch (RuntimeException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    @Override
+    public Integer findTotalConsumptionByPeriod(RtfBox rtfBox, Date startPeriod, Date endPeriod) {
+        Integer result = null;
+        try {
+            String q = "SELECT MAX(r.consumption) FROM RtfBoxData r WHERE r.rtfBox = :rtfBox AND" +
+                    " r.date >= :startPeriod AND r.date <= :endPeriod ";
+            Query query = getEntityManager().createQuery(q);
+            query.setParameter("rtfBox", rtfBox);
+            query.setParameter("startPeriod", startPeriod);
+            query.setParameter("endPeriod", endPeriod);
+            result = (Integer) query.getSingleResult();
+        } catch (RuntimeException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    @Override
+    public Integer findTotalProductionBefore(RtfBox rtfBox, Date endPeriod) {
+        Integer result = null;
+        try {
+            String q = "SELECT MAX(r.production) FROM RtfBoxData r WHERE r.rtfBox = :rtfBox AND" +
+                    " r.date < :endPeriod ";
+            Query query = getEntityManager().createQuery(q);
+            query.setParameter("rtfBox", rtfBox);
+            query.setParameter("endPeriod", endPeriod);
+            result = (Integer) query.getSingleResult();
+        } catch (RuntimeException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+
+    }
+
+    @Override
+    public Integer findTotalConsumptionBefore(RtfBox rtfBox, Date endPeriod) {
+        Integer result = null;
+        try {
+            String q = "SELECT MAX(r.consumption) FROM RtfBoxData r WHERE r.rtfBox = :rtfBox AND" +
+                    " r.date < :endPeriod ";
+            Query query = getEntityManager().createQuery(q);
+            query.setParameter("rtfBox", rtfBox);
+            query.setParameter("endPeriod", endPeriod);
+            result = (Integer) query.getSingleResult();
+        } catch (RuntimeException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
+    @Override
+    public RtfBoxData findFirstNote(RtfBox rtfBox) {
+        RtfBoxData result = null;
+        try {
+            String q = "SELECT r FROM RtfBoxData r WHERE" +
+                    " r.readingId = (SELECT MIN(r.readingId) FROM RtfBoxData r WHERE  r.rtfBox = :rtfBox) ";
+            Query query = getEntityManager().createQuery(q);
+            query.setParameter("rtfBox", rtfBox);
+            result = (RtfBoxData)query.getSingleResult();
+        } catch (RuntimeException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
 }

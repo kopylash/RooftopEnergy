@@ -43,4 +43,43 @@ public interface RtfBoxDataDao extends Dao<RtfBoxData, Integer> {
      */
     public List<RtfBoxData> findByPeriod(RtfBox rtfBox, Date start, Date end);
 
+    /**
+     * Gets total production for the period.
+     * @param startPeriod when period is started.
+     * @param endPeriod when period id finished.
+     * @return production of energy for the period.
+     */
+    public Integer findTotalProductionByPeriod(RtfBox rtfBox, Date startPeriod, Date endPeriod);
+
+    /**
+     * Gets total consumption for the period.
+     * @param startPeriod when period is started.
+     * @param endPeriod when period id finished.
+     * @return consumption of energy for the period.
+     */
+    public Integer findTotalConsumptionByPeriod(RtfBox rtfBox, Date startPeriod, Date endPeriod);
+
+    /**
+     * Gets total production till requested date.
+     * It looks for the greatest value of production till date (the date not inclusive).
+     * @param endPeriod the latest limit of date.
+     * @return production of energy till date.
+     */
+    public Integer findTotalProductionBefore(RtfBox rtfBox, Date endPeriod);
+
+    /**
+     * Gets total consumption till requested date.
+     * It looks for the greatest value of consumption till date (the date not inclusive).
+     * @param endPeriod the latest limit of date.
+     * @return consumption of energy till date.
+     */
+    public Integer findTotalConsumptionBefore(RtfBox rtfBox, Date endPeriod);
+
+    /**
+     * Gets first note from table.
+     * @param rtfBox the box to find note for.
+     * @return first note for this box.
+     */
+    public RtfBoxData findFirstNote(RtfBox rtfBox);
+
 }
