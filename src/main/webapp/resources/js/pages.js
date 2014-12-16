@@ -17,8 +17,9 @@ $(function(){
             $('footer').html(kod).addClass("footer");
         } else {
             $('header').html(kod).removeClass("header").addClass("header1");
-            var hh = '<h3>Consumption</h3>';
-            $("#consumption").html(" ").html(hh);
+            $("#consumption").html(" ");
+            var hh = $("#consumption").html();
+
 
         }
     };
