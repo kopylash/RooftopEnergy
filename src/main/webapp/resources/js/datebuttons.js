@@ -49,7 +49,7 @@ function allDateButtons(url1){
         switch(x){
             case 0:
                 //day = date.getDate();
-                url2 = url2+"/yearly";
+                url2 = url2+"/totally";
                 break;
             case 1:
                 //day = date.getDate();
