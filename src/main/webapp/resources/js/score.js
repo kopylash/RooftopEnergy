@@ -1,13 +1,27 @@
 $(function(){
     var ratingUrl = '/rest/score';
+    var begin = 0;
+    var end = 5;
+    var lengthList;
+    var secondPart = "/production";
 
     var ratingList = function(data){
-        //console.log("RatingList function!!!";
+        $("#main1").html("");
         var arrowValue;
-        var lineCode = '<div id="" class="rating">Company 1 <span class="ratingSymbol"><i class="fa fa-minus fa-1x "></i></span></div>';
+        //function Obj(comp, arr){
+        //    this.company = comp;
+        //    this.arrow = arr;
+        //}
         //var arr = new Array();
-        for (i in data) {
-            //arr[i] =  [data[i]["company"], data[i]["arrow"]];
+        //for (var i = 0; i < 42; i++){
+        //    arr[i] = new Obj("Company"+i, 1);
+        //}
+        //data = arr;
+
+        lengthList = data.length;
+        console.log(lengthList);
+        //for (i in data) {
+        for (var i = begin; i <= end; i++) {
             var tt = data[i].company;
            console.log(data[i].arrow);
            switch (data[i].arrow){
@@ -23,7 +37,7 @@ $(function(){
                default :
            }
             lineCode = "<div id='' class='rating'>"+tt+"<span class='ratingSymbol'><i class='fa "+arrowValue+" fa-1x'></i></span></div>";
-            $("#main").append(lineCode);
+            $("#main1").append(lineCode);
         }
 
     }
@@ -52,25 +66,56 @@ $(function(){
 
     $("#cons").click(function() {
         buttonStyles(this.id);
-        var url = ratingUrl + "/consumption";
+        secondPart = "/consumption";
+        var url = ratingUrl + secondPart;
         ajaxScoreQuery(url);
     });
 
 
     $("#overScore").click(function(){
         buttonStyles(this.id);
-        var url = ratingUrl + "/overall";
+        secondPart = "/overall";
+        var url = ratingUrl + secondPart;
         ajaxScoreQuery(url);
     });
 
     $("#prod").click(function(){
         buttonStyles(this.id);
-        var url = ratingUrl + "/production";
+        secondPart = "/production";
+        var url = ratingUrl + secondPart;
         ajaxScoreQuery(url);
     });
 
     var url1 = ratingUrl + "/production";
     ajaxScoreQuery(url1);
+
+    $("#up").click(function(){
+       if(begin >= 6) {
+           //$(this).css({"display": "block"});
+           begin = begin - 6;
+           end = end - 6;
+           console.log(end);
+           console.log(begin);
+           var url = ratingUrl + secondPart;
+           ajaxScoreQuery(url);
+       }// } else {
+       //    $(this).css({"display":"none"});
+       //}
+    });
+
+    $("#down").click(function(){
+        if (end < lengthList-6) {
+            //$(this).css({"display": "block"});
+            begin = begin + 6;
+            end = end + 6;
+            console.log(end);
+            console.log(begin);
+            var url = ratingUrl + secondPart;
+            ajaxScoreQuery(url);
+        }//} else {
+        //   $(this).css({"display":"none"});
+        //}
+    });
 
 
 });
