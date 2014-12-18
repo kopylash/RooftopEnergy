@@ -1,59 +1,120 @@
 <!DOCTYPE html>
-<html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<!-- Bootstrap -->
-
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Awesome Flat Login Form" />
+    <meta name="keywords" content="Login, Flat, HTML5, CSS3" />
+    <meta name="author" content="Wahid Anggara - LunarPixel" />
     <title>Settings</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
 
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/font-awesome-4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="resources/css/jquery-ui.css">
     <link rel="stylesheet" href="resources/css/production.css">
+    <link rel="stylesheet" href="resources/css/settings.css">
 
+    <!--<link href="resources/css/login_style.css" rel="stylesheet" type="text/css">-->
+    <link href="resources/css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="resources/css/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+    <script src="resources/js/loginPage.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
 
-    <script src="resources/js/datebuttons.js"></script>
     <script src="resources/js/pages.js"></script>
+
+    <script src="resources/js/settings.js"></script>
+
+    <!--<link rel="shortcut icon" href="img/favicon.ico"/>-->
+    <!--<link rel="apple-touch-icon" href="img/favicon.png"/>-->
 
 </head>
 <body>
-
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-<![endif]-->
-
 <div class="container-fluid">
-
     <header class="header">Settings</header>
-    <div id="log"><a href="loginPage.html"> <i class="fa fa-sign-out fa-2x ">log-out</i></a></div>
-    <main id="main"></main>
+    <div id="log"><a href="j_spring_security_logout"> <i class="fa fa-sign-out fa-2x ">log-out</i></a></div>
+    <div class="login"> <!-- Login -->
+
+        <form class="form" method="post" action="" autocomplete="off" id="logForm">
+
+        <p class="field">
+            <input type="text"  id="account" name="j_username" maxlength="50" placeholder="Account" readonly/>
+            <i class="fa fa-user"></i>
+        </p>
+
+        <p class="field">
+            <input type="text"  id="country" name="j_username" maxlength="50" placeholder="Country" readonly/>
+            <i class="fa fa-user"></i>
+        </p>
+
+        <p class="field">
+            <input type="text"  id="province" name="j_username" maxlength="50" placeholder="Province" readonly/>
+            <i class="fa fa-user"></i>
+        </p>
+
+        <p class="field">
+            <input type="text"  id="street" name="j_username" maxlength="50" placeholder="Street" readonly/>
+            <i class="fa fa-user"></i>
+        </p>
+        <p class="field">
+            <input type="text"  id="zip" name="j_username" maxlength="50" placeholder="Zip code" readonly/>
+            <i class="fa fa-user"></i>
+        </p>
+
+        <p class="field">
+            <input type="text"  id="city" name="j_username" maxlength="50" placeholder="City"readonly/>
+            <i class="fa fa-user"></i>
+        </p>
+
+        <p class="field">
+            <input type="text"  id="company" name="j_username" maxlength="50" placeholder="Company" readonly/>
+            <i class="fa fa-user"></i>
+        </p>
+
+        <p class="field">
+            <input type="text"  id="panel" name="j_username" maxlength="50" placeholder="Panel type" />
+            <i class="fa fa-user"></i>
+        </p>
+
+        <p class="field">
+            <input type="email"  id="email" name="j_username" maxlength="50" placeholder="E-mail"/>
+            <i class="fa fa-user"></i>
+        </p>
+            <br>
+
+        <p>
+            <!--<i class="fa fa-user"></i>-->
+            <textarea class="field" id="description" name="j_username" maxlength="200" placeholder="Description"></textarea>
+        </p>
+            <p class="remember" id="rem">
+                <input type="checkbox" id="remember"  name=""  value="yes" />
+                <label id="lab" for="remember"><span></span>Make this site public</label>
+            </p>
+<div id="buttLine">
+            <p class="submit"><button type="submit" name="commit" value="Login"><i class="fa fa-floppy-o"></i></button></p>
+            <p class="submit"><button type="reset" name="commit" value="Login"><i class="fa fa-times"></i></button></p>
+</div>
+
+        </form>
+    </div> <!--/ Login-->
+
     <footer>
     </footer>
-
-
 </div>
+</body>
+</html>
+
 
 
 </body>

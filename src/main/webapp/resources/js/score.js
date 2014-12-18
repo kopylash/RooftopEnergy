@@ -1,22 +1,50 @@
 $(function(){
+    var companyNumber;
+    function screenH() {
+        if (screen.height <= 550) {
+            companyNumber = 6;
+        } else if (screen.height <= 670) {
+            companyNumber = 9;
+        } else if (screen.height <= 750) {
+            companyNumber = 10;
+        } else if (screen.height <= 820) {
+            companyNumber = 11;
+        } else if (screen.height <= 1380) {
+            companyNumber = 12;
+        } else if (screen.height <= 1700) {
+            companyNumber = 14;
+        } else {
+            companyNumber = 16;
+        }
+    }
+    screenH();
+
+    //
+    $(window).resize(function(){
+        screenH();
+    });
+
+    $(window).resize();
+    //
+
     var ratingUrl = '/rest/score';
     var begin = 0;
-    var end = 5;
+    var end = companyNumber - 1;
     var lengthList;
     var secondPart = "/production";
 
     var ratingList = function(data){
         $("#main1").html("");
         var arrowValue;
-        //function Obj(comp, arr){
-        //    this.company = comp;
-        //    this.arrow = arr;
-        //}
-        //var arr = new Array();
-        //for (var i = 0; i < 42; i++){
-        //    arr[i] = new Obj("Company"+i, 1);
-        //}
-        //data = arr;
+        function Obj(comp, arr){
+            this.company = comp;
+            this.arrow = arr;
+        }
+        var arr = new Array();
+        for (var i = 0; i < 42; i++){
+            arr[i] = new Obj("Company"+i, 1);
+        }
+        data = arr;
 
         lengthList = data.length;
         console.log(lengthList);
@@ -88,30 +116,40 @@ $(function(){
 
     var url1 = ratingUrl + "/production";
     ajaxScoreQuery(url1);
+    $("#up").css({"display": "none"});
+    $("#up1").css({"display": "none"});
 
     $("#up").click(function(){
-       if(begin >= 6) {
-           //$(this).css({"display": "block"});
-           begin = begin - 6;
-           end = end - 6;
+       if(begin >= companyNumber) {
+           $("#down").css({"display": "block"});
+           begin = begin - companyNumber;
+           end = end - companyNumber;
            console.log(end);
            console.log(begin);
            var url = ratingUrl + secondPart;
            ajaxScoreQuery(url);
-       }// } else {
-       //    $(this).css({"display":"none"});
-       //}
+           if (begin < companyNumber) {
+               $(this).css({"display": "none"});
+               $("#up1").css({"display": "none"});
+           }
+       }//} else {
+        //   $(this).css({"display":"none"});
+        //}
     });
 
     $("#down").click(function(){
-        if (end < lengthList-6) {
-            //$(this).css({"display": "block"});
-            begin = begin + 6;
-            end = end + 6;
+        if (end <= lengthList) {
+            $("#up1").css({"display": "block"});
+            $("#up").css({"display": "block"});
+            begin = begin + companyNumber;
+            end = end + companyNumber;
             console.log(end);
             console.log(begin);
             var url = ratingUrl + secondPart;
             ajaxScoreQuery(url);
+            if (end > lengthList) {
+                $(this).css({"display": "none"});
+            }
         }//} else {
         //   $(this).css({"display":"none"});
         //}
