@@ -19,9 +19,12 @@ import java.util.List;
 
 /**
  * Created by alex on 11/21/14.
+ * Class @deprecated. Use {@link nl.rooftopenergy.bionic.rest.ConsumptionDataResource}
+ * and {@link nl.rooftopenergy.bionic.rest.ProductionDataResource} instead.
  */
+@Deprecated
 @RestController
-@Path("boxData")
+@Path("boxDataDeprecated")
 public class RtfBoxDataResource {
     private final Logger log = Logger.getLogger(RtfBoxDataResource.class.getName());
     private final GraphDataTransfer graphData = new GraphDataTransfer();
