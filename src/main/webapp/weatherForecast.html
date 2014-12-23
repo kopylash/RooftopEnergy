@@ -11,7 +11,7 @@
             </div>
             <div id="weatherContent">
                 <script>
-                    function ajaxForecastQuery(city, numberOfDays) {
+                    /*function ajaxForecastQuery(city, numberOfDays) {
                         $.ajax({
                             type: 'post',
                             url: "/rest/weather/daily",
@@ -26,42 +26,104 @@
                                 }
                             }
                         });
-                    }
-                   /* var tempData = new Array();
-                    var TempWeatherObj = function(date, ico, nTemp, dTemp, wind, cloudness, press){
-                        this.date = date;
-                        this.ico = ico;
-                        this.nTemp = nTemp;
-                        this.dTemp = dTemp;
+                    }*/
+                    var data = new Array();
+                    var TempWeatherObj = function(dt, skyIcon, tempNight, tempDay, wind, clouds, pressure){
+                        this.dt = dt;
+                        this.skyIcon = skyIcon;
+                        this.tempNight = tempNight;
+                        this.tempDay = tempDay;
                         this.wind = wind;
-                        this.cloudness = cloudness;
-                        this.press = press;
+                        this.clouds = clouds;
+                        this.pressure = pressure;
                     };
-                    tempData[0] = new TempWeatherObj('22 Dec', '10d', '10', '11', '5m/s', '80%', '1012.14Hpa');
-                    tempData[1] = new TempWeatherObj('23 Dec', '10d', '8', '9', '6m/s', '81%', '1015.14Hpa');*/
+                    data[0] = new TempWeatherObj(1419325200000, '10d', ' 6.6200000000000045', ' 8.350000000000023', '6.21', '64', '1002.05');
+                    data[1] = new TempWeatherObj(1419411600000, '11d', ' 7.2000000000000455', ' 6.720000000000027', '7.12', '32', '1009.12');
+                    data[2] = new TempWeatherObj(1419411600000, '11d', ' 7.2000000000000455', ' 6.720000000000027', '7.12', '32', '1009.12');
+                    data[3] = new TempWeatherObj(1419411600000, '10d', ' 7.2000000000000455', ' 6.720000000000027', '7.12', '32', '1009.12');
+                    data[4] = new TempWeatherObj(1419411600000, '11d', ' 7.2000000000000455', ' 6.720000000000027', '7.12', '32', '1009.12');
+                    data[5] = new TempWeatherObj(1419411600000, '11d', ' 7.2000000000000455', ' 6.720000000000027', '7.12', '32', '1009.12');
+                    data[6] = new TempWeatherObj(1419411600000, '11d', ' 7.2000000000000455', ' 6.720000000000027', '7.12', '32', '1009.12');
+                    data[7] = new TempWeatherObj(1419411600000, '11d', ' 7.2000000000000455', ' 6.720000000000027', '7.12', '32', '1009.12');
+                    data[8] = new TempWeatherObj(1419411600000, '11d', ' 7.2000000000000455', ' 6.720000000000027', '7.12', '32', '1009.12');
                     var forecastListSixteen = function(data) {
-                        var line;
-                        var weatherImage;
+                        var rowsNumber = 3;
+                        var start = 0;
+                        var end = 3;
 
-                        for (var i = 0; i < data.length; i++) {
-                            weatherImage = "<img src='resources/images/weather/"+data[i].skyIco+".png'/>";
-                            line = "<div class='contentLine' id='line" + i + "'>" +
-                            "<div class='lineDate' id='date"+ i +"'>" +data[i].dt+"</div>" +
-                            "<div class='lineIco' id='ico"+i+"'>" + weatherImage +"</div>" +
-                            "<div class='lineNightTemp' id='nTemp"+i+"'><i class='fa fa-moon-o'></i> " +data[i].tempNight+" &ordmC</div>"+
-                            "<div class='lineDayTemp' id='dTemp"+i+"'><i class='fa fa-sun-o'></i> " +data[i].tempDay+" &ordmC</div>"+
-                            "<div class='lineWind' id='wind"+i+"'>" +data[i].wind+"</div>"+
-                            "<div class='lineCloudness' id='cloud"+i+"'>" + "Clouds " + data[i].clouds+"</div>"+
-                            "<div class='linePressure' id='press"+i+"'>" +data[i].pressure+"</div>"+
-                            "</div>"
-                            $("#weatherContent").append(line);
 
+                        var monthNames = [ "Jan.", "Feb.", "March", "April", "May", "June",
+                            "July", "Aug.", "Sep.", "Oct.", "Nov.", "Dec." ];
+
+                        var fillTemperature = function(pic, temper){
+                            var roundTemper = Math.round(temper);
+                            return pic + " " + roundTemper + " &ordmC";
+                        };
+
+                        var list1 = function(start,end) {
+                            var line;
+                            var date, weatherImage, nightTemperature, dayTemperature, wind, sunshine;
+                            $("#weatherContent").html("");
+                            for (var i = start; i < end; i++) {
+                                date = new Date(data[i].dt);
+                                weatherImage = "<img src='resources/images/weather/" + data[i].skyIcon + ".png'/>";
+                                nightTemperature = data[i].tempNight;
+                                dayTemperature = data[i].tempDay;
+                                wind = data[i].wind;
+                                sunshine = 100 - data[i].clouds;
+
+                                line = "<div class='contentLine' id='line" + i + "'>" +
+                                "<div class='lineDate' id='date" + i + "'></div>" +
+                                "<div class='lineIco' id='ico" + i + "'>" + weatherImage + "</div>" +
+                                "<div class='lineNightTemp' id='nTemp" + i + "'></i></div>" +
+                                "<div class='lineDayTemp' id='dTemp" + i + "'></div>" +
+                                "<div class='lineWind' id='wind" + i + "'></div>" +
+                                "<div class='lineSun' id='sun" + i + "'></div>" +
+                                "<div class='linePressure' id='press" + i + "'>" + data[i].pressure + "</div>" +
+                                "</div>"
+                                $("#weatherContent").append(line);
+                                $("#nTemp" + i).html(fillTemperature("<i class='fa fa-moon-o'>", nightTemperature));
+                                $("#dTemp" + i).html(fillTemperature("<i class='fa fa-sun-o'>", dayTemperature));
+                                $("#date" + i).html(function () {
+                                    return date.getDate() + " " + monthNames[date.getMonth()];
+                                });
+                                $("#wind" + i).html(function () {
+                                    return Math.round(wind) + " m/s";
+                                });
+                                $("#sun" + i).html("<i class='fa fa-sun-o'></i> " + sunshine + " %");
+                            }
                         }
+                            list1(0, 3);
+                            $("#weatherDown").click(function(){
+                                if (end + rowsNumber < data.length){
+                                    start += rowsNumber;
+                                    end += rowsNumber-1;
+                                    console.log(start, end);
+                                    list1(start, end);
+                                }
+                            });
+                            $("#weatherUp").click(function(){
+                            if (start > rowsNumber){
+                                start -= rowsNumber-1;
+                                end -= rowsNumber;
+                                list1(start, end);
+                            }
+                        });
+
                     };
 
-//                    forecastListSixteen(data);
-                    ajaxForecastQuery('Kiev,UA', 16);
+
+                    forecastListSixteen(data);
+//                    ajaxForecastQuery('Kiev,UA', 16);
+
+
+
                 </script>
+            </div>
+            <div class="navButton">
+                <button id="weatherUp"><i class="fa fa-chevron-up"></i></button>
+                <button id="weatherDown"><i class="fa fa-chevron-down"></i></button>
+
             </div>
         </div>
     </div>

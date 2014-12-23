@@ -120,7 +120,7 @@ main{
         margin-right:  auto;
         margin-left:  auto;
         width: 450px;
-        height: 335px;
+        height: 450px;
     }
 
     #generalSize{
@@ -186,6 +186,9 @@ main{
 
 }
 /*Weather Lines*/
+#weatherContent{
+
+}
 .contentLine {
     width: 90%;
     height: 85px;
@@ -225,7 +228,7 @@ main{
     padding:35px 10px 0px;
     font-size: 14px;
 }
-.lineCloudness{
+.lineSun{
     float:left;
     margin:5px auto;
     padding:0px 0px;
@@ -236,6 +239,30 @@ main{
     margin:5px auto;
     padding:0px 10px;
     font-size: 14px;
+}
+.navButton{
+    width: 90%;
+    margin: 0 auto;
+
+}
+#weatherUp{
+    width: 50%;
+    height: 20px;
+    margin-left: 2px;
+    background-color: #108f38;
+    color: #FFFFFF;
+    border: 1px solid #108f38;
+
+}
+
+#weatherDown{
+    width: 49%;
+    height: 20px;
+    float:left;
+    margin-right: 2px;
+    background-color: #108f38;
+    color: #FFFFFF;
+    border: 1px solid #108f38;
 }
 
 

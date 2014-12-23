@@ -87,16 +87,16 @@ public class WeatherResource {
         List<WeatherFiveDaysDataTransfer> resultList = null;
         String thisCity = city;
         try {
-            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "&mode=json").asJson();
-            String json = response1.getBody().toString();
+//            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "&mode=json").asJson();
+//            String json = response1.getBody().toString();
 //            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/fiveDays.json")));
 //            out.write(json);
 //            out.close();
             ObjectMapper mapper = new ObjectMapper();
 
-            WeatherForecastForFiveDays weather = mapper.readValue(json, WeatherForecastForFiveDays.class);
+//            WeatherForecastForFiveDays weather = mapper.readValue(json, WeatherForecastForFiveDays.class);
 
-//            WeatherForecastForFiveDays weather = mapper.readValue(new FileInputStream(new File("/home/alex/fiveDays.json")), WeatherForecastForFiveDays.class);
+            WeatherForecastForFiveDays weather = mapper.readValue(new FileInputStream(new File("/home/alex/fiveDays.json")), WeatherForecastForFiveDays.class);
 
             WeatherFiveDaysDataTransfer dataTransfer;
             List<Info> weatherInfoList = weather.getList();
@@ -106,8 +106,8 @@ public class WeatherResource {
                 resultList.add(dataTransfer);
 
             }
-        } catch (UnirestException e){
-            logger.warn(e.getMessage(), e);
+//        } catch (UnirestException e){
+//            logger.warn(e.getMessage(), e);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
         } catch (JsonMappingException e) {
@@ -122,7 +122,7 @@ public class WeatherResource {
     private WeatherDailyDataTransfer getForecast(TemperatureInfo info){
 
         WeatherDailyDataTransfer dataTransfer = new WeatherDailyDataTransfer();
-        dataTransfer.setDt(info.getDt());
+        dataTransfer.setDt(info.getDt() * 1000); //This parameter does not include milliseconds in JSON
         dataTransfer.setTempDay(info.getTemp().getDay() - ZERO_IN_KELVIN);
         dataTransfer.setTempNight(info.getTemp().getNight() - ZERO_IN_KELVIN);
         dataTransfer.setPressure(info.getPressure());
@@ -138,7 +138,7 @@ public class WeatherResource {
     private WeatherFiveDaysDataTransfer getForecastFiveDays(Info info){
 
         WeatherFiveDaysDataTransfer dataTransfer = new WeatherFiveDaysDataTransfer();
-        dataTransfer.setDt(info.getDt());
+        dataTransfer.setDt(info.getDt() * 1000);//This parameter does not include milliseconds in JSON
         dataTransfer.setDateText(info.getDt_txt());
 
         Precipitation rain = info.getRain();
