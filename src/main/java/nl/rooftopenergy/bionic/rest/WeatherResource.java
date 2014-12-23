@@ -130,6 +130,8 @@ public class WeatherResource {
         dataTransfer.setSky(info.getWeather().get(0).getMain());
         dataTransfer.setSkyDescription(info.getWeather().get(0).getDescription());
         dataTransfer.setSkyIcon(info.getWeather().get(0).getIcon());
+        dataTransfer.setWind(info.getSpeed());
+        dataTransfer.setClouds(info.getClouds());
         return dataTransfer;
 
     }

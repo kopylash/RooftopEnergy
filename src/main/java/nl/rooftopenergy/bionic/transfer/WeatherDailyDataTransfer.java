@@ -13,12 +13,14 @@ public class WeatherDailyDataTransfer{
     private String sky;
     private String skyDescription;
     private String skyIcon;
+    private Integer clouds;
+    private Double wind;
 
     public WeatherDailyDataTransfer(){}
 
-    public WeatherDailyDataTransfer(Long dt, Double tempDay, Double tempNight,
-                                    Double pressure, Integer humidity, String sky,
-                                    String skyDescription, String skyIcon) {
+    public WeatherDailyDataTransfer(Long dt, Double tempDay, Double tempNight, Double pressure,
+                                    Integer humidity, String sky, String skyDescription,
+                                    String skyIcon, Integer clouds, Double wind) {
         this.dt = dt;
         this.tempDay = tempDay;
         this.tempNight = tempNight;
@@ -27,6 +29,8 @@ public class WeatherDailyDataTransfer{
         this.sky = sky;
         this.skyDescription = skyDescription;
         this.skyIcon = skyIcon;
+        this.clouds = clouds;
+        this.wind = wind;
     }
 
     public Long getDt() {
@@ -85,11 +89,27 @@ public class WeatherDailyDataTransfer{
         this.skyDescription = skyDescription;
     }
 
-    public String getskyIcon() {
+    public void setSkyIcon(String skyIcon) {
+        this.skyIcon = skyIcon;
+    }
+
+    public String getSkyIcon() {
         return skyIcon;
     }
 
-    public void setSkyIcon(String skyIcon) {
-        this.skyIcon = skyIcon;
+    public Integer getClouds() {
+        return clouds;
+    }
+
+    public void setClouds(Integer clouds) {
+        this.clouds = clouds;
+    }
+
+    public Double getWind() {
+        return wind;
+    }
+
+    public void setWind(Double wind) {
+        this.wind = wind;
     }
 }
