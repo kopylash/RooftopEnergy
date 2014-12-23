@@ -160,6 +160,83 @@ main{
 
 
 }
+.searchCity{
+    width: 100%;
+    margin:10px auto;
+    border-bottom:1px solid #108f38;
+}
+#findCity{
+    margin: 10px auto 10px;
+}
+#cityChooser{
+    display: block;
+    margin: 5px auto;
+    width: 90%;
+
+
+}
+#citySubmitButton{
+    display: block;
+    width: 90%;
+    height: 25px;
+    margin: 5px auto;
+    border: none;
+    background-color: #108f38;
+    color: #FFFFFF;
+
+}
+/*Weather Lines*/
+.contentLine {
+    width: 90%;
+    height: 85px;
+    margin: 10px auto;
+    border-bottom:1px solid #108f38;
+
+}
+.lineDate{
+    float:left;
+}
+.lineIco{
+    float:left;
+    margin:15px auto;
+    padding:0px 20px;
+}
+.lineNightTemp{
+    float:left;
+    margin:0px 1px 0px 0px ;
+    height: 25px;
+    width: 100px;
+    padding:5px 10px;
+    color: #ffffff;
+    background-color: #59AC28;
+}
+.lineDayTemp{
+    float:left;
+    margin:0px 0px 0px 1px;
+    height: 25px;
+    width: 100px;
+    padding:5px 10px;
+    color: #ffffff;
+    background-color: #59AC28;
+}
+.lineWind{
+    float: none;
+    margin:5px auto;
+    padding:35px 10px 0px;
+    font-size: 14px;
+}
+.lineCloudness{
+    float:left;
+    margin:5px auto;
+    padding:0px 0px;
+    font-size: 14px;
+}
+.linePressure{
+    float:left;
+    margin:5px auto;
+    padding:0px 10px;
+    font-size: 14px;
+}
 
 
 

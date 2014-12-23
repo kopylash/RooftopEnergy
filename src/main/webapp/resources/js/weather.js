@@ -43,7 +43,8 @@ $(function(){
         if (screen.width <= 768) {
             $('main').html(kod2);
         } else {
-            $('main').html(kod1).css(" ");
+            //$('main').html(kod1).css(" ");
+            $('#main').load("weatherForecast.html");
 
         }
     };
@@ -53,7 +54,8 @@ $(function(){
         if (screen.width <= 768) {
             $('main').html(code2);
         } else {
-            $('main').html(code);
+            //$('main').html(code);
+            $('#main').load("weatherForecast.html");
 
         }
     });
