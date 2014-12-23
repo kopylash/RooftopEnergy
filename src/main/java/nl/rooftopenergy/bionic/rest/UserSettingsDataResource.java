@@ -63,9 +63,10 @@ public class UserSettingsDataResource {
         String companyName = company.getCompanyName();
         String panelType = company.getRtfBox().getPanelType();
         String description = company.getDescription();
+        String email = user.getEmail();
 
         UserDataTransfer userDataTransfer = new UserDataTransfer(userName, description, panelType, companyName,
-                city, zipCode, street, province, country);
+                city, zipCode, street, province, country, email);
 
         return userDataTransfer;
     }

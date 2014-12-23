@@ -1,18 +1,56 @@
 $(function(){
-    function ajaxGraphQuery(strUrl,endDate) {
+    var insertSettings = function(data){
+        //$("input[type=text]").val(function(){
+        //    console.log("we are here");
+        //    var inId = this.id;
+        //    console.log(inId);
+        //    var someTxt = data[inId];
+        //    console.log(someTxt);
+        //    var t = '<span>someTxt</span>';
+        //    this.html(t);
+        //});
+        var someTxt = data.userName;
+        $("#userName").val(someTxt);
+        someTxt = data.country;
+        $("#country").val(someTxt);
+        someTxt = data.province;
+        $("#province").val(someTxt);
+        someTxt = data.street;
+        $("#street").val(someTxt);
+        someTxt = data.zipCode;
+        $("#zipCode").val(someTxt);
+        someTxt = data.city;
+        $("#city").val(someTxt);
+        someTxt = data.company;
+        $("#company").val(someTxt);
+       someTxt = data.panelType;
+        $("#panelType").val(someTxt);
+         someTxt = data.email;
+        $("#email").val(someTxt);
+        someTxt = data.description;
+        $("#description").val(someTxt);
+
+    };
+
+
+    function ajaxGetSettingsQuery() {
         $.ajax({
-            type: 'post',
-            url: "rest/",
+            type: 'get',
+            url: "rest/boxData/getUserDescription",
             crossDomain: true,
-            data: { 'date': endDate.getTime()},
+            //data: { 'date': endDate.getTime()},
             error: function (data) {
                 $('#main').html(data.responseText);
             },
             statusCode: {
                 200: function (data) {
-                    graph(data);
+                    console.log("hello");
+                    insertSettings(data);
+                    console.log("world");
                 }
             }
         });
-    }
+    };
+
+    ajaxGetSettingsQuery();
 })
