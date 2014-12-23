@@ -14,15 +14,17 @@ public class City implements Serializable {
     private Integer population;
     private String country;
     private Coordinates coord;
+    private Sys sys;
 
     public City(){}
 
-    public City(Integer id, String name, Integer population, String country, Coordinates coord) {
+    public City(Integer id, String name, Integer population, String country, Coordinates coord, Sys sys) {
         this.id = id;
         this.name = name;
         this.population = population;
         this.country = country;
         this.coord = coord;
+        this.sys = sys;
     }
 
     /**
@@ -105,6 +107,15 @@ public class City implements Serializable {
         this.coord = coord;
     }
 
+
+    public Sys getSys() {
+        return sys;
+    }
+
+    public void setSys(Sys sys) {
+        this.sys = sys;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,6 +128,7 @@ public class City implements Serializable {
         if (id != null ? !id.equals(city.id) : city.id != null) return false;
         if (name != null ? !name.equals(city.name) : city.name != null) return false;
         if (population != null ? !population.equals(city.population) : city.population != null) return false;
+        if (sys != null ? !sys.equals(city.sys) : city.sys != null) return false;
 
         return true;
     }
@@ -128,6 +140,7 @@ public class City implements Serializable {
         result = 31 * result + (population != null ? population.hashCode() : 0);
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (coord != null ? coord.hashCode() : 0);
+        result = 31 * result + (sys != null ? sys.hashCode() : 0);
         return result;
     }
 
@@ -139,6 +152,7 @@ public class City implements Serializable {
                 ", population=" + population +
                 ", country='" + country + '\'' +
                 ", coord=" + coord +
+                ", sys=" + sys +
                 '}';
     }
 }
