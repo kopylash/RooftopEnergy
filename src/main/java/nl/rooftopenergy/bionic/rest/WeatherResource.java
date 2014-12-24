@@ -9,6 +9,7 @@ import nl.rooftopenergy.bionic.pojo.weather.WeatherForecastForSixteenDays;
 import nl.rooftopenergy.bionic.pojo.weather.info.Info;
 import nl.rooftopenergy.bionic.pojo.weather.info.Precipitation;
 import nl.rooftopenergy.bionic.pojo.weather.info.TemperatureInfo;
+import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.WeatherDailyDataTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherFiveDaysDataTransfer;
 import org.apache.log4j.Logger;
@@ -17,6 +18,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.inject.Inject;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -37,13 +39,15 @@ public class WeatherResource {
     private static final int MAX_DAYS_FORECAST = 16;
     private static final double ZERO_IN_KELVIN = 273.15;
 
+    @Inject
+    private PrincipalInformation principalInformation;
+
 
     @POST
     @Path("daily")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<WeatherDailyDataTransfer> showDailyWeather(@FormParam("city") String city,
-                                                     @FormParam("days") String days){
-        String thisCity = city;
+    public List<WeatherDailyDataTransfer> showDailyWeather(@FormParam("days") String days){
+        String thisCity = principalInformation.getCompany().getTown();
         Integer thisDays = Integer.parseInt(days);
         List<WeatherDailyDataTransfer> resultList = null;
         if ( thisDays == null || thisDays <= 0 || thisDays > MAX_DAYS_FORECAST){
@@ -52,9 +56,9 @@ public class WeatherResource {
         try {
             HttpResponse<JsonNode> response1 = Unirest.get( DAILY_URL + thisCity + "&cnt=" + thisDays + "&mode=json").asJson();
             String json = response1.getBody().toString();
-/*            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/sixteen.json")));
+            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/sixteen.json")));
             out.write(json);
-            out.close();*/
+            out.close();
             ObjectMapper mapper = new ObjectMapper();
             WeatherForecastForSixteenDays weather = mapper.readValue(json, WeatherForecastForSixteenDays.class);
 
