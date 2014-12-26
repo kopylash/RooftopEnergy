@@ -56,9 +56,9 @@ public class WeatherResource {
         try {
             HttpResponse<JsonNode> response1 = Unirest.get( DAILY_URL + thisCity + "&cnt=" + thisDays + "&mode=json").asJson();
             String json = response1.getBody().toString();
-            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/sixteen.json")));
+           /* Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/sixteen.json")));
             out.write(json);
-            out.close();
+            out.close();*/
             ObjectMapper mapper = new ObjectMapper();
             WeatherForecastForSixteenDays weather = mapper.readValue(json, WeatherForecastForSixteenDays.class);
 
