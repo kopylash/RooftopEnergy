@@ -75,7 +75,7 @@ $(function() {
             this.skyDescription = skyDescription;
         };
         for (var i = 0; i<number; i++) {
-            data[i] = new TempWeatherObj(1419325200000, '10d', 'moderate rain', ' 6.6200000000000045', ' 8.350000000000023', '6.21', '64', i);
+            data[i] = new TempWeatherObj(1419325200000, '10d', 'moderate rain fdfd', ' -36.6200000000000045', ' -38.350000000000023', '20.21', '0', "1000.96");
         }
         forecastListSixteen(data);
     };
@@ -112,7 +112,7 @@ $(function() {
 
         var fillTemperature = function (pic, temper) {
             var roundTemper = Math.round(temper);
-            return pic + " " + roundTemper + " &ordmC";
+            return pic + " " + roundTemper + " <span>&ordmC</span>";
         };
 
         var list = function () {
@@ -163,10 +163,13 @@ $(function() {
                     return date.getDate() + " " + monthNames[date.getMonth()];
                 });
                 $("#wind" + i).html(function () {
-                    return "<i class='fa fa-long-arrow-right'></i> " + Math.round(wind) + " m/s";
+                    return "<i class='fa fa-long-arrow-right'></i> " + Math.round(wind) + "<span> m/s</span>";
                 });
-                $("#sun" + i).html("<i class='fa fa-sun-o'></i> " + sunshine + " %");
-                $("#press" + i).html(pressure + "Hpa");
+                $("#sun" + i).html("<i class='fa fa-sun-o'></i> " + sunshine + "<span> %</span>");
+                $("#press" + i).html(function(){
+                    var press = new Number(pressure);
+                    return press.toFixed(1) + "<span> Hpa</span>"
+                });
 
                     $("#line"+(data.length-1)).css({'border':'none'});
 

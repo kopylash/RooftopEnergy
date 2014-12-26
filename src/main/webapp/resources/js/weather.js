@@ -41,7 +41,8 @@ $(function(){
 
     var foo = function(kod1, kod2) {
         if (screen.width <= 768) {
-            $('main').html(kod2);
+            //$('main').html(kod2);
+            $('#main').load("weatherForecast.html");
         } else {
             //$('main').html(kod1).css(" ");
             $('#main').load("weatherForecast.html");
@@ -52,7 +53,8 @@ $(function(){
 
     $(window).resize(function(){
         if (screen.width <= 768) {
-            $('main').html(code2);
+            $('#main').load("weatherForecast.html");
+            //$('main').html(code2);
         } else {
             //$('main').html(code);
             $('#main').load("weatherForecast.html");

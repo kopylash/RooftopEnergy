@@ -97,43 +97,43 @@ main{
 
 @media screen and (min-device-height: 481px)and (max-device-height: 520px){
     #general{
-        margin-top: 35px;
+        /*margin-top: 35px;*/
     }
 }
 
 @media screen and (min-device-height: 521px)and (max-device-height: 600px){
     #general{
-        margin-top: 50px;
+        /*margin-top: 50px;*/
     }
 }
 
 @media screen and (min-device-height: 601px)and (max-device-height: 700px){
     #general{
-        margin-top: 75px;
+        /*margin-top: 75px;*/
     }
 }
 
 @media screen and (min-device-height: 701px)and (max-device-height: 800px){
     #general{
-        margin-top: 125px;
+        /*margin-top: 125px;*/
     }
 }
 
 @media screen and (min-device-height: 801px)and (max-device-height: 900px){
     #general{
-        margin-top: 165px;
+        /*margin-top: 165px;*/
     }
 }
 
 @media screen and (min-device-height: 901px)and (max-device-height: 1200px){
     #general{
-        margin-top: 225px;
+        /*margin-top: 225px;*/
     }
 }
 
 @media screen and (min-device-height: 1201px)and (max-device-height: 1650px){
     #general{
-        margin-top: 350px;
+        /*margin-top: 350px;*/
     }
 }
 
@@ -191,7 +191,7 @@ main{
 .contentLine {
     width: 90%;
     margin: 10px 5% 0 5%;
-    padding: 0 10px;
+    padding: 0 0px;
     border-bottom: 1px solid #108f38;
     float:left;
 
@@ -219,13 +219,16 @@ main{
     margin:0px 1px 0px 0px ;
     height: 35px;
     width: 33%;
-    padding:7px 10px;
+    padding:10px 5px;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 1em;
     background-color: #59AC28;
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
+}
+.lineNightTemp span{
+    font-size: 0.7em;
 }
 .lineDayTemp{
 
@@ -233,44 +236,56 @@ main{
     margin:0px 0px 0px 1px;
     height: 35px;
     width: 32%;
-    padding:7px 10px;
+    padding:10px 5px;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 1em;
     background-color: #59AC28;
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
 
 }
+.lineDayTemp span{
+    font-size: 0.7em;
+}
 
 /*WIND*/
 .lineWind{
     float: left;
-    width: 30%;
+    width: 32%;
     margin-top:10px;
-    margin-left: 5px;
+    margin-left: 0;
     padding: 0px 10px 0px;
-    font-size: 18px;
+    font-size: 0.9em;
+}
+.lineWind span{
+    font-size: 0.7em;
 }
 /*SUN*/
 .lineSun{
     float:left;
-    width:30%;
+    width:32%;
     margin-top:10px;
-    margin-left: 13px;
-    padding:0px 0px;
-    font-size: 18px;
+    margin-left: 2%;
+    padding:0px 3%;
+    font-size: 0.9em;
+}
+.lineSun span{
+    font-size: 0.7em;
 }
 /*PRESSURE*/
 .linePressure{
 
     float:left;
-    width: 30%;
+    width: 32%;
     margin-top:10px;
-    margin-left:5px;
+    margin-left:2%;
     margin-bottom: 10px;
-    padding:0px 10px;
-    font-size: 18px;
+    padding:0px 3%;
+    font-size: 0.8em;
+}
+.linePressure span {
+    font-size: 0.7em;
 }
 /*ICON*/
 .wCondition{
@@ -281,7 +296,7 @@ main{
 .lineIco{
 
     height: inherit;
-    width: 80px;
+    width: 50%;
     float:left;
     margin:0px auto;
     padding:20px -20px 20px 0px;
@@ -290,14 +305,16 @@ main{
 }
 .lineIco ul{
     margin-top: 30px;
-    margin-left: -20px;
+    margin-left: -25px;
 }
 .description{
     height: inherit;
+    width:48%;
     margin-top:10px;
-    margin-left: 43px;
-    font-size: 14px;
+    margin-left: 2%;
+    font-size: 0.8em;
     text-transform: capitalize;
+
     float:left;
 }
 
