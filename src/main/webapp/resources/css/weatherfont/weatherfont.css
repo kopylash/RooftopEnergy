@@ -44,6 +44,16 @@
     color:rgb(204, 204, 204);
 }
 
+/* -----Cloud plus ----- */
+
+.cloud-plus::before {
+    font-family: 'iconvault';
+    content: "\f106";
+    font-size:5em;
+    color:rgb(204, 204, 204);
+    position: absolute;
+    padding-left: 8px;
+}
 
 
 /* -----windyraincloud----- */
@@ -207,6 +217,13 @@
     position: absolute;
 }
 
+/* -----Cloud----- */
+
+.icon-cloud-dark::after {
+    content: "\f106";
+    color:rgb(48, 48, 48);
+    position: absolute;
+}
 
 /* -----Sunrise----- */
 
@@ -231,6 +248,9 @@
     color:rgb(204, 204, 204);
     position: absolute;
 }
+
+
+
 ul {
     font-size: 14px;
     margin: 7px 0;
@@ -241,3 +261,4 @@ ul li {
 }
 
 li {list-style: none; }
+

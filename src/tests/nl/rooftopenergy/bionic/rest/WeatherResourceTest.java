@@ -36,7 +36,7 @@ public class WeatherResourceTest {
     public void testShowDailyWeather() throws Exception {
         int forecastsNumber = 16;
 
-        List<WeatherDailyDataTransfer> data = weatherResource.showDailyWeather(CITY, String.valueOf(forecastsNumber));
+        List<WeatherDailyDataTransfer> data = weatherResource.showDailyWeather(String.valueOf(forecastsNumber));
         assertTrue(data.size() == forecastsNumber);
 
     }
