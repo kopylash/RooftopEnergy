@@ -45,7 +45,7 @@ $(function(){
             $('#main').load("weatherForecast.html");
         } else {
             //$('main').html(kod1).css(" ");
-            $('#main').load("weatherForecast.html");
+            $('#main').load("weatherForecastDesk.html");
 
         }
     };
@@ -57,7 +57,7 @@ $(function(){
             //$('main').html(code2);
         } else {
             //$('main').html(code);
-            $('#main').load("weatherForecast.html");
+            $('#main').load("weatherForecastDesk.html");
 
         }
     });

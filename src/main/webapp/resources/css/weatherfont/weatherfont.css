@@ -20,7 +20,7 @@
     font-style: normal;
     text-decoration: inherit;
     -webkit-font-smoothing: antialiased;
-    font-size: 6em;
+    /*font-size: 6em;*/
 
 }
 
@@ -38,7 +38,7 @@
 
 .basecloud:before  {
     font-family: 'iconvault';
-    font-size:6em;
+    /*font-size:6em;*/
     content: '\f105';
     position:absolute;
     color:rgb(204, 204, 204);
@@ -49,7 +49,7 @@
 .cloud-plus::before {
     font-family: 'iconvault';
     content: "\f106";
-    font-size:5em;
+    /*font-size:5em;*/
     color:rgb(204, 204, 204);
     position: absolute;
     padding-left: 8px;
@@ -60,7 +60,7 @@
 
 .windyraincloud:before  {
     font-family: 'iconvault';
-    font-size:6em;
+    /*font-size:6em;*/
     content: '\f111';
     position:absolute;
     color:rgb(204, 204, 204);
@@ -70,7 +70,7 @@
 
 .windysnowcloud:before  {
     font-family: 'iconvault';
-    font-size:6em;
+    /*font-size:6em;*/
     content: '\f109';
     position:absolute;
     color:rgb(204, 204, 204);
@@ -80,7 +80,7 @@
 
 .basethundercloud:before  {
     font-family: 'iconvault';
-    font-size:6em;
+    /*font-size:6em;*/
     content: '\f105';
     position:absolute;
     color:#000;

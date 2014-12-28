@@ -1,0 +1,137 @@
+/*WEATHER LINES*/
+#weatherContent{
+    width: 100%;
+
+}
+.contentLine {
+    width: 90%;
+    margin: 10px 5% 0 5%;
+    /*padding: 0 0px;*/
+    border-bottom: 1px solid #108f38;
+    float:left;
+
+}
+/*DATE*/
+.lineDate{
+    width: 32%;
+    display: block;
+    float:left;
+}
+.dayOfWeek{
+
+    font-size: 24px;
+}
+.shortDate{
+    margin-top: 5px;
+}
+
+/*TEMPERATURE*/
+.temperature{
+    margin-bottom: 10px;
+}
+.lineNightTemp{
+    float:left;
+    margin:0px 1px 0px 0px ;
+    height: 35px;
+    width: 33%;
+    padding:10px 5px;
+    color: #ffffff;
+    font-size: 1em;
+    background-color: #59AC28;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+}
+.lineNightTemp span{
+    font-size: 0.7em;
+}
+.lineDayTemp{
+
+    float:right;
+    margin:0px 0px 0px 1px;
+    height: 35px;
+    width: 32%;
+    padding:10px 5px;
+    color: #ffffff;
+    font-size: 1em;
+    background-color: #59AC28;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+
+}
+.lineDayTemp span{
+    font-size: 0.7em;
+}
+
+/*WIND*/
+.lineWind{
+    float: left;
+    width: 32%;
+    margin-top:10px;
+    margin-left: 0;
+    padding: 0px 10px 0px;
+    font-size: 0.9em;
+}
+.lineWind span{
+    font-size: 0.7em;
+}
+/*SUN*/
+.lineSun{
+    float:left;
+    width:32%;
+    margin-top:10px;
+    margin-left: 2%;
+    padding:0px 3%;
+    font-size: 0.9em;
+}
+.lineSun span{
+    font-size: 0.7em;
+}
+/*PRESSURE*/
+.linePressure{
+
+    float:left;
+    width: 32%;
+    margin-top:10px;
+    margin-left:2%;
+    margin-bottom: 10px;
+    padding:0px 3%;
+    font-size: 0.8em;
+}
+.linePressure span {
+    font-size: 0.7em;
+}
+/*ICON*/
+.wCondition{
+    width: 65%;
+    height: 80px;
+    float:left;
+}
+.lineIco{
+
+    height: inherit;
+    width: 50%;
+    float:left;
+    /*margin:0px 0 0 10px;*/
+    padding:20px -20px 20px 0px;
+
+
+}
+.lineIco ul{
+    margin-top: 30px;
+    margin-left: -20px;
+}
+.lineIco ul li{
+    font-size: 60px;
+}
+.description{
+    height: inherit;
+    width:48%;
+    margin-top:10px;
+    margin-left: 2%;
+    font-size: 0.8em;
+    text-transform: capitalize;
+
+    float:left;
+}

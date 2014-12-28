@@ -1,5 +1,5 @@
 /**
- * Created by alex on 12/23/14.
+ * Created by alex on 12/26/14.
  */
 $(function() {
     var weatherIcons = {
@@ -22,7 +22,6 @@ $(function() {
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
-            //data: {'city': city, 'days': numberOfDays},
             error: function (info) {
                 $('#main').html(info.responseText);
             },
@@ -53,15 +52,15 @@ $(function() {
     var userInfo = function(info){
         $("#generalHeader").html(info.city);
     };
- /* mock for info about weather */
+    /* mock for info about weather */
 
     var TempUserInfo = function(city){
         this.city = city;
     };
     var info = new TempUserInfo("Kiev");
- /* end mock info about weather */
+    /* end mock info about weather */
 
- /* mock for weather forecast list*/
+    /* mock for weather forecast list*/
     var testFunction = function(number) {
         var data = new Array();
         var TempWeatherObj = function (dt, skyIcon, skyDescription, tempNight, tempDay, wind, clouds, pressure) {
@@ -79,16 +78,16 @@ $(function() {
         }
         forecastListSixteen(data);
     };
-/* end mock for weather forecast list*/
+    /* end mock for weather forecast list*/
 
     //var number = 3;
 
     var forecastListSixteen = function (data) {
 
-        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
 
-        var daysArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        var daysArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         var weatherPictures = {
             '01d' : weatherIcons.sunny,
             '01n' : weatherIcons.moon,
@@ -115,7 +114,8 @@ $(function() {
             return pic + " " + roundTemper + " <span>&ordmC</span>";
         };
 
-        var list = function () {
+
+        var tabs = function () {
             var note;
             var date, weatherImage, description, nightTemperature, dayTemperature, wind, sunshine, pressure;
 
@@ -134,28 +134,29 @@ $(function() {
 
 
                 note = "<div class='contentLine' id='line" + i + "'>" +
-                            "<div class='lineDate' id='date" + i + "'>" +
-                                "<div class='dayOfWeek' id='day" + i+ "'></div>"+
-                                "<div class='shortDate' id='shortDate" + i + "'></div>" +
-                            "</div>"+
-                            "<div class='temperature' id='temperature"+i+"'>"+
-                                "<div class='lineNightTemp' id='nTemp" + i + "'></div>" +
-                                "<div class='lineDayTemp' id='dTemp" + i + "'></div>" +
-                            "</div>"+
-                            "<div class='wCondition' id='wCondition"+i+"'>"+
-                                "<div class='lineIco' id='ico" + i + "'>" + weatherImage + "</div>"+
-                                "<div class='description' id='wDescription"+i+"'>"+description+"</div>"+
-                            "</div>"+
-                            "<div class='lineWind' id='wind" + i + "'></div>" +
-                            "<div class='lineSun' id='sun" + i + "'></div>" +
-                            "<div class='linePressure' id='press" + i + "'></div>" +
+                "<div class='lineDate' id='date" + i + "'>" +
+                "<div class='dayOfWeek' id='day" + i+ "'></div>"+
+                "<div class='shortDate' id='shortDate" + i + "'></div>" +
+                "</div>"+
+                "<div class='wCondition' id='wCondition"+i+"'>"+
+
+                "<div class='lineIco' id='ico" + i + "'>" + weatherImage + "</div>"+
+                "<div class='description' id='wDescription"+i+"'>"+description+"</div>"+
+                "</div>"+
+                "<div class='temperature' id='temperature"+i+"'>"+
+                "<div class='lineNightTemp' id='nTemp" + i + "'></div>" +
+                "<div class='lineDayTemp' id='dTemp" + i + "'></div>" +
+                "</div>"+
+                "<div class='lineWind' id='wind" + i + "'></div>" +
+                "<div class='lineSun' id='sun" + i + "'></div>" +
+                "<div class='linePressure' id='press" + i + "'></div>" +
 
 
-                        "</div>";
+                "</div>";
 
                 $("#weatherContent").append(note);
-                $("#nTemp" + i).html(fillTemperature("<i class='fa fa-moon-o'></i>", nightTemperature));
-                $("#dTemp" + i).html(fillTemperature("<i class='fa fa-sun-o'></i>", dayTemperature));
+                $("#nTemp" + i).html(fillTemperature("", nightTemperature));
+                $("#dTemp" + i).html(fillTemperature("", dayTemperature));
                 $("#day" + i).html(function(){
                     return daysArr[date.getDay()];
                 });
@@ -171,10 +172,10 @@ $(function() {
                     return press.toFixed(1) + "<span> Hpa</span>"
                 });
 
-                    $("#line"+(data.length-1)).css({'border':'none'});
+                //$("#line"+(data.length-1)).css({'border':'none'});
 
             }
-            switch(data.length){
+            /*switch(data.length){
                 case(3):
                     $("#general").css({'height': '455px'});
                     break;
@@ -183,26 +184,33 @@ $(function() {
                     break;
                 case(14):
                     $("#general").css({'height': '1955px'});
-            }
+            }*/
 
         };
-        list();
+        tabs();
 
 
     };
 
+    $(".contentLine").button();
+    $(".contentLine").click(function(){
+        console.log("ddd");
+        //$(this).css({'background-color': "#ffffff"});
+
+    });
     $("#threeDays").click(function(){
         //ajaxForecastQuery(3);
-       testFunction(3);
+        testFunction(3);
     });
     $("#sevenDays").click(function(){
         //ajaxForecastQuery(7);
-       testFunction(7);
+        testFunction(7);
     });
     $("#fourteenDays").click(function(){
         //ajaxForecastQuery(14);
-       testFunction(14);
+        testFunction(14);
     });
+
 
 
     userInfo(info);

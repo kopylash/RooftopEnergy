@@ -1,0 +1,151 @@
+/*WEATHER LINES*/
+#weatherTop{
+    font-size:14px;
+    height: 15em;
+    width: 100%;
+
+}
+#weatherContent{
+    /*width: 90%;*/
+
+}
+.weatherScroll{
+    width: 2%;
+    height: inherit;
+    border: 1px solid #108f38;
+    /*text-align: center;*/
+    font-size: 10px;
+    color:#ffffff;
+    background-color: #108F38;
+
+
+
+}
+.weatherScroll i {
+    /*vertical-align: middle;*/
+
+
+}
+#scrollLeft{
+
+
+    float:left;
+}
+#scrollRight{
+    float:right;
+}
+.contentLine {
+
+    width: 32%;
+    height: 15em;
+    margin: 0px 0px 0 0px;
+    padding: 5px 15px;
+    border: 1px solid #108f38;
+    float:left;
+    background-color: #c8e5bc;
+
+}
+
+
+/*DATE*/
+.lineDate{
+    width:100%;
+
+}
+.dayOfWeek{
+    font-size:2em;
+    text-align: center;
+    margin-top:5px;
+
+}
+.shortDate{
+    font-size: 1.5em;
+    margin-top:15px;
+    text-align: center;
+
+}
+
+/*TEMPERATURE*/
+.temperature{
+    clear:left;
+    float:right;
+    margin-right: 10px;
+    font-size: 2em;
+
+}
+.lineNightTemp{
+    margin-top: -30px;
+
+
+}
+.lineNightTemp span{
+    font-size: 0.7em;
+
+}
+.lineDayTemp{
+    margin-top:10px;
+
+}
+.lineDayTemp span{
+    font-size: 0.7em;
+
+}
+
+/*WIND*/
+.lineWind{
+    clear:left;
+
+
+}
+.lineWind span{
+
+}
+/*SUN*/
+.lineSun{
+
+}
+.lineSun span{
+
+}
+/*PRESSURE*/
+.linePressure{
+
+}
+.linePressure span {
+
+}
+/*ICON*/
+.wCondition{
+    clear:left;
+    width: 100%;
+    height: 80px;
+    float:left;
+    margin-top:15px;
+}
+.lineIco{
+
+    height: inherit;
+    width: 80px;
+    float:left;
+    /*margin:0px auto;*/
+    padding:20px -20px 20px 0px;
+
+
+
+}
+.lineIco ul{
+    margin-top: 30px;
+    margin-left: -25px;
+    /*margin-right: 1em;*/
+}
+.lineIco ul li{
+    font-size: 6em;
+    text-align: left;
+
+
+}
+.description{
+    height: 50%;
+    text-transform: capitalize;
+    text-align: justify;
+}
