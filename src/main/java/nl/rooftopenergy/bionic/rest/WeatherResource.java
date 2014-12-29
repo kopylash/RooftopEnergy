@@ -136,6 +136,10 @@ public class WeatherResource {
         dataTransfer.setSkyIcon(info.getWeather().get(0).getIcon());
         dataTransfer.setWind(info.getSpeed());
         dataTransfer.setClouds(info.getClouds());
+        dataTransfer.setTemperatureDay(info.getTemp().getDay()-ZERO_IN_KELVIN);
+        dataTransfer.setTemperatureMorning(info.getTemp().getMorn()-ZERO_IN_KELVIN);
+        dataTransfer.setTemperatureEvening(info.getTemp().getEve()-ZERO_IN_KELVIN);
+        dataTransfer.setTemperatureNight(info.getTemp().getNight()-ZERO_IN_KELVIN);
         return dataTransfer;
 
     }

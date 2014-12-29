@@ -15,12 +15,18 @@ public class WeatherDailyDataTransfer{
     private String skyIcon;
     private Integer clouds;
     private Double wind;
+    private Double temperatureEvening;
+    private Double temperatureNight;
+    private Double temperatureDay;
+    private Double temperatureMorning;
 
     public WeatherDailyDataTransfer(){}
 
-    public WeatherDailyDataTransfer(Long dt, Double tempDay, Double tempNight, Double pressure,
-                                    Integer humidity, String sky, String skyDescription,
-                                    String skyIcon, Integer clouds, Double wind) {
+    public WeatherDailyDataTransfer(
+            Long dt, Double tempDay, Double tempNight, Double pressure,
+            Integer humidity, String sky, String skyDescription,
+            String skyIcon, Integer clouds, Double wind, Double temperatureEvening,
+            Double temperatureNight, Double temperatureDay, Double temperatureMorning) {
         this.dt = dt;
         this.tempDay = tempDay;
         this.tempNight = tempNight;
@@ -31,6 +37,10 @@ public class WeatherDailyDataTransfer{
         this.skyIcon = skyIcon;
         this.clouds = clouds;
         this.wind = wind;
+        this.temperatureEvening = temperatureEvening;
+        this.temperatureNight = temperatureNight;
+        this.temperatureDay = temperatureDay;
+        this.temperatureMorning = temperatureMorning;
     }
 
     public Long getDt() {
@@ -111,5 +121,37 @@ public class WeatherDailyDataTransfer{
 
     public void setWind(Double wind) {
         this.wind = wind;
+    }
+
+    public Double getTemperatureEvening() {
+        return temperatureEvening;
+    }
+
+    public void setTemperatureEvening(Double temperatureEvening) {
+        this.temperatureEvening = temperatureEvening;
+    }
+
+    public Double getTemperatureNight() {
+        return temperatureNight;
+    }
+
+    public void setTemperatureNight(Double temperatureNight) {
+        this.temperatureNight = temperatureNight;
+    }
+
+    public Double getTemperatureDay() {
+        return temperatureDay;
+    }
+
+    public void setTemperatureDay(Double temperatureDay) {
+        this.temperatureDay = temperatureDay;
+    }
+
+    public Double getTemperatureMorning() {
+        return temperatureMorning;
+    }
+
+    public void setTemperatureMorning(Double temperatureMorning) {
+        this.temperatureMorning = temperatureMorning;
     }
 }
