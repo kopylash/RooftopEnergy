@@ -1,13 +1,16 @@
 package nl.rooftopenergy.bionic.rest;
 
 import nl.rooftopenergy.bionic.dao.company.CompanyDao;
+import nl.rooftopenergy.bionic.dao.rtfbox.RtfBoxDao;
 import nl.rooftopenergy.bionic.dao.user.UserDao;
 import nl.rooftopenergy.bionic.entity.Company;
+import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.User;
 import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.UserDataTransfer;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -25,21 +28,52 @@ public class UserSettingsDataResource {
     private CompanyDao companyDao;
 
     @Inject
+    private RtfBoxDao rtfBoxDao;
+
+    @Inject
     private UserDao userDao;
 
     @Inject
     private PrincipalInformation principalInformation;
 
     /**
-     * @param description is the new description of current user account that is about to be saved.
+     * @param paramDescription  is the new description of current user account that is about to be saved.
+     * @param paramEmail        is the new email of the user.
+     * @param paramPublicStatus is new publicStatus of the company.
+     * @param paramPanelType    is the new panelType of RTFBox connected to a company.
      */
     @POST
-    @Path("/saveNewDescription")
-    public Response saveNewDescription(@FormParam("description") String description){
-        if (description == null) description = "";
+    @Path("/saveNewUserInfo")
+    public Response saveNewDescription(@FormParam("description") String paramDescription,
+                                       @FormParam("email") String paramEmail,
+                                       @FormParam("panelType") String paramPanelType,
+                                       @FormParam("publicStatus") String paramPublicStatus) {
+        User user = userDao.findByName(principalInformation.getPrincipalName());
+        if (paramEmail != null) {
+            user.setEmail(paramEmail);
+            userDao.save(user);
+        }
+
+        //add logging and try CASCADE update
+
         Company company = principalInformation.getCompany();
-        company.setDescription(description);
+        if (paramDescription == null) {
+            paramDescription = "";
+        }
+        company.setDescription(paramDescription);
+        Boolean publicStatus = Boolean.parseBoolean(paramPublicStatus);
+        if (publicStatus != null) {
+            company.setPublicStatus(publicStatus);
+        }
         companyDao.save(company);
+
+        if (paramPanelType == null) {
+            paramPanelType = "";
+        }
+        RtfBox rtfBox = company.getRtfBox();
+        rtfBox.setPanelType(paramPanelType);
+        rtfBoxDao.save(rtfBox);
+
         return Response.ok().build();
     }
 
@@ -49,7 +83,7 @@ public class UserSettingsDataResource {
     @GET
     @Path("/getUserDescription")
     @Produces(MediaType.APPLICATION_JSON)
-    public UserDataTransfer getUserDescription(){
+    public UserDataTransfer getUserDescription() {
         String principalName = principalInformation.getPrincipalName();
         User user = userDao.findByName(principalName);
         Company company = user.getCompany();
@@ -64,9 +98,10 @@ public class UserSettingsDataResource {
         String panelType = company.getRtfBox().getPanelType();
         String description = company.getDescription();
         String email = user.getEmail();
+        Boolean publicStatus = company.getPublicStatus();
 
         UserDataTransfer userDataTransfer = new UserDataTransfer(userName, description, panelType, companyName,
-                city, zipCode, street, province, country, email);
+                city, zipCode, street, province, country, email, publicStatus);
 
         return userDataTransfer;
     }

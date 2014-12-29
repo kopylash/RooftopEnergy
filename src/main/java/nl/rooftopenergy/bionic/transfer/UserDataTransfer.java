@@ -15,6 +15,7 @@ public class UserDataTransfer {
     private String panelType;
     private String description;
     private String email;
+    private Boolean publicStatus;
 
     public UserDataTransfer(){
 
@@ -30,8 +31,10 @@ public class UserDataTransfer {
      * @param street
      * @param province
      * @param country
+     * @param email
+     * @param publicStatus
      */
-    public UserDataTransfer(String userName, String description, String panelType, String company, String city, Integer zipCode, String street, String province, String country, String email) {
+    public UserDataTransfer(String userName, String description, String panelType, String company, String city, Integer zipCode, String street, String province, String country, String email, Boolean publicStatus) {
         this.userName = userName;
         this.description = description;
         this.panelType = panelType;
@@ -42,6 +45,7 @@ public class UserDataTransfer {
         this.province = province;
         this.country = country;
         this.email = email;
+        this.publicStatus=publicStatus;
     }
 
     public String getUserName() {
@@ -122,5 +126,13 @@ public class UserDataTransfer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getPublicStatus() {
+        return publicStatus;
+    }
+
+    public void setPublicStatus(Boolean publicStatus) {
+        this.publicStatus = publicStatus;
     }
 }
