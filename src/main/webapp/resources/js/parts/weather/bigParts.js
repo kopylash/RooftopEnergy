@@ -63,7 +63,7 @@ $(function() {
     /* mock for weather forecast list*/
     var testFunction = function(number) {
         var data = new Array();
-        var TempWeatherObj = function (dt, skyIcon, skyDescription, tempNight, tempDay, wind, clouds, pressure) {
+        var TempWeatherObj = function (dt, skyIcon, skyDescription, tempNight, tempDay, wind, clouds, pressure, temperatureMorning, temperatureDay, temperatureEvening, temperatureNight) {
             this.dt = dt;
             this.skyIcon = skyIcon;
             this.tempNight = tempNight;
@@ -72,16 +72,48 @@ $(function() {
             this.clouds = clouds;
             this.pressure = pressure;
             this.skyDescription = skyDescription;
+            this.temperatureMorning = temperatureMorning;
+            this.temperatureDay = temperatureDay;
+            this.temperatureEvening = temperatureEvening;
+            this.temperatureNight = temperatureNight;
         };
         for (var i = 0; i<number; i++) {
-            data[i] = new TempWeatherObj(1419325200000, '10d', 'moderate rain fdfd', ' -36.6200000000000045', ' -38.350000000000023', '20.21', '0', "1000.96");
+            data[i] = new TempWeatherObj(1419325200000, '10d', 'moderate rain fdfd', ' -36.6200000000000045', ' -38.350000000000023', '20.21', '0', '1000.96','-1', '1', '-2', '-3');
         }
         forecastListSixteen(data);
+    };
+    var testInfo = function(){
+
+        var InfoObj = function (sunrise, sunset, wind){
+            this.sunrise = sunrise;
+            this.sunset = sunset;
+            this.wind = wind;
+        };
+        var obj = new InfoObj('8:00', '18:00','Gentle Breeze 4.97 m/s (350.002°)');
+        dayInfo(obj);
     };
     /* end mock for weather forecast list*/
 
     //var number = 3;
+    var dayInfo = function(info){
+        var sunrise = info.sunrise;
+        var sunset = info.sunset;
+        var wind = info.wind;
+        var content = "<div class='infoIcon'>"+
+                "<ul><li class='icon-sunrise'></li><li><p>Sunrise</p></li></ul>"+
+                "<ul><li class='icon-sunset'></li><li><p>Sunset</p></li></ul>"+
+                "<ul><li class='basecloud'></li><li class='icon-windy'></li><li><p>Wind</p></li></ul>"+
+                "</div>"+
+            "<div class='infoValue'>"+
+            "<div id='sunrise'>"+ sunrise +"</div>"+
+            "<div id='sunset'>"+ sunset +"</div>"+
+            "<div id='windInfo'>"+ wind +"</div>"+
+                    "</div>"
+        ;
+        $("#weatherInfoToday").html(content);
 
+
+    };
     var forecastListSixteen = function (data) {
 
         var monthNames = ["January", "February", "March", "April", "May", "June",
@@ -114,10 +146,23 @@ $(function() {
             return pic + " " + roundTemper + " <span>&ordmC</span>";
         };
 
+        var fillDailyTemperature = function (activatedTab){
+            var suffix = " <span>&ordmC</span>";
+            $("#weatherNight .dailyTempValue").html(data[activatedTab].temperatureNight + suffix);
+            $("#weatherEvening .dailyTempValue").html(data[activatedTab].temperatureEvening + suffix);
+            $("#weatherDay .dailyTempValue").html(data[activatedTab].temperatureDay + suffix);
+            $("#weatherMorning .dailyTempValue").html(data[activatedTab].temperatureMorning + suffix);
+        };
+
+        var activateTab = function(tab){
+            $(".contentLine").css({'background-color': '#c8e5bc', 'border-bottom': '1px solid #108f38'});
+            $(tab).css({'background-color': '#ffffff', 'border-bottom': 'none'});
+        };
 
         var tabs = function () {
             var note;
             var date, weatherImage, description, nightTemperature, dayTemperature, wind, sunshine, pressure;
+            var activatedTab = 0;
 
             $("#weatherContent").html("");
             for (var i = 0; i < data.length; i++) {
@@ -133,7 +178,7 @@ $(function() {
                 description = data[i].skyDescription;
 
 
-                note = "<div class='contentLine' id='line" + i + "'>" +
+                note = "<button class='contentLine' id='line" + i + "'>" +
                 "<div class='lineDate' id='date" + i + "'>" +
                 "<div class='dayOfWeek' id='day" + i+ "'></div>"+
                 "<div class='shortDate' id='shortDate" + i + "'></div>" +
@@ -152,7 +197,7 @@ $(function() {
                 "<div class='linePressure' id='press" + i + "'></div>" +
 
 
-                "</div>";
+                "</button>";
 
                 $("#weatherContent").append(note);
                 $("#nTemp" + i).html(fillTemperature("", nightTemperature));
@@ -171,33 +216,28 @@ $(function() {
                     var press = new Number(pressure);
                     return press.toFixed(1) + "<span> Hpa</span>"
                 });
+                var t = [[1,4],[2,5],[3,3],[4,1],[5,6],[6,3]];
+                $("#line"+i).button();
+                $("#line"+i).click(function(){
+                   activateTab(this);
+                    weatherGraph(t);
+                    fillDailyTemperature(activatedTab);
+                });
 
-                //$("#line"+(data.length-1)).css({'border':'none'});
+                weatherGraph(t);
+                fillDailyTemperature(activatedTab);
 
             }
-            /*switch(data.length){
-                case(3):
-                    $("#general").css({'height': '455px'});
-                    break;
-                case(7):
-                    $("#general").css({'height': '1000px'});
-                    break;
-                case(14):
-                    $("#general").css({'height': '1955px'});
-            }*/
+            $(function(){
+                $("#line0").css({'background-color': '#ffffff', 'border-bottom': 'none'});
 
+            });
         };
         tabs();
 
 
+
     };
-
-    $(".contentLine").button();
-    $(".contentLine").click(function(){
-        console.log("ddd");
-        //$(this).css({'background-color': "#ffffff"});
-
-    });
     $("#threeDays").click(function(){
         //ajaxForecastQuery(3);
         testFunction(3);
@@ -215,6 +255,7 @@ $(function() {
 
     userInfo(info);
     testFunction(3);
+    testInfo();
     //ajaxUserInfoQuery();
     //ajaxForecastQuery(3);
 
