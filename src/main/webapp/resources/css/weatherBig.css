@@ -1,8 +1,10 @@
 /*WEATHER LINES*/
 #weatherTop{
-    font-size:14px;
+    font-size: 14px;
     height: 11em;
     width: 100%;
+    display: inline-block;
+    padding: 0;
 
 }
 #weatherContent{
@@ -19,9 +21,12 @@
 
 #scrollLeft{
     float:left;
+    padding-left: 5px;
 }
 #scrollRight{
-    float:right;
+    float: right;
+    padding-right: 5px;
+    margin-left: -5px;
 }
 .contentLine {
     width: 32%;
@@ -122,6 +127,7 @@
     padding:20px -20px 20px 0px;
 }
 .lineIco ul{
+    position: relative;
     margin-top: 30px;
     margin-left: -25px;
 }
@@ -234,4 +240,85 @@
     outline:0;
     border-color: #108f38;
 }
+
+@media screen and (min-device-width: 769px) and (max-device-width: 800px){
+    .lineIco{
+        width: 50px;
+    }
+    .lineIco ul li{
+        font-size: 4em;
+    }
+    .linePressure, .lineWind, .lineSun{
+        margin-left: 32px;
+        font-size: 1em;
+    }
+
+    .temperature{
+        clear:left;
+        float:right;
+        margin-right: 0px;
+        font-size: 1.1em;
+    }
+
+}
+
+@media screen and (min-device-width: 801px)and (max-device-width: 900px){
+    .lineIco{
+        width: 50px;
+    }
+    .lineIco ul li{
+        font-size: 4.5em;
+    }
+    .linePressure, .lineWind, .lineSun{
+        margin-left: 35px;
+        font-size: 1.1em;
+    }
+
+    .temperature{
+        clear:left;
+        float:right;
+        margin-right: 0px;
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (min-device-width: 901px)and (max-device-width: 1150px){
+    .lineIco{
+        width: 50px;
+    }
+    .lineIco ul li{
+        font-size: 5em;
+    }
+    .linePressure, .lineWind, .lineSun{
+        margin-left: 45px;
+        font-size: 1.1em;
+    }
+
+    .temperature{
+        clear:left;
+        float:right;
+        margin-right: 0px;
+        font-size: 1.4em;
+    }
+}
+
+/*@media screen and (min-device-width: 1351px)and (max-device-width: 1650px){*/
+    /*.lineIco{*/
+        /*width: 50px;*/
+    /*}*/
+    /*.lineIco ul li{*/
+        /*font-size: 4em;*/
+    /*}*/
+    /*.linePressure, .lineWind, .lineSun{*/
+        /*margin-left: 32px;*/
+        /*font-size: 1em;*/
+    /*}*/
+
+    /*.temperature{*/
+        /*clear:left;*/
+        /*float:right;*/
+        /*margin-right: 0px;*/
+        /*font-size: 1.1em;*/
+    /*}*/
+/*}*/
 
