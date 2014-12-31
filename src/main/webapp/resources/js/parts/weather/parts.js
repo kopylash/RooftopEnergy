@@ -2,7 +2,7 @@
  * Created by alex on 12/23/14.
  */
 $(function() {
-    var weatherIcons = {
+    const WEATHER_ICONS = {
         sunny : '<ul><li class="icon-sun"></li></ul>',
         moon : '<ul><li class="icon-moon"></li></ul>',
         fewCloudsDay : '<ul><li class="cloud-plus"></li><li class="icon-sunny"></li></ul>',
@@ -53,7 +53,10 @@ $(function() {
     var userInfo = function(info){
         $("#generalHeader").html(info.city);
     };
- /* mock for info about weather */
+
+//////////////BEGIN - TEST DATA////////////////////////////////////////////////////////////////////
+
+    /* mock for info about weather */
 
     var TempUserInfo = function(city){
         this.city = city;
@@ -80,100 +83,19 @@ $(function() {
         forecastListSixteen(data);
     };
 /* end mock for weather forecast list*/
-
-    //var number = 3;
+//////////////END - TEST DATA////////////////////////////////////////////////////////////////////
 
     var forecastListSixteen = function (data) {
 
-        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-        var daysArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        var weatherPictures = {
-            '01d' : weatherIcons.sunny,
-            '01n' : weatherIcons.moon,
-            '02d' : weatherIcons.fewCloudsDay,
-            '02n' : weatherIcons.fewCloudsDay,
-            '03d' : weatherIcons.scatteredClouds,
-            '03n' : weatherIcons.scatteredClouds,
-            '04n' : weatherIcons.brokenClouds,
-            '04d' : weatherIcons.brokenClouds,
-            '09d' : weatherIcons.showerRain,
-            '09n' : weatherIcons.showerRain,
-            '10d' : weatherIcons.rainDay,
-            '10n' : weatherIcons.rainNight,
-            '11d' : weatherIcons.thunderstorm,
-            '11n' : weatherIcons.thunderstorm,
-            '13d' : weatherIcons.snow,
-            '13n' : weatherIcons.snow,
-            '50d' : weatherIcons.mist,
-            '50n' : weatherIcons.mist
-        };
-
-        var fillTemperature = function (pic, temper) {
-            var roundTemper = Math.round(temper);
-            return pic + " " + roundTemper + " <span>&ordmC</span>";
-        };
-
         var list = function () {
-            var note;
-            var date, weatherImage, description, nightTemperature, dayTemperature, wind, sunshine, pressure;
 
             $("#weatherContent").html("");
+
             for (var i = 0; i < data.length; i++) {
-                date = new Date(data[i].dt);
-                //"<div class='lineIco' id='ico" + i + "'>" + weatherImage + "</div>" +
-                //weatherImage = "<img src='resources/images/weather/" + data[i].skyIcon + ".png'/>";
-                weatherImage = weatherPictures[data[i].skyIcon];
-                nightTemperature = data[i].tempNight;
-                dayTemperature = data[i].tempDay;
-                wind = data[i].wind;
-                sunshine = 100 - data[i].clouds;
-                pressure = data[i].pressure;
-                description = data[i].skyDescription;
-
-
-                note = "<div class='contentLine' id='line" + i + "'>" +
-                            "<div class='lineDate' id='date" + i + "'>" +
-                                "<div class='dayOfWeek' id='day" + i+ "'></div>"+
-                                "<div class='shortDate' id='shortDate" + i + "'></div>" +
-                            "</div>"+
-                            "<div class='temperature' id='temperature"+i+"'>"+
-                                "<div class='lineNightTemp' id='nTemp" + i + "'></div>" +
-                                "<div class='lineDayTemp' id='dTemp" + i + "'></div>" +
-                            "</div>"+
-                            "<div class='wCondition' id='wCondition"+i+"'>"+
-                                "<div class='lineIco' id='ico" + i + "'>" + weatherImage + "</div>"+
-                                "<div class='description' id='wDescription"+i+"'>"+description+"</div>"+
-                            "</div>"+
-                            "<div class='lineWind' id='wind" + i + "'></div>" +
-                            "<div class='lineSun' id='sun" + i + "'></div>" +
-                            "<div class='linePressure' id='press" + i + "'></div>" +
-
-
-                        "</div>";
-
-                $("#weatherContent").append(note);
-                $("#nTemp" + i).html(fillTemperature("<i class='fa fa-moon-o'></i>", nightTemperature));
-                $("#dTemp" + i).html(fillTemperature("<i class='fa fa-sun-o'></i>", dayTemperature));
-                $("#day" + i).html(function(){
-                    return daysArr[date.getDay()];
-                });
-                $("#shortDate" + i).html(function () {
-                    return date.getDate() + " " + monthNames[date.getMonth()];
-                });
-                $("#wind" + i).html(function () {
-                    return "<i class='fa fa-long-arrow-right'></i> " + Math.round(wind) + "<span> m/s</span>";
-                });
-                $("#sun" + i).html("<i class='fa fa-sun-o'></i> " + sunshine + "<span> %</span>");
-                $("#press" + i).html(function(){
-                    var press = new Number(pressure);
-                    return press.toFixed(1) + "<span> Hpa</span>"
-                });
-
-                    $("#line"+(data.length-1)).css({'border':'none'});
-
+                fillLine(data, i);
+                $("#line"+(data.length-1)).css({'border':'none'});
             }
+
             switch(data.length){
                 case(3):
                     $("#general").css({'height': '455px'});
@@ -187,8 +109,6 @@ $(function() {
 
         };
         list();
-
-
     };
 
     var buttonStyles = function(buttId){
@@ -217,5 +137,90 @@ $(function() {
     testFunction(3);
     //ajaxUserInfoQuery();
     //ajaxForecastQuery(3);
+
+
+    function fillTemperature(pic, temper) {
+        var roundTemper = Math.round(temper);
+        return pic + " " + roundTemper + " <span>&ordmC</span>";
+    }
+
+    function fillLine(data, index){
+        const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        const DAY_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const WEATHER_PICTURE = {
+            '01d' : WEATHER_ICONS.sunny,
+            '01n' : WEATHER_ICONS.moon,
+            '02d' : WEATHER_ICONS.fewCloudsDay,
+            '02n' : WEATHER_ICONS.fewCloudsDay,
+            '03d' : WEATHER_ICONS.scatteredClouds,
+            '03n' : WEATHER_ICONS.scatteredClouds,
+            '04n' : WEATHER_ICONS.brokenClouds,
+            '04d' : WEATHER_ICONS.brokenClouds,
+            '09d' : WEATHER_ICONS.showerRain,
+            '09n' : WEATHER_ICONS.showerRain,
+            '10d' : WEATHER_ICONS.rainDay,
+            '10n' : WEATHER_ICONS.rainNight,
+            '11d' : WEATHER_ICONS.thunderstorm,
+            '11n' : WEATHER_ICONS.thunderstorm,
+            '13d' : WEATHER_ICONS.snow,
+            '13n' : WEATHER_ICONS.snow,
+            '50d' : WEATHER_ICONS.mist,
+            '50n' : WEATHER_ICONS.mist
+        };
+        var note;
+        var date, weatherImage, description, nightTemperature, dayTemperature, wind, sunshine, pressure;
+
+        date = new Date(data[index].dt);
+        //"<div class='lineIco' id='ico" + i + "'>" + weatherImage + "</div>" +
+        //weatherImage = "<img src='resources/images/weather/" + data[i].skyIcon + ".png'/>";
+        weatherImage = WEATHER_PICTURE[data[index].skyIcon];
+        nightTemperature = data[index].tempNight;
+        dayTemperature = data[index].tempDay;
+        wind = data[index].wind;
+        sunshine = 100 - data[index].clouds;
+        pressure = data[index].pressure;
+        description = data[index].skyDescription;
+
+
+        note = "<div class='contentLine' id='line" + index + "'>" +
+        "<div class='lineDate' id='date" + index + "'>" +
+        "<div class='dayOfWeek' id='day" + index+ "'></div>"+
+        "<div class='shortDate' id='shortDate" + index + "'></div>" +
+        "</div>"+
+        "<div class='temperature' id='temperature"+index+"'>"+
+        "<div class='lineNightTemp' id='nTemp" + index + "'></div>" +
+        "<div class='lineDayTemp' id='dTemp" + index + "'></div>" +
+        "</div>"+
+        "<div class='wCondition' id='wCondition"+index+"'>"+
+        "<div class='lineIco' id='ico" + index + "'>" + weatherImage + "</div>"+
+        "<div class='description' id='wDescription"+index+"'>"+description+"</div>"+
+        "</div>"+
+        "<div class='lineWind' id='wind" + index + "'></div>" +
+        "<div class='lineSun' id='sun" + index + "'></div>" +
+        "<div class='linePressure' id='press" + index + "'></div>" +
+
+
+        "</div>";
+
+        $("#weatherContent").append(note);
+        $("#nTemp" + index).html(fillTemperature("<i class='fa fa-moon-o'></i>", nightTemperature));
+        $("#dTemp" + index).html(fillTemperature("<i class='fa fa-sun-o'></i>", dayTemperature));
+        $("#day" + index).html(function(){
+            return DAY_OF_WEEK[date.getDay()];
+        });
+        $("#shortDate" + index).html(function () {
+            return date.getDate() + " " + MONTH_NAMES[date.getMonth()];
+        });
+        $("#wind" + index).html(function () {
+            return "<i class='fa fa-long-arrow-right'></i> " + Math.round(wind) + "<span> m/s</span>";
+        });
+        $("#sun" + index).html("<i class='fa fa-sun-o'></i> " + sunshine + "<span> %</span>");
+        $("#press" + index).html(function(){
+            var press = new Number(pressure);
+            return press.toFixed(1) + "<span> Hpa</span>"
+        });
+    }
 
 });
