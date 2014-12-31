@@ -19,6 +19,10 @@ body{
 
 #weatherPeriod .btn {
     width: 33%;
+    margin-left:0px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
 
@@ -144,12 +148,12 @@ main{
         width: 72%;
         margin:0 auto;
     }
-    #weatherMenuButtons .btn{
-        margin-left:0px;
-        border-radius: 2px;
-        -moz-border-radius: 2px;
-        -webkit-border-radius: 2px;
-    }
+    /*#weatherMenuButtons .btn{*/
+        /*margin-left:0px;*/
+        /*border-radius: 2px;*/
+        /*-moz-border-radius: 2px;*/
+        /*-webkit-border-radius: 2px;*/
+    /*}*/
     #general{
         margin-right:  auto;
         margin-left:  auto;

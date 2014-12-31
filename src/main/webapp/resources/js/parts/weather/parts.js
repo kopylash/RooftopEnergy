@@ -191,15 +191,23 @@ $(function() {
 
     };
 
+    var buttonStyles = function(buttId){
+        $("#weatherPeriod button").css({'background-color': '#108F38', 'color': '#fffffe'});
+        $("#"+buttId).css({'background-color': '#fffff0', 'color': '#108F38'});
+    };
+
     $("#threeDays").click(function(){
+        buttonStyles(this.id);
         //ajaxForecastQuery(3);
        testFunction(3);
     });
     $("#sevenDays").click(function(){
+        buttonStyles(this.id);
         //ajaxForecastQuery(7);
        testFunction(7);
     });
     $("#fourteenDays").click(function(){
+        buttonStyles(this.id);
         //ajaxForecastQuery(14);
        testFunction(14);
     });

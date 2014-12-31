@@ -135,3 +135,14 @@
 
     float:left;
 }
+
+#threeDays{
+    background-color: #FFFFFE;
+    color: #108f38;
+
+}
+
+.btn-default:focus {
+    outline:0;
+    border-color: #108f38;
+}
