@@ -1,6 +1,8 @@
 /*WEATHER LINES*/
 #weatherContent{
     width: 100%;
+    overflow-y: scroll;
+    height: 350px;
 
 }
 .contentLine {
@@ -119,6 +121,7 @@
 
 }
 .lineIco ul{
+    position: relative;
     margin-top: 30px;
     margin-left: -20px;
 }
@@ -146,3 +149,11 @@
     outline:0;
     border-color: #108f38;
 }
+
+#main{
+    /*margin-top: 5%;*/
+    /*padding-top: 0;*/
+    height: 350px;
+    overflow: hidden;
+}
+

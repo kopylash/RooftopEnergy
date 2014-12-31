@@ -174,7 +174,7 @@ main{
     }
 }
 
-@media screen and (min-device-width: 651px)and (max-device-width: 767px){
+@media screen and (min-device-width: 651px)and (max-device-width: 768px){
     #general{
         width: 80%;
     }
