@@ -19,10 +19,23 @@ body{
 
 #weatherPeriod .btn {
     width: 33%;
-    margin-left:0px;
+    /*margin-left:0px;*/
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
+}
+
+#threeDays{
+
+    float: left;
+}
+
+#sevenDays{
+    margin-left: 1%;
+}
+
+#fourteenDays{
+    float: right;
 }
 
 
@@ -36,7 +49,7 @@ main{
     font-size: 16px;
     background-color: #ffffff;
     border: 1px solid #108f38;
-    width: 255px;
+    width: 97%;
     height: 335px;
     /*-moz-box-shadow: 0 0 2px 1px #108f38;*/
     /*-webkit-box-shadow: 0 0 2px 1px #108f38;*/
@@ -48,7 +61,7 @@ main{
 }
 
 #generalSize{
-    width: 255px;
+    width: 100%;
     height: 335px;
 }
 
@@ -143,11 +156,40 @@ main{
     }
 }
 
+@media screen and (min-device-width: 240px) and (max-device-width: 299px){
+    #general{
+        width: 100%;
+    }
+}
+
+@media screen and (min-device-width: 320px)and (max-device-width: 420px){
+    #general{
+        width: 92%;
+    }
+}
+
+@media screen and (min-device-width: 421px)and (max-device-width: 650px){
+    #general{
+        width: 85%;
+    }
+}
+
+@media screen and (min-device-width: 651px)and (max-device-width: 767px){
+    #general{
+        width: 80%;
+    }
+}
+
 @media screen and  (min-device-width: 769px){
     #weatherMenuButtons{
         width: 72%;
         margin:0 auto;
     }
+
+    #sevenDays{
+        margin-left: 0.84%;
+    }
+
     /*#weatherMenuButtons .btn{*/
         /*margin-left:0px;*/
         /*border-radius: 2px;*/

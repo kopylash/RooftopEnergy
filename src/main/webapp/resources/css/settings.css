@@ -110,6 +110,9 @@ textarea{
     background: #f7f3eb;
     color: #777;
     transition: color 0.3s ease-out;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
 .form input[type=text],
@@ -302,6 +305,9 @@ textarea {
     /*width: 120px;*/
     margin-bottom: 0;
     margin-top: 0;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
 #sub{
