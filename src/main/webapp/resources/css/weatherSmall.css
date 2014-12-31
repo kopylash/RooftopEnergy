@@ -3,6 +3,7 @@
     width: 100%;
     overflow-y: scroll;
     height: 350px;
+    padding-bottom: 70px;
 
 }
 .contentLine {
@@ -157,3 +158,49 @@
     overflow: hidden;
 }
 
+@media screen and (min-device-height: 481px)and (max-device-height: 520px){
+    #main{
+        height: 400px;
+    }
+
+    #weatherContent{
+        height: 400px;
+    }
+
+}
+
+@media screen and (min-device-height: 521px)and (max-device-height: 600px){
+    #main{
+        height: 450px;
+    }
+    #weatherContent{
+        height: 450px;
+    }
+}
+
+@media screen and (min-device-height: 601px)and (max-device-height: 700px){
+    #main{
+        height: 520px;
+    }
+    #weatherContent{
+        height: 520px;
+    }
+}
+
+@media screen and (min-device-height: 701px)and (max-device-height: 800px){
+    #main{
+        height: 650px;
+    }
+    #weatherContent{
+        height: 650px;
+    }
+}
+
+@media screen and (min-device-height: 801px)and (max-device-height: 1300px) {
+    #main{
+        height: 680px;
+    }
+    #weatherContent{
+        height: 680px;
+    }
+}
