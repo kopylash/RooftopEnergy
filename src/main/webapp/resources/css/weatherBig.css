@@ -149,18 +149,36 @@
     clear:both;
     width:100%;
 }
+#weatherInfoToday h6{
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    margin: 4px auto;
+}
+
 #weatherInfoToday{
-    width: 30%;
-    height: 11em;
-    float:left;
+    border-radius: 2px;
+    background-color: #C8E5BC;
+    border: 1px solid #108f38;
+    width: 26%;
+    height: 8em;
+    position: absolute;
+    /*float:left;*/
+    margin-left: -10px;
+    margin-bottom: -10px;
+    /*z-index: 5;*/
     /*border-right:1px solid #108F38;*/
 }
 .infoIcon ul{
     /*padding-bottom: -4px;*/
+    margin-top: 0;
+    padding-top: 0;
 }
 .infoIcon ul li{
     font-size: 3em;
 }
+
+
 .infoIcon p{
     height:2.5em;
     padding-top:20px;
@@ -170,22 +188,41 @@
 }
 .infoIcon{
     float:left;
+    margin-top: -15px;
+
 }
 .infoValue{
     font-size: 1em;
-    margin-top:15px;
+    margin-top:5px;
     margin-left:70px;
 }
 #sunrise{
-    margin-top:0;
+    margin-top:7px;
 }
 #sunset{
-    margin-top:20px;
+    margin-top:17px;
 }
 #windInfo{
-    margin-top:15px;
+    line-height: 1.2em;
+    font-size: 1em;
+    margin-top:10px;
     width:200px;
 }
+
+@media screen and (min-device-width: 769px) and (max-device-width: 900px){
+    #windInfo{
+        width:150px;
+        font-size: 0.92em;
+    }
+}
+
+@media screen and (min-device-width: 901px)and (max-device-width: 1200px){
+    #windInfo{
+        width:175px;
+        font-size: 0.96em;
+    }
+}
+
 #duringDay{
     width: 100%;
 }

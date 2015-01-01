@@ -4,12 +4,10 @@
 //$(function () {
 function weatherGraph (data) {
     var arr = new Array();
-    //for (i in data) {
-    //    arr[i] =  [data[i]["date"], data[i]["value"]/1000];
-    //}
-    for (var i = 0; i < 8; i++) {
-        arr[i] =  [i, i*(Math.random()+10)];
+    for (i in data) {
+        arr[i] =  [data[i]["date"], data[i]["clouds"]];
     }
+
 
     Highcharts.setOptions({
         global: {
@@ -30,7 +28,7 @@ function weatherGraph (data) {
 
         },
         title: {
-            text: 'Some Graph'
+            text: 'Clouds'
         },
         credits: {
             enabled: false
@@ -43,7 +41,7 @@ function weatherGraph (data) {
         },
         yAxis: {
             title: {
-                text: 'mm'
+                text: '%'
 
             }
         },
@@ -77,7 +75,7 @@ function weatherGraph (data) {
 
         series: [{
             type: 'column',
-            name: 'Rain (mm)',
+            name: 'Clouds (%)',
             pointInterval:  12*300 * 1000,
             //pointStart: arrDate[0],
             data: arr

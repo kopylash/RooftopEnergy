@@ -2,6 +2,10 @@
  * Created by alex on 12/26/14.
  */
 $(function() {
+
+    const DAYS_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
     const SHOWED_TABS = 3; //Number of visible tabs in forecast.
     const WEATHER_ICONS = {
         sunny : '<ul><li class="icon-sun"></li></ul>',
@@ -17,6 +21,8 @@ $(function() {
         snow : '<ul><li class="basecloud"></li><li class="icon-snowy"></li></ul>',
         mist : '<ul><li class="icon-mist"></li></ul>'
     };
+
+    var cloudarr = [];
 
     var data;
     function ajaxUserInfoQuery(){
@@ -93,15 +99,27 @@ $(function() {
     };
     var testInfo = function(){
 
-        var InfoObj = function (sunrise, sunset, wind){
+        var InfoObj = function (sunrise, sunset, wind, dt){
             this.sunrise = sunrise;
             this.sunset = sunset;
             this.wind = wind;
+            this.dt = dt;
         };
-        var obj = new InfoObj('8:00', '18:00','Gentle Breeze 4.97 m/s (350.002°)');
+        var obj = new InfoObj('8:00', '18:00','Gentle Breeze 4.97 m/s (350.002°)', 1419325200000);
         dayInfo(obj);
     };
     /* end mock for weather forecast list*/
+    var testGraph = function(){
+        var InfoObj = function (date, clouds){
+            this.date = date;
+            this.clouds = clouds;
+        };
+        for (var i = 0; i < 8; i++){
+            cloudarr[i] = new InfoObj(1419325200000 +3 *i * 3600000, 10 * i);
+        }
+        weatherGraph(cloudarr);
+    };
+
 //////////////END - TEST DATA////////////////////////////////////////////////////////////////////
 
     var length;
@@ -123,11 +141,12 @@ $(function() {
                 $("#line"+i).click(function(){
                     activeTab = $(this).attr('id');
                     activateTab("#"+activeTab);
-                    weatherGraph(t);
+                    testGraph();
                     fillDailyTemperature(data, activeTab);
                 });
                 //build graph
-                weatherGraph(t);
+                console.log(cloudarr);
+                testGraph();
 
                 //fill morning, day, evening, night temperatures
                 fillDailyTemperature(data, "0");
@@ -224,17 +243,21 @@ $(function() {
         var sunrise = info.sunrise;
         var sunset = info.sunset;
         var wind = info.wind;
+        var dt = new Date(info.dt);
         var content = "<div class='infoIcon'>"+
                 "<ul><li class='icon-sunrise'></li><li><p>Sunrise</p></li></ul>"+
                 "<ul><li class='icon-sunset'></li><li><p>Sunset</p></li></ul>"+
-                "<ul><li class='basecloud'></li><li class='icon-windy'></li><li><p>Wind</p></li></ul>"+
+                "<ul id='iconWind'><li class='basecloud'></li><li class='icon-windy'></li><li><p>Wind</p></li></ul>"+
                 "</div>"+
                 "<div class='infoValue'>"+
                 "<div id='sunrise'>"+ sunrise +"</div>"+
                 "<div id='sunset'>"+ sunset +"</div>"+
                 "<div id='windInfo'>"+ wind +"</div>"+
                 "</div>";
-        $("#weatherInfoToday").html(content);
+        $("#weatherInfoToday h6").append(" "+ dt.getDate() + " " +MONTH_NAMES[dt.getMonth()]);
+        $("#weatherInfoToday").append(content);
+
+
     }
     function fillTemperature (pic, temper) {
         var roundTemper = Math.round(temper);
@@ -266,9 +289,9 @@ $(function() {
             '50d' : WEATHER_ICONS.mist,
             '50n' : WEATHER_ICONS.mist
         };
-        const DAYS_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"];
+        //const DAYS_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        //const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+        //    "July", "August", "September", "October", "November", "December"];
 
         date = new Date(data[i].dt);
         weatherImage = WEATHER_PICTURES[data[i].skyIcon];
