@@ -40,7 +40,6 @@ $(function() {
             }
         });
     }
-
     function ajaxForecastQuery(numberOfDays, startNumber) {
         $.ajax({
             type: 'post',
@@ -58,6 +57,23 @@ $(function() {
             }
         });
     }
+    function ajaxActualDayForecastQuery(){
+        $.ajax({
+            type: 'post',
+            url: "/rest/weather/actualDay",
+            crossDomain: true,
+            //data: {'days': numberOfDays},
+            error: function (actualDayInfo) {
+                $('#main').html(actualDayInfo.responseText);
+            },
+            statusCode: {
+                200: function (actualDayInfo) {
+                    actualDay(actualDayInfo);
+                }
+            }
+        });
+    }
+
     function userInfo(info){
         $("#generalHeader").html(info.city);
     }
@@ -99,13 +115,15 @@ $(function() {
     };
     var testInfo = function(){
 
-        var InfoObj = function (sunrise, sunset, wind, dt){
+        var InfoObj = function (sunrise, sunset, speed, deg, description, dt){
             this.sunrise = sunrise;
             this.sunset = sunset;
-            this.wind = wind;
+            this.speed = speed;
+            this.deg = deg;
+            this.description = description;
             this.dt = dt;
         };
-        var obj = new InfoObj('8:00', '18:00','Gentle Breeze 4.97 m/s (350.002°)', 1419325200000);
+        var obj = new InfoObj('8:00', '18:00', '4.97', '350.002', 'Gentle Breeze  m/s (350.002°)', 1419325200000);
         dayInfo(obj);
     };
     /* end mock for weather forecast list*/
@@ -145,7 +163,6 @@ $(function() {
                     fillDailyTemperature(data, activeTab);
                 });
                 //build graph
-                console.log(cloudarr);
                 testGraph();
 
                 //fill morning, day, evening, night temperatures
@@ -186,7 +203,7 @@ $(function() {
             activeTab = "line"+id;
             activateTab("#"+activeTab);
             fillDailyTemperature(data, activeTab);
-            console.log(activeTab);
+            //console.log(activeTab);
         }
     });
     $("#scrollRight").click(function(){
@@ -200,7 +217,7 @@ $(function() {
             activeTab = "line"+id;
             activateTab("#"+activeTab);
             fillDailyTemperature(data, activeTab);
-            console.log(activeTab);
+            //console.log(activeTab);
         }
 
 
@@ -213,38 +230,37 @@ $(function() {
 
     $("#threeDays").click(function(){
         buttonStyles(this.id);
-        //totalTabs = 3;
-        console.log("tabs=" + 3);
-        //ajaxForecastQuery(3);
-        testFunction(3);
+        ajaxForecastQuery(3);
+        //testFunction(3);
     });
     $("#sevenDays").click(function(){
         buttonStyles(this.id);
-        //totalTabs = 7;
-        console.log("tabs=" + 7);
-        //ajaxForecastQuery(7);
-        testFunction(7);
+        ajaxForecastQuery(7);
+        //testFunction(7);
     });
     $("#fourteenDays").click(function(){
         buttonStyles(this.id);
-        //totalTabs = 14;
-        console.log("tabs=" + 14);
-        //ajaxForecastQuery(14);
-        testFunction(14);
+        ajaxForecastQuery(14);
+        //testFunction(14);
     });
 
-    userInfo(info);
-    testFunction(3);
-    testInfo();
-    //ajaxUserInfoQuery();
-    //ajaxForecastQuery(3);
+    //userInfo(info);
+    //testFunction(3);
+    //testInfo();
+    ajaxUserInfoQuery();
+    ajaxForecastQuery(3);
+    ajaxActualDayForecastQuery();
 
-    function dayInfo(info){
-        var sunrise = info.sunrise;
-        var sunset = info.sunset;
-        var wind = info.wind;
+    function actualDay(info){
+        //console.log("dayInfo():ActualDay: " + info);
+        var sunriseTime = new Date(info.sunrise);
+        var sunsetTime = new Date(info.sunset);
+        var sunrise = sunriseTime.getHours() + ":" + sunriseTime.getMinutes();
+        var sunset = sunsetTime.getHours() + ":" + sunsetTime.getMinutes();
+        var wind = info.speed + " m/s (" + Math.round(info.deg) +"&ordm)";
         var dt = new Date(info.dt);
-        var content = "<div class='infoIcon'>"+
+        var content = "<h6>Today: "+ dt.getDate() + " " + MONTH_NAMES[dt.getMonth()] + "</h6>" +
+        "<div class='infoIcon'>"+
                 "<ul><li class='icon-sunrise'></li><li><p>Sunrise</p></li></ul>"+
                 "<ul><li class='icon-sunset'></li><li><p>Sunset</p></li></ul>"+
                 "<ul id='iconWind'><li class='basecloud'></li><li class='icon-windy'></li><li><p>Wind</p></li></ul>"+
@@ -254,8 +270,7 @@ $(function() {
                 "<div id='sunset'>"+ sunset +"</div>"+
                 "<div id='windInfo'>"+ wind +"</div>"+
                 "</div>";
-        $("#weatherInfoToday h6").append(" "+ dt.getDate() + " " +MONTH_NAMES[dt.getMonth()]);
-        $("#weatherInfoToday").append(content);
+        $("#weatherInfoToday").html(content);
 
 
     }
@@ -264,7 +279,6 @@ $(function() {
         return pic + " " + roundTemper + " <span>&ordmC</span>";
     }
     function fillTab(data, index){
-        console.log("data:" +data);
         var i = index;
         var note;
         var date, weatherImage, description, nightTemperature, dayTemperature, wind, sunshine, pressure;
@@ -289,9 +303,6 @@ $(function() {
             '50d' : WEATHER_ICONS.mist,
             '50n' : WEATHER_ICONS.mist
         };
-        //const DAYS_OF_WEEK = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        //const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
-        //    "July", "August", "September", "October", "November", "December"];
 
         date = new Date(data[i].dt);
         weatherImage = WEATHER_PICTURES[data[i].skyIcon];
