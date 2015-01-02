@@ -279,12 +279,12 @@ $(function() {
         console.log("from buildGraph " + cloudarr);
         var day;
         if (thisDay instanceof Date){
-            day = thisDay.getDay();
+            day = thisDay.getDate();
         }
         var array = [];
         var j = 0;
         for (var i = 0; i < cloudarr.length; i++){
-            var dt = new Date(cloudarr[i]['dt']).getDay();
+            var dt = new Date(cloudarr[i]['dt']).getDate();
             if (dt === day){
                 array[j] = [cloudarr[i]['dt'], cloudarr[i]['clouds']];
                 j++;
