@@ -1,5 +1,6 @@
 package nl.rooftopenergy.bionic.rest;
 
+import nl.rooftopenergy.bionic.transfer.WeatherActualDataTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherDailyDataTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherFiveDaysDataTransfer;
 import org.junit.BeforeClass;
@@ -46,5 +47,11 @@ public class WeatherResourceTest {
         List<WeatherFiveDaysDataTransfer> data = weatherResource.showFiveDayWeather(CITY);
         assertNotNull(data);
 
+    }
+
+    @org.junit.Test
+    public void testShowActualDayWeather() throws Exception{
+        WeatherActualDataTransfer data = weatherResource.showActualDayWeather();
+        assertNotNull(data);
     }
 }

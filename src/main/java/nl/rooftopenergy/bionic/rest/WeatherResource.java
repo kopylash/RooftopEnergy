@@ -4,12 +4,14 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import nl.rooftopenergy.bionic.pojo.weather.WeatherForecastActualDay;
 import nl.rooftopenergy.bionic.pojo.weather.WeatherForecastForFiveDays;
 import nl.rooftopenergy.bionic.pojo.weather.WeatherForecastForSixteenDays;
 import nl.rooftopenergy.bionic.pojo.weather.info.Info;
 import nl.rooftopenergy.bionic.pojo.weather.info.Precipitation;
 import nl.rooftopenergy.bionic.pojo.weather.info.TemperatureInfo;
 import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
+import nl.rooftopenergy.bionic.transfer.WeatherActualDataTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherDailyDataTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherFiveDaysDataTransfer;
 import org.apache.log4j.Logger;
@@ -36,7 +38,8 @@ public class WeatherResource {
     private static final Logger logger = Logger.getLogger(WeatherResource.class.getName());
     private static final String DAILY_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
     private static final String FIVE_DAYS_URL = "http://api.openweathermap.org/data/2.5/forecast?q=";
-    private static final int MAX_DAYS_FORECAST = 16;
+    private static final String ACTUAL_DAY_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
+    private static final int MAX_DAYS_FORECAST = 14;
     private static final double ZERO_IN_KELVIN = 273.15;
 
     @Inject
@@ -123,6 +126,38 @@ public class WeatherResource {
 
     }
 
+    @POST
+    @Path("actualDay")
+    @Produces(MediaType.APPLICATION_JSON)
+    public WeatherActualDataTransfer showActualDayWeather(){
+        String thisCity = principalInformation.getCompany().getTown();
+        WeatherActualDataTransfer result = null;
+        try {
+        /*    HttpResponse<JsonNode> response1 = Unirest.get( ACTUAL_DAY_URL + thisCity + "&mode=json").asJson();
+            String json = response1.getBody().toString();
+            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/actual.json")));
+            out.write(json);
+            out.close();
+            ObjectMapper mapper = new ObjectMapper();
+            WeatherForecastActualDay weather = mapper.readValue(json, WeatherForecastActualDay.class);
+*/
+            ObjectMapper mapper = new ObjectMapper();
+            WeatherForecastActualDay weather = mapper.readValue(new FileInputStream(new File("/home/alex/actual.json")), WeatherForecastActualDay.class);
+
+            result = getActualForecast(weather);
+
+//        } catch (UnirestException e){
+//            logger.warn(e.getMessage(), e);
+        } catch (JsonGenerationException e) {
+            logger.warn(e.getMessage(), e);
+        } catch (JsonMappingException e) {
+            logger.warn(e.getMessage(), e);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
+    }
+
     private WeatherDailyDataTransfer getForecast(TemperatureInfo info){
 
         WeatherDailyDataTransfer dataTransfer = new WeatherDailyDataTransfer();
@@ -171,6 +206,19 @@ public class WeatherResource {
         dataTransfer.setSkyDescription(info.getWeather().get(0).getDescription());
         dataTransfer.setSkyIcon(info.getWeather().get(0).getIcon());
         dataTransfer.setClouds(info.getClouds().getAll());
+        return dataTransfer;
+
+    }
+
+    private WeatherActualDataTransfer getActualForecast(WeatherForecastActualDay weather){
+
+        WeatherActualDataTransfer dataTransfer = new WeatherActualDataTransfer();
+        dataTransfer.setDt(weather.getDt() * 1000); //This parameter does not include milliseconds in JSON
+        dataTransfer.setSunrise(weather.getSys().getSunrise() * 1000);//This parameter does not include milliseconds in JSON
+        dataTransfer.setSunset(weather.getSys().getSunset() *1000);//This parameter does not include milliseconds in JSON
+        dataTransfer.setSpeed(weather.getWind().getSpeed());
+        dataTransfer.setDeg(weather.getWind().getDeg());
+        dataTransfer.setDescription(weather.getWeather().get(0).getDescription());
         return dataTransfer;
 
     }

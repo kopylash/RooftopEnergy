@@ -10,11 +10,19 @@ import java.io.Serializable;
  */
 public class Sys implements Serializable {
     private Integer population;
+    private Double message;
+    private String country;
+    private Long sunrise;
+    private Long sunset;
 
     public Sys(){}
 
-    public Sys(Integer population) {
+    public Sys(Integer population, Double message, String country, Long sunrise, Long sunset) {
         this.population = population;
+        this.message = message;
+        this.country = country;
+        this.sunrise = sunrise;
+        this.sunset = sunset;
     }
 
     /**
@@ -33,6 +41,69 @@ public class Sys implements Serializable {
         this.population = population;
     }
 
+    /**
+     *Gets system parameter (do not use it)
+     * @return system parameter
+     */
+    public Double getMessage() {
+        return message;
+    }
+    /**
+     *Sets system parameter (do not use it)
+     * @param message system parameter
+     */
+    public void setMessage(Double message) {
+        this.message = message;
+    }
+
+    /**
+     * Gets country (GB, JP etc.)
+     * @return country
+     */
+    public String getCountry() {
+        return country;
+    }
+
+    /**
+     * Sets country (GB, JP etc.)
+     * @param country
+     */
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    /**
+     * Gets sunrise time, unix, UTC
+     * @return sunrise time
+     */
+    public Long getSunrise() {
+        return sunrise;
+    }
+
+    /**
+     * Sets sunrise time, unix, UTC
+     * @param sunrise time
+     */
+    public void setSunrise(Long sunrise) {
+        this.sunrise = sunrise;
+    }
+
+    /**
+     * Gets sunrise time, unix, UTC
+     * @return sunset time
+     */
+    public Long getSunset() {
+        return sunset;
+    }
+
+    /**
+     * Sets sunset time, unix, UTC
+     * @param sunset time
+     */
+    public void setSunset(Long sunset) {
+        this.sunset = sunset;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,20 +111,33 @@ public class Sys implements Serializable {
 
         Sys sys = (Sys) o;
 
+        if (country != null ? !country.equals(sys.country) : sys.country != null) return false;
+        if (message != null ? !message.equals(sys.message) : sys.message != null) return false;
         if (population != null ? !population.equals(sys.population) : sys.population != null) return false;
+        if (sunrise != null ? !sunrise.equals(sys.sunrise) : sys.sunrise != null) return false;
+        if (sunset != null ? !sunset.equals(sys.sunset) : sys.sunset != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return population != null ? population.hashCode() : 0;
+        int result = population != null ? population.hashCode() : 0;
+        result = 31 * result + (message != null ? message.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (sunrise != null ? sunrise.hashCode() : 0);
+        result = 31 * result + (sunset != null ? sunset.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
         return "Sys{" +
                 "population=" + population +
+                ", message=" + message +
+                ", country='" + country + '\'' +
+                ", sunrise=" + sunrise +
+                ", sunset=" + sunset +
                 '}';
     }
 }
