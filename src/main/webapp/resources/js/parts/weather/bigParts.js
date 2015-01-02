@@ -10,8 +10,8 @@ $(function() {
     const WEATHER_ICONS = {
         sunny : '<ul><li class="icon-sun"></li></ul>',
         moon : '<ul><li class="icon-moon"></li></ul>',
-        fewCloudsDay : '<ul><li class="cloud-plus"></li><li class="icon-sunny"></li></ul>',
-        fewCloudsNight : '<ul><li class="cloud-plus"></li><li class="icon-night"></li></ul>',
+        fewCloudsDay : '<ul><li class="basecloud"></li><li class="icon-sunny"></li></ul>',
+        fewCloudsNight : '<ul><li class="basecloud"></li><li class="icon-night"></li></ul>',
         scatteredClouds : '<ul><li class="cloud-plus"></li></ul>',
         brokenClouds : '<ul><li class="icon-cloud-dark"></li></ul>',
         showerRain : '<ul><li class="basecloud"></li><li class="icon-showers"></li></ul>',
@@ -22,8 +22,29 @@ $(function() {
         mist : '<ul><li class="icon-mist"></li></ul>'
     };
 
-    var cloudarr = [];
 
+    function ajaxCloudsForecastQuery(){
+
+        $.ajax({
+            type: 'post',
+            url: "/rest/weather/cloudsFiveDays",
+            crossDomain: true,
+            //data: {'days': numberOfDays},
+            error: function (cloudsInfo) {
+                $('#main').html(cloudsInfo.responseText);
+                rez = null;
+            },
+            statusCode: {
+                200: function (cloudsInfo) {
+                    cloudarr = cloudsInfo;
+                    init();
+                }
+            }
+        });
+
+    }
+
+    var cloudarr;
     var data;
     function ajaxUserInfoQuery(){
         $.ajax({
@@ -52,7 +73,7 @@ $(function() {
             statusCode: {
                 200: function (d) {
                     data = d;
-                    forecastListSixteen(data, startNumber);
+                    forecastListSixteen(data);
                 }
             }
         });
@@ -73,6 +94,10 @@ $(function() {
             }
         });
     }
+
+    //
+
+
 
     function userInfo(info){
         $("#generalHeader").html(info.city);
@@ -128,8 +153,8 @@ $(function() {
     };
     /* end mock for weather forecast list*/
     var testGraph = function(){
-        var InfoObj = function (date, clouds){
-            this.date = date;
+        var InfoObj = function (dt, clouds){
+            this.dt = dt;
             this.clouds = clouds;
         };
         for (var i = 0; i < 8; i++){
@@ -153,25 +178,20 @@ $(function() {
             for (var i = startNumber; i < (startNumber + SHOWED_TABS); i++) {
                 //Create tab
                 fillTab(data, i);
-                var t = [[1,4],[2,5],[3,3],[4,1],[5,6],[6,3]];
                 //Transform tab to button
+                if (i === 0){
+                    activateTab("#" + activeTab);
+                }
                 $("#line"+i).button();
                 $("#line"+i).click(function(){
                     activeTab = $(this).attr('id');
                     activateTab("#"+activeTab);
-                    testGraph();
                     fillDailyTemperature(data, activeTab);
                 });
-                //build graph
-                testGraph();
 
                 //fill morning, day, evening, night temperatures
                 fillDailyTemperature(data, "0");
             }
-
-            //Set first tab as activated
-            $("#line0").css({'background-color': '#ffffff','border': 'none'});
-
         };
         //build tabs
         tabs();
@@ -217,7 +237,6 @@ $(function() {
             activeTab = "line"+id;
             activateTab("#"+activeTab);
             fillDailyTemperature(data, activeTab);
-            //console.log(activeTab);
         }
 
 
@@ -247,10 +266,32 @@ $(function() {
     //userInfo(info);
     //testFunction(3);
     //testInfo();
-    ajaxUserInfoQuery();
-    ajaxForecastQuery(3);
-    ajaxActualDayForecastQuery();
 
+    ajaxCloudsForecastQuery();
+
+    function init(){
+        ajaxUserInfoQuery();
+        ajaxForecastQuery(3);
+        ajaxActualDayForecastQuery();
+    }
+
+    function buildGraph(thisDay){
+        console.log("from buildGraph " + cloudarr);
+        var day;
+        if (thisDay instanceof Date){
+            day = thisDay.getDay();
+        }
+        var array = [];
+        var j = 0;
+        for (var i = 0; i < cloudarr.length; i++){
+            var dt = new Date(cloudarr[i]['dt']).getDay();
+            if (dt === day){
+                array[j] = [cloudarr[i]['dt'], cloudarr[i]['clouds']];
+                j++;
+            }
+        }
+        weatherGraph(array);
+    }
     function actualDay(info){
         //console.log("dayInfo():ActualDay: " + info);
         var sunriseTime = new Date(info.sunrise);
@@ -374,5 +415,8 @@ $(function() {
         console.log("tab#"+ tab);
         $(".contentLine").css({'background-color': '#c8e5bc', 'border': '1px solid #108f38'});
         $(tab).css({'background-color': '#ffffff', 'border': 'none'});
+
+        var ind = getTabIndex(tab);
+        buildGraph(new Date(data[ind].dt));
     }
 });

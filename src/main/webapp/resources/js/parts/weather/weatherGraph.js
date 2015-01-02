@@ -3,10 +3,11 @@
  */
 //$(function () {
 function weatherGraph (data) {
-    var arr = new Array();
-    for (i in data) {
-        arr[i] =  [data[i]["date"], data[i]["clouds"]];
-    }
+    //var arr = new Array();
+    //for (i in data) {
+    //    arr[i] =  [data[i]["dt"], data[i]["clouds"]];
+    //}
+    var arr = data;
 
 
     Highcharts.setOptions({

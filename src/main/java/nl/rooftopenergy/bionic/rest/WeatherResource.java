@@ -12,6 +12,7 @@ import nl.rooftopenergy.bionic.pojo.weather.info.Precipitation;
 import nl.rooftopenergy.bionic.pojo.weather.info.TemperatureInfo;
 import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.WeatherActualDataTransfer;
+import nl.rooftopenergy.bionic.transfer.WeatherCloudsTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherDailyDataTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherFiveDaysDataTransfer;
 import org.apache.log4j.Logger;
@@ -90,20 +91,20 @@ public class WeatherResource {
     @POST
     @Path("fiveDay")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<WeatherFiveDaysDataTransfer> showFiveDayWeather(@FormParam("city") String city){
+    public List<WeatherFiveDaysDataTransfer> showFiveDayWeather(){
         List<WeatherFiveDaysDataTransfer> resultList = null;
-        String thisCity = city;
+        String thisCity = principalInformation.getCompany().getTown();
         try {
-//            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "&mode=json").asJson();
-//            String json = response1.getBody().toString();
+            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "&mode=json").asJson();
+            String json = response1.getBody().toString();
 //            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/fiveDays.json")));
 //            out.write(json);
 //            out.close();
             ObjectMapper mapper = new ObjectMapper();
 
-//            WeatherForecastForFiveDays weather = mapper.readValue(json, WeatherForecastForFiveDays.class);
+            WeatherForecastForFiveDays weather = mapper.readValue(json, WeatherForecastForFiveDays.class);
 
-            WeatherForecastForFiveDays weather = mapper.readValue(new FileInputStream(new File("/home/alex/fiveDays.json")), WeatherForecastForFiveDays.class);
+//            WeatherForecastForFiveDays weather = mapper.readValue(new FileInputStream(new File("/home/alex/fiveDays.json")), WeatherForecastForFiveDays.class);
 
             WeatherFiveDaysDataTransfer dataTransfer;
             List<Info> weatherInfoList = weather.getList();
@@ -113,8 +114,8 @@ public class WeatherResource {
                 resultList.add(dataTransfer);
 
             }
-//        } catch (UnirestException e){
-//            logger.warn(e.getMessage(), e);
+        } catch (UnirestException e){
+            logger.warn(e.getMessage(), e);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
         } catch (JsonMappingException e) {
@@ -133,21 +134,20 @@ public class WeatherResource {
         String thisCity = principalInformation.getCompany().getTown();
         WeatherActualDataTransfer result = null;
         try {
-        /*    HttpResponse<JsonNode> response1 = Unirest.get( ACTUAL_DAY_URL + thisCity + "&mode=json").asJson();
+            HttpResponse<JsonNode> response1 = Unirest.get( ACTUAL_DAY_URL + thisCity + "&mode=json").asJson();
             String json = response1.getBody().toString();
-            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/actual.json")));
-            out.write(json);
-            out.close();
+//            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/actual.json")));
+//            out.write(json);
+//            out.close();
             ObjectMapper mapper = new ObjectMapper();
             WeatherForecastActualDay weather = mapper.readValue(json, WeatherForecastActualDay.class);
-*/
-            ObjectMapper mapper = new ObjectMapper();
-            WeatherForecastActualDay weather = mapper.readValue(new FileInputStream(new File("/home/alex/actual.json")), WeatherForecastActualDay.class);
+//            ObjectMapper mapper = new ObjectMapper();
+//            WeatherForecastActualDay weather = mapper.readValue(new FileInputStream(new File("/home/alex/actual.json")), WeatherForecastActualDay.class);
 
             result = getActualForecast(weather);
 
-//        } catch (UnirestException e){
-//            logger.warn(e.getMessage(), e);
+        } catch (UnirestException e){
+            logger.warn(e.getMessage(), e);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
         } catch (JsonMappingException e) {
@@ -156,6 +156,45 @@ public class WeatherResource {
             logger.error(e.getMessage(), e);
         }
         return result;
+    }
+
+    @POST
+    @Path("cloudsFiveDays")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<WeatherCloudsTransfer> showCloudsForFiveDays(){
+        List<WeatherCloudsTransfer> resultList = null;
+        String thisCity = principalInformation.getCompany().getTown();
+        try {
+            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "&mode=json").asJson();
+            String json = response1.getBody().toString();
+//            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/fiveDays.json")));
+//            out.write(json);
+//            out.close();
+            ObjectMapper mapper = new ObjectMapper();
+
+            WeatherForecastForFiveDays weather = mapper.readValue(json, WeatherForecastForFiveDays.class);
+
+//            WeatherForecastForFiveDays weather = mapper.readValue(new FileInputStream(new File("/home/alex/fiveDays.json")), WeatherForecastForFiveDays.class);
+
+            WeatherCloudsTransfer dataTransfer;
+            List<Info> weatherInfoList = weather.getList();
+            resultList = new ArrayList<WeatherCloudsTransfer>();
+            for (Info obj : weatherInfoList){
+                dataTransfer = getCloudsForecast(obj);
+                resultList.add(dataTransfer);
+
+            }
+        } catch (UnirestException e){
+            logger.warn(e.getMessage(), e);
+        } catch (JsonGenerationException e) {
+            logger.warn(e.getMessage(), e);
+        } catch (JsonMappingException e) {
+            logger.warn(e.getMessage(), e);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return resultList;
+
     }
 
     private WeatherDailyDataTransfer getForecast(TemperatureInfo info){
@@ -221,6 +260,13 @@ public class WeatherResource {
         dataTransfer.setDescription(weather.getWeather().get(0).getDescription());
         return dataTransfer;
 
+    }
+
+    private WeatherCloudsTransfer getCloudsForecast(Info info){
+        WeatherCloudsTransfer dataTransfer = new WeatherCloudsTransfer();
+        dataTransfer.setClouds(info.getClouds().getAll());
+        dataTransfer.setDt(info.getDt() * 1000);
+        return dataTransfer;
     }
 
 }

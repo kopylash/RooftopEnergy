@@ -1,6 +1,7 @@
 package nl.rooftopenergy.bionic.rest;
 
 import nl.rooftopenergy.bionic.transfer.WeatherActualDataTransfer;
+import nl.rooftopenergy.bionic.transfer.WeatherCloudsTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherDailyDataTransfer;
 import nl.rooftopenergy.bionic.transfer.WeatherFiveDaysDataTransfer;
 import org.junit.BeforeClass;
@@ -22,7 +23,6 @@ import static org.junit.Assert.*;
 @ContextConfiguration(locations = {"classpath:/applicationContextForUnitTests.xml"})
 public class WeatherResourceTest {
 
-    private static final String CITY = "Kyiv,UA";
     @Inject
     private WeatherResource weatherResource;
 
@@ -44,7 +44,7 @@ public class WeatherResourceTest {
 
     @org.junit.Test
     public void testShowFiveDayWeather() throws Exception {
-        List<WeatherFiveDaysDataTransfer> data = weatherResource.showFiveDayWeather(CITY);
+        List<WeatherFiveDaysDataTransfer> data = weatherResource.showFiveDayWeather();
         assertNotNull(data);
 
     }
@@ -52,6 +52,12 @@ public class WeatherResourceTest {
     @org.junit.Test
     public void testShowActualDayWeather() throws Exception{
         WeatherActualDataTransfer data = weatherResource.showActualDayWeather();
+        assertNotNull(data);
+    }
+
+    @org.junit.Test
+    public void testShowCloudsForFiveDays() throws Exception{
+        List<WeatherCloudsTransfer> data = weatherResource.showCloudsForFiveDays();
         assertNotNull(data);
     }
 }
