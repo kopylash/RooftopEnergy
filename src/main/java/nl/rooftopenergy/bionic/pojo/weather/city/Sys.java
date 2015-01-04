@@ -14,15 +14,19 @@ public class Sys implements Serializable {
     private String country;
     private Long sunrise;
     private Long sunset;
+    private Integer id;
+    private Integer type;
 
     public Sys(){}
 
-    public Sys(Integer population, Double message, String country, Long sunrise, Long sunset) {
+    public Sys(Integer population, Double message, String country, Long sunrise, Long sunset, Integer id, Integer type) {
         this.population = population;
         this.message = message;
         this.country = country;
         this.sunrise = sunrise;
         this.sunset = sunset;
+        this.id = id;
+        this.id = type;
     }
 
     /**
@@ -104,6 +108,22 @@ public class Sys implements Serializable {
         this.sunset = sunset;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -112,10 +132,12 @@ public class Sys implements Serializable {
         Sys sys = (Sys) o;
 
         if (country != null ? !country.equals(sys.country) : sys.country != null) return false;
+        if (id != null ? !id.equals(sys.id) : sys.id != null) return false;
         if (message != null ? !message.equals(sys.message) : sys.message != null) return false;
         if (population != null ? !population.equals(sys.population) : sys.population != null) return false;
         if (sunrise != null ? !sunrise.equals(sys.sunrise) : sys.sunrise != null) return false;
         if (sunset != null ? !sunset.equals(sys.sunset) : sys.sunset != null) return false;
+        if (type != null ? !type.equals(sys.type) : sys.type != null) return false;
 
         return true;
     }
@@ -127,6 +149,8 @@ public class Sys implements Serializable {
         result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (sunrise != null ? sunrise.hashCode() : 0);
         result = 31 * result + (sunset != null ? sunset.hashCode() : 0);
+        result = 31 * result + (id != null ? id.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
 
@@ -138,6 +162,8 @@ public class Sys implements Serializable {
                 ", country='" + country + '\'' +
                 ", sunrise=" + sunrise +
                 ", sunset=" + sunset +
+                ", id=" + id +
+                ", type=" + type +
                 '}';
     }
 }
