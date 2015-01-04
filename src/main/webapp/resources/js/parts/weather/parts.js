@@ -5,8 +5,8 @@ $(function() {
     const WEATHER_ICONS = {
         sunny : '<ul><li class="icon-sun"></li></ul>',
         moon : '<ul><li class="icon-moon"></li></ul>',
-        fewCloudsDay : '<ul><li class="cloud-plus"></li><li class="icon-sunny"></li></ul>',
-        fewCloudsNight : '<ul><li class="cloud-plus"></li><li class="icon-night"></li></ul>',
+        fewCloudsDay : '<ul><li class="basecloud"></li><li class="icon-sunny"></li></ul>',
+        fewCloudsNight : '<ul><li class="basecloud"></li><li class="icon-night"></li></ul>',
         scatteredClouds : '<ul><li class="cloud-plus"></li></ul>',
         brokenClouds : '<ul><li class="icon-cloud-dark"></li></ul>',
         showerRain : '<ul><li class="basecloud"></li><li class="icon-showers"></li></ul>',
@@ -118,25 +118,25 @@ $(function() {
 
     $("#threeDays").click(function(){
         buttonStyles(this.id);
-        //ajaxForecastQuery(3);
-       testFunction(3);
+        ajaxForecastQuery(3);
+       //testFunction(3);
     });
     $("#sevenDays").click(function(){
         buttonStyles(this.id);
-        //ajaxForecastQuery(7);
-       testFunction(7);
+        ajaxForecastQuery(7);
+       //testFunction(7);
     });
     $("#fourteenDays").click(function(){
         buttonStyles(this.id);
-        //ajaxForecastQuery(14);
-       testFunction(14);
+        ajaxForecastQuery(14);
+       //testFunction(14);
     });
 
 
-    userInfo(info);
-    testFunction(3);
-    //ajaxUserInfoQuery();
-    //ajaxForecastQuery(3);
+    //userInfo(info);
+    //testFunction(3);
+    ajaxUserInfoQuery();
+    ajaxForecastQuery(3);
 
 
     function fillTemperature(pic, temper) {
