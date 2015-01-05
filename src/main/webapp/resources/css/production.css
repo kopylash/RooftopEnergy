@@ -1,4 +1,5 @@
 body {
+    width: 100%;
     margin: 0;
     padding: 0;
    /* background-color: #FFFFFE;*/
@@ -15,34 +16,45 @@ body {
      width: 70%;
      padding: 0;
 }
+#periodMenuButtons{
+    width: 88%;
+    margin: auto;
+}
 
 #period {
     margin: 8px auto 10px;
-    width: 88%;
-    padding: 0;
-
+    width: 100%;
 }
 
-.btn {
+#period .btn {
     border: 1px solid #108F38;
     background: #108F38;
-    border-radius: 0;
-    width: 25%;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    width: 23%;
     display: inline-block;
-    margin-left: -0.36em;
+    margin-left: 0%;
+    margin-right: 0.5%;
     color: #FFFFFE;
+    /*margin: 0 auto;*/
 }
 
-.btn:hover {
+#period .btn:focus {
+    outline:0;
+}
+
+#period .btn:hover {
     background-color: #23527c;
     color: #FFFFFE;
 }
 
 
-#day{
+#period #day{
     background-color: #FFFFFE;
     color: #108F38;
 }
+
 
 .header {
     padding-top: 5px;
@@ -160,6 +172,9 @@ main{
     font-weight: normal;
     text-align: center;
     border: 1px solid #108F38;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
 #datepicker :active {

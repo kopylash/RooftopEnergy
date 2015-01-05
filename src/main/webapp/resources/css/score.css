@@ -1,6 +1,9 @@
 #body{
+    width: 100%;
     margin: 0;
     padding: 0;
+    /* background-color: #FFFFFE;*/
+    font: 100%/1.5em Verdana, Helvetica, sans-serif;
 }
 #main1{
     /*height: 340px;*/
@@ -18,11 +21,14 @@
     padding-right: 0;
 }
 
+#weatherMenuButtons{
+    width: 100%;
+    margin: auto;
+}
+
 #cButtons {
-    margin: 10px auto;
+    margin: 8px auto 10px;
     width: 95%;
-    padding: 0;
-    /*margin-left: 3.5%;*/
 }
 
 #head{
@@ -36,32 +42,54 @@
     font-size: 14px;
     font-weight: 600;
     border: 1px solid #108f38;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+    -moz-border-top-right-radius: 2px;
+    -moz-border-top-left-radius: 2px;
 }
 
-.btn {
+#cButtons .btn {
     border: 1px solid #108F38;
     background: #108F38;
-    border-radius: 0;
-    width: 33.33333%;
-    display: inline;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    width: 33%;
+    /*display: inline;*/
     /*margin-left: -0.23em;*/
     font-family: Tahoma, Verdana, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: 700;
     color: #FFFFFE;
+    margin-left: 0;
+}
+
+#cButtons .btn:focus {
+    outline:0;
+}
+
+#cons{
+    float: left;
+}
+
+#cButtons #overScore{
+    margin-left: 0.5%;
+   }
+
+#cButtons #prod{
+    float: right;
+    background-color: #FFFFFE;
+    color: #108F38;
 }
 
 
-.btn:hover {
+#cButtons .btn:hover {
     background-color: #23527c;
     color: #FFFFFE;
 }
 
-
-#prod{
-    background-color: #FFFFFE;
-    color: #108F38;
-}
 
 .fa-sign-out {
     position: fixed;
@@ -122,6 +150,16 @@
     padding: 5px;
     border-left: 1px solid #108f38;
     border-right: 1px solid #108f38;
+
+}
+
+ #down {
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    -moz-border-bottom-right-radius: 2px;
+    -moz-border-bottom-left-radius: 2px;
 }
 
 .pageButtons  :hover{
@@ -135,55 +173,54 @@
 
 .pageButtons #down :hover{
     border-top: none;
-
 }
 
 
-@media screen and (max-width: 322px){
-    #cButtons {
-        margin-left: 3.7%;
-    }
-}
+/*@media screen and (max-width: 322px){*/
+    /*#cButtons {*/
+        /*margin-left: 3.7%;*/
+    /*}*/
+/*}*/
 
-@media screen and (min-width: 323px) and (max-width: 450px){
-    #cButtons {
-        margin-left: 3.5%;
-    }
-}
+/*@media screen and (min-width: 323px) and (max-width: 450px){*/
+    /*#cButtons {*/
+        /*margin-left: 3.5%;*/
+    /*}*/
+/*}*/
 
-@media screen and (min-width: 451px) and (max-width: 500px){
-    #cButtons {
-        margin-left: 3.3%;
-    }
-}
+/*@media screen and (min-width: 451px) and (max-width: 500px){*/
+    /*#cButtons {*/
+        /*margin-left: 3.3%;*/
+    /*}*/
+/*}*/
 
-@media screen and (min-width: 501px) and (max-width: 600px){
-    #cButtons {
-        margin-left: 3.2%;
-    }
-}
+/*@media screen and (min-width: 501px) and (max-width: 600px){*/
+    /*#cButtons {*/
+        /*margin-left: 3.2%;*/
+    /*}*/
+/*}*/
 
-@media screen and (min-width: 601px) and (max-width: 700px){
-    #cButtons {
-        margin-left: 3.1%;
-    }
-}
+/*@media screen and (min-width: 601px) and (max-width: 700px){*/
+    /*#cButtons {*/
+        /*margin-left: 3.1%;*/
+    /*}*/
+/*}*/
 
 
-@media screen and (min-width: 701px) and (max-width: 800px){
-    #cButtons {
-        margin-left: 3%;
-    }
-}
+/*@media screen and (min-width: 701px) and (max-width: 800px){*/
+    /*#cButtons {*/
+        /*margin-left: 3%;*/
+    /*}*/
+/*}*/
 
-@media screen and (min-width: 801px) and (max-width: 900px){
-    #cButtons {
-        margin-left: 2.9%;
-    }
-}
+/*@media screen and (min-width: 801px) and (max-width: 900px){*/
+    /*#cButtons {*/
+        /*margin-left: 2.9%;*/
+    /*}*/
+/*}*/
 
-@media screen and (min-width: 901px) and (max-width: 1950px){
-    #cButtons {
-        margin-left: 2.8%;
-    }
-}
+/*@media screen and (min-width: 901px) and (max-width: 1950px){*/
+    /*#cButtons {*/
+        /*margin-left: 2.8%;*/
+    /*}*/
+/*}*/

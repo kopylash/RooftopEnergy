@@ -18,23 +18,30 @@ body{
 }
 
 #weatherPeriod .btn {
+    border: 1px solid #108F38;
+    background: #108F38;
     width: 33%;
     /*margin-left:0px;*/
     border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
+    font-family: Tahoma, Verdana, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFFFFE;
 }
 
-#threeDays{
-
+#weatherPeriod #threeDays{
+    background-color: #FFFFFE;
+    color: #108F38;
     float: left;
 }
 
-#sevenDays{
-    margin-left: 1%;
+#weatherPeriod #sevenDays{
+    margin-left: 0.5%;
 }
 
-#fourteenDays{
+#weatherPeriod #fourteenDays{
     float: right;
 }
 
