@@ -54,7 +54,7 @@
 
 	<security:http entry-point-ref="restAuthenticationEntryPoint">
 		<security:intercept-url pattern="/loginPage.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-		<security:intercept-url pattern="/loggedPage.html" access="ROLE_USER"/>
+		<security:intercept-url pattern="/pages/loggedPage.html" access="ROLE_USER"/>
 		<security:intercept-url pattern="/rest/*" access="ROLE_USER"/>
 
 		<security:form-login

@@ -57,7 +57,7 @@ public class SecurityUrlAuthenticationSuccessHandler implements AuthenticationSu
         }
 
         if (isUser) {
-            return "/loggedPage.html";
+            return "/pages/loggedPage.html";
         } else if (isAdmin) {
             return "/console.html";
         } else {
