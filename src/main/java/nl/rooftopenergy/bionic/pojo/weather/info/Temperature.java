@@ -1,5 +1,7 @@
 package nl.rooftopenergy.bionic.pojo.weather.info;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +10,7 @@ import java.io.Serializable;
  *
  * Created by Alex Iakovenko on 12/18/14.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Temperature implements Serializable {
     private Double day;
     private Double min;

@@ -1,5 +1,7 @@
 package nl.rooftopenergy.bionic.pojo.weather.info;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
  *
  * Created by Alex Iakovenko on 12/18/14.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TemperatureInfo implements Serializable {
     private Long dt;
     private Integer rain;

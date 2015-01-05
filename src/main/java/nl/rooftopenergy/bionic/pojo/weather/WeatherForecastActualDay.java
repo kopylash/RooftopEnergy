@@ -3,7 +3,7 @@ package nl.rooftopenergy.bionic.pojo.weather;
 import nl.rooftopenergy.bionic.pojo.weather.city.Coordinates;
 import nl.rooftopenergy.bionic.pojo.weather.city.Sys;
 import nl.rooftopenergy.bionic.pojo.weather.info.*;
-import nl.rooftopenergy.bionic.transfer.WeatherActualDataTransfer;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import java.util.List;
  *
  * Created by alex on 1/2/15.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherForecastActualDay {
     private Rain rain;
     private Coordinates coord;

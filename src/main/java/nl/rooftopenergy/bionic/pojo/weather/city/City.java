@@ -1,5 +1,7 @@
 package nl.rooftopenergy.bionic.pojo.weather.city;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  * http://openweathermap.org.
  * Created by Alex Iakovenko on 12/18/14.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class City implements Serializable {
 
     private Integer id;

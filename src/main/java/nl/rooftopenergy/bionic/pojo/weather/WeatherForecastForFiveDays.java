@@ -2,6 +2,7 @@ package nl.rooftopenergy.bionic.pojo.weather;
 
 import nl.rooftopenergy.bionic.pojo.weather.city.City;
 import nl.rooftopenergy.bionic.pojo.weather.info.Info;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  *
  * Created by Alex Iakovenko on 12/18/14.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherForecastForFiveDays implements Serializable {
     private Double message;
     private Integer cnt;
