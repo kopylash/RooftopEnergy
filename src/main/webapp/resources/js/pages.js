@@ -2,7 +2,7 @@ $(function(){
 
     var firstHead = $('header').html();
 
-    var code = '<div id="settingsMenu" class="ui-widget-content ui-corner-all">\
+    var code = '<div id="mainMenu"><div id="settingsMenu" class="ui-widget-content ui-corner-all">\
     <div id="settings" class="mainButtons hideButtons"><i class="fa fa-cogs"><span>&nbspSettings</span></i></div>\
     <div id="changePassword" class="mainButtons hideButtons"><i class="fa fa-key"><span>&nbspChange&nbsppassword</span></i></div>\
     <div id="logout" class="mainButtons hideButtons"><i class="fa fa-sign-out"><span>&nbspLogout</span></i></div></div>\
@@ -10,12 +10,12 @@ $(function(){
     <div id="loggedPage" class="mainButtons"><i class="fa fa-sun-o  fa-4x"></i></div>\
     <div id="weather" class="mainButtons"><i class="fa fa-cloud  fa-4x"></i></div>\
     <div id="rating" class="mainButtons"><i class="fa fa-long-arrow-down  fa-4x"></i><i class="fa fa-long-arrow-up  fa-4x"></i></div>\
-    <div id="menu" class="mainButtons"><i class="fa fa-list  fa-4x"></i></div></div>';
+    <div id="menu" class="mainButtons"><i class="fa fa-list  fa-4x"></i></div></div></div>';
 
     //$( "#settingsMenu .hideButtons" ).css();
 var counter = 0;
 
-    function runEffect(counter) {
+/*    function runEffect(counter) {
         if(counter == 1) {
             $("#settingsMenu").show("slide", {direction: "right"}, 500);
             //$("#settingsMenu").focusin();
@@ -27,8 +27,14 @@ var counter = 0;
             $("#settingsMenu").hide("slide", {direction: "right"}, 500);
         }
 
-    };
+    };*/
 
+    function runEffect(){
+        $("#settingsMenu").show("slide", {direction: "right"}, 500);
+        $("#mainMenu").hover(function(){
+            $("#settingsMenu").hide("slide", {direction: "right"}, 500);
+        })
+    }
 
 
 
@@ -56,12 +62,13 @@ var counter = 0;
 
     $(".mainButtons").click(function() {
         if(this.id == "menu"){
-            if(counter == 0){
+            /*if(counter == 0){
                 counter = 1;
             } else {
                 counter = 0;
             }
-            runEffect(counter);
+            runEffect(counter);*/
+            runEffect();
         } else {
             window.location = this.id + ".html";
         }
