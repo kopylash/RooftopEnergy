@@ -143,16 +143,6 @@ main{
 }
 
 
-.fa-sign-out {
-    position: fixed;
-    top: 5px;
-    right: 2px;
-    color: #f7f7f7;
-}
-
-/*#datepicker {*/
-    /*display: none;*/
-/*}*/
 
 #min, #max{
     padding: 5px;
