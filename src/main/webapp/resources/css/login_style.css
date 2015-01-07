@@ -41,6 +41,12 @@ body {
     line-height: 44px;
     transition: all 0.3s ease-out;
     pointer-events: none;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    -webkit-border-top-left-radius: 2px;
+    -moz-border-top-left-radius: 2px;
+    -moz-border-bottom-left-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
 }
 
 /* === Logo === */
@@ -152,6 +158,9 @@ body {
     background: #f7f3eb;
     color: #777;
     transition: color 0.3s ease-out;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
 }
 
 .form input[type=text] {
@@ -193,6 +202,9 @@ body {
   text-shadow: none;
   text-transform: uppercase;
   border: none;
+  border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
   cursor: pointer;
   position: relative;
   margin-bottom: 20px;
@@ -202,9 +214,9 @@ body {
 
 .form button[type=submit]:hover,input[type=submit]:focus{
   color: #fff;
-  -webkit-box-shadow: inset 0px 46px 0px 0px rgba(89,172,40,1);
-  -moz-box-shadow:    inset 0px 46px 0px 0px rgba(89,172,40,1);
-  box-shadow:         inset 0px 46px 0px 0px rgba(89,172,40,1);
+  -webkit-box-shadow: inset 0px 50px 0px 0px rgba(89,172,40,1);
+  -moz-box-shadow:    inset 0px 50px 0px 0px rgba(89,172,40,1);
+  box-shadow:         inset 0px 50px 0px 0px rgba(89,172,40,1);
   -webkit-animation: shadowFade 0.4s;
   -moz-animation: shadowFade 0.4s;
 }

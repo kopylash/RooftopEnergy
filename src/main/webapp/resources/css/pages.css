@@ -1,5 +1,5 @@
-@import url(jquery-ui1.theme.min.css);
-@import url(jquery-ui1.css);
+/*@import url(jquery-ui1.theme.min.css);*/
+/*@import url(jquery-ui1.css);*/
 
 #settingsMenu{
     display: none;
@@ -35,4 +35,8 @@
 #settingsMenu{
     text-overflow:ellipsis;
     overflow:hidden;
+}
+
+ #logout i{
+    color: #FFFFFE;
 }

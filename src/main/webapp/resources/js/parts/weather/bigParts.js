@@ -300,7 +300,7 @@ $(function() {
         var sunset = sunsetTime.getHours() + ":" + sunsetTime.getMinutes();
         var wind = info.speed + " m/s (" + Math.round(info.deg) +"&ordm)";
         var dt = new Date(info.dt);
-        var content = "<h6>Today: "+ dt.getDate() + " " + MONTH_NAMES[dt.getMonth()] + "</h6>" +
+        var content = "<h6>Actual. Today: "+ dt.getDate() + " " + MONTH_NAMES[dt.getMonth()] + "</h6>" +
         "<div class='infoIcon'>"+
                 "<ul><li class='icon-sunrise'></li><li><p>Sunrise</p></li></ul>"+
                 "<ul><li class='icon-sunset'></li><li><p>Sunset</p></li></ul>"+
