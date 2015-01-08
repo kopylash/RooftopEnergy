@@ -6,7 +6,7 @@ $(function(){
     <div id="settings" class="mainButtons hideButtons"><i class="fa fa-cogs"><span>&nbspSettings</span></i></div>\
     <div id="changePassword" class="mainButtons hideButtons"><i class="fa fa-key"><span>&nbspChange&nbsppassword</span></i></div>\
     <div id="logout" class="mainButtons hideButtons"><a href="j_spring_security_logout"><i class="fa fa-sign-out"><span>&nbspLogout</span></i></a></div></div>\
-    <div > <div id="consumption" class="mainButtons"><i class="fa fa-plug   fa-4x"></i></div>\
+    <div id="showButtons" > <div id="consumption" class="mainButtons"><i class="fa fa-plug   fa-4x"></i></div>\
     <div id="loggedPage" class="mainButtons"><i class="fa fa-sun-o  fa-4x"></i></div>\
     <div id="weather" class="mainButtons"><i class="fa fa-cloud  fa-4x"></i></div>\
     <div id="rating" class="mainButtons"><i class="fa fa-long-arrow-down  fa-4x"></i><i class="fa fa-long-arrow-up  fa-4x"></i></div>\
@@ -64,6 +64,10 @@ $(function(){
 
         } else {
             $('header').html(code).removeClass("header").addClass("header1");
+            $('.mainButtons:not(.hideButtons)').each(function(){
+                var buttId = this.id;
+                $(this).text(buttId).addClass('bigButtonsFont');
+            });
             $('footer').html(" ").removeClass('footer');
             colorSwitch();
         }

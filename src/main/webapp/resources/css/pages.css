@@ -40,3 +40,10 @@
  #logout i{
     color: #FFFFFE;
 }
+
+ .bigButtonsFont{
+     font-size: 18px;
+     padding-top: 10px;
+     padding-bottom: 10px;
+
+ }
