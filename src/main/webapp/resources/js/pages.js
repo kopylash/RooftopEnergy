@@ -35,14 +35,14 @@ $(function(){
     };
     foo(code);
 
-    var colorSwitch = function(){
+    var colorSwitch = function(k, kk){
 
     var page = window.location;
     page = page+"";
     var first = page.lastIndexOf("/")+1;
     var second = page.indexOf(".html");
     var idi = page.slice(first, second);
-    $("#"+idi).css({ 'color': '#0062D2'});
+    $("#"+idi).css({ 'color': k, 'backgroundColor':kk});
 
     $(".mainButtons").click(function() {
         if(this.id == "menu"){
@@ -60,16 +60,26 @@ $(function(){
         if (screen.width <= 768) {
             $('footer').html(code).addClass("footer");
             $('header').removeClass("header1").html(firstHead).addClass("header");
-            colorSwitch();
+            var k1 = '#0062D2';
+            var k3 = '#59AC28';
+            colorSwitch(k1, k3);
 
         } else {
             $('header').html(code).removeClass("header").addClass("header1");
             $('.mainButtons:not(.hideButtons)').each(function(){
                 var buttId = this.id;
                 $(this).text(buttId).addClass('bigButtonsFont');
+                $("#loggedPage").text("production");
+                $("#rating").text("score");
+                $("#menu").text("settings").click(function(){
+                    window.location = "settings.html";
+                });
             });
+
             $('footer').html(" ").removeClass('footer');
-            colorSwitch();
+            var k2 = "#fffffe";
+            var k4 = "#108f38";
+            colorSwitch(k2, k4);
         }
     });
 

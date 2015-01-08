@@ -103,6 +103,12 @@ body {
     background-color: #23527c;
 }
 
+.bigButtonsFont:hover{
+    background-color: #108f38;
+    color: #FFFFFE;
+}
+
+
 .mainButtons:active{
     background-color: #46b8da;
 }

@@ -41,9 +41,10 @@
     color: #FFFFFE;
 }
 
- .bigButtonsFont{
-     font-size: 18px;
-     padding-top: 10px;
-     padding-bottom: 10px;
-
+ .bigButtonsFont {
+     font-size: 20px;
+     /*font-weight: 600;*/
+     padding-top: 15px;
+     padding-bottom: 15px;
+     text-transform: capitalize;
  }
