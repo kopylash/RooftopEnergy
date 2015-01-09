@@ -69,12 +69,16 @@ body {
 }
 
 .header1 {
+
+
+}
+#deskMenu{
+    background-color: #59AC28;
     width: 100%;
     text-align: center;
     font-weight: normal;
     font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
     color: #FFFFFE;
-    background-color: #59AC28;
 }
 
 
@@ -106,6 +110,7 @@ body {
 .bigButtonsFont:hover{
     background-color: #108f38;
     color: #FFFFFE;
+    cursor: hand;
 }
 
 

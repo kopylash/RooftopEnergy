@@ -51,7 +51,7 @@ body {
 
 /* === Logo === */
 .logo {
-  background-image: url("../images/logo.png");
+  background-image: url("../images/logo.svg");
   background-position: center;
   height: 90px;
   width: 250px;

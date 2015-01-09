@@ -36,17 +36,14 @@ $(function(){
     function ajaxGetSettingsQuery() {
         $.ajax({
             type: 'get',
-            url: "rest/boxData/getUserDescription",
+            url: "/rest/boxData/getUserDescription",
             crossDomain: true,
-            //data: { 'date': endDate.getTime()},
             error: function (data) {
                 $('#main').html(data.responseText);
             },
             statusCode: {
                 200: function (data) {
-                    console.log("hello");
                     insertSettings(data);
-                    console.log("world");
                 }
             }
         });

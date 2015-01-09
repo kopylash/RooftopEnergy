@@ -48,3 +48,44 @@
      padding-bottom: 15px;
      text-transform: capitalize;
  }
+
+#desktopHeader{
+    padding: 10px 30px;
+ }
+
+#desktopHeader div{
+    display: inline;
+
+
+}
+
+#desktopLogo img{
+    width: 15%;
+}
+
+#desktopCompany{
+    clear: right;
+    margin-bottom: 10px;
+    margin-top: -20px;
+    font-size: 2.5em;
+    width: 100%;
+    text-align: right;
+    float: right;
+    color: #080808;
+    font-weight: 700;
+}
+
+#desktopUser {
+    float: right;
+    font-size: 1.7em;
+}
+
+#desktopUser a{
+    text-decoration: none;
+    color: #1c61c9;
+}
+
+#forClear{
+    clear: both;
+}
+
