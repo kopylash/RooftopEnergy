@@ -26,6 +26,11 @@ $(function(){
 
 
        ajaxGetUserInfo();
+
+    $(document).ajaxComplete(function(){
+        $("#desktopCompany").html(companyName);
+        $("#desktopUser span").html(userName);
+    });
     //function loadHtml() {
         var code = '<div id="mainMenu"><div id="settingsMenu" class="ui-widget-content ui-corner-all">\
     <div id="settings" class="mainButtons hideButtons"><i class="fa fa-cogs"><span>&nbspSettings</span></i></div>\
@@ -39,8 +44,8 @@ $(function(){
 
         var headerHtml = '<div class="desktopHeaderClass" id="desktopHeader">' +
             '<div id="desktopLogo"><img src="../resources/images/logo.svg"></div> ' +
-            '<div id="desktopUser"><a href="j_spring_security_logout"><span>' + userName + ' </span> <i class="fa fa-sign-out"></i></a></div>' +
-            '<div id="desktopCompany">' + companyName + ' </div></div><div id="forClear"></div>';
+            '<div id="desktopUser"><a href="j_spring_security_logout"><span></span> <i class="fa fa-sign-out"></i></a></div>' +
+            '<div id="desktopCompany"></div></div><div id="forClear"></div>';
 
         function runEffect() {
             $("#settingsMenu").show("slide", {direction: "right"}, 500);
