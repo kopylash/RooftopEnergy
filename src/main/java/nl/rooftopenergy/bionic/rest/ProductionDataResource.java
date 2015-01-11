@@ -267,6 +267,62 @@ public class ProductionDataResource {
         return resultList;
     }
 
+    /**
+     * Gets the value of energy has produced this day.
+     *
+     * @return total daily production.
+     */
+    @POST
+    @Path("thisDayTotal")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Integer thisDayTotalProduction() {
+        DateTime nowDate = new DateTime(System.currentTimeMillis());
+        int year = nowDate.getYear();
+        int month = nowDate.getMonthOfYear();
+        int day = nowDate.getDayOfMonth();
+        Timestamp begin = Timestamp.valueOf(year + "-" + month + "-" + day + " 00:00:00");
+        Integer value = getThisProduction(begin);
+
+        return value;
+    }
+
+    /**
+     * Gets the value of energy has produced this month.
+     *
+     * @return total monthly production.
+     */
+    @POST
+    @Path("thisMonthTotal")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Integer thisMonthTotalProduction() {
+        DateTime nowDate = new DateTime(System.currentTimeMillis());
+        int year = nowDate.getYear();
+        int month = nowDate.getMonthOfYear();
+
+        Timestamp begin = Timestamp.valueOf(year + "-" + month + "-" + "01" + " 00:00:00");
+
+        Integer value = getThisProduction(begin);
+        return value;
+    }
+
+    /**
+     * Gets the value of energy has produced this year.
+     *
+     * @return total yearly production.
+     */
+    @POST
+    @Path("thisYearTotal")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Integer thisYearTotalProduction() {
+        DateTime nowDate = new DateTime(System.currentTimeMillis());
+        int year = nowDate.getYear();
+
+        Timestamp begin = Timestamp.valueOf(year + "-" + "01" + "-" + "01" + " 00:00:00");
+
+        Integer value = getThisProduction(begin);
+        return value;
+    }
+
 
     private List<GraphDataTransfer> transformToDifferences(RtfBox box, List<GraphDataTransfer> list, Date dateBefore) {
 
@@ -320,6 +376,11 @@ public class ProductionDataResource {
         return days;
     }
 
-
+    private Integer getThisProduction(Timestamp begin){
+        RtfBox box = principalInformation.getCompany().getRtfBox();
+        Integer valueBefore = rtfBoxDataDao.findTotalProductionBefore(box, begin);
+        Integer actualValue = rtfBoxDataDao.findTotalProduction(box);
+        return actualValue - valueBefore;
+    }
 
 }

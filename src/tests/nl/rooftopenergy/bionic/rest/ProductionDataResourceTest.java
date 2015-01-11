@@ -35,7 +35,8 @@ public class ProductionDataResourceTest {
      * */
     @BeforeClass
     public static void setup() {
-        Authentication auth = new UsernamePasswordAuthenticationToken("rooftop", "energy");
+//        Authentication auth = new UsernamePasswordAuthenticationToken("rooftop", "energy");
+        Authentication auth = new UsernamePasswordAuthenticationToken("target", "qwerty");
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(auth);
     }
@@ -70,5 +71,23 @@ public class ProductionDataResourceTest {
         List<GraphDataTransfer> list = resource.totallyProduction(String.valueOf(date));
         assertNotNull(list);
 
+    }
+
+    @Test
+    public void testThisDayTotalProduction() throws Exception{
+        Integer dailyProduction = resource.thisDayTotalProduction();
+        assertNotNull(dailyProduction);
+    }
+
+    @Test
+    public void testThisMonthTotalProduction() throws Exception{
+        Integer monthlyProduction = resource.thisMonthTotalProduction();
+        assertNotNull(monthlyProduction);
+    }
+
+    @Test
+    public void testThisYearTotalProduction() throws Exception{
+        Integer yearlyProduction = resource.thisYearTotalProduction();
+        assertNotNull(yearlyProduction);
     }
 }

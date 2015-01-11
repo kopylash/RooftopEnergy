@@ -41,7 +41,8 @@ public class ConsumptionDataResourceTest {
      * */
     @BeforeClass
     public static void setup() {
-        Authentication auth = new UsernamePasswordAuthenticationToken("rooftop", "energy");
+//        Authentication auth = new UsernamePasswordAuthenticationToken("rooftop", "energy");
+        Authentication auth = new UsernamePasswordAuthenticationToken("target", "qwerty");
         SecurityContext securityContext = SecurityContextHolder.getContext();
         securityContext.setAuthentication(auth);
     }
@@ -53,35 +54,48 @@ public class ConsumptionDataResourceTest {
 
     }
 
-    @Test
-    public void testShowConsumption() throws Exception {
-
-    }
-
 
     @Test
-    public void testDailyConsumptionFake() throws Exception {
+    public void testDailyConsumption() throws Exception {
 
         Date date = Timestamp.valueOf("2014-12-2 00:00:00");
-        List<GraphDataTransfer> list = resource.dailyConsumption(date.toString());
+        List<GraphDataTransfer> list = resource.dailyConsumption(String.valueOf(date.getTime()));
         assertNotNull(list);
 
     }
 
     @Test
-    public void testMonthlyConsumptionFake() throws Exception {
+    public void testMonthlyConsumption() throws Exception {
 
         Date date = Timestamp.valueOf("2014-12-2 00:00:00");
-        List<GraphDataTransfer> list = resource.monthlyConsumption(date.toString());
+        List<GraphDataTransfer> list = resource.monthlyConsumption(String.valueOf(date.getTime()));
         assertNotNull(list);
 
     }
     @Test
-    public void testYearlyConsumptionFake() throws Exception {
+    public void testYearlyConsumption() throws Exception {
 
         Date date = Timestamp.valueOf("2014-12-2 00:00:00");
-        List<GraphDataTransfer> list = resource.yearlyConsumption(date.toString());
+        List<GraphDataTransfer> list = resource.yearlyConsumption(String.valueOf(date.getTime()));
         assertNotNull(list);
 
+    }
+
+    @Test
+    public void testThisDayTotalConsumption() throws Exception{
+        Integer dailyConsumption = resource.thisDayTotalConsumption();
+        assertNotNull(dailyConsumption);
+    }
+
+    @Test
+    public void testThisMonthTotalConsumption() throws Exception{
+        Integer monthlyConsumption = resource.thisMonthTotalConsumption();
+        assertNotNull(monthlyConsumption);
+    }
+
+    @Test
+    public void testThisYearTotalConsumption() throws Exception{
+        Integer yearlyConsumption = resource.thisYearTotalConsumption();
+        assertNotNull(yearlyConsumption);
     }
 }

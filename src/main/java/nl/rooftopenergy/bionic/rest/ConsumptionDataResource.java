@@ -70,7 +70,11 @@ public class ConsumptionDataResource {
      * @param dateStart the date like {@value 'yyyy-mm-dd hh:MM:ss'} when period is started.
      * @param dateEnd the date like {@value 'yyyy-mm-dd hh:MM:ss'} when period should be finished.
      * @return list notes describing consumption.
+     *
+     * method is deprecated: Use dailyConsumption(), monthlyConsumption(), yearlyConsumption
+     * and totallyConsumption() instead.
      */
+    @Deprecated
     @POST
     @Path("consumption_period")
     @Produces(MediaType.APPLICATION_JSON)
@@ -265,6 +269,63 @@ public class ConsumptionDataResource {
         return resultList;
     }
 
+    /**
+     * Gets the value of energy has been consumed this day.
+     *
+     * @return total daily consumption.
+     */
+    @POST
+    @Path("thisDayTotal")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Integer thisDayTotalConsumption() {
+        DateTime nowDate = new DateTime(System.currentTimeMillis());
+        int year = nowDate.getYear();
+        int month = nowDate.getMonthOfYear();
+        int day = nowDate.getDayOfMonth();
+        Timestamp begin = Timestamp.valueOf(year + "-" + month + "-" + day + " 00:00:00");
+        Integer value = getThisConsumption(begin);
+
+        return value;
+    }
+
+    /**
+     * Gets the value of energy has been consumed this month.
+     *
+     * @return total monthly consumption.
+     */
+    @POST
+    @Path("thisMonthTotal")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Integer thisMonthTotalConsumption() {
+        DateTime nowDate = new DateTime(System.currentTimeMillis());
+        int year = nowDate.getYear();
+        int month = nowDate.getMonthOfYear();
+
+        Timestamp begin = Timestamp.valueOf(year + "-" + month + "-" + "01" + " 00:00:00");
+
+        Integer value = getThisConsumption(begin);
+        return value;
+    }
+
+    /**
+     * Gets the value of energy has been consumed this year.
+     *
+     * @return total yearly consumption.
+     */
+    @POST
+    @Path("thisYearTotal")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Integer thisYearTotalConsumption() {
+        DateTime nowDate = new DateTime(System.currentTimeMillis());
+        int year = nowDate.getYear();
+
+        Timestamp begin = Timestamp.valueOf(year + "-" + "01" + "-" + "01" + " 00:00:00");
+
+        Integer value = getThisConsumption(begin);
+        return value;
+    }
+
+
     private List<GraphDataTransfer> transformToDifferences(RtfBox box, List<GraphDataTransfer> list, Date dateBefore) {
 
         List<GraphDataTransfer> resultList = new ArrayList<GraphDataTransfer>();
@@ -315,6 +376,13 @@ public class ConsumptionDataResource {
             } else break;
         }
         return days;
+    }
+
+    private Integer getThisConsumption(Timestamp begin){
+        RtfBox box = principalInformation.getCompany().getRtfBox();
+        Integer valueBefore = rtfBoxDataDao.findTotalConsumptionBefore(box, begin);
+        Integer actualValue = rtfBoxDataDao.findTotalConsumption(box);
+        return actualValue - valueBefore;
     }
 
 }
