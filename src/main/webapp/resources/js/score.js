@@ -36,7 +36,7 @@ $(function(){
     var ratingList = function(data){
         $("#main1").html("");
         var arrowValue;
-        function Obj(comp, arr){
+       /* function Obj(comp, arr){
             this.company = comp;
             this.arrow = arr;
         }
@@ -44,7 +44,7 @@ $(function(){
         for (var i = 0; i < 42; i++){
             arr[i] = new Obj("Company"+i, 1);
         }
-        data = arr;
+        data = arr;*/
 
         lengthList = data.length;
         console.log(lengthList);

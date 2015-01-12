@@ -1,0 +1,85 @@
+.eco{
+    float:left;
+    width: 30%;
+    margin-top: 10px;
+    margin-left: 5%;
+    font-weight: 600;
+
+}
+
+.ecoRow{
+    background-color: #59AC28;
+    color: #FFFFFE;
+    font-size: 1.5em;
+    width: 40%;
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+#ecoTrees{
+    float:left;
+}
+
+
+#ecoCarbon{
+    float:left;
+}
+#ecoTrees #treeIco,
+#ecoCarbon #carbonIco{
+    width: 20%;
+    float:left;
+    margin-left:10px;
+    padding:5px;
+    font-size: 2.5em;
+}
+.ecoValueWrapper{
+    width: 70%;
+    margin-left: 20%;
+    /*padding-top: 5px;*/
+}
+.ecoValue{
+    width: 100%;
+    text-align: center;
+
+}
+
+.energyRow{
+    margin-top:10px;
+    margin-right: 10px;
+    background-color: #59AC28;
+    color: #FFFFFE;
+    font-size: 1.5em;
+    padding: 3px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+
+}
+#totalMonthly{
+    clear:left;
+    float: left;
+    text-align: center;
+
+}
+#totalYearly{
+    float:left;
+    text-align: center;
+
+}
+#totalTotal{
+    float:left;
+    text-align: center;
+}
+.energyTitle{
+    padding:5px;
+}
+.energyValue{
+    padding:0 5px 5px 5px;
+}
