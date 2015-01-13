@@ -1,7 +1,10 @@
 $(function(){
+    currentPage.name = 'production';
     //var productionPeriodUrl = '/rest/production/production_period';
     var productionPeriodUrl = '/rest/production';
     allDateButtons(productionPeriodUrl);
+
+
 
 });
 
