@@ -1,8 +1,9 @@
-package nl.rooftopenergy.bionic.transfer;
+package nl.rooftopenergy.bionic.rest;
 
 import static org.junit.Assert.*;
 
 import nl.rooftopenergy.bionic.rest.UserSettingsDataResource;
+import nl.rooftopenergy.bionic.transfer.UserDataTransfer;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,8 +37,9 @@ public class UserSettingsDataResourceTest {
      * Current values are shown in comments in every method
      */
     @Test
-    public void testSaveNewDescription() {
-        resource.saveNewDescription("testDescription");
+    public void testSaveNewDescription() throws Exception {
+        throw new Exception("test doesn't work properly");
+      /*  resource.saveNewDescription("testDescription");
         UserDataTransfer userDataTransfer = resource.getUserDescription();
         assertEquals(userDataTransfer.getDescription(), "testDescription");
         assertEquals(userDataTransfer.getCity(), "Rotterdam");
@@ -50,6 +52,6 @@ public class UserSettingsDataResourceTest {
 
 
         //In order to return DB in the previous state;
-        resource.saveNewDescription("Some description");
+        resource.saveNewDescription("Some description");*/
     }
 }
