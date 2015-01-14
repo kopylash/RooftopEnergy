@@ -1,25 +1,25 @@
 .eco{
     float:left;
-    width: 30%;
+    width: 44%;
     margin-top: 10px;
     margin-left: 5%;
     margin-bottom: 10px;
-    font-weight: 600;
+    font-weight: 500;
 
 }
 
 .ecoRow{
     background-color: #59AC28;
     color: #FFFFFE;
-    font-size: 1.5em;
+    font-size: 1.4em;
     width: 40%;
-    padding: 5px;
+    padding: 2px;
     margin-right: 10px;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 #ecoTrees{
@@ -36,7 +36,7 @@
     float:left;
     margin-left:10px;
     padding:5px;
-    font-size: 2.5em;
+    font-size: 2.0em;
 }
 .ecoValueWrapper{
     width: 70%;
@@ -50,17 +50,19 @@
 }
 
 .energyRow{
+    display: inline;
+    width: 30%;
     margin-top:10px;
     margin-right: 10px;
     background-color: #59AC28;
     color: #FFFFFE;
-    font-size: 1.5em;
-    padding: 3px;
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
+    font-size: 1.2em;
+    padding: 0px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 
 }
 #totalMonthly{
@@ -79,8 +81,87 @@
     text-align: center;
 }
 .energyTitle{
-    padding:5px;
+    padding:3px;
 }
 .energyValue{
-    padding:0 5px 5px 5px;
+    padding:0 5px 3px 5px;
+}
+
+@media screen and (min-device-width: 1250px) and (max-device-width: 1600px){
+    .ecoRow{
+        font-size: 1.7em;
+        width: 41%;
+        padding: 5px;
+    }
+
+    #ecoTrees #treeIco,
+    #ecoCarbon #carbonIco{
+        width: 20%;
+        font-size: 2.3em;
+    }
+
+    .energyRow{
+        width: 27%;
+        font-size: 1.3em;
+    }
+
+    .eco{
+        width: 40%;
+        /*font-weight: 600;*/
+    }
+
+}
+
+@media screen and (min-device-width: 1601px) and (max-device-width: 1900px){
+    .ecoRow{
+        font-size: 1.9em;
+        width: 41%;
+        padding: 5px;
+        line-height: 22px;
+    }
+
+    #ecoTrees #treeIco,
+    #ecoCarbon #carbonIco{
+        width: 20%;
+        font-size: 2.5em;
+    }
+
+    .energyRow{
+        width: 27%;
+        font-size: 1.5em;
+    }
+
+    .eco{
+        width: 38%;
+        /*font-weight: 600;*/
+    }
+
+}
+
+@media screen and (min-device-width: 1901px){
+    .ecoRow{
+        font-size: 2em;
+        width: 41%;
+        padding: 10px;
+        line-height: 22px;
+    }
+
+    #ecoTrees #treeIco,
+    #ecoCarbon #carbonIco{
+        width: 20%;
+        font-size: 2.5em;
+    }
+
+    .energyRow{
+        width: 27%;
+        font-size: 1.5em;
+        padding-bottom: 5px;
+        line-height: 17px;
+    }
+
+    .eco{
+        width: 35%;
+        font-weight: 600;
+    }
+
 }

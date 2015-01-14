@@ -69,7 +69,6 @@ $(function(){
         //foo(code);
 
         var colorSwitch = function (k, kk) {
-
             var page = window.location;
             page = page + "";
             var first = page.lastIndexOf("/") + 1;
@@ -100,7 +99,8 @@ $(function(){
             } else {
 
                 $('header').removeClass('header').html(headerHtml).append("<div id='deskMenu'>" + code + "</div>");
-
+                $("#periodMenuButtons").css({"width":"40%", "textAlign":"center", "marginLeft":"50%"});
+                $("#period .btn").css({"width":"20%"});
                 $('.mainButtons:not(.hideButtons)').each(function () {
                     var buttId = this.id;
                     $(this).text(buttId).addClass('bigButtonsFont');
@@ -109,6 +109,7 @@ $(function(){
                     $("#menu").text("settings").click(function () {
                         window.location = "settings.html";
                     });
+                    //$("#settings").addClass("bigButtonsFont");
                 });
 
                 $('footer').html(" ").removeClass('footer');
@@ -116,6 +117,8 @@ $(function(){
                 var k4 = "#108f38";
                 colorSwitch(k2, k4);
                 $("#desktopHeader").addClass("desktopHeaderClass");
+                //window.setTimeout('location.reload()', 60000);
+
             }
         });
 
