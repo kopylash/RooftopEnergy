@@ -64,6 +64,8 @@
     font-weight: 700;
     color: #FFFFFE;
     margin-left: 0;
+    padding-left: 2px;
+    
 }
 
 #cButtons .btn:focus {
@@ -214,8 +216,11 @@
     /*}*/
 /*}*/
 
-/*@media screen and (min-width: 901px) and (max-width: 1950px){*/
-    /*#cButtons {*/
-        /*margin-left: 2.8%;*/
-    /*}*/
-/*}*/
+@media screen and (min-width: 1250px){
+    main {
+        width: 50%;
+        font-size: 2em;
+        line-height: 25px;
+        padding: 5px;
+    }
+}

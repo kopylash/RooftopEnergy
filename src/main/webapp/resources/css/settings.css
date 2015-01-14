@@ -332,31 +332,39 @@ textarea {
 }
 
 
-/*@media screen and (min-width: 331px) and (max-width: 369px){*/
-    /*.login{*/
-        /*width: 90%;*/
-    /*}*/
-    /*.form .field {*/
-        /*width: 80%;*/
-        /*margin: 0 auto;*/
-    /*}*/
+@media screen and (min-device-width: 769px){
+    .login{
+        width: 50%;
+    }
+    main{
+        margin-top: 22px;
+    }
+    .form input[type=text],
+    .form input[type=email]{
+        font-size: 1.8em;
+        padding-top: 20px;
+        padding-bottom: 15px;
+    }
 
-    /*.form input[type=text],*/
-    /*.form input[type=email]{*/
-        /*width: 70%;*/
-    /*}*/
+    textarea{
+        font-size: 1.6em;
+    }
+    #description{
+        text-indent: 47px;
+        /*line-height: 20px;*/
+        padding-left: 36px;
+    }
 
-    /*.form button[type=submit]{*/
-        /*width: 78%;*/
-        /*margin: 15px 21% 15px 10%;*/
-    /*}*/
+    .form .field i,
+    textarea i {
+        padding-top: 10px;
+        font-size: 1.6em;
+        height: 36px;
+        width: 36px;
 
-    /*#rem {*/
-        /*position: fixed;*/
-        /*left: 0;*/
-        /*text-align: left;*/
-    /*}*/
-/*}*/
+    }
+
+}
 
 /*@media screen and (max-width: 330px){*/
     /*.login{*/

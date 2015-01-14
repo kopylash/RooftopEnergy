@@ -202,3 +202,16 @@ main{
     text-align:center;
 
 }
+
+@media screen and (max-device-height: 450px)  {
+    main{
+        margin-bottom: 150px;
+    }
+}
+
+@media screen and (min-device-height: 650px) and (min-device-width: 1450px) {
+    main{
+        margin-top: 80px;
+        height: 60%;
+    }
+}

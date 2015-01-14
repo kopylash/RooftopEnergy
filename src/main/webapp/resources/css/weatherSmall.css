@@ -158,6 +158,17 @@
     overflow: hidden;
 }
 
+@media screen and (max-device-height: 450px){
+    #main{
+        height: 730px;
+        margin-bottom: 75px;
+    }
+
+    #weatherContent{
+        height: 730px;
+    }
+}
+
 @media screen and (min-device-height: 481px)and (max-device-height: 520px){
     #main{
         height: 400px;
@@ -190,6 +201,7 @@
 @media screen and (min-device-height: 701px)and (max-device-height: 800px){
     #main{
         height: 650px;
+
     }
     #weatherContent{
         height: 650px;
