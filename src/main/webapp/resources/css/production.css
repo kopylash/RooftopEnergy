@@ -159,8 +159,8 @@ body {
 main{
     margin: 10px auto;
     width: 90%;
-    overflow-y: scroll;
-    /*height: 300px;*/
+    /*overflow-y: scroll;*/
+    height: 300px;
         /*border: 2px solid #E8E8E8;*/
 }
 
