@@ -14,4 +14,6 @@ public interface CompanyDao extends Dao<Company, Integer> {
      * @return
      */
     public List<Company> findAllPublic();
+
+    public Company findByName(String companyName);
 }
