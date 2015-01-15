@@ -119,7 +119,7 @@ $(function(){
 
 
         } else {
-            $("#ecoSection").clear();
+            $("#ecoSection").html("");
             $("#ecoSection").removeClass("eco");
 
         }

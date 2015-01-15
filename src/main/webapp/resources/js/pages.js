@@ -86,11 +86,13 @@ $(function() {
 
     colorSwitch();
 
-    window.addEventListener("resize", function () {
-        document.location.reload(true);
-    });
+    var whatDevice = device.mobile() || device.tablet();
+    console.log(whatDevice);
+    //window.addEventListener("resize", function () {
+    //    document.location.reload(true);
+    //});
         $(window).resize(function () {
-            if (screen.width <= 768) {
+            if (whatDevice) {
                 $('footer').html(code).addClass("footer");
                 $('header').removeClass("header1").html(firstHead).addClass("header");
                 var k1 = '#0062D2';
