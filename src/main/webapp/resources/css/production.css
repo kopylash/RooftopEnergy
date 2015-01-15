@@ -203,11 +203,14 @@ main{
 
 }
 
-@media screen and (max-device-height: 450px)  {
-    main{
-        margin-bottom: 150px;
-    }
-}
+/*@media screen and (max-device-height: 450px)  {*/
+    /*main{*/
+        /*margin-bottom: 150px;*/
+    /*}*/
+    /*.container-fluid{*/
+        /*overflow-y: scroll;*/
+    /*}*/
+/*}*/
 
 @media screen and (min-device-height: 650px) and (min-device-width: 1450px) {
     main{
