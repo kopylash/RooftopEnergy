@@ -49,6 +49,9 @@ public class ProductionDataResource {
     @Inject
     private PrincipalInformation principalInformation;
 
+    @Inject
+    private ComparingDataResource comparingDataResource;
+
     /**
      * Gets total number of production whole working period.
      * @return total number of producing energy.
@@ -107,28 +110,10 @@ public class ProductionDataResource {
     @Path("daily")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> dailyProduction(@FormParam("date") String thoseDate) {
-        long longDate = Long.parseLong(thoseDate);
-        RtfBox box = principalInformation.getCompany().getRtfBox();
-        DateTime thisDate = new DateTime(longDate);
-        String day = thisDate.getYear() + "-" + thisDate.getMonthOfYear() + "-" +
-                thisDate.getDayOfMonth() + " ";
-        List<GraphDataTransfer> resultList = new ArrayList<GraphDataTransfer>();
 
-        for (int i = 0; i < TWENTY_FOUR_HOURS; i++) {
-            Timestamp start = Timestamp.valueOf(day + i + ":00:00");
-            Timestamp finish = Timestamp.valueOf(day + i + ":59:59");
-            Integer value = rtfBoxDataDao.findTotalProductionByPeriod(box, start, finish);
-            if (value == null) {
-                value = 0;
-            }
-            resultList.add(new GraphDataTransfer(finish, value));
-        }
+        String companyName = principalInformation.getCompany().getCompanyName();
 
-        Date dateBefore = new Date(resultList.get(0).getDate().getTime() - HOUR);
-        resultList = transformToDifferences(box, resultList, dateBefore);
-
-
-        return resultList;
+        return  comparingDataResource.dailyProduction(companyName,thoseDate);
     }
 
     /**

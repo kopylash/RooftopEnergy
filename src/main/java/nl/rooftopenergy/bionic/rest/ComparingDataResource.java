@@ -5,7 +5,6 @@ import nl.rooftopenergy.bionic.dao.rtfbox.RtfBoxDao;
 import nl.rooftopenergy.bionic.dao.rtfboxdata.RtfBoxDataDao;
 import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.RtfBoxData;
-import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.GraphDataTransfer;
 import org.joda.time.DateTime;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,9 +39,6 @@ public class ComparingDataResource {
 
     @Inject
     private CompanyDao companyDao;
-
-    @Inject
-    private PrincipalInformation principalInformation;
 
     /**
      * Gets total number of production whole working period.
