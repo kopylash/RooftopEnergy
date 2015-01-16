@@ -34,6 +34,8 @@
     <script src="../resources/js/jquery-ui1.min.js"></script>
     <script src="../resources/js/loginPage.js"></script>
     <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/vars.js"></script>
+
     <script src="../resources/js/jquery.cookie.js"></script>
     <script src="../resources/js/settings.js"></script>
     <script src="../resources/js/device/lib/device.min.js"></script>
@@ -55,67 +57,67 @@
     <main>
     <div  class="login"> <!-- Login -->
 
-        <form class="form" method="post" action="" autocomplete="off" id="logForm">
+        <div class="form"  id="logForm">
 
-        <p class="field">
-            <input type="text"  id="userName" name="j_username" maxlength="50" placeholder="Account" readonly/>
+        <p class="field" title="User name (login)">
+            <input type="text"  id="userName" name="username" maxlength="50" placeholder="Account" readonly/>
             <i class="fa fa-user"></i>
         </p>
 
-        <p class="field">
-            <input type="text"  id="country" name="j_username" maxlength="50" placeholder="Country" readonly/>
+        <p class="field" title="Country">
+            <input type="text"  id="country" name="country" maxlength="50" placeholder="Country" readonly/>
             <i class="fa fa-flag"></i>
         </p>
 
-        <p class="field">
-            <input type="text"  id="province" name="j_username" maxlength="50" placeholder="Province" readonly/>
+        <p class="field" title="Province">
+            <input type="text"  id="province" name="province" maxlength="50" placeholder="Province" readonly/>
             <i class="fa fa-university"></i>
         </p>
 
-        <p class="field">
-            <input type="text"  id="street" name="j_username" maxlength="50" placeholder="Street" readonly/>
+        <p class="field" title="Street">
+            <input type="text"  id="street" name="street" maxlength="50" placeholder="Street" readonly/>
             <i class="fa fa-home"></i>
         </p>
-        <p class="field">
-            <input type="text"  id="zipCode" name="j_username" maxlength="50" placeholder="Zip code" readonly/>
+        <p class="field" title="Zip code">
+            <input type="text"  id="zipCode" name="zipcode" maxlength="50" placeholder="Zip code" readonly/>
             <i class="fa fa-envelope-o"></i>
         </p>
 
-        <p class="field">
-            <input type="text"  id="city" name="j_username" maxlength="50" placeholder="City"readonly/>
+        <p class="field" title="City">
+            <input type="text"  id="city" name="city" maxlength="50" placeholder="City"readonly/>
             <i class="fa fa-shield"></i>
         </p>
 
-        <p class="field">
-            <input type="text"  id="company" name="j_username" maxlength="50" placeholder="Company" readonly/>
+        <p class="field" title="Company">
+            <input type="text"  id="company" name="company" maxlength="50" placeholder="Company" readonly/>
             <i class="fa fa-users"></i>
         </p>
 
-        <p class="field">
-            <input type="text"  id="panelType" name="j_username" maxlength="50" placeholder="Panel type" />
+        <p class="field" title="Panel type">
+            <input type="text"  id="panelType" name="panelType" maxlength="50" placeholder="Panel type" />
             <i class="fa fa-th"></i>
         </p>
 
-        <p class="field">
-            <input type="email"  id="email" name="j_username" maxlength="50" placeholder="E-mail"/>
+        <p class="field" title="E-mail">
+            <input type="email"  id="email" name="email" maxlength="50" placeholder="E-mail"/>
             <i class="fa fa-at"></i>
         </p>
 
-        <p class="field">
+        <p class="field" title="Your description">
             <!--<i class="fa fa-user"></i>-->
-            <textarea class="field" id="description"  name="j_username" maxlength="200"placeholder="Description"></textarea>
+            <textarea class="field" id="description"  name="description" maxlength="200"placeholder="Description"></textarea>
             <i class="fa fa-pencil"></i>
         </p>
             <p class="publicStatus" id="rem">
-                <input type="checkbox" id="statusCompany"  name=""  value="yes" />
+                <input type="checkbox" id="statusCompany"  name="statusCompany"  value="yes" />
                 <label id="lab" for="statusCompany"><span></span> Public status of the company </label>
             </p>
             <div id="buttLine">
-            <p class="submit"><button id="sub" type="submit" name="commit" value="Login"><i class="fa fa-floppy-o"></i></button></p>
-            <p class="submit"><button id="res" type="reset" name="commit" value="Reset"><i class="fa fa-times"></i></button></p>
-</div>
+            <p class="submit"><button id="sub" ><i class="fa fa-floppy-o"></i></button></p>
+            <p class="submit"><button id="res" ><i class="fa fa-times"></i></button></p>
+            </div>
 
-        </form>
+        </div>
     </div> <!--/ Login-->
     </main>
 
@@ -128,6 +130,3 @@
 </html>
 
 
-
-</body>
-</html>

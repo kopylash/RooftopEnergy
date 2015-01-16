@@ -4,6 +4,7 @@ $(function() {
     var companyName;
     var userName;
 
+
     function ajaxGetUserInfo() {
         $.ajax({
             type: 'get',
@@ -16,6 +17,8 @@ $(function() {
                 200: function (data) {
                     userName = data.userName;
                     companyName = data.company;
+                    companyInfo.status = data.publicStatus;
+
                     //loadHtml();
                 }
             }
@@ -28,6 +31,10 @@ $(function() {
     $(document).ajaxComplete(function () {
         $("#desktopCompany").html(companyName);
         $("#desktopUser span").html(userName);
+
+
+
+
     });
     //function loadHtml() {
     var code = '<div id="mainMenu"><div id="settingsMenu" class="ui-widget-content ui-corner-all">\
@@ -77,14 +84,22 @@ $(function() {
         $(".mainButtons").click(function () {
             if (this.id == "menu") {
                 runEffect();
-            }  else {
+            } else {
+                if (companyInfo.status == false && this.id == "rating") {
+                alert("Your company is not public!");
+
+            } else {
                 if (this.id != "logout") {
                     window.location = this.id + ".html";
                 }
             }
+
+        }
         });
 
     };
+
+
 
     colorSwitch();
     var jQmobile = '<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>';

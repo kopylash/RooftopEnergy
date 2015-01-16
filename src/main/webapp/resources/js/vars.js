@@ -4,3 +4,7 @@
 var currentPage ={
     name : 'none'
 };
+
+var companyInfo = {
+    status : true
+};
