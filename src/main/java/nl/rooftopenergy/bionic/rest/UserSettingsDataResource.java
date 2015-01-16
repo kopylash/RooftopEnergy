@@ -3,9 +3,11 @@ package nl.rooftopenergy.bionic.rest;
 import nl.rooftopenergy.bionic.dao.company.CompanyDao;
 import nl.rooftopenergy.bionic.dao.rtfbox.RtfBoxDao;
 import nl.rooftopenergy.bionic.dao.user.UserDao;
+import nl.rooftopenergy.bionic.dao.users.UsersDao;
 import nl.rooftopenergy.bionic.entity.Company;
 import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.User;
+import nl.rooftopenergy.bionic.entity.Users;
 import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.UserDataTransfer;
 import org.apache.log4j.Logger;
@@ -22,10 +24,13 @@ import javax.ws.rs.core.Response;
 @RestController
 @Path("boxData")
 public class UserSettingsDataResource {
-    private final Logger log = Logger.getLogger(RtfBoxDataResource.class.getName());
+    private final Logger log = Logger.getLogger(UserSettingsDataResource.class.getName());
 
     @Inject
     private CompanyDao companyDao;
+
+    @Inject
+    private UsersDao usersDao;
 
     @Inject
     private RtfBoxDao rtfBoxDao;
@@ -37,6 +42,7 @@ public class UserSettingsDataResource {
     private PrincipalInformation principalInformation;
 
     /**
+     * Saves new userInfo
      * @param paramDescription  is the new description of current user account that is about to be saved.
      * @param paramEmail        is the new email of the user.
      * @param paramPublicStatus is new publicStatus of the company.
@@ -104,5 +110,28 @@ public class UserSettingsDataResource {
                 city, zipCode, street, province, country, email, publicStatus);
 
         return userDataTransfer;
+    }
+
+    /**
+     * Changes the password of current user
+     * @param paramOldPassword old password
+     * @param paramNewPassword new password
+     * @return HHTP response 200, when everything is okay and HTTP response 304 when not modified
+     *
+     */
+    @POST
+    @Path("changePassword")
+    public Response changePassword(@FormParam("oldPassword") String paramOldPassword,
+                                   @FormParam("newPassword") String paramNewPassword) {
+
+        Users currentUser = usersDao.find(principalInformation.getPrincipalName());
+        if (paramOldPassword.equals(currentUser.getPassword())) {
+            currentUser.setPassword(paramNewPassword);
+            usersDao.save(currentUser);
+        } else {
+            return Response.notModified().build();
+        }
+
+        return Response.ok().build();
     }
 }
