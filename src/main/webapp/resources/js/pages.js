@@ -33,7 +33,7 @@ $(function() {
     var code = '<div id="mainMenu"><div id="settingsMenu" class="ui-widget-content ui-corner-all">\
     <div id="settings" class="mainButtons hideButtons"><i class="fa fa-cogs"><span>&nbspSettings</span></i></div>\
     <div id="changePassword" class="mainButtons hideButtons"><i class="fa fa-key"><span>&nbspChange&nbsppassword</span></i></div>\
-    <div id="logout" class="mainButtons hideButtons"><a href="j_spring_security_logout"><i class="fa fa-sign-out"><span>&nbspLogout</span></i></a></div></div>\
+    <div id="logout" class="mainButtons hideButtons"><a href="j_spring_security_logout" data-role="button" data-direction="reverse" data-transition="fade" data-ajax="false"><i class="fa fa-sign-out"><span>&nbspLogout</span></i></a></div></div>\
     <div id="showButtons" > <div id="consumption" class="mainButtons"><i class="fa fa-plug   fa-4x"></i></div>\
     <div id="loggedPage" class="mainButtons"><i class="fa fa-sun-o  fa-4x"></i></div>\
     <div id="weather" class="mainButtons"><i class="fa fa-cloud  fa-4x"></i></div>\
@@ -77,27 +77,32 @@ $(function() {
         $(".mainButtons").click(function () {
             if (this.id == "menu") {
                 runEffect();
-            } else {
-                window.location = this.id + ".html";
+            }  else {
+                if (this.id != "logout") {
+                    window.location = this.id + ".html";
+                }
             }
         });
 
     };
 
     colorSwitch();
+    var jQmobile = '<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>';
 
     var whatDevice = device.mobile() || device.tablet();
     console.log(whatDevice);
     //window.addEventListener("resize", function () {
     //    document.location.reload(true);
-    //});
-        $(window).resize(function () {
-            if (whatDevice) {
+    ////});
+    //    $(window).resize(function () {
+            if (whatDevice && (screen.width <= 1300) && (screen.height <= 1000)) {
                 $('footer').html(code).addClass("footer");
                 $('header').removeClass("header1").html(firstHead).addClass("header");
                 var k1 = '#0062D2';
                 var k3 = '#59AC28';
+                $("body").append(jQmobile);
                 colorSwitch(k1, k3);
+
 
             } else {
 
@@ -122,9 +127,9 @@ $(function() {
                 $("#desktopHeader").addClass("desktopHeaderClass");
 
             }
-        });
-
-        $(window).resize();
+        //});
+        //
+        //$(window).resize();
 
 
     //}

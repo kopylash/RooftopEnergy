@@ -64,14 +64,14 @@ textarea i {
     margin-top: 10px;
 }
 
-.login p.remember {
+.login p.publicStatus {
     /*float: left;*/
     margin-bottom: 0;
     margin-top: 0;
     padding-bottom: 0;
 }
 
-.login p.remember label {
+.login p.publicStatus label {
     color: #a7a599;
     font-size: 12px;
     cursor: pointer;
@@ -384,7 +384,7 @@ textarea {
         /*width: 80%;*/
         /*margin: 15px 21% 15px 10%;*/
     /*}*/
-    /*.remember {*/
+    /*.publicStatus {*/
         /*margin-left: -7%;*/
     /*}*/
 /*}*/
@@ -446,7 +446,7 @@ textarea {
         /*font-size: 20px;*/
     /*}*/
 
-    /*.remember{*/
+    /*.publicStatus{*/
         /*margin-top: 4%;*/
     /*}*/
 /*}*/

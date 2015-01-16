@@ -216,9 +216,9 @@ main{
     /*}*/
 /*}*/
 
-@media screen and (min-device-height: 650px) and (min-device-width: 1450px) {
+@media screen and (min-device-height: 650px) and (max-device-width: 1450px) {
     main{
-        margin-top: 80px;
+        margin-top: 50px;
         height: 60%;
     }
 }
