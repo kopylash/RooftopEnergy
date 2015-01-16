@@ -80,7 +80,7 @@ $(function(){
     function ajaxTotalTotalQuery(type) {
         $.ajax({
             type: 'post',
-            url: '/rest/'+type+'/total_production',
+            url: '/rest/'+type+'/total_'+type,
             crossDomain: true,
             error: function (data) {
                 $('#main').html(data.responseText);

@@ -43,21 +43,21 @@ textarea i {
     margin: 0 auto;
     width: 95%;
     /*height: 315px;*/
-    background: white;
-    border-radius: 3px;
+    /*background: white;*/
+    /*border-radius: 3px;*/
 }
 
-.login:before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    bottom: -8px;
-    left: -8px;
-    z-index: -1;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-}
+/*.login:before {*/
+    /*content: '';*/
+    /*position: absolute;*/
+    /*top: -8px;*/
+    /*right: -8px;*/
+    /*bottom: -8px;*/
+    /*left: -8px;*/
+    /*z-index: -1;*/
+    /*background: rgba(255, 255, 255, 0.1);*/
+    /*border-radius: 4px;*/
+/*}*/
 
 
 .login p:first-child {
@@ -263,9 +263,9 @@ textarea {
     }
 }
 
-.form input[type="checkbox"] {
-    display:none;
-}
+/*.form input[type="checkbox"] {*/
+    /*display:none;*/
+/*}*/
 
 .form input[type="checkbox"] + label span {
     display:inline-block;
@@ -332,7 +332,7 @@ textarea {
 }
 
 
-@media screen and (min-device-width: 769px){
+@media screen and (min-device-width: 1281px){
     .login{
         width: 50%;
     }
@@ -362,6 +362,10 @@ textarea {
         height: 36px;
         width: 36px;
 
+    }
+
+    .form input[type="checkbox"] {
+        display:none;
     }
 
 }

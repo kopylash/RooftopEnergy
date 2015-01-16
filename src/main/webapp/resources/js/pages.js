@@ -90,21 +90,21 @@ $(function() {
     var jQmobile = '<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>';
 
     var whatDevice = device.mobile() || device.tablet();
+    var landscape = (screen.width <= 1300) && (screen.height <= 1000);
+    var portrait = (screen.width <= 1000) && (screen.height <= 1300);
     console.log(whatDevice);
     //window.addEventListener("resize", function () {
     //    document.location.reload(true);
     ////});
     //    $(window).resize(function () {
-            if (whatDevice && (screen.width <= 1300) && (screen.height <= 1000)) {
+            if (whatDevice || landscape || portrait) {
                 $('footer').html(code).addClass("footer");
                 $('header').removeClass("header1").html(firstHead).addClass("header");
                 var k1 = '#0062D2';
                 var k3 = '#59AC28';
-                $("body").append(jQmobile);
+                $("footer").append(jQmobile);
                 colorSwitch(k1, k3);
-
-
-            } else {
+                 } else {
 
                 $('header').removeClass('header').html(headerHtml).append("<div id='deskMenu'>" + code + "</div>");
                 $("#periodMenuButtons").css({"width":"40%", "textAlign":"center", "marginLeft":"50%"});
