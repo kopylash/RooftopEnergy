@@ -41,7 +41,7 @@ $(function() {
     <div id="menu" class="mainButtons"><i class="fa fa-list  fa-4x"></i></div></div></div>';
 
     var headerHtml = '<div class="desktopHeaderClass" id="desktopHeader">' +
-        '<div id="desktopLogo"><img src="../resources/images/logo.svg"></div> ' +
+        '<div id="desktopLogo"><a href="home.html"><img src="../resources/images/logo.svg"></a></div> ' +
         '<div id="desktopUser"><a href="j_spring_security_logout"><span></span> <i class="fa fa-sign-out"></i></a></div>' +
         '<div id="desktopCompany"></div></div><div id="forClear"></div>';
 
