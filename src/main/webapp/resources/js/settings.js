@@ -1,5 +1,6 @@
 $(function(){
     var userInfo;
+    var regV = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
     $(document).ajaxComplete( function(){
         //$("input[type=text]").val(function(){
         //    console.log("we are here");
@@ -47,12 +48,25 @@ $(function(){
 
     ajaxGetSettingsQuery();
 
-    $("#sub").click(function(){
+    function changeImg(){
+        $("#panelType, #email, #description").css({"backgroundColor":"#FFFFFF", "borderWidth":"1px", "borderColor":"#108f38"});
+        $("#lab").css({"color":"#ACA799"});
+        var devSize = "";
+        if(device.mobile() || device.tablet())
+        {
+            devSize = "24px";
+        } else {
+            devSize = "36px";
+        }
+        $(".form .field  i").css({"height":devSize});
+    }
 
+    $("#sub").click(function(){
        var panel =  $("#panelType").val();
        var mail =  $("#email").val();
        var descr =  $("#description").val();
        var stat =  $("#statusCompany").is(":checked")?true:false;
+        changeImg();
         userInfo.publicStatus = stat;
         userInfo.email = mail;
         userInfo.panelType = panel;
@@ -62,8 +76,11 @@ $(function(){
         console.log("stat= "+ stat);
         ajaxSaveSettings( panel, mail, descr, stat);
 
+
     });
+
     $("#res").click(function(){
+        changeImg();
         fillFields();
     });
 
@@ -83,4 +100,41 @@ $(function(){
             }*/
         });
     }
+
+
+    $("#panelType, #email, #description, #statusCompany").change(function(){
+
+        //var emailVal = $("#email").val();
+        //console.log("emailVal="+emailVal);
+        //
+        //var inpVal = $(this).val() + "";
+        //console.log("inpVal="+inpVal);
+        //
+        //var emailRegVar = emailVal.search(regV);
+        //console.log("emailRegVar="+emailRegVar);
+        //
+        //if(inpVal == ""){
+        //    //$("$sub").disable();
+        //    $(this).css({"backgroundColor":"#FF6D6A", "borderWidth":"3px", "borderColor":"#FF0000"});
+        //}
+        //else if(emailRegVar == -1){
+        //    $("$email").css({"backgroundColor":"#FF6D6A", "borderWidth":"3px", "borderColor":"#FF0000"});
+        //}
+        //else {
+            if (this.id == "statusCompany") {
+                $("#lab").css({"color": "#108f38"});
+            } else
+                $(this).css({"backgroundColor": "#FAFFBD", "borderWidth": "2px"});
+            var devSize = "";
+            if (device.mobile() || device.tablet()) {
+                devSize = "26px";
+            } else {
+                devSize = "38px";
+            }
+            $(".form .field #" + this.id + "+ i").css({"height": devSize});
+        //}
+    });
+
+
+
 });
