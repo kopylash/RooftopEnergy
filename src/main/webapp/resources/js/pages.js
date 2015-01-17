@@ -38,6 +38,7 @@ $(function() {
     });
     //function loadHtml() {
     var code = '<div id="mainMenu"><div id="settingsMenu" class="ui-widget-content ui-corner-all">\
+    <div id="home" class="mainButtons hideButtons"><i class="fa fa-home"><span>&nbspHome</span></i></div>\
     <div id="settings" class="mainButtons hideButtons"><i class="fa fa-cogs"><span>&nbspSettings</span></i></div>\
     <div id="changePassword" class="mainButtons hideButtons"><i class="fa fa-key"><span>&nbspChange&nbsppassword</span></i></div>\
     <div id="logout" class="mainButtons hideButtons"><a href="j_spring_security_logout" data-role="button" data-direction="reverse" data-transition="fade" data-ajax="false"><i class="fa fa-sign-out"><span>&nbspLogout</span></i></a></div></div>\
