@@ -169,6 +169,7 @@
     margin-bottom: -10px;
     /*z-index: 5;*/
     /*border-right:1px solid #108F38;*/
+    cursor:default;
 }
 .infoIcon ul{
     /*padding-bottom: -4px;*/
@@ -233,6 +234,7 @@
     border-right: 1px solid #108f38;
     text-transform: capitalize;
     text-align: center;
+    cursor:default;
 }
 .weatherDuringDay h6{
     margin-top:0;

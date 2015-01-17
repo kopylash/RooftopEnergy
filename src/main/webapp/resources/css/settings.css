@@ -36,6 +36,7 @@ textarea i {
     /*line-height: 44px;*/
     transition: all 0.3s ease-out;
     pointer-events: none;
+    cursor: default;
 }
 /* === Login === */
 .login {

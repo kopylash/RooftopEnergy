@@ -73,6 +73,7 @@
     float: right;
     color: #080808;
     font-weight: 700;
+    cursor:default;
 }
 
 #desktopUser {
