@@ -96,19 +96,20 @@ $(function() {
                 $("#line"+(data.length-1)).css({'border':'none'});
             }
 
-            switch(data.length){
-                case(3):
-                    $("#general").css({'height': '455px'});
-                    break;
-                case(7):
-                    $("#general").css({'height': '1000px'});
-                    break;
-                case(14):
-                    $("#general").css({'height': '1955px'});
-            }
+            //switch(data.length){
+            //    case(3):
+            //        $("#general").css({'height': '455px'});
+            //        break;
+            //    case(7):
+            //        $("#general").css({'height': '1000px'});
+            //        break;
+            //    case(14):
+            //        $("#general").css({'height': '1955px'});
+            //}
 
         };
         list();
+        $(".ui-loader h1").css({'display':'none'});
     };
 
     var buttonStyles = function(buttId){
