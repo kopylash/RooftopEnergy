@@ -263,9 +263,9 @@ textarea {
     }
 }
 
-/*.form input[type="checkbox"] {*/
-    /*display:none;*/
-/*}*/
+.form input[type="checkbox"] {
+    margin-left: 5px;
+}
 
 .form input[type="checkbox"] + label span {
     display:inline-block;
@@ -344,7 +344,7 @@ textarea {
         font-size: 1.8em;
         padding-top: 20px;
         padding-bottom: 15px;
-    }
+        }
 
     textarea{
         font-size: 1.6em;
@@ -353,6 +353,7 @@ textarea {
         text-indent: 20px;
         /*line-height: 20px;*/
         padding-left: 36px;
+
     }
 
     .form .field i,
