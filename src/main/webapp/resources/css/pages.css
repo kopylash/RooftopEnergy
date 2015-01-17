@@ -89,3 +89,11 @@
     clear: both;
 }
 
+/*@media screen and (max-device-height: 450px)  {*/
+    /*main{*/
+        /*margin-bottom: 150px;*/
+    /*}*/
+    /*.container-fluid{*/
+        /*overflow-y: scroll;*/
+    /*}*/
+/*}*/

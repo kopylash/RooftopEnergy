@@ -1,5 +1,7 @@
 body {
     width: 100%;
+    min-height:100%;
+    /*position:relative;*/
     margin: 0;
     padding: 0;
    /* background-color: #FFFFFE;*/
@@ -9,6 +11,7 @@ body {
 .container-fluid{
     padding-left: 0;
     padding-right: 0;
+
 }
 
  #date {
@@ -89,9 +92,9 @@ body {
 
 
 .footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    position:fixed;
+    bottom:0;
+    left:0;
     /*display: inline;*/
     width: 100%;
     margin: 0;
@@ -156,8 +159,9 @@ body {
 main{
     margin: 10px auto;
     width: 90%;
+    /*overflow-y: scroll;*/
     height: 300px;
-    /*border: 2px solid #E8E8E8;*/
+        /*border: 2px solid #E8E8E8;*/
 }
 
 
@@ -203,15 +207,18 @@ main{
 
 }
 
-@media screen and (max-device-height: 450px)  {
-    main{
-        margin-bottom: 150px;
-    }
-}
+/*@media screen and (max-device-height: 450px)  {*/
+    /*main{*/
+        /*margin-bottom: 150px;*/
+    /*}*/
+    /*.container-fluid{*/
+        /*overflow-y: scroll;*/
+    /*}*/
+/*}*/
 
-@media screen and (min-device-height: 650px) and (min-device-width: 1450px) {
+@media screen and (min-device-height: 650px) and (max-device-width: 1450px) {
     main{
-        margin-top: 80px;
+        margin-top: 50px;
         height: 60%;
     }
 }
