@@ -54,10 +54,13 @@ $(function() {
         '<div id="desktopCompany"></div></div><div id="forClear"></div>';
 
     function runEffect() {
-        $("#settingsMenu").show("slide", {direction: "right"}, 500);
-        $("#mainMenu").hover(function () {
-            $("#settingsMenu").hide("slide", {direction: "right"}, 500);
-        })
+        if (isMobileDevice()) {
+            $("#settingsMenu").show("slide", {direction: "right"}, 500);
+            $("#mainMenu").hover(function () {
+                $("#settingsMenu").hide("slide", {direction: "right"}, 500);
+
+            })
+        }
     }
 
 
@@ -105,15 +108,15 @@ $(function() {
     colorSwitch();
     var jQmobile = '<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>';
 
-    var whatDevice = device.mobile() || device.tablet();
-    var landscape = (screen.width <= 1300) && (screen.height <= 1000);
-    var portrait = (screen.width <= 1000) && (screen.height <= 1300);
-    console.log(whatDevice);
+    //var whatDevice = device.mobile() || device.tablet();
+    //var landscape = (screen.width <= 1300) && (screen.height <= 1000);
+    //var portrait = (screen.width <= 1000) && (screen.height <= 1300);
+    //console.log(whatDevice);
     //window.addEventListener("resize", function () {
     //    document.location.reload(true);
     ////});
     //    $(window).resize(function () {
-            if (whatDevice || landscape || portrait) {
+            if (isMobileDevice()) {
                 $('footer').html(code).addClass("footer");
                 $('header').removeClass("header1").html(firstHead).addClass("header");
                 var k1 = '#0062D2';
