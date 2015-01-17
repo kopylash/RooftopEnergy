@@ -3,6 +3,8 @@
  */
 
 var myCompany;
+var productionPeriodUrl = '/rest/comparing/production';
+var consumptionPeriodUrl = '/rest/comparing/consumption';
 
 function ajaxGetCompanyName() {
     $.ajax({
@@ -16,16 +18,17 @@ function ajaxGetCompanyName() {
             200: function (data) {
                myCompany = data.company;
             }
+        },
+        complete: function(jqXHR,textStatus) {
+            allDateButtons(productionPeriodUrl);
         }
     });
 }
 
 $(function(){
     currentPage.name = 'Comparing';
-    var productionPeriodUrl = '/rest/comparing/production';
-    var consumptionPeriodUrl = '/rest/comparing/consumption';
     ajaxGetCompanyName();
-    allDateButtons(productionPeriodUrl);
+
 });
 
 function allDateButtons(url1){
@@ -80,8 +83,10 @@ function allDateButtons(url1){
         ajaxGraphQuery(url1,'Rooftop',pickerDate);
     };
 
-    //var tt = url1+"/daily";
+
     buttonClicker(url1,1,pickerDate);
+
+
 
     $("#day").click(function() {
         buttonStyles(this.id);
