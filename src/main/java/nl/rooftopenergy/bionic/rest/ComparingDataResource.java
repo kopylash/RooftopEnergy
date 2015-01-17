@@ -47,7 +47,7 @@ public class ComparingDataResource {
      * @return total number of producing energy.
      */
     @POST
-    @Path("total_production")
+    @Path("production/total")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer showTotalProduction(@FormParam("companyName") String companyName) {
 
@@ -66,7 +66,7 @@ public class ComparingDataResource {
      * @return list notes describing production.
      */
     @POST
-    @Path("production_period")
+    @Path("production/period")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> showProduction(@FormParam("companyName") String companyName,
                                                   @FormParam("dateStart") String dateStart,
@@ -100,7 +100,7 @@ public class ComparingDataResource {
      * @return list notes describing production.
      */
     @POST
-    @Path("production_daily")
+    @Path("production/daily")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> dailyProduction(@FormParam("companyName") String companyName,
                                                    @FormParam("date") String thoseDate) {
@@ -137,7 +137,7 @@ public class ComparingDataResource {
      * @return list notes describing production.
      */
     @POST
-    @Path("production_monthly")
+    @Path("production/monthly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> monthlyProduction(@FormParam("companyName") String companyName,
                                                      @FormParam("date") String thoseDate) {
@@ -175,7 +175,7 @@ public class ComparingDataResource {
      * @return list notes describing production.
      */
     @POST
-    @Path("production_yearly")
+    @Path("production/yearly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> yearlyProduction(@FormParam("companyName") String companyName,
                                                     @FormParam("date") String thoseDate) {
@@ -218,7 +218,7 @@ public class ComparingDataResource {
      * @return list notes describing production.
      */
     @POST
-    @Path("production_totally")
+    @Path("production/totally")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> totallyProduction(@FormParam("companyName") String companyName,
                                                      @FormParam("date") String tillDate) {
@@ -271,7 +271,7 @@ public class ComparingDataResource {
      * @return total daily production.
      */
     @POST
-    @Path("production_thisDayTotal")
+    @Path("production/thisDayTotal")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer thisDayTotalProduction(@FormParam("companyName") String companyName) {
         DateTime nowDate = new DateTime(System.currentTimeMillis());
@@ -291,7 +291,7 @@ public class ComparingDataResource {
      * @return total monthly production.
      */
     @POST
-    @Path("production_thisMonthTotal")
+    @Path("production/thisMonthTotal")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer thisMonthTotalProduction(@FormParam("companyName") String companyName) {
         DateTime nowDate = new DateTime(System.currentTimeMillis());
@@ -311,7 +311,7 @@ public class ComparingDataResource {
      * @return total yearly production.
      */
     @POST
-    @Path("production_thisYearTotal")
+    @Path("production/thisYearTotal")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer thisYearTotalProduction(@FormParam("companyName") String companyName) {
         DateTime nowDate = new DateTime(System.currentTimeMillis());
@@ -329,7 +329,7 @@ public class ComparingDataResource {
      * @return total number of consuming energy.
      */
     @POST
-    @Path("total_consumption")
+    @Path("consumption/total")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer showTotalConsumption(@FormParam("companyName") String companyName) {
 
@@ -351,7 +351,7 @@ public class ComparingDataResource {
      */
     @Deprecated
     @POST
-    @Path("consumption_period")
+    @Path("consumption/period")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> showConsumption(@FormParam("companyName") String companyName,
                                                    @FormParam("dateStart") String dateStart,
@@ -384,7 +384,7 @@ public class ComparingDataResource {
      * @return list notes describing consumption.
      */
     @POST
-    @Path("consumption_daily")
+    @Path("consumption/daily")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> dailyConsumption(@FormParam("companyName") String companyName,
                                                     @FormParam("date") String thoseDate) {
@@ -420,7 +420,7 @@ public class ComparingDataResource {
      * @return list notes describing consumption.
      */
     @POST
-    @Path("consumption_monthly")
+    @Path("consumption/monthly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> monthlyConsumption(@FormParam("companyName") String companyName,
                                                       @FormParam("date") String thoseDate) {
@@ -457,7 +457,7 @@ public class ComparingDataResource {
      * @return list notes describing consumption.
      */
     @POST
-    @Path("consumption_yearly")
+    @Path("consumption/yearly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> yearlyConsumption(@FormParam("companyName") String companyName,
                                                      @FormParam("date") String thoseDate) {
@@ -499,7 +499,7 @@ public class ComparingDataResource {
      * @return list notes describing consumption.
      */
     @POST
-    @Path("consumption_totally")
+    @Path("consumption/totally")
     @Produces(MediaType.APPLICATION_JSON)
     public List<GraphDataTransfer> totallyConsumption(@FormParam("companyName") String companyName,
                                                       @FormParam("date") String tillDate) {
@@ -551,7 +551,7 @@ public class ComparingDataResource {
      * @return total daily consumption.
      */
     @POST
-    @Path("consumption_thisDayTotal")
+    @Path("consumption/thisDayTotal")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer thisDayTotalConsumption(@FormParam("companyName") String companyName) {
         DateTime nowDate = new DateTime(System.currentTimeMillis());
@@ -570,7 +570,7 @@ public class ComparingDataResource {
      * @return total monthly consumption.
      */
     @POST
-    @Path("consumption_thisMonthTotal")
+    @Path("consumption/thisMonthTotal")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer thisMonthTotalConsumption(@FormParam("companyName") String companyName) {
         DateTime nowDate = new DateTime(System.currentTimeMillis());
@@ -589,7 +589,7 @@ public class ComparingDataResource {
      * @return total yearly consumption.
      */
     @POST
-    @Path("consumption_thisYearTotal")
+    @Path("consumption/thisYearTotal")
     @Produces(MediaType.APPLICATION_JSON)
     public Integer thisYearTotalConsumption(@FormParam("companyName") String companyName) {
         DateTime nowDate = new DateTime(System.currentTimeMillis());
