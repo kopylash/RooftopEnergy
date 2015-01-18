@@ -1,9 +1,5 @@
 $(function(){
     var companyNumber;
-    var Note = function(arrow, company){
-        this.arrow = arrow;
-        this.company = company;
-    };
 
     function screenH() {
         if (screen.height <= 550) {
@@ -24,13 +20,11 @@ $(function(){
     }
     screenH();
 
-    //
     $(window).resize(function(){
         screenH();
     });
 
     $(window).resize();
-    //
 
     var ratingUrl = '/rest/score';
     var begin = 0;
@@ -39,6 +33,7 @@ $(function(){
     var secondPart = "/production";
 
     var ratingList = function(data){
+        console.log(data);
         $("#main1").html("");
         var arrowValue;
 /*
@@ -59,11 +54,9 @@ $(function(){
             end = lengthList-1;
         }
         var companyName;
-        //for (i in data) {
+
         for (var i = begin; i <= end; i++) {
-            companyName = data[i].company+"";
-            console.log(companyName);
-           console.log(data[i].arrow);
+            companyName = data[i].company;
            switch (data[i].arrow){
                case -1:
                    arrowValue = "fa-arrow-down";
@@ -76,20 +69,17 @@ $(function(){
                    break;
                default :
            }
-           var lineCode = "<div  class='rating' id='comName"+i+"'>"+"<span class='companyClassName'>"+companyName+"</span>"+"<span class='ratingSymbol'><i class='fa "+arrowValue+" fa-1x'></i></span></div>";
+           var lineCode = "<div  class='rating'><span class='companyClassName'>"+companyName+"</span>"+"<span class='ratingSymbol'><i class='fa "+arrowValue+" fa-1x'></i></span></div>";
             $("#main1").append(lineCode);
 
 
          }
+        $(".rating").click(function(){
+            someName.name = $(this).text();
+            console.log(someName);
+        });
     };
-//ratingList();
-    function transformData(data){
-        var result = [];
-        for (var i = 0; i < data.length; i++){
-            result[i] = new Note(data[i].arrow, data[i].company);
-        }
-        ratingList(result);
-    }
+
     function ajaxScoreQuery(strUrl) {
         $.ajax({
             type: 'post',
@@ -100,7 +90,7 @@ $(function(){
             },
             statusCode: {
                 200: function (data) {
-                    transformData(data);
+                    ratingList(data);
                 }
             }
         });
@@ -174,9 +164,5 @@ $(function(){
         //}
     });
 
-    $(".companyClassName").mousedown(function(){
-        var rr = $(this).html()+"";
-        alert(rr);
-        //someName.name = $(this).text();
-    });
+
 });
