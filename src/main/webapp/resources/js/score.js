@@ -1,5 +1,10 @@
 $(function(){
     var companyNumber;
+    var Note = function(arrow, company){
+        this.arrow = arrow;
+        this.company = company;
+    };
+
     function screenH() {
         if (screen.height <= 550) {
             companyNumber = 6;
@@ -36,21 +41,28 @@ $(function(){
     var ratingList = function(data){
         $("#main1").html("");
         var arrowValue;
-       /* function Obj(comp, arr){
+/*
+       function Obj(comp, arr){
             this.company = comp;
             this.arrow = arr;
-        }
-        var arr = new Array();
-        for (var i = 0; i < 42; i++){
+       }
+       var arr = new Array();
+       for (var i = 0; i < 7; i++){
             arr[i] = new Obj("Company"+i, 1);
-        }
-        data = arr;*/
+       }
+       data = arr;
+*/
 
         lengthList = data.length;
         console.log(lengthList);
+        if(end > lengthList){
+            end = lengthList-1;
+        }
+        var companyName;
         //for (i in data) {
         for (var i = begin; i <= end; i++) {
-            var tt = data[i].company;
+            companyName = data[i].company+"";
+            console.log(companyName);
            console.log(data[i].arrow);
            switch (data[i].arrow){
                case -1:
@@ -64,18 +76,20 @@ $(function(){
                    break;
                default :
            }
-            lineCode = "<div  class='rating'>"+"<span id="+i+">"+tt+"</span>"+"<span class='ratingSymbol'><i class='fa "+arrowValue+" fa-1x'></i></span></div>";
+           var lineCode = "<div  class='rating' id='comName"+i+"'>"+"<span class='companyClassName'>"+companyName+"</span>"+"<span class='ratingSymbol'><i class='fa "+arrowValue+" fa-1x'></i></span></div>";
             $("#main1").append(lineCode);
+
+
+         }
+    };
+//ratingList();
+    function transformData(data){
+        var result = [];
+        for (var i = 0; i < data.length; i++){
+            result[i] = new Note(data[i].arrow, data[i].company);
         }
-
+        ratingList(result);
     }
-
-    $("#main1 .rating span").click(function(){
-        //var rr = this.id;
-        console.log("Hello");
-        //someName.name = $(this).text();
-    });
-
     function ajaxScoreQuery(strUrl) {
         $.ajax({
             type: 'post',
@@ -86,7 +100,7 @@ $(function(){
             },
             statusCode: {
                 200: function (data) {
-                    ratingList(data);
+                    transformData(data);
                 }
             }
         });
@@ -160,5 +174,9 @@ $(function(){
         //}
     });
 
-
+    $(".companyClassName").mousedown(function(){
+        var rr = $(this).html()+"";
+        alert(rr);
+        //someName.name = $(this).text();
+    });
 });
