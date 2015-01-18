@@ -64,12 +64,17 @@ $(function(){
                    break;
                default :
            }
-            lineCode = "<div id='' class='rating'>"+tt+"<span class='ratingSymbol'><i class='fa "+arrowValue+" fa-1x'></i></span></div>";
+            lineCode = "<div  class='rating'>"+"<span id="+i+">"+tt+"</span>"+"<span class='ratingSymbol'><i class='fa "+arrowValue+" fa-1x'></i></span></div>";
             $("#main1").append(lineCode);
         }
 
     }
 
+    $("#main1 .rating span").click(function(){
+        //var rr = this.id;
+        console.log("Hello");
+        //someName.name = $(this).text();
+    });
 
     function ajaxScoreQuery(strUrl) {
         $.ajax({

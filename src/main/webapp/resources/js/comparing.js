@@ -3,8 +3,7 @@
  */
 
 var myCompany;
-var productionPeriodUrl = '/rest/comparing/production';
-var consumptionPeriodUrl = '/rest/comparing/consumption';
+var restUrl = '/rest/comparing/production';
 
 function ajaxGetCompanyName() {
     $.ajax({
@@ -20,14 +19,15 @@ function ajaxGetCompanyName() {
             }
         },
         complete: function(jqXHR,textStatus) {
-            allDateButtons(productionPeriodUrl);
+            allDateButtons(restUrl);
         }
     });
 }
 
 $(function(){
     currentPage.name = 'Comparing';
-    ajaxGetCompanyName();
+
+    //ajaxGetCompanyName();
 
 });
 
