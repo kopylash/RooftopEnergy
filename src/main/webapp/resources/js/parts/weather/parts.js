@@ -109,6 +109,7 @@ $(function() {
 
         };
         list();
+        $(".ui-loader h1").css({'display':'none'});
     };
 
     var buttonStyles = function(buttId){
