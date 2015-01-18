@@ -53,6 +53,9 @@ $(function() {
         '<div id="desktopUser"><a href="j_spring_security_logout"><span></span> <i class="fa fa-sign-out"></i></a></div>' +
         '<div id="desktopCompany"></div></div><div id="forClear"></div>';
 
+    /*if (currentPage.name === 'rating' && companyInfo.status == false){
+        $('main').html("Your company is not public");
+    }*/
     function runEffect() {
         if (isMobileDevice()) {
             $("#settingsMenu").show("slide", {direction: "right"}, 500);
@@ -88,9 +91,12 @@ $(function() {
         $(".mainButtons").click(function () {
             if (this.id == "menu") {
                 runEffect();
-            } else {
-                if (companyInfo.status == false && this.id == "rating") {
-                alert("Your company is not public!");
+            /*} else {
+                if (companyInfo.status == false && this.id == "rating") {*/
+                    //$('main').html("Your company is not public");
+                    //window.location = this.id + ".html";
+                //alert("Your company is not public!");
+
 
             } else {
                 if (this.id != "logout") {
@@ -99,7 +105,7 @@ $(function() {
             }
 
         }
-        });
+        );
 
     };
 
