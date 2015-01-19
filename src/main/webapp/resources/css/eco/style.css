@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?-gk0oea');
-	src:url('fonts/icomoon.eot?#iefix-gk0oea') format('embedded-opentype'),
-		url('fonts/icomoon.woff?-gk0oea') format('woff'),
-		url('fonts/icomoon.ttf?-gk0oea') format('truetype'),
-		url('fonts/icomoon.svg?-gk0oea#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-4igije');
+	src:url('fonts/icomoon.eot?#iefix-4igije') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-4igije') format('woff'),
+		url('fonts/icomoon.ttf?-4igije') format('truetype'),
+		url('fonts/icomoon.svg?-4igije#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,11 +23,23 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-factory:before {
+.icon-furtree:before {
+	content: "\e604";
+}
+
+.icon-solarpanel:before {
 	content: "\e600";
 }
 
-.icon-tree:before {
+.icon-plant:before {
 	content: "\e601";
+}
+
+.icon-tree:before {
+	content: "\e602";
+}
+
+.icon-factory:before {
+	content: "\e603";
 }
 
