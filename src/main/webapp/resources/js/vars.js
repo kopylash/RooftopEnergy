@@ -20,7 +20,3 @@ const SCREEN_RESOLUTION = {
     width:1300,
     height:1000
 };
-
-var someName = {
-    name : ""
-};
