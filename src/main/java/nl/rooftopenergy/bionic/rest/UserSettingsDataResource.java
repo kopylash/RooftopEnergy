@@ -9,6 +9,7 @@ import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.User;
 import nl.rooftopenergy.bionic.entity.Users;
 import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
+import nl.rooftopenergy.bionic.transfer.PasswordTransfer;
 import nl.rooftopenergy.bionic.transfer.UserDataTransfer;
 import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.PasswordAuthentication;
 
 /**
  * Created by Bess on 12/17/14.
@@ -114,19 +116,18 @@ public class UserSettingsDataResource {
 
     /**
      * Changes the password of current user
-     * @param paramOldPassword old password
-     * @param paramNewPassword new password
-     * @return HHTP response 200, when everything is okay and HTTP response 304 when not modified
+     * @param passwordTransfer  instance which contains old and new passwords
+     * @return HTTP response 200, when everything is okay and HTTP response 304 when not modified
      *
      */
     @POST
     @Path("changePassword")
-    public Response changePassword(@FormParam("oldPassword") String paramOldPassword,
-                                   @FormParam("newPassword") String paramNewPassword) {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response changePassword(PasswordTransfer passwordTransfer) {
 
         Users currentUser = usersDao.find(principalInformation.getPrincipalName());
-        if (paramOldPassword.equals(currentUser.getPassword())) {
-            currentUser.setPassword(paramNewPassword);
+        if (passwordTransfer.getOldPassword().equals(currentUser.getPassword())) {
+            currentUser.setPassword(passwordTransfer.getNewPassword());
             usersDao.save(currentUser);
         } else {
             return Response.notModified().build();
