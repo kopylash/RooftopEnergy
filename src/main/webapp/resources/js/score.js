@@ -75,8 +75,9 @@ $(function(){
 
          }
         $(".rating").click(function(){
-            someName.name = $(this).text();
-            console.log(someName);
+            var comparingCompanyName = $(this).text();
+            var location = 'comparing.html?companyName='+comparingCompanyName;
+            window.location=location;
         });
     };
 
