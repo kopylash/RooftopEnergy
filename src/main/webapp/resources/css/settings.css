@@ -122,7 +122,7 @@ textarea {
 }
 
 .form #sub,
-.form #res{
+.form #res {
     display: inline;
     margin-top: 0px;
     text-align: center;
@@ -318,18 +318,23 @@ textarea {
 #changePasswordButton{
     padding: 3px 10px;
     display: none;
-    background-color: #59AC28;
+    background-color: #108f38;
     border-radius: 2px;
-    width: 25%;
-    /*height: 18px;*/
+    width: 30px;
+    height: 30px;
     border: none;
     outline: none;
+
   }
 
 #changePasswordButton i{
     color: #FFFFFE;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
+}
+
+#buttUp{
+    clear: both;
 }
 
 @media screen and (min-device-width: 1300px){
@@ -374,8 +379,12 @@ textarea {
         float: right;
     }
     #rem{
-        margin-top: 5px;
-        margin-bottom: 7px;
+        margin-top: 2px;
+        margin-bottom: 7px
+    }
+
+    #rem input, #rem label{
+        margin-top: 8px;
     }
 
 }
