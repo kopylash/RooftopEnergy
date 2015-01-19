@@ -5,6 +5,8 @@ import nl.rooftopenergy.bionic.dao.rtfbox.RtfBoxDao;
 import nl.rooftopenergy.bionic.dao.rtfboxdata.RtfBoxDataDao;
 import nl.rooftopenergy.bionic.entity.RtfBox;
 import nl.rooftopenergy.bionic.entity.RtfBoxData;
+import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
+import nl.rooftopenergy.bionic.transfer.ComparingInfoTransfer;
 import nl.rooftopenergy.bionic.transfer.GraphDataTransfer;
 import org.joda.time.DateTime;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,6 +32,10 @@ public class ComparingDataResource {
     private static final int TWENTY_FOUR_HOURS = 24;
     private static final int HOUR = 3600000;
     private static final int MONTHS = 12;
+    //trees saved for 1 Kwh
+    private static final double TREE_SAVED_FOR_ONE_KILOWATT = 0.002742;
+    //CO2 offset in kilograms for 1 Kwh (for dutch region)
+    private static final double CARBON_OFFSET_FOR_ONE_KILOWATT=0.46;
 
     @Inject
     private RtfBoxDataDao rtfBoxDataDao;
@@ -39,6 +45,9 @@ public class ComparingDataResource {
 
     @Inject
     private CompanyDao companyDao;
+
+    @Inject
+    private PrincipalInformation principalInformation;
 
     /**
      * Gets total number of production whole working period.
@@ -599,6 +608,26 @@ public class ComparingDataResource {
 
         Integer value = getThisConsumption(companyName, begin);
         return value;
+    }
+
+    @POST
+    @Path("comparingInfo")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<ComparingInfoTransfer> getComparingInfo(@FormParam("comparingCompany") String comparingCompanyName) {
+        List<ComparingInfoTransfer> resultList = new ArrayList<ComparingInfoTransfer>();
+        //for user company
+        RtfBox rtfBox = principalInformation.getCompany().getRtfBox();
+        Integer totalProduction = rtfBoxDataDao.findTotalProduction(rtfBox);
+        Double treesSaved=(totalProduction.doubleValue()/1000.0)*TREE_SAVED_FOR_ONE_KILOWATT;
+        Double carbonOffset=(totalProduction.doubleValue()/1000)*CARBON_OFFSET_FOR_ONE_KILOWATT;
+        resultList.add(new ComparingInfoTransfer(treesSaved, carbonOffset, rtfBox.getSolarPanels(), rtfBox.getPanelType()));
+        //for comparing company
+        rtfBox = companyDao.findByName(comparingCompanyName).getRtfBox();
+        totalProduction = rtfBoxDataDao.findTotalProduction(rtfBox);
+        treesSaved=(totalProduction.doubleValue()/1000.0)*TREE_SAVED_FOR_ONE_KILOWATT;
+        carbonOffset=(totalProduction.doubleValue()/1000)*CARBON_OFFSET_FOR_ONE_KILOWATT;
+        resultList.add(new ComparingInfoTransfer(treesSaved, carbonOffset, rtfBox.getSolarPanels(), rtfBox.getPanelType()));
+        return resultList;
     }
 
 
