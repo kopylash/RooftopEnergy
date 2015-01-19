@@ -6,6 +6,7 @@ $(function(){
     currentPage.name = 'Comparing';
     var myCompany;
     var restUrl = '/rest/comparing/production';
+    var comparingType='production';
 
     var query = window.location.search.substring(1);
     var vars = query.split('=');
@@ -90,8 +91,6 @@ $(function(){
 
         buttonClicker(url1,1,pickerDate);
 
-
-
         $("#day").click(function() {
             buttonStyles(this.id);
             season = 1;
@@ -122,6 +121,18 @@ $(function(){
         $("#datepicker").change(function(){
             picButtons();
             buttonClicker(url1, season ,pickerDate);
+        });
+
+        $('#comparingProduction').click(function() {
+            restUrl='/rest/comparing/production';
+            comparingType='production';
+            buttonClicker(restUrl,1,pickerDate)
+        });
+
+        $('#comparingConsumption').click(function() {
+            restUrl='/rest/comparing/consumption';
+            comparingType='consumption';
+            buttonClicker(restUrl,1,pickerDate)
         });
 
     }
@@ -193,7 +204,7 @@ $(function(){
                 marginRight: 15
             },
             title: {
-                text: 'Comparing data'
+                text: 'Comparing '+comparingType
             },
             credits: {
                 enabled: false
