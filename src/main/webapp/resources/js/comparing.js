@@ -29,6 +29,7 @@ $(function(){
             },
             complete: function(jqXHR,textStatus) {
                 allDateButtons(restUrl);
+                ajaxComparingInfoQuery();
             }
         });
     }
@@ -262,5 +263,22 @@ $(function(){
         });
     }
 
+    function ajaxComparingInfoQuery() {
+        $.ajax({
+            type: 'post',
+            url:'/rest/comparing/comparingInfo',
+            crossDomain: true,
+            data: { 'comparingCompany':comparingCompanyName },
+            error: function (data1) {
+                $('#main').html(data1.responseText);
+            },
+            statusCode: {
+                200: function (data) {
+                   //here will be code to parse comparingInfo
+                }
+            }
+
+        });
+    }
 });
 
