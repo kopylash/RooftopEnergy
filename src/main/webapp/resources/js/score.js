@@ -41,9 +41,13 @@ $(function(){
             var arrowValue;
             lengthList = data.length;
             console.log(lengthList);
+            if(end > lengthList){
+                end = lengthList -1;
+            }
+            var companyNname;
             //for (i in data) {
             for (var i = begin; i <= end; i++) {
-                var tt = data[i].company;
+                companyNname = data[i].company;
                 console.log(data[i].arrow);
                 switch (data[i].arrow) {
                     case -1:
@@ -57,7 +61,7 @@ $(function(){
                         break;
                     default :
                 }
-                var lineCode = "<div id='' class='rating'>" + tt + "<span class='ratingSymbol'><i class='fa " + arrowValue + " fa-1x'></i></span></div>";
+                var lineCode = "<div id='' class='rating'>" + companyNname + "<span class='ratingSymbol'><i class='fa " + arrowValue + " fa-1x'></i></span></div>";
                 $("#main1").append(lineCode);
             }
             $(".rating").click(function(){
@@ -65,11 +69,13 @@ $(function(){
                 var location = 'comparing.html?companyName='+comparingCompanyName;
                 window.location=location;
             });
+
         } else {
             var htmlCode = '<div id="ratingNonePublic">Your company is not public!<br/> Change this setting to watch other companies here.</div>';
             $("#up1, #down").css({'display':'none'});
             $("#main1").html(htmlCode);
         }
+
 
     };
 
