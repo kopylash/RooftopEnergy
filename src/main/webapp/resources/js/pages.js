@@ -128,7 +128,14 @@ $(function() {
                  } else {
 
                 $('header').removeClass('header').html(headerHtml).append("<div id='deskMenu'>" + code + "</div>");
-                $("#periodMenuButtons").css({"width":"40%", "textAlign":"center", "marginLeft":"50%"});
+                if (currentPage.name!='Comparing') {
+                    $("#periodMenuButtons").css({"width": "40%", "textAlign": "center", "margin-left": "50%"});
+                } else {
+                    $("#periodMenuButtons").css({"width": "90%", "textAlign": "center", "margin-left": "auto"});
+                    $("#period").css({"margin": "8px 50% 10px", "width": "50%"});
+                    $("#date").css({"margin": "8px 50% 10px", "width": "50%"});
+                }
+
                 $("#period .btn").css({"width":"20%"});
                 $('.mainButtons:not(.hideButtons)').each(function () {
                     var buttId = this.id;

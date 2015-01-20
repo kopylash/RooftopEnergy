@@ -19,6 +19,7 @@ const ENERGY_ICO = {
 const SCREEN_RESOLUTION = {
     width:1300,
     height:1000
+
 };
 
 function isMobileDevice(){
@@ -26,4 +27,4 @@ function isMobileDevice(){
     var landscape = (screen.width <= SCREEN_RESOLUTION.width) && (screen.height <= SCREEN_RESOLUTION.height);
     var portrait = (screen.width <= SCREEN_RESOLUTION.height) && (screen.height <= SCREEN_RESOLUTION.width);
     return whatDevice || landscape || portrait;
-}
+};

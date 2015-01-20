@@ -24,6 +24,34 @@ body {
     margin: auto;
 }
 
+#typeButtons {
+    text-align: left;
+    width: 50%;
+    float: left;
+}
+
+#typeButtons .btn:focus {
+    outline:0;
+}
+
+#typeButtons .btn:hover {
+    background-color: #23527c;
+    color: #FFFFFE;
+}
+
+#typeButtons .btn {
+    border: 1px solid #108F38;
+    background: #108F38;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    width: 23%;
+    display: inline-block;
+    margin-top: 5px;
+    margin-right: 0.5%;
+    color: #FFFFFE;
+}
+
 #period {
     margin: 8px auto 10px;
     width: 100%;

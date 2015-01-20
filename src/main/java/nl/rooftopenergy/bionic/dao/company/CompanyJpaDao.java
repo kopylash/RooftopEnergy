@@ -27,4 +27,10 @@ public class CompanyJpaDao extends JpaDao<Company, Integer> implements CompanyDa
 
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Company findByName(String companyName) {
+        return (Company) getEntityManager().createQuery("SELECT c from Company c WHERE c.companyName=:name")
+                .setParameter("name", companyName).getSingleResult();
+    }
 }

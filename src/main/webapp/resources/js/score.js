@@ -1,6 +1,7 @@
 $(function(){
     currentPage.name = 'rating';
     var companyNumber;
+
     function screenH() {
         if (screen.height <= 550) {
             companyNumber = 6;
@@ -27,7 +28,6 @@ $(function(){
 
     $(window).resize();
 
-
     var ratingUrl = '/rest/score';
     var begin = 0;
     var end = companyNumber - 1;
@@ -35,6 +35,7 @@ $(function(){
     var secondPart = "/production";
 
     var ratingList = function(data){
+
         if (companyInfo.status === true) {
             $("#main1").html("");
             var arrowValue;
@@ -59,6 +60,11 @@ $(function(){
                 var lineCode = "<div id='' class='rating'>" + tt + "<span class='ratingSymbol'><i class='fa " + arrowValue + " fa-1x'></i></span></div>";
                 $("#main1").append(lineCode);
             }
+            $(".rating").click(function(){
+                var comparingCompanyName = $(this).text();
+                var location = 'comparing.html?companyName='+comparingCompanyName;
+                window.location=location;
+            });
         } else {
             var htmlCode = '<div id="ratingNonePublic">Your company is not public!<br/> Change this setting to watch other companies here.</div>';
             $("#up1, #down").css({'display':'none'});
