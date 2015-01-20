@@ -4,6 +4,8 @@ package nl.rooftopenergy.bionic.transfer;
  * Created by Владислав on 19.01.2015.
  */
 public class ComparingInfoTransfer {
+    private Integer totalProduction;
+    private Integer totalConsumption;
     private Double treesSaved;
     private Double carbonOffset;
     private Integer solarPanels;
@@ -12,11 +14,29 @@ public class ComparingInfoTransfer {
     public ComparingInfoTransfer() {
 
     }
-    public ComparingInfoTransfer(Double treesSaved,Double carbonOffset,Integer solarPanels, String panelType) {
+    public ComparingInfoTransfer(Integer totalProduction, Integer totalConsumption, Double treesSaved,Double carbonOffset,Integer solarPanels, String panelType) {
+        this.totalProduction=totalProduction;
+        this.totalConsumption=totalConsumption;
         this.treesSaved=treesSaved;
         this.carbonOffset=carbonOffset;
         this.solarPanels=solarPanels;
         this.panelType=panelType;
+    }
+
+    public Integer getTotalProduction() {
+        return totalProduction;
+    }
+
+    public void setTotalProduction(Integer totalProduction) {
+        this.totalProduction = totalProduction;
+    }
+
+    public Integer getTotalConsumption() {
+        return totalConsumption;
+    }
+
+    public void setTotalConsumption(Integer totalConsumption) {
+        this.totalConsumption = totalConsumption;
     }
 
     public Double getCarbonOffset() {
