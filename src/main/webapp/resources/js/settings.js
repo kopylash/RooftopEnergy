@@ -135,6 +135,8 @@ $(function(){
         //}
     });
 
-
+$("#changePasswordButton").click(function(){
+    window.location = "changePassword.html";
+});
 
 });

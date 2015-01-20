@@ -43,23 +43,7 @@ textarea i {
     position: relative;
     margin: 0 auto;
     width: 95%;
-    /*height: 315px;*/
-    /*background: white;*/
-    /*border-radius: 3px;*/
 }
-
-/*.login:before {*/
-    /*content: '';*/
-    /*position: absolute;*/
-    /*top: -8px;*/
-    /*right: -8px;*/
-    /*bottom: -8px;*/
-    /*left: -8px;*/
-    /*z-index: -1;*/
-    /*background: rgba(255, 255, 255, 0.1);*/
-    /*border-radius: 4px;*/
-/*}*/
-
 
 .login p:first-child {
     margin-top: 10px;
@@ -140,7 +124,7 @@ textarea {
 }
 
 .form #sub,
-.form #res{
+.form #res {
     display: inline;
     margin-top: 0px;
     text-align: center;
@@ -333,13 +317,34 @@ textarea {
     padding-left: 26px;
 }
 
+#changePasswordButton{
+    padding: 3px 10px;
+    display: none;
+    background-color: #108f38;
+    border-radius: 2px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    outline: none;
+
+  }
+
+#changePasswordButton i{
+    color: #FFFFFE;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#buttUp{
+    clear: both;
+}
 
 @media screen and (min-device-width: 1300px){
     .login{
         width: 50%;
     }
     main{
-        margin-top: 22px;
+        margin-top: 18px;
     }
     .form input[type=text],
     .form input[type=email]{
@@ -372,91 +377,18 @@ textarea {
         display:none;
     }
 
+
+    #changePasswordButton{
+        display: inline;
+        float: right;
+    }
+    #rem{
+        margin-top: 2px;
+        margin-bottom: 7px
+    }
+
+    #rem input, #rem label{
+        margin-top: 8px;
+    }
+
 }
-.ui-loader h1 {
-    display: none;
-}
-/*@media screen and (max-width: 330px){*/
-    /*.login{*/
-        /*width: 90%;*/
-    /*}*/
-    /*.form .field {*/
-        /*width: 80%;*/
-        /*margin: 0 auto;*/
-    /*}*/
-
-    /*.form input[type=text],*/
-    /*.form input[type=email]{*/
-        /*width: 70%;*/
-    /*}*/
-
-    /*.form #sub{*/
-        /*width: 80%;*/
-        /*margin: 15px 21% 15px 10%;*/
-    /*}*/
-    /*.publicStatus {*/
-        /*margin-left: -7%;*/
-    /*}*/
-/*}*/
-
-/*@media screen and (min-width: 769px) and (max-width: 1200px){*/
-    /*.login{*/
-        /*margin-top: 50px;*/
-        /*width: 440px;*/
-        /*height: 375px;*/
-        /*font-size: 20px;*/
-    /*}*/
-    /*form{*/
-        /*padding-top: 27px;*/
-    /*}*/
-    /*.form #sub {*/
-        /*margin-top: 25px;*/
-        /*width: 77%;*/
-        /*font-size: 20px;*/
-        /*padding: 9px 0;*/
-        /*margin-left: -8%;*/
-    /*}*/
-    /*.form input[type=text],*/
-    /*.form input[type=email] {*/
-        /*font-size: 16px;*/
-        /*font-weight: 500;*/
-        /*width: 233px;*/
-        /*width: 79%;*/
-    /*}*/
-    /*#lab {*/
-        /*font-size: 18px;*/
-    /*}*/
-/*}*/
-
-/*@media screen and (min-width: 1201px){*/
-    /*.login{*/
-        /*margin-top: 70px;*/
-        /*width: 510px;*/
-        /*height: 400px;*/
-        /*font-size: 24px;*/
-    /*}*/
-    /*form{*/
-        /*padding-top: 35px;*/
-    /*}*/
-    /*.form #sub {*/
-        /*margin-top: 35px;*/
-        /*width: 80%;*/
-        /*font-size: 24px;*/
-        /*padding: 9px 0;*/
-        /*margin-left: -8%;*/
-    /*}*/
-    /*.form input[type=text],*/
-    /*.form input[type=email] {*/
-        /*font-size: 18px;*/
-        /*font-weight: 500;*/
-        /*width: 233px;*/
-        /*width: 83%;*/
-    /*}*/
-    /*#lab {*/
-        /*font-size: 20px;*/
-    /*}*/
-
-    /*.publicStatus{*/
-        /*margin-top: 4%;*/
-    /*}*/
-/*}*/
