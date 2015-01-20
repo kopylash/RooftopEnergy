@@ -52,11 +52,14 @@
 .mainDesktop{
     width: 70%;
     float: left;
+    margin-left:5%;
+    margin-top:5px;
 }
 
 .ecoComparingDesktop{
     width: 230px;
-    /*float: right;*/
+    float: right;
+    margin-right:5%;
 }
 
 
@@ -66,11 +69,22 @@
 }
 
 .comparingEco{
+color:#FFFFFE;
+    /*text-align: center;*/
 
 }
 
+.comparingEco .compare{
+    font-size: 4em;
+    margin-top:25px;
+    padding-left:10px;
+}
+.comparingEco .compare span{
+    font-size: 0.5em;
+}
 .comparingTrees{
     float:right;
+
 
 }
 #ourCompanyTrees{
@@ -78,23 +92,31 @@
     height:100px;
     background-color: #59AC28;
     margin:5px;
-
-
+    float:left;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
 }
+
 
 #theirCompanyTrees{
     width:100px;
     height:100px;
-    background-color: #59AC28;
+    background-color: #DC143C;
     margin:5px;
+    float:right;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
 
 }
 
 .comparingCarbon{
     float:right;
-
-
-
 }
 
 #ourCompanyCarbon{
@@ -102,13 +124,33 @@
     height:100px;
     background-color: #59AC28;
     margin:5px;
+    float:left;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+}
+#ourCompanyCarbon .icon-factory{
+    margin-top: 30px;
+    font-size: 3em;
+}
+#ourCompanyCarbon .icon-factory span{
+
+    font-size: 0.66em;
 }
 
 #theirCompanyCarbon{
     width:100px;
     height:100px;
-    background-color: #59AC28;
+    background-color: #DC143C;
     margin:5px;
+    float:right;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
 }
 
 
@@ -123,11 +165,34 @@
     height:100px;
     background-color: #59AC28;
     margin:5px;
+    float:left;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
 }
 
 #theirCompanyPanel{
     width:100px;
     height:100px;
-    background-color: #59AC28;
+    background-color: #DC143C;
     margin:5px;
+    float:right;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+}
+#theirCompanyPanel .icon-solarpanel, #ourCompanyPanel .icon-solarpanel{
+    margin-top: 15px;
+    padding-left:20px;
+    font-size: 5em;
+}
+#theirCompanyPanel .icon-solarpanel span,
+#ourCompanyPanel .icon-solarpanel span{
+
+    padding-left:5px;
+    font-size: 0.5em;
 }

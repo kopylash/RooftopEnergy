@@ -5,8 +5,17 @@
 $(function(){
     currentPage.name = 'Comparing';
     var myCompany;
+    var ecoData;
     var restUrl = '/rest/comparing/production';
     var comparingType='production';
+    var compareIcons = {
+        ourTree : '<div class="icon-tree compare"><span></span></div> ',
+        theirTree : '<div class="icon-furtree compare"><span></span></div>',
+        ourCarbon : '<div class="icon-factory compare"><span></span></div>',
+        theirCarbon : '<div class="icon-plant compare"><span></span></div>',
+        panel:'<div class="icon-solarpanel compare"><span></span></div>'
+
+    };
 
     var query = window.location.search.substring(1);
     var vars = query.split('=');
@@ -276,6 +285,7 @@ $(function(){
     <div id="theirCompanyPanel"></div>\
     </div>\
     </div>';
+
     var whatDevice = device.mobile() || device.tablet();
     var landscape = (screen.width <= 1300) && (screen.height <= 1000);
     var portrait = (screen.width <= 1000) && (screen.height <= 1300);
@@ -292,6 +302,7 @@ $(function(){
         $("#comparingConsumption, #comparingProduction");
         $("main").addClass("mainDesktop");
         $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingDesktop");
+        ajaxComparingInfoQuery();
 
         console.log("desk");
     }
@@ -308,10 +319,29 @@ $(function(){
             statusCode: {
                 200: function (data) {
                    //here will be code to parse comparingInfo
+                    initOurData(data);
                 }
             }
 
         });
+    }
+
+
+
+    function initOurData(data){
+        $("#ourCompanyTrees").html(compareIcons.ourTree);
+        $("#theirCompanyTrees").html(compareIcons.theirTree);
+        $("#ourCompanyCarbon").html(compareIcons.ourCarbon);
+        $("#theirCompanyCarbon").html(compareIcons.theirCarbon);
+        $("#ourCompanyPanel").html(compareIcons.panel);
+        $("#theirCompanyPanel").html(compareIcons.panel);
+
+        $("#ourCompanyTrees .compare span").html(new Number(data[0].treesSaved).toFixed(2));
+        $("#theirCompanyTrees .compare span").html(new Number(data[1].treesSaved).toFixed(2));
+        $("#ourCompanyCarbon .compare span").html(new Number(data[0].carbonOffset/1000).toFixed(2));
+        $("#theirCompanyCarbon .compare span").html(new Number(data[1].carbonOffset/1000).toFixed(2));
+        $("#ourCompanyPanel .compare span").html(data[0].solarPanels);
+        $("#theirCompanyPanel .compare span").html(data[1].solarPanels);
     }
 });
 
