@@ -3,6 +3,7 @@ package nl.rooftopenergy.bionic.rest;
 import static org.junit.Assert.*;
 
 import nl.rooftopenergy.bionic.rest.UserSettingsDataResource;
+import nl.rooftopenergy.bionic.transfer.PasswordTransfer;
 import nl.rooftopenergy.bionic.transfer.UserDataTransfer;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -61,15 +62,16 @@ public class UserSettingsDataResourceTest {
     @Test
     public void testChangePassword() throws Exception {
         //test for incorrect data
-        /*Response response=resource.changePassword("qwert", "1");
+        PasswordTransfer passwords = new PasswordTransfer("1","1");
+        Response response=resource.changePassword(passwords);
         assertEquals(304,response.getStatus());
 
         //test work of method
-        response=resource.changePassword("qwerty", "1");
+        response=resource.changePassword(passwords);
         assertEquals(200,response.getStatus());
 
         //return previous DB state
-        resource.changePassword("1", "qwerty");*/
+        resource.changePassword(passwords);
     }
 
 
