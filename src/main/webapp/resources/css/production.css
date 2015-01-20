@@ -111,6 +111,7 @@ body {
     width: 20%;
     background-color: #59AC28;
     color: #FFFFFE;
+    cursor:pointer;
 }
 
 .mainButtons:hover{

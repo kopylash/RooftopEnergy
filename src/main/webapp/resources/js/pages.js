@@ -34,6 +34,7 @@ $(function() {
     });
     //function loadHtml() {
     var code = '<div id="mainMenu"><div id="settingsMenu" class="ui-widget-content ui-corner-all">\
+    <div id="home" class="mainButtons hideButtons"><i class="fa fa-home"><span>&nbspHome</span></i></div>\
     <div id="settings" class="mainButtons hideButtons"><i class="fa fa-cogs"><span>&nbspSettings</span></i></div>\
     <div id="changePassword"  class="mainButtons hideButtons"><i class="fa fa-key"><span>&nbspChange&nbsppassword</span></i></div>\
     <div id="logout" class="mainButtons hideButtons"><a href="j_spring_security_logout" data-role="button" data-direction="reverse" data-transition="fade" data-ajax="false"><i class="fa fa-sign-out"><span>&nbspLogout</span></i></a></div></div>\
@@ -48,11 +49,17 @@ $(function() {
         '<div id="desktopUser"><a href="j_spring_security_logout"><span></span> <i class="fa fa-sign-out"></i></a></div>' +
         '<div id="desktopCompany"></div></div><div id="forClear"></div>';
 
+    /*if (currentPage.name === 'rating' && companyInfo.status == false){
+        $('main').html("Your company is not public");
+    }*/
     function runEffect() {
-        $("#settingsMenu").show("slide", {direction: "right"}, 500);
-        $("#mainMenu").hover(function () {
-            $("#settingsMenu").hide("slide", {direction: "right"}, 500);
-        })
+        if (isMobileDevice()) {
+            $("#settingsMenu").show("slide", {direction: "right"}, 500);
+            $("#mainMenu").hover(function () {
+                $("#settingsMenu").hide("slide", {direction: "right"}, 500);
+
+            })
+        }
     }
 
 
@@ -80,9 +87,12 @@ $(function() {
         $(".mainButtons").click(function () {
             if (this.id == "menu") {
                 runEffect();
-            } else {
-                if (companyInfo.status == false && this.id == "rating") {
-                alert("Your company is not public!");
+            /*} else {
+                if (companyInfo.status == false && this.id == "rating") {*/
+                    //$('main').html("Your company is not public");
+                    //window.location = this.id + ".html";
+                //alert("Your company is not public!");
+
 
             } else {
                 if (this.id != "logout" ) {
@@ -91,7 +101,7 @@ $(function() {
             }
 
         }
-        });
+        );
 
     };
 
@@ -100,15 +110,15 @@ $(function() {
     colorSwitch();
     var jQmobile = '<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>';
 
-    var whatDevice = device.mobile() || device.tablet();
-    var landscape = (screen.width <= 1300) && (screen.height <= 1000);
-    var portrait = (screen.width <= 1000) && (screen.height <= 1300);
-    console.log(whatDevice);
+    //var whatDevice = device.mobile() || device.tablet();
+    //var landscape = (screen.width <= 1300) && (screen.height <= 1000);
+    //var portrait = (screen.width <= 1000) && (screen.height <= 1300);
+    //console.log(whatDevice);
     //window.addEventListener("resize", function () {
     //    document.location.reload(true);
     ////});
     //    $(window).resize(function () {
-            if (whatDevice || landscape || portrait) {
+            if (isMobileDevice()) {
                 $('footer').html(code).addClass("footer");
                 $('header').removeClass("header1").html(firstHead).addClass("header");
                 var k1 = '#0062D2';

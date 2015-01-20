@@ -48,6 +48,7 @@
     -webkit-border-top-right-radius: 2px;
     -moz-border-top-right-radius: 2px;
     -moz-border-top-left-radius: 2px;
+    cursor:default;
 }
 
 #cButtons .btn {
@@ -132,6 +133,7 @@
     text-align: center;
     font-size: 14px;
     font-weight: normal;
+    cursor:pointer;
 }
 
 #up, #down{
@@ -172,7 +174,16 @@
     border-top: none;
 }
 
+#ratingNonePublic{
+    width: 100%;
+    margin-top:20px;
+    padding: 50px auto;
+    text-align: center;
+    font-size: 1.5em;
+    color: #FF1100;
+    line-height: 1.5em;
 
+}
 /*@media screen and (max-width: 322px){*/
     /*#cButtons {*/
         /*margin-left: 3.7%;*/

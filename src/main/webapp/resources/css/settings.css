@@ -36,6 +36,7 @@ textarea i {
     /*line-height: 44px;*/
     transition: all 0.3s ease-out;
     pointer-events: none;
+    cursor: default;
 }
 /* === Login === */
 .login {
@@ -92,6 +93,7 @@ textarea i {
 :-moz-placeholder {
     color: #ded9cf !important;
     font-family:'Open Sans';
+    font-size: 8px;
 }
 
 .form input[type=text],
@@ -341,9 +343,10 @@ textarea {
     }
     .form input[type=text],
     .form input[type=email]{
-        font-size: 1.8em;
-        padding-top: 20px;
-        padding-bottom: 15px;
+        font-size: 1.4em;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        height: 36px;
         }
 
     textarea{
@@ -370,7 +373,9 @@ textarea {
     }
 
 }
-
+.ui-loader h1 {
+    display: none;
+}
 /*@media screen and (max-width: 330px){*/
     /*.login{*/
         /*width: 90%;*/
