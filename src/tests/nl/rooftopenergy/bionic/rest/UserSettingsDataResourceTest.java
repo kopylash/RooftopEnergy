@@ -60,18 +60,24 @@ public class UserSettingsDataResourceTest {
     }
 
     @Test
-    public void testChangePassword() throws Exception {
+    public void testChangeWrongPassword() throws Exception {
         //test for incorrect data
-        PasswordTransfer passwords = new PasswordTransfer("1","1");
-        Response response=resource.changePassword(passwords);
+        PasswordTransfer wrongPasswords = new PasswordTransfer("1","qwerty1");
+        Response response=resource.changePassword(wrongPasswords);
         assertEquals(304,response.getStatus());
 
+    }
+
+    @Test
+    public void testChangeRightPassword() throws Exception {
         //test work of method
-        response=resource.changePassword(passwords);
+        PasswordTransfer correctPasswords = new PasswordTransfer("qwerty","1");
+        Response response=resource.changePassword(correctPasswords);
         assertEquals(200,response.getStatus());
 
         //return previous DB state
-        resource.changePassword(passwords);
+        PasswordTransfer returnPasswords = new PasswordTransfer("1","qwerty");
+        resource.changePassword(returnPasswords);
     }
 
 
