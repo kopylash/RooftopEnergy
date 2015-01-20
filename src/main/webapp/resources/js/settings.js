@@ -92,12 +92,12 @@ $(function(){
             data: {'description': descr, 'email': mail, 'panelType': panel, 'publicStatus': stat},
             error: function (data) {
                 $('#main').html(data.responseText);
-            }/*,
+            },
             statusCode: {
                 200: function (data) {
-                    //alert("Settings have been saved!");
+                    $("#settingsAlert").html("<div id=settingsAlertMessage>Settings have been saved!</div>");
                 }
-            }*/
+            }
         });
     }
 

@@ -9,7 +9,17 @@ body {
     /*background-color: #59AC28;*/
 
 }
-
+#settingsAlert{
+    width: 100%;
+}
+#settingsAlertMessage{
+    width: 100%;
+    font-size: 2em;
+    background-color: #f5e79e;
+    text-align: center;
+    color:#000000;
+    padding:10px;
+}
 /* === Form === */
 .form {
     width: 92%;
