@@ -261,6 +261,22 @@ $(function(){
             }]
         });
     }
+    var whatDevice = device.mobile() || device.tablet();
+    var landscape = (screen.width <= 1300) && (screen.height <= 1000);
+    var portrait = (screen.width <= 1000) && (screen.height <= 1300);
+
+    var codeButtons ='<button type="button" class="btn btn-default btn-sm" id="comparingProduction">Production</button>\
+    <button type="button" class="btn btn-default btn-sm" id="comparingConsumption">Consumption</button>';
+
+    if (whatDevice || landscape || portrait) {
+        $("#desktopVersionButtons").html("");
+        $("#typeButtons").html(codeButtons);
+        console.log("mob");
+    } else {
+        $("#desktopVersionButtons").html(codeButtons).addClass("buttonForDesktop");
+        $("#comparingConsumption, #comparingProduction");
+        console.log("desk");
+    }
 
 });
 

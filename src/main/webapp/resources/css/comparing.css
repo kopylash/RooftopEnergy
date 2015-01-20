@@ -1,0 +1,118 @@
+
+
+#typeButtons{
+    width: 100%;
+    display: inline;
+    margin-top: -5px;
+}
+
+#typeButtons .btn{
+    width: 49%;
+}
+
+#comparingProduction{
+    float: left;
+}
+
+#comparingConsumption{
+    float: right;
+}
+
+#ecoComparing, #desktopVersionButtons{
+    /*display: none;*/
+}
+
+
+@media screen and (min-device-width: 1300px) and (min-device-height: 1000px) {
+    main{
+        float: left;
+        height: 70%;
+    }
+    #ecoComparing{
+        margin-left: 5%;
+        display: block;
+    }
+
+    #desktopVersionButtons{
+
+    }
+
+    #typeButtons{
+        display: none;
+    }
+    #comparingProduction,#comparingConsumption{
+        /*float: none;*/
+    }
+
+}
+
+.buttonForDesktop{
+    margin-left:5%;
+    width: 30%;
+}
+
+.buttonForDesktop .btn{
+    border: 1px solid #108F38;
+    background: #108F38;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    display: inline-block;
+    margin-left: 0;
+    color: #FFFFFE;
+
+    width: 49%;
+}
+
+.buttonForDesktop .btn:hover{
+    background-color: #23527c;
+    color: #FFFFFE;
+}
+
+.comparingEco{
+
+}
+
+.comparingTrees{
+    width:100px;
+    height:100px;
+    background-color: #59AC28;
+}
+#ourCompanyTrees{
+    margin:5px;
+
+}
+
+#theirCompanyTrees{
+    margin:5px;
+}
+
+.comparingCarbon{
+    width:100px;
+    height:100px;
+    background-color: #59AC28;
+
+}
+
+#ourCompanyCarbon{
+    margin:5px;
+}
+
+#theirCompanyCarbon{
+    margin:5px;
+}
+
+
+.comparingPanel{
+    width:100px;
+    height:100px;
+    background-color: #59AC28;
+}
+
+#ourCompanyPanel{
+    margin:5px;
+}
+
+#theirCompanyPanel{
+    margin:5px;
+}
