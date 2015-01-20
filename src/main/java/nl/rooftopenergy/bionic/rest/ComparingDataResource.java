@@ -618,15 +618,17 @@ public class ComparingDataResource {
         //for user company
         RtfBox rtfBox = principalInformation.getCompany().getRtfBox();
         Integer totalProduction = rtfBoxDataDao.findTotalProduction(rtfBox);
+        Integer totalConsumption = rtfBoxDataDao.findTotalConsumption(rtfBox);
         Double treesSaved=(totalProduction.doubleValue()/1000.0)*TREE_SAVED_FOR_ONE_KILOWATT;
         Double carbonOffset=(totalProduction.doubleValue()/1000)*CARBON_OFFSET_FOR_ONE_KILOWATT;
-        resultList.add(new ComparingInfoTransfer(treesSaved, carbonOffset, rtfBox.getSolarPanels(), rtfBox.getPanelType()));
+        resultList.add(new ComparingInfoTransfer(totalProduction,totalConsumption,treesSaved, carbonOffset, rtfBox.getSolarPanels(), rtfBox.getPanelType()));
         //for comparing company
         rtfBox = companyDao.findByName(comparingCompanyName).getRtfBox();
         totalProduction = rtfBoxDataDao.findTotalProduction(rtfBox);
+        totalConsumption = rtfBoxDataDao.findTotalConsumption(rtfBox);
         treesSaved=(totalProduction.doubleValue()/1000.0)*TREE_SAVED_FOR_ONE_KILOWATT;
         carbonOffset=(totalProduction.doubleValue()/1000)*CARBON_OFFSET_FOR_ONE_KILOWATT;
-        resultList.add(new ComparingInfoTransfer(treesSaved, carbonOffset, rtfBox.getSolarPanels(), rtfBox.getPanelType()));
+        resultList.add(new ComparingInfoTransfer(totalProduction,totalConsumption,treesSaved, carbonOffset, rtfBox.getSolarPanels(), rtfBox.getPanelType()));
         return resultList;
     }
 
