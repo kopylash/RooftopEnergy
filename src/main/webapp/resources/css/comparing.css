@@ -18,33 +18,19 @@
     float: right;
 }
 
-#ecoComparing, #desktopVersionButtons{
+#ecoComparing{
     /*display: none;*/
 }
 
 
-@media screen and (min-device-width: 1300px) and (min-device-height: 1000px) {
-    main{
-        float: left;
-        height: 70%;
-    }
-    #ecoComparing{
-        margin-left: 5%;
-        display: block;
-    }
-
-    #desktopVersionButtons{
-
-    }
+@media screen and (min-device-width: 1300px) and (min-device-height: 600px) {
 
     #typeButtons{
         display: none;
     }
-    #comparingProduction,#comparingConsumption{
-        /*float: none;*/
-    }
 
 }
+
 
 .buttonForDesktop{
     margin-left:5%;
@@ -60,9 +46,19 @@
     display: inline-block;
     margin-left: 0;
     color: #FFFFFE;
-
     width: 49%;
 }
+
+.mainDesktop{
+    width: 70%;
+    float: left;
+}
+
+.ecoComparingDesktop{
+    width: 230px;
+    /*float: right;*/
+}
+
 
 .buttonForDesktop .btn:hover{
     background-color: #23527c;
@@ -74,45 +70,64 @@
 }
 
 .comparingTrees{
+    float:right;
+
+}
+#ourCompanyTrees{
     width:100px;
     height:100px;
     background-color: #59AC28;
-}
-#ourCompanyTrees{
     margin:5px;
+
 
 }
 
 #theirCompanyTrees{
-    margin:5px;
-}
-
-.comparingCarbon{
     width:100px;
     height:100px;
     background-color: #59AC28;
+    margin:5px;
+
+}
+
+.comparingCarbon{
+    float:right;
+
+
 
 }
 
 #ourCompanyCarbon{
+    width:100px;
+    height:100px;
+    background-color: #59AC28;
     margin:5px;
 }
 
 #theirCompanyCarbon{
+    width:100px;
+    height:100px;
+    background-color: #59AC28;
     margin:5px;
 }
 
 
 .comparingPanel{
-    width:100px;
-    height:100px;
-    background-color: #59AC28;
+    width:220px;
+    display:inline;
+    float:right;
 }
 
 #ourCompanyPanel{
+    width:100px;
+    height:100px;
+    background-color: #59AC28;
     margin:5px;
 }
 
 #theirCompanyPanel{
+    width:100px;
+    height:100px;
+    background-color: #59AC28;
     margin:5px;
 }

@@ -262,6 +262,20 @@ $(function(){
             }]
         });
     }
+    var htmlCodeEco = '<div class="comparingEco">\
+        <div class="comparingTrees">\
+    <div id="ourCompanyTrees"></div>\
+    <div id="theirCompanyTrees"></div>\
+    </div>\
+    <div class="comparingCarbon">\
+    <div id="ourCompanyCarbon"></div>\
+    <div id="theirCompanyCarbon"></div>\
+    </div>\
+    <div class="comparingPanel">\
+    <div id="ourCompanyPanel"></div>\
+    <div id="theirCompanyPanel"></div>\
+    </div>\
+    </div>';
     var whatDevice = device.mobile() || device.tablet();
     var landscape = (screen.width <= 1300) && (screen.height <= 1000);
     var portrait = (screen.width <= 1000) && (screen.height <= 1300);
@@ -276,6 +290,9 @@ $(function(){
     } else {
         $("#desktopVersionButtons").html(codeButtons).addClass("buttonForDesktop");
         $("#comparingConsumption, #comparingProduction");
+        $("main").addClass("mainDesktop");
+        $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingDesktop");
+
         console.log("desk");
     }
 
