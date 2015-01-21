@@ -64,7 +64,7 @@ body {
   margin: 0 auto;
   width: 370px;
   height: 315px;
-  background: white;
+  /*background: #E1E2D1;*/
   border-radius: 3px;
 }
 
@@ -81,6 +81,8 @@ body {
 }
 
 .login h1 {
+    width:80%;
+    margin: 0 auto 0;
   line-height: 55px;
   font-size: 15px;
   font-weight: bold;
@@ -98,8 +100,17 @@ body {
   border-top-right-radius: 3px;
 }
 
+#opacityBlock {
+    width:80%;
+    height:210px;
+    position:absolute;
+    left:10%;
+    background: #ffffff;
+    opacity:0.5;
+}
+
 .login p:first-child {
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .login p.remember {
@@ -185,7 +196,7 @@ body {
 
 .form button[type=submit] {
   margin-top: 15px;
-  width: 270px;
+  width: 80%;
   text-align: center;
   font-size: 14px;
   font-family: 'Open Sans',sans-serif;
@@ -356,7 +367,7 @@ body {
     padding: 0;
     min-width: 100%;
     min-height: 100%;
-    background: url(../images/background.jpg);
+    background: url(../images/background4.jpg);
     -moz-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
     -o-background-size: cover;  /*Opera 9.6+ */
     background-size: cover; /* Современные браузеры */
@@ -380,7 +391,7 @@ body {
     }
 
     .form button[type=submit]{
-        width: 78%;
+        width: 80%;
         margin: 15px 21% 15px 10%;
     }
 
@@ -421,12 +432,15 @@ body {
         height: 375px;
         font-size: 20px;
     }
+    .login h1 {
+        width:80%;
+    }
     form{
         padding-top: 27px;
     }
     .form button[type=submit] {
         margin-top: 25px;
-        width: 77%;
+        width: 80%;
         font-size: 20px;
         padding: 9px 0;
         /*margin-left: -8%;*/
@@ -436,19 +450,35 @@ body {
         font-size: 16px;
         font-weight: 500;
         /*width: 233px;*/
-        width: 79%;
+        width: 76%;
+    }
+    .form .field {
+        margin: 0 65px;
     }
     #lab {
       font-size: 18px;
+        color:#000000;
+    }
+    .remember{
+        margin-top: 4%;
+        margin-left: 15px;
+    }
+    #opacityBlock {
+        left:10%;
+        width: 352px;
+        height: 267px;
     }
 }
 
 @media screen and (min-width: 1201px){
     .login{
-        margin-top: 70px;
+        margin-top: 90px;
         width: 510px;
         height: 400px;
         font-size: 24px;
+    }
+    .login h1 {
+        width:80%;
     }
     form{
         padding-top: 35px;
@@ -465,14 +495,24 @@ body {
         font-size: 18px;
         font-weight: 500;
         /*width: 233px;*/
-        width: 83%;
+        width: 78%;
+    }
+    .form .field {
+        margin: 0 65px;
     }
     #lab {
         font-size: 20px;
+        color:#000000;
     }
 
     .remember{
         margin-top: 4%;
+        margin-left: 15px;
+    }
+    #opacityBlock {
+        left:10%;
+        width: 408px;
+        height: 293px;
     }
 }
 
