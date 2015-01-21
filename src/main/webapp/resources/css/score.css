@@ -109,11 +109,9 @@
     color: #000000;
     border: 1px solid #108f38;
     border-top: none;
-    cursor:pointer;
 }
 
 .rating .ratingSymbol {
-    /*color: #0000ff;*/
     font-weight: 900;
     float: right;
 }

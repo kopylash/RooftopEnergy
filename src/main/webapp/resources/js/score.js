@@ -61,7 +61,7 @@ $(function(){
                         break;
                     default :
                 }
-                var lineCode = "<div id='' class='rating'>" + companyNname + "<span class='ratingSymbol'><i class='fa " + arrowValue + " fa-1x'></i></span></div>";
+                var lineCode = "<div id='' class='rating'><span>" + companyNname + "</span><span class='ratingSymbol'><i class='fa " + arrowValue + " fa-1x'></i></span></div>";
                 $("#main1").append(lineCode);
             }
             $(".rating").click(function(){
