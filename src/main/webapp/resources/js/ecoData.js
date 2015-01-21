@@ -131,9 +131,15 @@ $(function(){
     $(window).resize(function () {
         if (whatDevice || landscape || portrait) {
             $("#ecoSection").html("");
+            $("#mobileEcoValues").html(htmlCode).addClass("mobilEco");
             $("#ecoSection").removeClass("eco");
+            fillEcoTrees(trees);
+            fillEcoCarbon(carbon);
+            fillEnergyValues(month, year, tot);
+
 
         } else {
+            $("#mobileEcoValues").html("").removeClass("mobilEco");
             $("#ecoSection").addClass("eco");
             $("#ecoSection").html(htmlCode);
             fillEcoTrees(trees);
@@ -199,9 +205,10 @@ $(function(){
     }
 
     $(document).ajaxComplete(function(){
+
         $("#treeValue span").html(trees);
         $("#carbonValue span").html(carbon);
-        if (pageName === 'home'){
+        if (pageName === 'home') {
             $("#monthValue span").html(toKWt(month.production));
             $("#yearValue span").html(toKWt(year.production));
             $("#totalValue span").html(toKWt(tot.production));
@@ -213,8 +220,7 @@ $(function(){
             $("#yearValue span").html(toKWt(year[pageName]));
             $("#totalValue span").html(toKWt(tot[pageName]));
         }
-    });
-
+        });
     function toKWt(number){
         return new Number(number/1000).toFixed(2);
     }

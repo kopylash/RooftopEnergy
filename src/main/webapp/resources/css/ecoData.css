@@ -172,3 +172,35 @@
     }
 
 }
+
+.mobilEco{
+    float:none;
+     width: 100%;
+     margin:0;
+    padding: 0 5px;
+
+ }
+
+.mobilEco .ecoRow{
+    padding-left: 0;
+    width: 45%;
+
+}
+.mobilEco #ecoCarbon{
+    float:right;
+    margin-right: 0;
+}
+
+.mobilEco .energyRow {
+    width:100%;
+   margin-right: 5px;
+    padding: 0 5px;
+    float:none;
+}
+.mobilEco #totalMonthly,
+.mobilEco #totalYearly,
+.mobilEco #totalTotal{
+    /*float:none;*/
+    margin-right: 5px;
+
+}
