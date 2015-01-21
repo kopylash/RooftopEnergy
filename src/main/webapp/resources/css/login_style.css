@@ -14,7 +14,6 @@ body {
 
   font: 13px/20px "Open Sans", Tahoma, Verdana, sans-serif;
   color: #a7a599;
-    background-color: #59AC28;
 
 }
 
@@ -395,7 +394,7 @@ body {
 
     .form button[type=submit]{
         width: 80%;
-        margin: 15px 21% 15px 10%;
+        margin: 15px 13% 15px 10%;
     }
 
     .remember {
@@ -421,7 +420,7 @@ body {
 
     .form button[type=submit]{
         width: 80%;
-        margin: 15px 21% 15px 10%;
+        margin: 15px 13% 15px 10%;
     }
     .remember {
     margin-left: -7%;
