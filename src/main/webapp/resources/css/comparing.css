@@ -206,3 +206,43 @@ color:#FFFFFE;
     text-align: center;
     font-size: 2.2em;
 }
+
+#compareCompanyInfo{
+    /*position:absolute;*/
+    /*top:145px;*/
+    /*left:5%;*/
+    float:left;
+    margin-top:10px;
+    margin-left:5%;
+    margin-bottom: 10px;
+    width: 40%;
+    height: 100px;
+
+    /*background-color: #888888;*/
+}
+#compareCompanyInfo div{
+width: 40%;
+    height:100%;
+}
+
+#ourCompanyEnergy {
+    float:left;
+    background-color: #59AC28;
+    border-radius: 2px;
+    margin-right: 5px;
+}
+
+#theirCompanyEnergy {
+    float:left;
+    background-color: #DC143C;
+    border-radius: 2px;
+}
+
+.compareCompanyTitle {
+    float:none;
+    width: 100%;
+    text-align:center;
+    color:#FFFFFE;
+    font-size:2em;
+    padding-top:10px;
+}

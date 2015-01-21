@@ -15,7 +15,8 @@ $(function(){
 
     };
 
-   /* var fakeEcoData = [];
+    companyInfo.name='Rooftop';
+    var fakeEcoData = [];
     fakeEcoData[0] = {
         treesSaved: 1.324324,
         carbonOffset:123.987665,
@@ -25,7 +26,7 @@ $(function(){
         treesSaved: 2.324324,
         carbonOffset:345.766554,
         solarPanels:3
-    };*/
+    };
     var query = window.location.search.substring(1);
     var vars = query.split('=');
     var str=vars[1];
@@ -294,6 +295,16 @@ $(function(){
     <div id="theirCompanyPanel"></div>\
     </div>\
     </div>';
+    var htmlCompareCompanies = '<div id="ourCompanyEnergy">\
+    <div id="ourCompanyTitle" class="compareCompanyTitle"></div>\
+        <div id="ourCompanyConsumption"></div>\
+        <div id="ourCompanyProduction"></div>\
+    </div>\
+        <div id="theirCompanyEnergy">\
+         <div id="theirCompanyTitle" class="compareCompanyTitle"></div>\
+            <div id="theirCompanyConsumption"></div>\
+            <div id="theirCompanyProduction"></div>\
+        </div>';
 
     var whatDevice = device.mobile() || device.tablet();
     var landscape = (screen.width <= 1300) && (screen.height <= 1000);
@@ -305,14 +316,17 @@ $(function(){
     if (whatDevice || landscape || portrait) {
         $("#desktopVersionButtons").html("");
         $("#typeButtons").html(codeButtons);
+        $("#ecoComparing").html("");
+        $("#compareCompanyInfo").html("");
+
         console.log("mob");
     } else {
         $("#desktopVersionButtons").html(codeButtons).addClass("buttonForDesktop");
         $("#comparingConsumption, #comparingProduction");
         $("main").addClass("mainDesktop");
         $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingDesktop");
-        ajaxComparingInfoQuery();
-        //initOurData(fakeEcoData);
+        //ajaxComparingInfoQuery();
+        initOurData(fakeEcoData);
 
         console.log("desk");
     }
@@ -345,6 +359,7 @@ $(function(){
         $("#theirCompanyCarbon").html(compareIcons.carbon);
         $("#ourCompanyPanel").html(compareIcons.panel);
         $("#theirCompanyPanel").html(compareIcons.panel);
+        $("#compareCompanyInfo").html(htmlCompareCompanies);
 
         $("#ourCompanyTrees .compareValue").html(new Number(data[0].treesSaved).toFixed(2));
         $("#theirCompanyTrees .compareValue").html(new Number(data[1].treesSaved).toFixed(2));
@@ -352,6 +367,8 @@ $(function(){
         $("#theirCompanyCarbon .compareValue").html(new Number(data[1].carbonOffset/1000).toFixed(2));
         $("#ourCompanyPanel .compareValue").html(data[0].solarPanels);
         $("#theirCompanyPanel .compareValue").html(data[1].solarPanels);
+        $("#ourCompanyTitle").html(companyInfo.name);
+        $("#theirCompanyTitle").html(comparingCompanyName);
     }
 });
 
