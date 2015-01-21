@@ -70,6 +70,7 @@
 
 .comparingEco{
 color:#FFFFFE;
+    cursor: default;
 }
 
 .comparingEco .compare{
@@ -215,34 +216,96 @@ color:#FFFFFE;
     margin-top:10px;
     margin-left:5%;
     margin-bottom: 10px;
-    width: 40%;
-    height: 100px;
+    width: 30%;
+    /*height: 0px;*/
+    color: #FFFFFE;
 
     /*background-color: #888888;*/
 }
-#compareCompanyInfo div{
-width: 40%;
-    height:100%;
+
+.comparingCompanyEnergyValue{
+
+    text-align: center;
+    font-size: 1.3em;
+
 }
 
 #ourCompanyEnergy {
+
+    width:49%;
+    /*height:100px;*/
     float:left;
     background-color: #59AC28;
-    border-radius: 2px;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     margin-right: 5px;
+    padding-bottom: 10px;
+    cursor: default;
 }
 
 #theirCompanyEnergy {
-    float:left;
+    width:49%;
+    /*height:100px;*/
+    float:right;
     background-color: #DC143C;
-    border-radius: 2px;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding-bottom: 10px;
+    cursor: default;
 }
 
 .compareCompanyTitle {
     float:none;
     width: 100%;
     text-align:center;
-    color:#FFFFFE;
     font-size:2em;
     padding-top:10px;
+    margin-bottom: 10px;
+}
+
+.ecoComparingEnergyMobile{
+    color:#fffffe;
+    margin: 0 2%;
+}
+.ecoComparingEnergyMobile #ourCompanyEnergy,
+.ecoComparingEnergyMobile #theirCompanyEnergy{
+    margin-bottom:5px;
+}
+
+.ecoComparingMobile{
+    margin: 2%;
+}
+.ecoComparingMobile #ourCompanyTrees,
+.ecoComparingMobile #theirCompanyTrees,
+.ecoComparingMobile #ourCompanyCarbon,
+.ecoComparingMobile #theirCompanyCarbon,
+.ecoComparingMobile #ourCompanyPanel,
+.ecoComparingMobile #theirCompanyPanel{
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    width:49%;
+    margin:0 0 5px 0;
+    height: 75px;
+
+
+}
+.ecoComparingMobile .comparingTrees,
+.ecoComparingMobile .comparingCarbon,
+.ecoComparingMobile .comparingPanel{
+    float:none;
+    width:100%;
+    margin:5px 0;
+    /*margin: 5px 2%;*/
+}
+
+.ecoComparingMobile #theirCompanyTrees,
+.ecoComparingMobile #theirCompanyCarbon,
+.ecoComparingMobile #theirCompanyPanel{
+    /*margin-right: 2%;*/
 }

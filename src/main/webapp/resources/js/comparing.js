@@ -15,18 +15,22 @@ $(function(){
 
     };
 
-    companyInfo.name='Rooftop';
+   /* companyInfo.name='Rooftop';
     var fakeEcoData = [];
     fakeEcoData[0] = {
         treesSaved: 1.324324,
         carbonOffset:123.987665,
-        solarPanels: 2
+        solarPanels: 2,
+        totalProduction:1234.3241234,
+        totalConsumption:32423.4352345
     };
     fakeEcoData[1] = {
         treesSaved: 2.324324,
         carbonOffset:345.766554,
-        solarPanels:3
-    };
+        solarPanels:3,
+        totalProduction:123.3241234,
+        totalConsumption:3242.4352345
+    };*/
     var query = window.location.search.substring(1);
     var vars = query.split('=');
     var str=vars[1];
@@ -297,13 +301,13 @@ $(function(){
     </div>';
     var htmlCompareCompanies = '<div id="ourCompanyEnergy">\
     <div id="ourCompanyTitle" class="compareCompanyTitle"></div>\
-        <div id="ourCompanyConsumption"></div>\
-        <div id="ourCompanyProduction"></div>\
+         <div id="ourCompanyProduction" class="comparingCompanyEnergyValue"></div>\
+        <div id="ourCompanyConsumption" class="comparingCompanyEnergyValue"></div>\
     </div>\
         <div id="theirCompanyEnergy">\
          <div id="theirCompanyTitle" class="compareCompanyTitle"></div>\
-            <div id="theirCompanyConsumption"></div>\
-            <div id="theirCompanyProduction"></div>\
+            <div id="theirCompanyProduction" class="comparingCompanyEnergyValue"></div>\
+            <div id="theirCompanyConsumption" class="comparingCompanyEnergyValue"></div>\
         </div>';
 
     var whatDevice = device.mobile() || device.tablet();
@@ -317,18 +321,25 @@ $(function(){
         $("#desktopVersionButtons").html("");
         $("#typeButtons").html(codeButtons);
         $("#ecoComparing").html("");
-        $("#compareCompanyInfo").html("");
+        $("#compareCompanyInfo").css({'width':0});
+        $("#mobileVersionEcoComparingEnergy").html(htmlCompareCompanies).addClass("ecoComparingEnergyMobile");
+        $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingMobile");
+        $("#ecoComparing div div").addClass("ecoComparingMobile");
+        ajaxComparingInfoQuery();
+        //initOurData(fakeEcoData);
 
-        console.log("mob");
+       /* console.log("mob");*/
     } else {
+        $("#mobileVersionEcoComparingEnergy").html("");
         $("#desktopVersionButtons").html(codeButtons).addClass("buttonForDesktop");
         $("#comparingConsumption, #comparingProduction");
         $("main").addClass("mainDesktop");
+        $("#compareCompanyInfo").html(htmlCompareCompanies);
         $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingDesktop");
-        //ajaxComparingInfoQuery();
-        initOurData(fakeEcoData);
+        ajaxComparingInfoQuery();
+        //initOurData(fakeEcoData);
 
-        console.log("desk");
+        //console.log("desk");
     }
 
     function ajaxComparingInfoQuery() {
@@ -359,7 +370,7 @@ $(function(){
         $("#theirCompanyCarbon").html(compareIcons.carbon);
         $("#ourCompanyPanel").html(compareIcons.panel);
         $("#theirCompanyPanel").html(compareIcons.panel);
-        $("#compareCompanyInfo").html(htmlCompareCompanies);
+
 
         $("#ourCompanyTrees .compareValue").html(new Number(data[0].treesSaved).toFixed(2));
         $("#theirCompanyTrees .compareValue").html(new Number(data[1].treesSaved).toFixed(2));
@@ -368,6 +379,10 @@ $(function(){
         $("#ourCompanyPanel .compareValue").html(data[0].solarPanels);
         $("#theirCompanyPanel .compareValue").html(data[1].solarPanels);
         $("#ourCompanyTitle").html(companyInfo.name);
+        $("#ourCompanyProduction").html(ENERGY_ICO.production + " " + new Number(data[0].totalProduction/1000).toFixed(2)+ " KWh");
+        $("#ourCompanyConsumption").html(ENERGY_ICO.consumption + " " +new Number(data[0].totalConsumption/1000).toFixed(2)+ " KWh");
+        $("#theirCompanyProduction").html(ENERGY_ICO.production + " " + new Number(data[1].totalProduction/1000).toFixed(2)+ " KWh");
+        $("#theirCompanyConsumption").html(ENERGY_ICO.consumption + " " + new Number(data[1].totalConsumption/1000).toFixed(2)+ " KWh");
         $("#theirCompanyTitle").html(comparingCompanyName);
     }
 });
