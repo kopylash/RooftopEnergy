@@ -7,7 +7,8 @@ var currentPage ={
 
 
 var companyInfo = {
-    status : true
+    status : true,
+    name:''
 };
 
 const ENERGY_ICO = {
@@ -27,4 +28,4 @@ function isMobileDevice(){
     var landscape = (screen.width <= SCREEN_RESOLUTION.width) && (screen.height <= SCREEN_RESOLUTION.height);
     var portrait = (screen.width <= SCREEN_RESOLUTION.height) && (screen.height <= SCREEN_RESOLUTION.width);
     return whatDevice || landscape || portrait;
-};
+}

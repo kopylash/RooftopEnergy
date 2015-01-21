@@ -17,6 +17,7 @@ $(function() {
                 200: function (data) {
                     userName = data.userName;
                     companyName = data.company;
+                    companyInfo.name = companyName;
                     companyInfo.status = data.publicStatus;
 
                     //loadHtml();
