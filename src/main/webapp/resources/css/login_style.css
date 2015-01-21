@@ -90,7 +90,7 @@ body {
   text-transform: uppercase;
   color: #fff;
   text-align: center;
-  background: #91465b;
+  background: #59AC28;
 
   -webkit-border-top-left-radius: 3px;
   -webkit-border-top-right-radius: 3px;
@@ -102,7 +102,7 @@ body {
 
 #opacityBlock {
     width:80%;
-    height:210px;
+    height:205px;
     position:absolute;
     left:10%;
     background: #ffffff;
@@ -160,7 +160,7 @@ body {
     font-family: 'Open Sans', Calibri, Arial, sans-serif;
     font-size: 12px;
     font-weight: 400;
-    padding: 10px 15px 10px 55px;
+    padding: 10px 15px 10px 50px;
     position: relative;
     width: 200px;
     height: 24px;
@@ -209,7 +209,7 @@ body {
   box-shadow:         inset 0px 0px 0px 0px rgba(16,143,56,1);
 
   color: #fff;
-  background-color: #8c3d53;
+  background-color: #108f38;
   text-shadow: none;
   text-transform: uppercase;
   border: none;
@@ -223,101 +223,103 @@ body {
   -moz-animation: shadowFadeOut 0.4s;
 }
 
+
+
 .form button[type=submit]:hover,input[type=submit]:focus{
   color: #fff;
-  -webkit-box-shadow: inset 0px 50px 0px 0px rgba(174,83,109,1);
-  -moz-box-shadow:    inset 0px 50px 0px 0px rgba(174,83,109,1);
-  box-shadow:         inset 0px 50px 0px 0px rgba(174,83,109,1);
+  -webkit-box-shadow: inset 0px 50px 0px 0px rgba(89,172,40,1);
+  -moz-box-shadow:    inset 0px 50px 0px 0px rgba(89,172,40,1);
+  box-shadow:         inset 0px 50px 0px 0px rgba(89,172,40,1);
   -webkit-animation: shadowFade 0.4s;
   -moz-animation: shadowFade 0.4s;
 }
 
 @keyframes shadowFade {
     0% {
-      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 0px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 0px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
     100% {
-      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 46px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 46px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
 }
 
 @keyframes shadowFadeOut {
     0% {
-      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 46px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 46px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
     100% {
-      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 0px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 0px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
 }
 
 @-webkit-keyframes shadowFade {
     0% {
-      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 0px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 0px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
     100% {
-      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 46px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 46px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
 }
 
 @-webkit-keyframes shadowFadeOut {
     0% {
-      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 46px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 46px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
     100% {
-      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 0px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 0px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
 }
 
 @-moz-keyframes shadowFade {
     0% {
-      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 0px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 0px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
     100% {
-      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 46px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 46px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 46px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 46px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
 }
 
 @-moz-keyframes shadowFadeOut {
     0% {
-      -webkit-box-shadow: inset 0px 44px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 44px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 44px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 44px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 44px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 44px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
     100% {
-      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(174,83,109,1);
-      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(174,83,109,1);
-      box-shadow:         inset 0px 0px 0px 0px rgba(174,83,109,1);
+      -webkit-box-shadow: inset 0px 0px 0px 0px rgba(89,172,40,1);
+      -moz-box-shadow:    inset 0px 0px 0px 0px rgba(89,172,40,1);
+      box-shadow:         inset 0px 0px 0px 0px rgba(89,172,40,1);
       color: #fff;
     }
 }
@@ -367,7 +369,7 @@ body {
     padding: 0;
     min-width: 100%;
     min-height: 100%;
-    background: url(../images/background5.png);
+    background: url(../images/background4.jpg);
     -moz-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
     -o-background-size: cover;  /*Opera 9.6+ */
     background-size: cover; /* Современные браузеры */
@@ -388,6 +390,7 @@ body {
     .form input[type=text],
     .form input[type=password]{
         width: 70%;
+        padding: 10px 15px 10px 55px;
     }
 
     .form button[type=submit]{
@@ -395,10 +398,9 @@ body {
         margin: 15px 21% 15px 10%;
     }
 
-    #rem {
-     position: fixed;
-    left: 0;
-        text-align: left;
+    .remember {
+        margin-top: 5px;
+        margin-left: -4%;
     }
 }
 
@@ -414,6 +416,7 @@ body {
     .form input[type=text],
     .form input[type=password]{
         width: 70%;
+        padding: 10px 15px 10px 55px;
     }
 
     .form button[type=submit]{
@@ -451,6 +454,7 @@ body {
         font-weight: 500;
         /*width: 233px;*/
         width: 76%;
+        padding: 10px 15px 10px 60px;
     }
     .form .field {
         margin: 0 65px;
@@ -496,6 +500,7 @@ body {
         font-weight: 500;
         /*width: 233px;*/
         width: 78%;
+        padding: 10px 15px 10px 65px;
     }
     .form .field {
         margin: 0 65px;
