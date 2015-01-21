@@ -5,18 +5,27 @@
 $(function(){
     currentPage.name = 'Comparing';
     var myCompany;
-    var ecoData;
+
     var restUrl = '/rest/comparing/production';
     var comparingType='production';
     var compareIcons = {
-        ourTree : '<div class="icon-tree compare"><span></span></div> ',
-        theirTree : '<div class="icon-furtree compare"><span></span></div>',
-        ourCarbon : '<div class="icon-factory compare"><span></span></div>',
-        theirCarbon : '<div class="icon-plant compare"><span></span></div>',
-        panel:'<div class="icon-solarpanel compare"><span></span></div>'
+        tree : '<div class="icon-tree compare"></div><div class="compareValue"></div>',
+        carbon : '<div class="icon-factory compare"><div class="compareValue"></div>',
+        panel:'<div class="icon-solarpanel compare"></div><div class="compareValue"></div>'
 
     };
 
+   /* var fakeEcoData = [];
+    fakeEcoData[0] = {
+        treesSaved: 1.324324,
+        carbonOffset:123.987665,
+        solarPanels: 2
+    };
+    fakeEcoData[1] = {
+        treesSaved: 2.324324,
+        carbonOffset:345.766554,
+        solarPanels:3
+    };*/
     var query = window.location.search.substring(1);
     var vars = query.split('=');
     var str=vars[1];
@@ -303,6 +312,7 @@ $(function(){
         $("main").addClass("mainDesktop");
         $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingDesktop");
         ajaxComparingInfoQuery();
+        //initOurData(fakeEcoData);
 
         console.log("desk");
     }
@@ -329,19 +339,19 @@ $(function(){
 
 
     function initOurData(data){
-        $("#ourCompanyTrees").html(compareIcons.ourTree);
-        $("#theirCompanyTrees").html(compareIcons.theirTree);
-        $("#ourCompanyCarbon").html(compareIcons.ourCarbon);
-        $("#theirCompanyCarbon").html(compareIcons.theirCarbon);
+        $("#ourCompanyTrees").html(compareIcons.tree);
+        $("#theirCompanyTrees").html(compareIcons.tree);
+        $("#ourCompanyCarbon").html(compareIcons.carbon);
+        $("#theirCompanyCarbon").html(compareIcons.carbon);
         $("#ourCompanyPanel").html(compareIcons.panel);
         $("#theirCompanyPanel").html(compareIcons.panel);
 
-        $("#ourCompanyTrees .compare span").html(new Number(data[0].treesSaved).toFixed(2));
-        $("#theirCompanyTrees .compare span").html(new Number(data[1].treesSaved).toFixed(2));
-        $("#ourCompanyCarbon .compare span").html(new Number(data[0].carbonOffset/1000).toFixed(2));
-        $("#theirCompanyCarbon .compare span").html(new Number(data[1].carbonOffset/1000).toFixed(2));
-        $("#ourCompanyPanel .compare span").html(data[0].solarPanels);
-        $("#theirCompanyPanel .compare span").html(data[1].solarPanels);
+        $("#ourCompanyTrees .compareValue").html(new Number(data[0].treesSaved).toFixed(2));
+        $("#theirCompanyTrees .compareValue").html(new Number(data[1].treesSaved).toFixed(2));
+        $("#ourCompanyCarbon .compareValue").html(new Number(data[0].carbonOffset/1000).toFixed(2));
+        $("#theirCompanyCarbon .compareValue").html(new Number(data[1].carbonOffset/1000).toFixed(2));
+        $("#ourCompanyPanel .compareValue").html(data[0].solarPanels);
+        $("#theirCompanyPanel .compareValue").html(data[1].solarPanels);
     }
 });
 

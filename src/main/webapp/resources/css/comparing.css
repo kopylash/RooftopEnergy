@@ -70,23 +70,22 @@
 
 .comparingEco{
 color:#FFFFFE;
-    /*text-align: center;*/
-
 }
 
 .comparingEco .compare{
-    font-size: 4em;
-    margin-top:25px;
-    padding-left:10px;
+    text-align: center;
 }
-.comparingEco .compare span{
-    font-size: 0.5em;
-}
+
 .comparingTrees{
     float:right;
-
-
 }
+
+#ourCompanyTrees .icon-tree,
+#theirCompanyTrees .icon-tree{
+    margin-top: 15px;
+    font-size: 3em;
+}
+
 #ourCompanyTrees{
     width:100px;
     height:100px;
@@ -114,6 +113,12 @@ color:#FFFFFE;
     -ms-border-radius: 50%;
 
 }
+#ourCompanyTrees .compareValue,
+#theirCompanyTrees .compareValue {
+    padding-top:5px;
+    text-align: center;
+    font-size: 2.2em;
+}
 
 .comparingCarbon{
     float:right;
@@ -131,12 +136,15 @@ color:#FFFFFE;
     -o-border-radius: 50%;
     -ms-border-radius: 50%;
 }
-#ourCompanyCarbon .icon-factory{
-    margin-top: 30px;
+#ourCompanyCarbon .icon-factory,
+#theirCompanyCarbon .icon-factory{
+    margin-top: 10px;
     font-size: 3em;
 }
-#ourCompanyCarbon .icon-factory span{
-
+#ourCompanyCarbon .compareValue,
+#theirCompanyCarbon .compareValue{
+    padding-top:5px;
+    text-align: center;
     font-size: 0.66em;
 }
 
@@ -185,14 +193,16 @@ color:#FFFFFE;
     -o-border-radius: 50%;
     -ms-border-radius: 50%;
 }
-#theirCompanyPanel .icon-solarpanel, #ourCompanyPanel .icon-solarpanel{
-    margin-top: 15px;
-    padding-left:20px;
-    font-size: 5em;
+#theirCompanyPanel .icon-solarpanel,
+#ourCompanyPanel .icon-solarpanel{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 4em;
 }
-#theirCompanyPanel .icon-solarpanel span,
-#ourCompanyPanel .icon-solarpanel span{
+#theirCompanyPanel .compareValue,
+#ourCompanyPanel .compareValue{
 
-    padding-left:5px;
-    font-size: 0.5em;
+    padding-top:5px;
+    text-align: center;
+    font-size: 2.2em;
 }
