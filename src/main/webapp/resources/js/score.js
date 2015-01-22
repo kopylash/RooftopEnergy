@@ -1,26 +1,24 @@
 $(function(){
     currentPage.name = 'rating';
-    var companyNumber;
-
     function screenH() {
+        var rows;
         if (screen.height <= 550) {
-            companyNumber = 6;
+            rows = 6;
         } else if (screen.height <= 670) {
-            companyNumber = 9;
+            rows = 9;
         } else if (screen.height <= 750) {
-            companyNumber = 10;
+            rows = 10;
         } else if (screen.height <= 820) {
-            companyNumber = 11;
+            rows = 11;
         } else if (screen.height <= 1380) {
-            companyNumber = 12;
+            rows = 12;
         } else if (screen.height <= 1700) {
-            companyNumber = 14;
+            rows = 14;
         } else {
-            companyNumber = 16;
+            rows = 16;
         }
+        return rows;
     }
-    screenH();
-
 
     $(window).resize(function(){
         screenH();
@@ -30,24 +28,33 @@ $(function(){
 
     var ratingUrl = '/rest/score';
     var begin = 0;
+    var companyNumber = screenH();
     var end = companyNumber - 1;
     var lengthList;
     var secondPart = "/production";
 
     var ratingList = function(data){
-
+        //var Da = function(company, arrow){
+        //    this.company = company;
+        //    this.arrow = arrow;
+        //};
+        //var arr = [];
+        //for (var i = 0; i<42; i++){
+        //    arr[i] = new Da("company"+i, 1);
+        //}
+        //data = arr;
         if (companyInfo.status === true) {
             $("#main1").html("");
             var arrowValue;
             lengthList = data.length;
             console.log(lengthList);
-            if(end > lengthList){
+         /*   if(end > lengthList){
                 end = lengthList -1;
-            }
-            var companyNname;
+            }*/
+            var companyName;
             //for (i in data) {
-            for (var i = begin; i <= end; i++) {
-                companyNname = data[i].company;
+            for (var i = begin; i <= end && i < lengthList; i++) {
+                companyName = data[i].company;
                 console.log(data[i].arrow);
                 switch (data[i].arrow) {
                     case -1:
@@ -61,7 +68,7 @@ $(function(){
                         break;
                     default :
                 }
-                var lineCode = "<div id='' class='rating'><span>" + companyNname + "</span><span class='ratingSymbol'><i class='fa " + arrowValue + " fa-1x'></i></span></div>";
+                var lineCode = "<div id='' class='rating'><span>" + companyName + "</span><span class='ratingSymbol'><i class='fa " + arrowValue + " fa-1x'></i></span></div>";
                 $("#main1").append(lineCode);
             }
             $(".rating").click(function(){
