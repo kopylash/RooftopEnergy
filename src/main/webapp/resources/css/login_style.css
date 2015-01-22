@@ -62,25 +62,17 @@ body {
   position: relative;
   margin: 0 auto;
   width: 370px;
-  height: 315px;
-  /*background: #E1E2D1;*/
+  height: 270px;
+  /*background: #D6A6A6;*/
+    background-color: rgba(255, 255, 255, 0.2);
+
   border-radius: 3px;
 }
 
-.login:before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  bottom: -8px;
-  left: -8px;
-  z-index: -1;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
 
 .login h1 {
-    width:80%;
+    width:100%;
+    opacity: 1;
     margin: 0 auto 0;
   line-height: 55px;
   font-size: 15px;
@@ -99,49 +91,31 @@ body {
   border-top-right-radius: 3px;
 }
 
-#opacityBlock {
-    width:80%;
-    height:205px;
-    position:absolute;
-    left:10%;
-    background: #ffffff;
-    opacity:0.5;
-}
 
 .login p:first-child {
   margin-top: 25px;
+    opacity: 1;
 }
 
 .login p.remember {
+    margin-top: 15px;
   float: left;
+    opacity: 1;
 }
 
 .login p.remember label {
   color: #a7a599;
   font-size: 12px;
   cursor: pointer;
+    opacity: 1;
 }
 
 .login p.submit {
   text-align: center;
+    opacity: 1;
 }
 
-.login p.forgot {
-  float: right;
-  margin-right: 50px;
-}
 
-.login p.forgot a {
-  color: #a7a599;
-  font-size: 12px;
-  text-decoration: none;
-  font-style: italic;
-  transition: all 0.3s ease-out;
-}
-
-.login p.forgot a:hover {
-  color: #108f38;
-}
 
 /* === Input Form === */
 ::-webkit-input-placeholder {
@@ -161,7 +135,7 @@ body {
     font-weight: 400;
     padding: 10px 15px 10px 50px;
     position: relative;
-    width: 200px;
+    width: 70%;
     height: 24px;
     color: #676056;
     border: none;
@@ -195,7 +169,7 @@ body {
 
 .form button[type=submit] {
   margin-top: 15px;
-  width: 80%;
+  width: 100%;
   text-align: center;
   font-size: 14px;
   font-family: 'Open Sans',sans-serif;
@@ -221,7 +195,7 @@ body {
     -webkit-border-radius-bottomright: 2px;
     cursor: pointer;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   -webkit-animation: shadowFadeOut 0.4s;
   -moz-animation: shadowFadeOut 0.4s;
 }
@@ -344,28 +318,6 @@ body {
     background:url("../images/checkbox.png") -16px top no-repeat;
 }
 
-/* === Copyright === */
-.copyright {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.copyright p, a {
-  color: #828078;
-  font-size: 12px;
-  text-decoration: none;
-  transition: color 0.3s ease-out;
-}
-
-/*.copyright a:hover {*/
-  /*color: #f2672e;*/
-/*}*/
-/*input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {*/
-    /*background-color: rgb(0, 255, 189);*/
-    /*background-image: none;*/
-    /*color: rgb(0, 0, 0);*/
-/*}*/
-
 
 #mainblock{
     margin: 0;
@@ -379,9 +331,7 @@ body {
     position: absolute;
 }
 
-
-
-@media screen and (min-width: 331px) and (max-width: 369px){
+@media screen  and (max-width: 369px){
     .login{
         width: 90%;
     }
@@ -397,8 +347,8 @@ body {
     }
 
     .form button[type=submit]{
-        width: 80%;
-        margin: 15px 13% 15px 10%;
+        width: 100%;
+        margin-top: 15px;
     }
 
     .remember {
@@ -407,50 +357,33 @@ body {
     }
 }
 
-@media screen and (max-width: 330px){
-    .login{
-        width: 90%;
-    }
-    .form .field {
-        width: 79%;
-        margin: 0 auto;
-    }
 
-    .form input[type=text],
-    .form input[type=password]{
-        width: 70%;
-        padding: 10px 15px 10px 54px;
-    }
-
-    .form button[type=submit]{
-        width: 80%;
-        margin: 15px 13% 15px 10%;
-    }
-    .remember {
-    margin-left: -7%;
-    }
-}
 
 @media screen and (min-width: 769px) and (max-width: 1200px){
     .login{
         margin-top: 50px;
         width: 440px;
-        height: 375px;
+        height: 300px;
         font-size: 20px;
     }
     .login h1 {
-        width:80%;
+        width:100%;
     }
     form{
-        padding-top: 27px;
+        padding-top: 15px;
     }
     .form button[type=submit] {
         margin-top: 25px;
-        width: 80%;
+        width: 100%;
         font-size: 20px;
         padding: 9px 0;
         /*margin-left: -8%;*/
     }
+
+    .form input[type=text]{
+        margin-bottom: 20px;
+    }
+
     .form input[type=text],
     .form input[type=password] {
         font-size: 16px;
@@ -470,32 +403,30 @@ body {
         margin-top: 4%;
         margin-left: 15px;
     }
-    #opacityBlock {
-        left:10%;
-        width: 352px;
-        height: 263px;
-    }
 }
 
 @media screen and (min-width: 1201px){
     .login{
         margin-top: 90px;
         width: 510px;
-        height: 400px;
+        height: 320px;
         font-size: 24px;
     }
     .login h1 {
-        width:80%;
+        width:100%;
     }
     form{
-        padding-top: 35px;
+        padding-top: 25px;
     }
     .form button[type=submit] {
-        margin-top: 35px;
-        width: 80%;
+        margin-top: 25px;
+        width: 100%;
         font-size: 24px;
         padding: 9px 0;
-        /*margin-left: -8%;*/
+    }
+
+    .form input[type=text] {
+        margin-bottom: 25px;
     }
     .form input[type=text],
     .form input[type=password] {
@@ -517,12 +448,7 @@ body {
         margin-top: 4%;
         margin-left: 15px;
     }
-    #opacityBlock {
-        left:10%;
-        width: 408px;
-        height: 290px;
-    }
-}
+ }
 
 #wrongInf{
     padding-top: 7px;
