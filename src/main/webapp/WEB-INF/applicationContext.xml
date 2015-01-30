@@ -13,7 +13,7 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/tomcat" />
+		<property name="url" value="jdbc:mysql://localhost:3306/tomcat_ang" />
 		<property name="username" value="rooftop" />
 		<property name="password" value="energy" />
 	</bean>
@@ -52,18 +52,19 @@
 
 	<!-- Spring Security Settings-->
 
-	<security:http entry-point-ref="restAuthenticationEntryPoint">
+    <security:http entry-point-ref="restAuthenticationEntryPoint">
 		<security:intercept-url pattern="/login.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
 		<security:intercept-url pattern="/pages/home.html" access="ROLE_USER"/>
 		<security:intercept-url pattern="/rest/*" access="ROLE_USER"/>
 		<security:intercept-url pattern="/pages/*" access="ROLE_USER"/>
 
-
 		<security:form-login
 				authentication-success-handler-ref="successHandler"
 				authentication-failure-handler-ref="failureHandler"/>
 		<security:remember-me
-				data-source-ref="dataSource"/>
+                user-service-ref="userJpaDao"
+				data-source-ref="dataSource"
+                />
 		<security:logout
 				invalidate-session="true"
 				delete-cookies="JSESSIONID"
@@ -79,14 +80,16 @@
 		<constructor-arg value="/login.html?data=fail"/>
 	</bean>
 
+    <bean id="encoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <constructor-arg name="strength" value="11" />
+    </bean>
+
 	<security:authentication-manager alias="authenticationManager">
-		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource"
-										users-by-username-query=
-												"select username, password, enabled from users where username=?"
-										authorities-by-username-query=
-												"select username, role from user_roles where username =?  " />
-		</security:authentication-provider>
+        <security:authentication-provider user-service-ref="userJpaDao">
+            <security:password-encoder ref="encoder">
+            </security:password-encoder>
+        </security:authentication-provider>
 	</security:authentication-manager>
 
 </beans>
