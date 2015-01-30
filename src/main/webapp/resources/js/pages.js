@@ -77,6 +77,8 @@ $(function() {
     //};
     //foo(code);
 
+    //USED for redirecting. WTF?
+
     var colorSwitch = function (k, kk) {
         var page = window.location;
         page = page + "";
@@ -86,22 +88,22 @@ $(function() {
         $("#" + idi).css({'color': k, 'backgroundColor': kk});
 
         $(".mainButtons").click(function () {
-            if (this.id == "menu") {
-                runEffect();
-            /*} else {
-                if (companyInfo.status == false && this.id == "rating") {*/
+                if (this.id == "menu") {
+                    runEffect();
+                    /*} else {
+                     if (companyInfo.status == false && this.id == "rating") {*/
                     //$('main').html("Your company is not public");
                     //window.location = this.id + ".html";
-                //alert("Your company is not public!");
+                    //alert("Your company is not public!");
 
 
-            } else {
-                if (this.id != "logout" ) {
-                    window.location = this.id + ".html";
+                } else {
+                    if (this.id != "logout" ) {
+                        window.location = this.id + ".html";
+                    }
                 }
-            }
 
-        }
+            }
         );
 
     };
