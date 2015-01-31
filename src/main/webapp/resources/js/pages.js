@@ -80,6 +80,7 @@ $(function() {
     //USED for redirecting. WTF?
 
     var colorSwitch = function (k, kk) {
+        var host = window.location.hostname;
         var page = window.location;
         page = page + "";
         var first = page.lastIndexOf("/") + 1;
@@ -99,7 +100,7 @@ $(function() {
 
                 } else {
                     if (this.id != "logout" ) {
-                        window.location = this.id + ".html";
+                        window.location = "/pages/" + this.id + ".html";
                     }
                 }
 
