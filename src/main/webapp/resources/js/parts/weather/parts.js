@@ -29,6 +29,9 @@ $(function() {
             statusCode: {
                 200: function (info) {
                     userInfo(info);
+                },
+                503: function(){
+                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
                 }
             }
         });
@@ -46,6 +49,9 @@ $(function() {
             statusCode: {
                 200: function (data) {
                     forecastListSixteen(data);
+                },
+                503: function(){
+                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
                 }
             }
         });

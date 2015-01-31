@@ -38,6 +38,9 @@ $(function() {
                 200: function (cloudsInfo) {
                     cloudarr = cloudsInfo;
                     init();
+                },
+                503: function(){
+                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
                 }
             }
         });
@@ -57,6 +60,9 @@ $(function() {
             statusCode: {
                 200: function (info) {
                     userInfo(info);
+                },
+                503: function(){
+                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
                 }
             }
         });
@@ -74,6 +80,9 @@ $(function() {
                 200: function (d) {
                     data = d;
                     forecastListSixteen(data);
+                },
+                503: function(){
+                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
                 }
             }
         });
@@ -90,6 +99,9 @@ $(function() {
             statusCode: {
                 200: function (actualDayInfo) {
                     actualDay(actualDayInfo);
+                },
+                503: function(){
+                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
                 }
             }
         });

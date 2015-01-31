@@ -22,10 +22,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.*;
 import java.util.*;
@@ -186,12 +183,19 @@ public class WeatherResource {
             }
         } catch (UnirestException e){
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(503);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(503);
         } catch (JsonMappingException e) {
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(503);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
+            throw new WebApplicationException(503);
+        } catch (NullPointerException e){
+            logger.error(e.getMessage(), e);
+            throw new WebApplicationException(503);
         }
         return resultList;
 
