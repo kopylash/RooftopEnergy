@@ -10,6 +10,7 @@ import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.transfer.PasswordTransfer;
 import nl.rooftopenergy.bionic.transfer.UserDataTransfer;
 import org.apache.log4j.Logger;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
@@ -37,6 +38,9 @@ public class UserSettingsDataResource {
 
     @Inject
     private PrincipalInformation principalInformation;
+
+    @Inject
+    private BCryptPasswordEncoder passwordEncoder;
 
     /**
      * Saves new userInfo
@@ -121,8 +125,11 @@ public class UserSettingsDataResource {
     public Response changePassword(PasswordTransfer passwordTransfer) {
 
         User currentUser = userDao.find(principalInformation.getPrincipalName());
-        if (passwordTransfer.getOldPassword().equals(currentUser.getPassword())) {
-            currentUser.setPassword(passwordTransfer.getNewPassword());
+        String oldEncodedPassword = passwordTransfer.getOldPassword();
+        String passwordFromDB = currentUser.getPassword();
+        if (passwordEncoder.matches(oldEncodedPassword, passwordFromDB)) {
+            String newEncodedPassword = passwordEncoder.encode(passwordTransfer.getNewPassword());
+            currentUser.setPassword(newEncodedPassword);
             userDao.save(currentUser);
         } else {
             return Response.notModified().build();
