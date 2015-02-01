@@ -31,7 +31,7 @@ $(function(){
     var companyNumber = screenH();
     var end = companyNumber - 1;
     var lengthList;
-    var secondPart = "/production";
+    var secondPart = "/overall";
 
     var ratingList = function(data){
         //var Da = function(company, arrow){
@@ -130,8 +130,11 @@ $(function(){
         ajaxScoreQuery(url);
     });
 
-    var url1 = ratingUrl + "/production";
+    //data loading
+    var url1 = ratingUrl + "/overall";
     ajaxScoreQuery(url1);
+    buttonStyles('overScore');
+
     $("#up").css({"display": "none"});
     $("#up1").css({"display": "none"});
 
