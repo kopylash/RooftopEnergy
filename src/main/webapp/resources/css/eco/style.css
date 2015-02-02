@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?-4igije');
-	src:url('fonts/icomoon.eot?#iefix-4igije') format('embedded-opentype'),
-		url('fonts/icomoon.woff?-4igije') format('woff'),
-		url('fonts/icomoon.ttf?-4igije') format('truetype'),
-		url('fonts/icomoon.svg?-4igije#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-ibpu80');
+	src:url('fonts/icomoon.eot?#iefix-ibpu80') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-ibpu80') format('woff'),
+		url('fonts/icomoon.ttf?-ibpu80') format('truetype'),
+		url('fonts/icomoon.svg?-ibpu80#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,23 +23,71 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-furtree:before {
-	content: "\e604";
+.icon-factory:before {
+	content: "\e60c";
 }
 
-.icon-solarpanel:before {
-	content: "\e600";
+.icon-fur-tree:before {
+	content: "\e60d";
 }
 
-.icon-plant:before {
-	content: "\e601";
+.icon-solar-panel:before {
+	content: "\e60e";
 }
 
 .icon-tree:before {
+	content: "\e60f";
+}
+
+.icon-plant:before {
+	content: "\e610";
+}
+
+.icon-teapot:before {
+	content: "\e60a";
+}
+
+.icon-tv:before {
+	content: "\e60b";
+}
+
+.icon-coffee:before {
+	content: "\e600";
+}
+
+.icon-desktop:before {
+	content: "\e601";
+}
+
+.icon-dishwasher:before {
 	content: "\e602";
 }
 
-.icon-factory:before {
+.icon-iron:before {
 	content: "\e603";
+}
+
+.icon-laptop:before {
+	content: "\e604";
+}
+
+.icon-microvawe:before {
+	content: "\e605";
+}
+
+.icon-tv19-36:before {
+	content: "\e606";
+}
+
+.icon-tv53-61:before {
+	content: "\e607";
+}
+
+.icon-vacuming:before {
+	content: "\e608";
+}
+
+.icon-washer:before {
+	content: "\e609";
 }
 
