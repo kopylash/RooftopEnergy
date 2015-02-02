@@ -332,7 +332,7 @@ textarea {
     display: none;
     background-color: #108f38;
     border-radius: 2px;
-    width: 30px;
+    /*width: 30%;*/
     height: 30px;
     border: none;
     outline: none;
@@ -344,6 +344,13 @@ textarea {
     font-size: 18px;
     font-weight: 500;
 }
+
+#changePasswordButton span {
+    font-family: "Open Sans", Tahoma, Verdana, sans-serif;
+    color: #FFFFFE;
+    font-size: 16px;
+}
+
 
 #buttUp{
     clear: both;
