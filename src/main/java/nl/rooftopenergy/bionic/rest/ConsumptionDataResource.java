@@ -208,7 +208,9 @@ public class ConsumptionDataResource {
         Calendar thisYear = Calendar.getInstance();
         thisYear.setTime(resultList.get(0).getDate());
         thisYear.add(Calendar.YEAR, -1);
-        Date dateBefore = thisYear.getTime();
+        DateTime d = new DateTime(thisYear);
+        int y  = d.getYear();
+        Date dateBefore = Timestamp.valueOf(y + "-12-31 23:59:59") ;
         resultList = transformToDifferences(box, resultList, dateBefore);
 
         return resultList;
