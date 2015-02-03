@@ -124,7 +124,7 @@ function ajaxGraphQuery(strUrl1,strUrl2,endDate) {
                     statusCode: {
                         200: function (data2) {
                             graph(data1,data2);
-                            appliancePairData(data1, data2)
+                            appliancePairData(data1, data2, strUrl1);
                         }
                     }
                 })
