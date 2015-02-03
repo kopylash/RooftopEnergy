@@ -93,16 +93,27 @@ body {
 }
 
 
-.header {
-    padding-top: 5px;
-    padding-bottom: 15px;
+.header{
+     padding-top: 5px;
+     padding-bottom: 5px;
+     width: 100%;
+    height: 35px;
+     background-color: #59AC28;
+ }
+#logoMobile img{
+    width: 70px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+#headerTitle{
     width: 100%;
+    position: absolute;
     text-align: center;
     font-weight: bold;
     font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
     color: #FFFFFE;
     font-size: 1.9em;
-    background-color: #59AC28;
 }
 
 .header1 {
@@ -252,9 +263,3 @@ main{
     }
 }
 
-#logoMobile img{
-    width: 70px;
-    position: fixed;
-    left: 5px;
-    top: 5px;
-}
