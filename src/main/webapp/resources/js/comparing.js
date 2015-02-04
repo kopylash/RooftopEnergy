@@ -150,13 +150,17 @@ $(function(){
         $('#comparingProduction').click(function() {
             restUrl='/rest/comparing/production';
             comparingType='production';
-            buttonClicker(restUrl,1,pickerDate)
+            $(this).css({"color":"#108f38", "borderColor":"#108f38", "backgroundColor":"#fffffe"});
+            $('#comparingConsumption').css({"color":"#fffffe", "backgroundColor":"#108f38"});
+            buttonClicker(restUrl,1,pickerDate);
         });
 
         $('#comparingConsumption').click(function() {
             restUrl='/rest/comparing/consumption';
             comparingType='consumption';
-            buttonClicker(restUrl,1,pickerDate)
+            $('#comparingProduction').css({"color":"#fffffe", "backgroundColor":"#108f38"});
+            $(this).css({"color":"#108f38", "borderColor":"#108f38", "backgroundColor":"#fffffe"});
+            buttonClicker(restUrl,1,pickerDate);
         });
 
     }
@@ -332,7 +336,6 @@ $(function(){
     } else {
         $("#mobileVersionEcoComparingEnergy").html("");
         $("#desktopVersionButtons").html(codeButtons).addClass("buttonForDesktop");
-        $("#comparingConsumption, #comparingProduction");
         $("main").addClass("mainDesktop");
         $("#compareCompanyInfo").html(htmlCompareCompanies);
         $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingDesktop");
@@ -341,6 +344,8 @@ $(function(){
 
         //console.log("desk");
     }
+
+
 
     function ajaxComparingInfoQuery() {
         $.ajax({

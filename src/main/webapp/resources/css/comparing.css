@@ -23,6 +23,7 @@
 }
 
 
+
 @media screen and (min-device-width: 1300px) and (min-device-height: 600px) {
 
     #typeButtons{
@@ -48,6 +49,17 @@
     color: #FFFFFE;
     width: 49%;
 }
+
+.buttonForDesktop .btn:focus{
+    outline:0;
+}
+
+#comparingProduction{
+    border-color: #108f38;
+    background-color: #fffffe;
+    color: #108f38;
+}
+
 
 .mainDesktop{
     width: 70%;

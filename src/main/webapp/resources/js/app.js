@@ -76,16 +76,15 @@
 
             $http.post('/rest/boxData/changePassword', passwordTransfer).
                 success(function() {
+                    $scope.resFields();
                     $scope.showRightBanner = true;
                     $scope.showWrongBanner = false;
-                    console.log("GOOD!!!");
                 }).
                 error(function() {
                     $scope.showRightBanner = false;
                     $scope.showWrongBanner = true;
                     $scope.showFalseOld = true;
-                    console.log("BAD!!!");
-                });
+                 });
         };
 
     });
