@@ -172,10 +172,6 @@ function graph (data1,data2) {
 
     $('main').highcharts({
 
-        rangeSelector: {
-            inputEnabled : false
-
-        },
         chart: {
             type: 'column',
             zoomType: 'x',
@@ -204,7 +200,15 @@ function graph (data1,data2) {
         legend: {
             enabled: true
         },
+
         plotOptions: {
+            series: {
+                pointWidth: 15,
+                //pointPadding: 5
+                groupPadding: 1
+            }
+        },
+        /*plotOptions: {
 
             area: {
                 fillColor: {
@@ -226,20 +230,20 @@ function graph (data1,data2) {
                 },
                 threshold: null
             }
-        },
+        },*/
 
         series: [{
             name: 'Production',
             pointInterval:  3600 * 1000,
-            data: arr1,
-            minPointWidth: 50
+            data: arr1
+            //PointWidth: 20
 
 
         },{
             name: 'Consumption',
             pointInterval:  3600 * 1000,
-            data: arr2,
-            minPointWidth: 50
+            data: arr2
+            //PointWidth: 20
 
         }]
     });
