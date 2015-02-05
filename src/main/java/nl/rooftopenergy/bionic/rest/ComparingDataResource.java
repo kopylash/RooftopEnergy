@@ -272,6 +272,18 @@ public class ComparingDataResource {
         Date dateBefore = thisYear.getTime();
         resultList = transformToDifferences(box, resultList, dateBefore, "production");
 
+        Date lastNoteDate = resultList.get(resultList.size()-1).getDate();
+        DateTime foolMonth = new DateTime(lastNoteDate);
+        Timestamp lastDateNote = Timestamp.valueOf(
+                foolMonth.getYear() + "-" + foolMonth.getMonthOfYear() + "-" + getDaysInMonth(foolMonth) + " 23:00:00");
+        Calendar noteDate = Calendar.getInstance();
+        noteDate.setTime(lastNoteDate);
+//        resultList.get(resultList.size()-1).setDate(lastDateNote);
+        while (resultList.size() < MONTHS){
+            noteDate.add(Calendar.MONTH, 1);
+            resultList.add(new GraphDataTransfer(new Timestamp(noteDate.getTimeInMillis()), null));
+        }
+
         return resultList;
     }
 
@@ -555,6 +567,18 @@ public class ComparingDataResource {
         Date dateBefore = thisYear.getTime();
         resultList = transformToDifferences(box, resultList, dateBefore, "consumption");
 
+
+        Date lastNoteDate = resultList.get(resultList.size()-1).getDate();
+        DateTime foolMonth = new DateTime(lastNoteDate);
+        Timestamp lastDateNote = Timestamp.valueOf(
+                foolMonth.getYear() + "-" + foolMonth.getMonthOfYear() + "-" + getDaysInMonth(foolMonth) + " 23:00:00");
+        Calendar noteDate = Calendar.getInstance();
+        noteDate.setTime(lastNoteDate);
+//        resultList.get(resultList.size()-1).setDate(lastDateNote);
+        while (resultList.size() < MONTHS){
+            noteDate.add(Calendar.MONTH, 1);
+            resultList.add(new GraphDataTransfer(new Timestamp(noteDate.getTimeInMillis()), null));
+        }
         return resultList;
     }
 

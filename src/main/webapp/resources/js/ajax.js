@@ -11,7 +11,7 @@ function ajaxGraphQuery(strUrl,endDate) {
         statusCode: {
             200: function (data) {
                 graph(data);
-                applianceSingleData(data, strUrl);
+                applianceSingleData(data, strUrl);ile
             }
         }
     });

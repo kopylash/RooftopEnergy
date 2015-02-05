@@ -140,12 +140,24 @@ function ajaxGraphQuery(strUrl1,strUrl2,endDate) {
 
 function graph (data1,data2) {
     var arr1 = new Array();
-    for (i in data1) {
-        arr1[i] =  [data1[i]["date"], data1[i]["value"]/1000];
+    for (var i in data1) {
+        if(data1.hasOwnProperty(i)) {
+            if (data1[i]["value"] !== null) {
+                arr1[i] = [data1[i]["date"], data1[i]["value"] / 1000];
+            } else {
+                arr1[i] = [data1[i]["date"], null];
+            }
+        }
     }
     var arr2 = new Array();
-    for (i in data2) {
-        arr2[i] =  [data2[i]["date"], data2[i]["value"]/1000];
+    for (var j in data2) {
+        if(data2.hasOwnProperty(j)) {
+            if (data1[j]["value"] !== null) {
+                arr2[j] = [data2[j]["date"], data2[j]["value"] / 1000];
+            } else {
+                arr2[j] = [data2[j]["date"], null];
+            }
+        }
     }
 
     Highcharts.setOptions({
@@ -160,6 +172,10 @@ function graph (data1,data2) {
 
     $('main').highcharts({
 
+        rangeSelector: {
+            inputEnabled : false
+
+        },
         chart: {
             type: 'column',
             zoomType: 'x',
@@ -189,6 +205,7 @@ function graph (data1,data2) {
             enabled: true
         },
         plotOptions: {
+
             area: {
                 fillColor: {
                     linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
@@ -214,13 +231,15 @@ function graph (data1,data2) {
         series: [{
             name: 'Production',
             pointInterval:  3600 * 1000,
-            data: arr1
+            data: arr1,
+            minPointWidth: 50
 
 
         },{
             name: 'Consumption',
             pointInterval:  3600 * 1000,
-            data: arr2
+            data: arr2,
+            minPointWidth: 50
 
         }]
     });
