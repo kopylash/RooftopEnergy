@@ -201,13 +201,13 @@ function graph (data1,data2) {
             enabled: true
         },
 
-        plotOptions: {
-            series: {
-                pointWidth: 15,
-                //pointPadding: 5
-                groupPadding: 1
-            }
-        },
+        //plotOptions: {
+        //    series: {
+        //        pointWidth: 15,
+        //        //pointPadding: 5
+        //        groupPadding: 1
+        //    }
+        //},
         /*plotOptions: {
 
             area: {

@@ -206,7 +206,9 @@ public class ComparingDataResource {
             if (value == null) {
                 value = 0;
             }
-            resultList.add(new GraphDataTransfer(finishMonth, value));
+            DateTime graphDate = new DateTime(finishMonth);
+            String graphDateString = graphDate.getYear() + "-" + graphDate.getMonthOfYear() + "-01 00:00:00";
+            resultList.add(new GraphDataTransfer(Timestamp.valueOf(graphDateString), value));
         }
 
         Calendar thisYear = Calendar.getInstance();
@@ -238,32 +240,41 @@ public class ComparingDataResource {
         RtfBox box = companyDao.findByName(companyName).getRtfBox();
         RtfBoxData boxData = rtfBoxDataDao.findFirstNote(box);
 
-        Calendar firstDate = Calendar.getInstance();
-        firstDate.setTime(boxData.getDate());
-
-        Calendar lastDate = Calendar.getInstance();
-        lastDate.setTime(new Date(longDate));
+        Date dbNoteDate = new Date(boxData.getDate().getTime());
+        Date endPeriodDate = new Date(longDate);
 
         List<GraphDataTransfer> resultList = new ArrayList<GraphDataTransfer>();
+        Calendar calendar = Calendar.getInstance();
+
         boolean isAvailable = true;
         while (isAvailable) {
-            DateTime date = new DateTime(firstDate);
-            String year = date.getYear() + "-" + date.getMonthOfYear();
-            Timestamp startMonth = Timestamp.valueOf(year + "-01 00:00:00");
+
+            DateTime date = new DateTime(dbNoteDate);
+            String yearAndMonth = date.getYear() + "-" + date.getMonthOfYear();
+            Timestamp startMonth = Timestamp.valueOf(yearAndMonth + "-01 00:00:00");
+
             int lastDay = getDaysInMonth(new DateTime(startMonth));
             Timestamp finishMonth;
-            if (firstDate.compareTo(lastDate) > 0) {
-                finishMonth = new Timestamp(lastDate.getTimeInMillis());
-                isAvailable = false;
+
+            if (dbNoteDate.before(endPeriodDate)) {
+                finishMonth = Timestamp.valueOf(yearAndMonth + "-" + lastDay + " 23:59:59");
             } else {
-                finishMonth = Timestamp.valueOf(year + "-" + lastDay + " 23:59:59");
+                DateTime end = new DateTime(endPeriodDate);
+                String endOfMonth = end.getYear() + "-" + end.getMonthOfYear() + "-" +
+                        getDaysInMonth(end) + " 23:59:59";
+                finishMonth = Timestamp.valueOf(endOfMonth);
+                isAvailable = false;
             }
             Integer value = rtfBoxDataDao.findTotalProductionByPeriod(box, startMonth, finishMonth);
             if (value == null) {
                 value = 0;
             }
-            resultList.add(new GraphDataTransfer(finishMonth, value));
-            firstDate.add(Calendar.MONTH, 1);
+            DateTime graphDate = new DateTime(finishMonth);
+            String graphDateString = graphDate.getYear() + "-" + graphDate.getMonthOfYear() + "-01 00:00:00";
+            resultList.add(new GraphDataTransfer(Timestamp.valueOf(graphDateString), value));
+            calendar.setTime(dbNoteDate);
+            calendar.add(Calendar.MONTH, 1);
+            dbNoteDate = calendar.getTime();
         }
 
         Calendar thisYear = Calendar.getInstance();
@@ -273,12 +284,8 @@ public class ComparingDataResource {
         resultList = transformToDifferences(box, resultList, dateBefore, "production");
 
         Date lastNoteDate = resultList.get(resultList.size()-1).getDate();
-        DateTime foolMonth = new DateTime(lastNoteDate);
-        Timestamp lastDateNote = Timestamp.valueOf(
-                foolMonth.getYear() + "-" + foolMonth.getMonthOfYear() + "-" + getDaysInMonth(foolMonth) + " 23:00:00");
         Calendar noteDate = Calendar.getInstance();
         noteDate.setTime(lastNoteDate);
-//        resultList.get(resultList.size()-1).setDate(lastDateNote);
         while (resultList.size() < MONTHS){
             noteDate.add(Calendar.MONTH, 1);
             resultList.add(new GraphDataTransfer(new Timestamp(noteDate.getTimeInMillis()), null));
@@ -502,7 +509,9 @@ public class ComparingDataResource {
             if (value == null) {
                 value = 0;
             }
-            resultList.add(new GraphDataTransfer(finishMonth, value));
+            DateTime graphDate = new DateTime(finishMonth);
+            String graphDateString = graphDate.getYear() + "-" + graphDate.getMonthOfYear() + "-01 00:00:00";
+            resultList.add(new GraphDataTransfer(Timestamp.valueOf(graphDateString), value));
         }
 
         Calendar thisYear = Calendar.getInstance();
@@ -533,32 +542,41 @@ public class ComparingDataResource {
         RtfBox box = companyDao.findByName(companyName).getRtfBox();
         RtfBoxData boxData = rtfBoxDataDao.findFirstNote(box);
 
-        Calendar firstDate = Calendar.getInstance();
-        firstDate.setTime(boxData.getDate());
-
-        Calendar lastDate = Calendar.getInstance();
-        lastDate.setTime(new Date(longDate));
+        Date dbNoteDate = new Date(boxData.getDate().getTime());
+        Date endPeriodDate = new Date(longDate);
 
         List<GraphDataTransfer> resultList = new ArrayList<GraphDataTransfer>();
+        Calendar calendar = Calendar.getInstance();
+
         boolean isAvailable = true;
         while (isAvailable) {
-            DateTime date = new DateTime(firstDate);
-            String year = date.getYear() + "-" + date.getMonthOfYear();
-            Timestamp startMonth = Timestamp.valueOf(year + "-01 00:00:00");
+
+            DateTime date = new DateTime(dbNoteDate);
+            String yearAndMonth = date.getYear() + "-" + date.getMonthOfYear();
+            Timestamp startMonth = Timestamp.valueOf(yearAndMonth + "-01 00:00:00");
+
             int lastDay = getDaysInMonth(new DateTime(startMonth));
             Timestamp finishMonth;
-            if (firstDate.compareTo(lastDate) > 0) {
-                finishMonth = new Timestamp(lastDate.getTimeInMillis());
-                isAvailable = false;
+
+            if (dbNoteDate.before(endPeriodDate)) {
+                finishMonth = Timestamp.valueOf(yearAndMonth + "-" + lastDay + " 23:59:59");
             } else {
-                finishMonth = Timestamp.valueOf(year + "-" + lastDay + " 23:59:59");
+                DateTime end = new DateTime(endPeriodDate);
+                String endOfMonth = end.getYear() + "-" + end.getMonthOfYear() + "-" +
+                        getDaysInMonth(end) + " 23:59:59";
+                finishMonth = Timestamp.valueOf(endOfMonth);
+                isAvailable = false;
             }
             Integer value = rtfBoxDataDao.findTotalConsumptionByPeriod(box, startMonth, finishMonth);
             if (value == null) {
                 value = 0;
             }
-            resultList.add(new GraphDataTransfer(finishMonth, value));
-            firstDate.add(Calendar.MONTH, 1);
+            DateTime graphDate = new DateTime(finishMonth);
+            String graphDateString = graphDate.getYear() + "-" + graphDate.getMonthOfYear() + "-01 00:00:00";
+            resultList.add(new GraphDataTransfer(Timestamp.valueOf(graphDateString), value));
+            calendar.setTime(dbNoteDate);
+            calendar.add(Calendar.MONTH, 1);
+            dbNoteDate = calendar.getTime();
         }
 
         Calendar thisYear = Calendar.getInstance();
@@ -569,12 +587,8 @@ public class ComparingDataResource {
 
 
         Date lastNoteDate = resultList.get(resultList.size()-1).getDate();
-        DateTime foolMonth = new DateTime(lastNoteDate);
-        Timestamp lastDateNote = Timestamp.valueOf(
-                foolMonth.getYear() + "-" + foolMonth.getMonthOfYear() + "-" + getDaysInMonth(foolMonth) + " 23:00:00");
         Calendar noteDate = Calendar.getInstance();
         noteDate.setTime(lastNoteDate);
-//        resultList.get(resultList.size()-1).setDate(lastDateNote);
         while (resultList.size() < MONTHS){
             noteDate.add(Calendar.MONTH, 1);
             resultList.add(new GraphDataTransfer(new Timestamp(noteDate.getTimeInMillis()), null));
