@@ -202,7 +202,9 @@ public class ConsumptionDataResource {
             if (value == null) {
                 value = 0;
             }
-            resultList.add(new GraphDataTransfer(finishMonth, value));
+            DateTime graphDate = new DateTime(finishMonth);
+            String graphDateString = graphDate.getYear() + "-" + graphDate.getMonthOfYear() + "-01 00:00:00";
+            resultList.add(new GraphDataTransfer(Timestamp.valueOf(graphDateString), value));
         }
 
         Calendar thisYear = Calendar.getInstance();
