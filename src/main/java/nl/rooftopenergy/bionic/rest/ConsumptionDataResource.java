@@ -162,10 +162,11 @@ public class ConsumptionDataResource {
             if (value == null) {
                 value = 0;
             }
-            resultList.add(new GraphDataTransfer(finishDay, value));
+            resultList.add(new GraphDataTransfer(startDay, value));
         }
 
-        Date dateBefore = new Date(resultList.get(0).getDate().getTime() - TWENTY_FOUR_HOURS*HOUR);
+//        Date dateBefore = new Date(resultList.get(0).getDate().getTime() - TWENTY_FOUR_HOURS*HOUR);
+        Date dateBefore = new Date(resultList.get(0).getDate().getTime() - 1000*60);
         resultList = transformToDifferences(box, resultList, dateBefore);
 
         return resultList;
