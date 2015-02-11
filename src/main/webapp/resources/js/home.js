@@ -9,7 +9,6 @@ $(function(){
 });
 
 function allDateButtons(url1,url2){
-    var i = 0;
     var pickerDate = new Date();
     var season = 1;
 
@@ -41,27 +40,31 @@ function allDateButtons(url1,url2){
     };
 
     var buttonClicker = function(url1,url2, x, d){
-        var date = new Date();
+        var tooltipDateFormat = "%a, %d %b %Y %H:%M";//Format for day (Mon, 01 Feb 2015 00:00)
         switch(x){
             case 0:
                 url1 = url1+"/totally";
                 url2 = url2+"/totally";
+                tooltipDateFormat = "%B, %Y"; // 2015, February
                 break;
             case 1:
                 url1 = url1+"/daily";
                 url2 = url2+"/daily";
+                tooltipDateFormat = "%a, %d %b %Y %H:%M";
                 break;
             case 2:
                 url1 = url1+"/monthly";
                 url2 = url2+"/monthly";
+                tooltipDateFormat = "%A, %d %B %Y";
                 break;
             case 3:
                 url1 = url1+"/yearly";
                 url2 = url2+"/yearly";
+                tooltipDateFormat = "%B, %Y";
                 break;
             default :
         }
-        ajaxGraphQuery(url1,url2,pickerDate);
+        ajaxGraphQuery(url1,url2,pickerDate,tooltipDateFormat);
     };
     var tt = url1+"/daily";
     var pp = url2+"/daily";
@@ -102,7 +105,7 @@ function allDateButtons(url1,url2){
 
 }
 
-function ajaxGraphQuery(strUrl1,strUrl2,endDate) {
+function ajaxGraphQuery(strUrl1,strUrl2,endDate, tooltipDateFormat) {
     $.ajax({
         type: 'post',
         url: strUrl1,
@@ -123,22 +126,17 @@ function ajaxGraphQuery(strUrl1,strUrl2,endDate) {
                     },
                     statusCode: {
                         200: function (data2) {
-                            graph(data1,data2);
+                            graph(data1,data2, tooltipDateFormat);
                             appliancePairData(data1, data2, strUrl1);
                         }
                     }
                 })
             }
         }
-    }
-
-
-
-
-    );
+    });
 }
 
-function graph (data1,data2) {
+function graph (data1,data2, tooltipDateFormat) {
     var arr1 = new Array();
     for (var i in data1) {
         if(data1.hasOwnProperty(i)) {
@@ -163,10 +161,8 @@ function graph (data1,data2) {
     Highcharts.setOptions({
         global: {
             useUTC: false
-
         },
         colors: ['#59AC28','#00BFFF']
-
     });
 
 
@@ -189,62 +185,28 @@ function graph (data1,data2) {
         xAxis: {
             type: 'datetime',
             minRange:  3600*1000
-
         },
         yAxis: {
             title: {
                 text: 'Energy (KWh)'
-
             }
         },
         legend: {
             enabled: true
         },
 
-        //plotOptions: {
-        //    series: {
-        //        pointWidth: 15,
-        //        //pointPadding: 5
-        //        groupPadding: 1
-        //    }
-        //},
-        /*plotOptions: {
-
-            area: {
-                fillColor: {
-                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.75).get('rgba')]
-
-                    ]
-                },
-                marker: {
-                    radius: 1
-                },
-                lineWidth: 1,
-                states: {
-                    hover: {
-                        lineWidth: 1
-                    }
-                },
-                threshold: null
-            }
-        },*/
+        tooltip: {
+            xDateFormat: tooltipDateFormat
+        },
 
         series: [{
             name: 'Production',
             pointInterval:  3600 * 1000,
             data: arr1
-            //PointWidth: 20
-
-
         },{
             name: 'Consumption',
             pointInterval:  3600 * 1000,
             data: arr2
-            //PointWidth: 20
-
         }]
     });
 }

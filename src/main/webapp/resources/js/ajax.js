@@ -1,5 +1,4 @@
-//var endDate = new Date();
-function ajaxGraphQuery(strUrl,endDate) {
+function ajaxGraphQuery(strUrl,endDate, tooltipDateFormat) {
     $.ajax({
         type: 'post',
         url: strUrl,
@@ -10,8 +9,8 @@ function ajaxGraphQuery(strUrl,endDate) {
         },
         statusCode: {
             200: function (data) {
-                graph(data);
-                applianceSingleData(data, strUrl);ile
+                graph(data, tooltipDateFormat);
+                applianceSingleData(data, strUrl);
             }
         }
     });
