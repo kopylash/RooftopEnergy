@@ -33,6 +33,11 @@ public class MapData {
         }
     }
 
+    public void clear(){
+        for (MapEntity e : list){
+            e.setValue(0d);
+        }
+    }
     public MapEntity getEntity(String name){
         for (MapEntity e : list){
             if (e.getName().equals(name)) {

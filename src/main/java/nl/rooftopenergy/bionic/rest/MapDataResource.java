@@ -195,6 +195,7 @@ public class MapDataResource {
 
     private List<MapEntity> getList(HashMap<String, Double> companiesData, List<Company> companiesList) {
 
+        dutchProvinceList.clear();
         HashMap<String, Double> values = new HashMap<String, Double>();
         for (Company e : companiesList) {
             String key = e.getProvince();

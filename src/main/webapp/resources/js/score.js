@@ -114,6 +114,8 @@ $(function(){
         secondPart = "/consumption";
         var url = ratingUrl + secondPart;
         ajaxScoreQuery(url);
+        $("#blockMapTitle p").html("Consumption by regions");
+        mapGraph('Consumption (kWt)', '/rest/map/consumption/monthly', 1000);
     });
 
 
@@ -122,6 +124,9 @@ $(function(){
         secondPart = "/overall";
         var url = ratingUrl + secondPart;
         ajaxScoreQuery(url);
+        $("#blockMapTitle p").html("Production to Consumption by regions");
+        mapGraph('Production/Consumption', '/rest/map/ratio/monthly', 1);
+
     });
 
     $("#prod").click(function(){
@@ -129,12 +134,15 @@ $(function(){
         secondPart = "/production";
         var url = ratingUrl + secondPart;
         ajaxScoreQuery(url);
+        $("#blockMapTitle p").html("Production by regions");
+        mapGraph('Production (kWt)', '/rest/map/production/monthly', 1000);
     });
 
     //data loading
     var url1 = ratingUrl + "/overall";
     ajaxScoreQuery(url1);
     buttonStyles('overScore');
+    mapGraph('Production/Consumption', '/rest/map/ratio/monthly', 1);
 
     $("#up").css({"display": "none"});
     $("#up1").css({"display": "none"});
