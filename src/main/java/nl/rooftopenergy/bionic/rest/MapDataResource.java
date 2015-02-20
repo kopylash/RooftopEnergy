@@ -171,7 +171,7 @@ public class MapDataResource {
      * @return list of regions.
      */
     @POST
-    @Path("ratio/monthly")
+    @Path("ratio/yearly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MapEntity> ratioYearly(){
 
