@@ -35,7 +35,7 @@
     width: 95%;
 }
 
-#head{
+.head{
     margin: 0px auto;
     text-align: center;
     color: #FFFFFE;
@@ -162,6 +162,7 @@
     -webkit-border-bottom-right-radius: 2px;
     -moz-border-bottom-right-radius: 2px;
     -moz-border-bottom-left-radius: 2px;
+     margin-bottom: 10px;
 }
 
 .pageButtons  :hover{
@@ -229,6 +230,34 @@
         /*margin-left: 2.9%;*/
     /*}*/
 /*}*/
+
+
+#container {
+    /*height: 500px;*/
+    /*min-width: 280px;*/
+    /*max-width: 1500px;*/
+    width: 100%;
+    margin: 0 auto;
+}
+/*.loading {*/
+    /*margin-top: 10em;*/
+    /*text-align: center;*/
+    /*color: gray;*/
+/*}*/
+
+@media screen and (min-width: 992px) {
+    #blockMap {
+        padding-left: 0;
+    }
+
+    #blockList {
+        padding-right: 0;
+    }
+
+    #cButtons {
+        width: 97%;
+    }
+}
 
 @media screen and (min-width: 1250px){
     main {
