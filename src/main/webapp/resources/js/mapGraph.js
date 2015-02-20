@@ -207,6 +207,10 @@ $(function () {
 console.log(data);
         $('#container').highcharts('Map', {
 
+            credits: {
+                enabled: false
+            },
+
             title: {
                 text: 'Region production(kWt)'
             },

@@ -23,6 +23,7 @@
     <meta name="viewport" content="width=device-width">
 
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/css/bootstrap-theme.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../resources/css/font-awesome-4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="../resources/css/jquery-ui.css">
@@ -48,25 +49,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/2.2.2/proj4.js"></script>
     <script src="http://code.highcharts.com/maps/highmaps.js"></script>
     <script src="http://code.highcharts.com/maps/modules/exporting.js"></script>
-    <!--<script src="http://code.highcharts.com/maps/modules/data.js"></script>-->
     <script src="http://code.highcharts.com/mapdata/1.0.0/countries/nl/nl-all.js"></script>
-    <!--<script src="http://code.highcharts.com/mapdata/countries/us/us-all.js"></script>-->
-    <style>
-
-        #container {
-            height: 680px;
-            min-width: 310px;
-            max-width: 1500px;
-            margin: 0 auto;
-        }
-        .loading {
-            margin-top: 10em;
-            text-align: center;
-            color: gray;
-        }
-    </style>
-
-
 
 </head>
 <body>
@@ -89,26 +72,29 @@
     </div>
     </div>
 
+    <div class="row">
 
-    <div id="head"><p>Your data compared to other companies</p></div>
-    <div id="up1"></div>
-    <div class="pageButtons" id="up">
-      <i class="fa fa-chevron-up fa-2x"></i>
-    </div>
+        <div class="col-md-6" id="blockList">
+            <div class="head"><p>Your data compared to other companies</p></div>
+            <div id="up1"></div>
+            <div class="pageButtons" id="up">
+              <i class="fa fa-chevron-up fa-2x"></i>
+            </div>
 
+            <div id="main1">
+            </div>
 
-    <div id="main1">
-    </div>
+            <div class="pageButtons" id="down">
+               <i class="fa fa-chevron-down fa-2x"></i>
+            </div>
+        </div>
 
-
-    <div class="pageButtons" id="down">
-       <i class="fa fa-chevron-down fa-2x"></i>
+        <div class="col-md-6" id="blockMap">
+            <div class="head"><p>Production by regions</p></div>
+            <div id="container"></div>
+        </div>
     </div>
     </main>
-    <div id="container" style="height: 500px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
-
-
-
 
 
 

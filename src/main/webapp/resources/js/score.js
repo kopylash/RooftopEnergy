@@ -76,6 +76,7 @@ $(function(){
                 var location = 'comparing.html?companyName='+comparingCompanyName;
                 window.location=location;
             });
+            $(".ui-loader h1").css({'display':'none'});
 
         } else {
             var htmlCode = '<div id="ratingNonePublic">Your company is not public!<br/> Change this setting to watch other companies here.</div>';
