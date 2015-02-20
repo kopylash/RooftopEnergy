@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -50,7 +51,7 @@ public class MapDataResource {
      * Gets list of regions and their production by current month.
      * @return list of regions.
      */
-    @POST
+    @GET
     @Path("production/monthly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MapEntity> productionMonthly(){
@@ -73,7 +74,7 @@ public class MapDataResource {
      * Gets list of regions and their production by current year.
      * @return list of regions.
      */
-    @POST
+    @GET
     @Path("production/yearly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MapEntity> productionYearly(){
@@ -96,7 +97,7 @@ public class MapDataResource {
      * Gets list of regions and their consumption by current month.
      * @return list of regions.
      */
-    @POST
+    @GET
     @Path("consumption/monthly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MapEntity> consumptionMonthly(){
@@ -119,7 +120,7 @@ public class MapDataResource {
      * Gets list of regions and their consumption by current year.
      * @return list of regions.
      */
-    @POST
+    @GET
     @Path("consumption/yearly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MapEntity> consumptionYearly(){
@@ -143,7 +144,7 @@ public class MapDataResource {
      * by current month.
      * @return list of regions.
      */
-    @POST
+    @GET
     @Path("ratio/monthly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MapEntity> ratioMonthly(){
@@ -170,7 +171,7 @@ public class MapDataResource {
      * by current month.
      * @return list of regions.
      */
-    @POST
+    @GET
     @Path("ratio/yearly")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MapEntity> ratioYearly(){

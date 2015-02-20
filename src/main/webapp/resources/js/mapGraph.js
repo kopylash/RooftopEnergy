@@ -124,84 +124,84 @@ $(function () {
     });
 
     // Add series with state capital bubbles
-    $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=us-capitals.json&callback=?', function (json) {
+    $.getJSON('/rest/map/production/monthly', function (json) {
 
-        json = [            {
-                "value": 438,
-                "y":-1553,
-                "x":900,
-                "name": "Friesland"
-            },
-            {
-                "value": 387.35,
-                "y":-1200,
-                "x":550,
-                "name": "Noord-Holland"
-            },
-            {
-                "value": 312.68,
-                "y":-1700,
-                "x":1200,
-                "name": "Groningen"
-            },
-            {
-                "value": 200,
-                "y":-1150,
-                "x":830,
-                "name": "Flevoland"
-            },
-            {
-                "value": 209.23,
-                "y":-500,
-                "x":200,
-                "name": "Zeeland"
-            },
-            {
-                "value": 195.18,
-                "y":-600,
-                "x":700,
-                "name": "Noord-Brabant"
-            },
-            {
-                "value": 154.87,
-                "y":-900,
-                "x":700,
-                "name": "Utrecht"
-            },
-            {
-                "value": 300.43,
-                "y":-800,
-                "x":400,
-                "name": "Zuid-Holland"
-            },
-            {
-                "value": 107.05,
-                "y":-1400,
-                "x":1200,
-                "name": "Drenthe"
-            },
-            {
-                "value": 105.8,
-                "y":-950,
-                "x":1000,
-                "name": "Gelderland"
-            },
-            {
-                "value": 86.27,
-                "y":-400,
-                "x":1000,
-                "name": "Limburg"
-            },
-            {
-                "value": 83.85,
-                "y":-1150,
-                "x":1200,
-                "name": "Overijssel"
-            }
-    ];
+    //    json = [            {
+    //            "value": 438,
+    //            "y":-1553,
+    //            "x":900,
+    //            "name": "Friesland"
+    //        },
+    //        {
+    //            "value": 387.35,
+    //            "y":-1200,
+    //            "x":550,
+    //            "name": "Noord-Holland"
+    //        },
+    //        {
+    //            "value": 312.68,
+    //            "y":-1700,
+    //            "x":1200,
+    //            "name": "Groningen"
+    //        },
+    //        {
+    //            "value": 200,
+    //            "y":-1150,
+    //            "x":830,
+    //            "name": "Flevoland"
+    //        },
+    //        {
+    //            "value": 209.23,
+    //            "y":-500,
+    //            "x":200,
+    //            "name": "Zeeland"
+    //        },
+    //        {
+    //            "value": 195.18,
+    //            "y":-600,
+    //            "x":700,
+    //            "name": "Noord-Brabant"
+    //        },
+    //        {
+    //            "value": 154.87,
+    //            "y":-900,
+    //            "x":700,
+    //            "name": "Utrecht"
+    //        },
+    //        {
+    //            "value": 300.43,
+    //            "y":-800,
+    //            "x":400,
+    //            "name": "Zuid-Holland"
+    //        },
+    //        {
+    //            "value": 107.05,
+    //            "y":-1400,
+    //            "x":1200,
+    //            "name": "Drenthe"
+    //        },
+    //        {
+    //            "value": 105.8,
+    //            "y":-950,
+    //            "x":1000,
+    //            "name": "Gelderland"
+    //        },
+    //        {
+    //            "value": 86.27,
+    //            "y":-400,
+    //            "x":1000,
+    //            "name": "Limburg"
+    //        },
+    //        {
+    //            "value": 83.85,
+    //            "y":-1150,
+    //            "x":1200,
+    //            "name": "Overijssel"
+    //        }
+    //];
         var data =[];
         $.each(json, function (ix, entry) {
-            entry.z = entry.value;
+            entry.z = new Number(entry.value/1000).toFixed(0);
             data.push(entry);
         });
 console.log(data);
@@ -217,7 +217,7 @@ console.log(data);
 
             tooltip: {
                 formatter: function () {
-                    return this.point.name +  '<br>Population: ' + this.point.value;
+                    return this.point.name +  '<br>Production kWt: ' + new Number(this.point.value/1000).toFixed(0);
                 }
 
             },
