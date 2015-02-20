@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="Friesland" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Friesland"/>
+              <constructor-arg name="y" value="-1553"/>
+              <constructor-arg name="x" value="900"/>
+       </bean>
+       <bean id="Noord-Holland" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Noord-Holland"/>
+              <constructor-arg name="y" value="-1200"/>
+              <constructor-arg name="x" value="550"/>
+       </bean>
+       <bean id="Groningen" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Groningen"/>
+              <constructor-arg name="y" value="-1700"/>
+              <constructor-arg name="x" value="1200"/>
+       </bean>
+       <bean id="Flevoland" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Flevoland"/>
+              <constructor-arg name="y" value="-1150"/>
+              <constructor-arg name="x" value="830"/>
+       </bean>
+       <bean id="Zeeland" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Zeeland"/>
+              <constructor-arg name="y" value="-500"/>
+              <constructor-arg name="x" value="200"/>
+       </bean>
+       <bean id="Noord-Brabant" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Noord-Brabant"/>
+              <constructor-arg name="y" value="-600"/>
+              <constructor-arg name="x" value="700"/>
+       </bean>
+       <bean id="Utrecht" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Utrecht"/>
+              <constructor-arg name="y" value="-900"/>
+              <constructor-arg name="x" value="700"/>
+       </bean>
+       <bean id="Zuid-Holland" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Zuid-Holland"/>
+              <constructor-arg name="y" value="-800"/>
+              <constructor-arg name="x" value="400"/>
+       </bean>
+       <bean id="Drenthe" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Drenthe"/>
+              <constructor-arg name="y" value="-1400"/>
+              <constructor-arg name="x" value="1200"/>
+       </bean>
+       <bean id="Gelderland" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Gelderland"/>
+              <constructor-arg name="y" value="-950"/>
+              <constructor-arg name="x" value="1000"/>
+       </bean>
+       <bean id="Limburg" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Limburg"/>
+              <constructor-arg name="y" value="-400"/>
+              <constructor-arg name="x" value="1000"/>
+       </bean>
+       <bean id="Overijssel" class="nl.rooftopenergy.bionic.rest.util.MapEntity">
+              <constructor-arg name="name" value="Overijssel"/>
+              <constructor-arg name="y" value="-1150"/>
+              <constructor-arg name="x" value="1200"/>
+       </bean>
+
+       <bean id="dutchProvinceList" class="nl.rooftopenergy.bionic.rest.util.MapData">
+              <constructor-arg>
+              <list>
+                     <ref bean="Friesland"/>
+                     <ref bean="Noord-Holland"/>
+                     <ref bean="Groningen"/>
+                     <ref bean="Flevoland"/>
+                     <ref bean="Zeeland"/>
+                     <ref bean="Noord-Brabant"/>
+                     <ref bean="Utrecht"/>
+                     <ref bean="Zuid-Holland"/>
+                     <ref bean="Drenthe"/>
+                     <ref bean="Gelderland"/>
+                     <ref bean="Limburg"/>
+                     <ref bean="Overijssel"/>
+              </list>
+              </constructor-arg>
+       </bean>
+
+
+</beans>

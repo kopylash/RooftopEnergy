@@ -92,4 +92,6 @@
         </security:authentication-provider>
 	</security:authentication-manager>
 
+	<import resource="mapDataContext.xml"/>
+
 </beans>
