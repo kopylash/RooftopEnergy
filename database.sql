@@ -145,9 +145,9 @@ DELETE FROM `RTFBox`;
 DELETE FROM `Company`;
 
 INSERT INTO `Company` VALUES
-(1, 'Rooftop', 'Energy', 'South Holland', 'Rotterdam', 'Borge', 12345,'Some description', 1),
-(2, 'My School', 'Netherland', 'South Holland', 'Rotterdam', 'Bergselaan', 12345,'Some description', 1),
-(3, 'Target', 'Netherland', 'North Holland', 'Amsterdam', 'Bourbon', 12345,'Some description', 1),
+(1, 'Rooftop', 'Energy', 'Zuid-Holland', 'Rotterdam', 'Borge', 12345,'Some description', 1),
+(2, 'My School', 'Netherland', 'Zuid-Holland', 'Rotterdam', 'Bergselaan', 12345,'Some description', 1),
+(3, 'Target', 'Netherland', 'Noord-Holland', 'Amsterdam', 'Bourbon', 12345,'Some description', 1),
 (4, 'Marathon', 'Netherland', 'Flevoland', 'Almere', 'Amandelhof', 12345,'Some description', 1),
 (5, 'Caterpillar', 'Netherland', 'Utrecht', 'Utrecht', 'Geertebolwerk', 12345,'Some description', 1),
 (6, 'Abbott', 'Netherland', 'Gelderland', 'Nijmegen', 'Oranjesingel ', 12345,'Some description', 1),
