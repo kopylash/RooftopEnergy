@@ -62,7 +62,7 @@ public class RadiationResource {
     }
 
     @POST
-    @Path("year")
+    @Path("day")
     @Produces(MediaType.APPLICATION_JSON)
     public RadiationTransfer radiationForDay(@FormParam("tilt") String tilt, @FormParam("day") String paramDay){
         RadiationTransfer result = null;
