@@ -85,6 +85,7 @@ function mapGraph (state, url, devide ) {
     //];*/
         var data =[];
         $.each(json, function (ix, entry) {
+
             entry.z = new Number(entry.value/devide).toFixed(1);
             data.push(entry);
         });
