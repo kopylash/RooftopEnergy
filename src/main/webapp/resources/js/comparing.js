@@ -48,6 +48,21 @@ $(function(){
             statusCode: {
                 200: function (data) {
                     myCompany = data.company;
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             },
             complete: function(jqXHR,textStatus) {
@@ -189,9 +204,39 @@ $(function(){
                             statusCode: {
                                 200: function (data2) {
                                     graph(data1,data2);
+                                },
+                                400: function () {
+                                    window.location = "/error.html?code=400";
+                                },
+                                401: function () {
+                                    window.location = "/error.html?code=401";
+                                },
+                                403: function () {
+                                    window.location = "/error.html?code=403";
+                                },
+                                404: function () {
+                                    window.location = "/error.html?code=404";
+                                },
+                                500: function () {
+                                    window.location = "/error.html?code=500";
                                 }
                             }
                         })
+                    },
+                    400: function () {
+                        window.location = "/error.html?code=400";
+                    },
+                    401: function () {
+                        window.location = "/error.html?code=401";
+                    },
+                    403: function () {
+                        window.location = "/error.html?code=403";
+                    },
+                    404: function () {
+                        window.location = "/error.html?code=404";
+                    },
+                    500: function () {
+                        window.location = "/error.html?code=500";
                     }
                 }
             }
@@ -360,6 +405,21 @@ $(function(){
                 200: function (data) {
                    //here will be code to parse comparingInfo
                     initOurData(data);
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             }
 

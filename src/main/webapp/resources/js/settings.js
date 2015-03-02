@@ -41,7 +41,23 @@ $(function(){
             statusCode: {
                 200: function (data) {
                     userInfo = data;
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
+
             }
         });
     }
@@ -96,6 +112,21 @@ $(function(){
             statusCode: {
                 200: function (data) {
                     $("#settingsAlert").html("<div id=settingsAlertMessage>Settings have been saved!</div>");
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             }
         });

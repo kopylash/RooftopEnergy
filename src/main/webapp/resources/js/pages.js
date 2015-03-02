@@ -21,6 +21,21 @@ $(function() {
                     companyInfo.status = data.publicStatus;
 
                     //loadHtml();
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             }
         });

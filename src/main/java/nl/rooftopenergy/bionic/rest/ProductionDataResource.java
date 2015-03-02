@@ -12,11 +12,9 @@ import org.joda.time.DateTime;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.inject.Inject;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.xml.ws.WebServiceException;
 import java.sql.Timestamp;
 import java.util.*;
 import java.util.spi.CalendarNameProvider;
@@ -271,6 +269,7 @@ public class ProductionDataResource {
         }
 
         return resultList;
+//        throw new WebApplicationException(500);
     }
 
     /**

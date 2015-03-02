@@ -35,6 +35,21 @@ $(function(){
             statusCode: {
                 200: function (data) {
                     trees = new Number(data).toFixed(2);
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -50,6 +65,21 @@ $(function(){
             statusCode: {
                 200: function (data) {
                     carbon = new Number(data/1000).toFixed(2);
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -65,6 +95,21 @@ $(function(){
             statusCode: {
                 200: function (data) {
                     month[type] = new Number(data).toFixed(1);
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -80,6 +125,21 @@ $(function(){
             statusCode: {
                 200: function (data) {
                     year[type] = new Number(data).toFixed(1);
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -95,6 +155,21 @@ $(function(){
             statusCode: {
                 200: function (data) {
                     tot[type] = new Number(data).toFixed(1);
+                },
+                400: function () {
+                    window.location = "/error.html?code=400";
+                },
+                401: function () {
+                    window.location = "/error.html?code=401";
+                },
+                403: function () {
+                    window.location = "/error.html?code=403";
+                },
+                404: function () {
+                    window.location = "/error.html?code=404";
+                },
+                500: function () {
+                    window.location = "/error.html?code=500";
                 }
             }
         });

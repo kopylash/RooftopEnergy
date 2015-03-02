@@ -57,16 +57,16 @@ $(function(){
     //    return false;
     //});
    var loginState = "data";
-        var query = window.location.search.substring(1);
-        var vars = query.split('&');
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split('=');
-            if (decodeURIComponent(pair[0]) == loginState) {
-                var wrongData = "<p>Incorrect login or password!</p>";
-                $("#wrongInf").html(wrongData).css({'visibility':'visible'});
-                //$("#login1, #password1").css({'border':'1px solid #ff0000'});
-            }
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == loginState) {
+            var wrongData = "<p>Incorrect login or password!</p>";
+            $("#wrongInf").html(wrongData).css({'visibility':'visible'});
+            //$("#login1, #password1").css({'border':'1px solid #ff0000'});
         }
+    }
 
 
 
