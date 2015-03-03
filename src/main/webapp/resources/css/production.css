@@ -256,6 +256,22 @@ main{
     /*}*/
 /*}*/
 
+.row{
+    width: 90%;
+    margin: 5px auto;
+}
+
+#radiation{
+    background-color: #108F38;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -o-border-radius: 2px;
+    -moz-border-radius: 2px;
+    margin: 0;
+    /*width: 100%;*/
+    float: right;
+   }
+
 @media screen and (min-device-height: 650px) and (max-device-width: 1450px) {
     main{
         margin-top: 50px;
