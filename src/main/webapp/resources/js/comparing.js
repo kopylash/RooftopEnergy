@@ -12,30 +12,11 @@ $(function(){
         tree : '<div class="icon-tree compare"></div><div class="compareValue"></div>',
         carbon : '<div class="icon-factory compare"><div class="compareValue"></div>',
         panel:'<div class="icon-solarpanel compare"></div><div class="compareValue"></div>'
-
     };
-
-   /* companyInfo.name='Rooftop';
-    var fakeEcoData = [];
-    fakeEcoData[0] = {
-        treesSaved: 1.324324,
-        carbonOffset:123.987665,
-        solarPanels: 2,
-        totalProduction:1234.3241234,
-        totalConsumption:32423.4352345
-    };
-    fakeEcoData[1] = {
-        treesSaved: 2.324324,
-        carbonOffset:345.766554,
-        solarPanels:3,
-        totalProduction:123.3241234,
-        totalConsumption:3242.4352345
-    };*/
     var query = window.location.search.substring(1);
     var vars = query.split('=');
     var str=vars[1];
     var comparingCompanyName = str.replace(/%20/," ");
-    console.log('cmp='+comparingCompanyName);
 
     function ajaxGetCompanyName() {
         $.ajax({
@@ -43,26 +24,11 @@ $(function(){
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     myCompany = data.company;
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             },
             complete: function(jqXHR,textStatus) {
@@ -73,7 +39,6 @@ $(function(){
     }
 
     ajaxGetCompanyName();
-
 
     function allDateButtons(url1){
         var i = 0;
@@ -127,21 +92,18 @@ $(function(){
             ajaxGraphQuery(url1,comparingCompanyName,pickerDate);
         };
 
-
         buttonClicker(url1,1,pickerDate);
 
         $("#day").click(function() {
             buttonStyles(this.id);
             season = 1;
             buttonClicker(url1, season,pickerDate);
-
         });
 
         $("#month").click(function(){
             buttonStyles(this.id);
             season = 2;
             buttonClicker(url1,season,pickerDate);
-
         });
 
         $("#year").click(function(){
@@ -154,7 +116,6 @@ $(function(){
             buttonStyles(this.id);
             season = 0;
             buttonClicker(url1, season, pickerDate);
-
         });
 
         $("#datepicker").change(function(){
@@ -188,7 +149,8 @@ $(function(){
                 data: { 'companyName':myCompany,
                     'date': endDate.getTime()},
                 error: function (data1) {
-                    $('#main').html(data1.responseText);
+                    $('main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                    console.error(data1.responseText);
                 },
                 statusCode: {
                     200: function (data1) {
@@ -199,76 +161,43 @@ $(function(){
                             data: { 'companyName':companyName,
                                 'date': endDate.getTime()},
                             error: function (data2) {
-                                $('#main').html(data2.responseText);
+                                $('main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                                console.error(data2.responseText);
                             },
                             statusCode: {
                                 200: function (data2) {
                                     graph(data1,data2);
-                                },
-                                400: function () {
-                                    window.location = "/error.html?code=400";
-                                },
-                                401: function () {
-                                    window.location = "/error.html?code=401";
-                                },
-                                403: function () {
-                                    window.location = "/error.html?code=403";
-                                },
-                                404: function () {
-                                    window.location = "/error.html?code=404";
-                                },
-                                500: function () {
-                                    window.location = "/error.html?code=500";
                                 }
                             }
                         })
-                    },
-                    400: function () {
-                        window.location = "/error.html?code=400";
-                    },
-                    401: function () {
-                        window.location = "/error.html?code=401";
-                    },
-                    403: function () {
-                        window.location = "/error.html?code=403";
-                    },
-                    404: function () {
-                        window.location = "/error.html?code=404";
-                    },
-                    500: function () {
-                        window.location = "/error.html?code=500";
                     }
                 }
             }
-
-
-
-
         );
     }
 
     function graph (data1,data2) {
         var arr1 = new Array();
-        for (i in data1) {
-            arr1[i] =  [data1[i]["date"], data1[i]["value"]/1000];
+        for (var i in data1) {
+            if (data1.hasOwnProperty(i)) {
+                arr1[i] = [data1[i]["date"], data1[i]["value"] / 1000];
+            }
         }
         var arr2 = new Array();
-        for (i in data2) {
-            arr2[i] =  [data2[i]["date"], data2[i]["value"]/1000];
+        for (var i in data2) {
+            if (data2.hasOwnProperty(i)) {
+                arr2[i] = [data2[i]["date"], data2[i]["value"] / 1000];
+            }
         }
 
         Highcharts.setOptions({
             global: {
                 useUTC: false
-
             },
             colors: ['#59AC28','#DC143C']
-
         });
 
-
         $('main').highcharts({
-
             chart: {
                 type: 'column',
                 zoomType: 'x',
@@ -282,16 +211,13 @@ $(function(){
             credits: {
                 enabled: false
             },
-
             xAxis: {
                 type: 'datetime',
                 minRange:  3600*1000
-
             },
             yAxis: {
                 title: {
                     text: 'Energy (KWh)'
-
                 }
             },
             legend: {
@@ -304,7 +230,6 @@ $(function(){
                         stops: [
                             [0, Highcharts.getOptions().colors[0]],
                             [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.75).get('rgba')]
-
                         ]
                     },
                     marker: {
@@ -324,13 +249,10 @@ $(function(){
                 name: myCompany,
                 pointInterval:  3600 * 1000,
                 data: arr1
-
-
             },{
                 name: comparingCompanyName,
                 pointInterval:  3600 * 1000,
                 data: arr2
-
             }]
         });
     }
@@ -375,9 +297,6 @@ $(function(){
         $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingMobile");
         $("#ecoComparing div div").addClass("ecoComparingMobile");
         ajaxComparingInfoQuery();
-        //initOurData(fakeEcoData);
-
-       /* console.log("mob");*/
     } else {
         $("#mobileVersionEcoComparingEnergy").html("");
         $("#desktopVersionButtons").html(codeButtons).addClass("buttonForDesktop");
@@ -385,12 +304,7 @@ $(function(){
         $("#compareCompanyInfo").html(htmlCompareCompanies);
         $("#ecoComparing").html(htmlCodeEco).addClass("ecoComparingDesktop");
         ajaxComparingInfoQuery();
-        //initOurData(fakeEcoData);
-
-        //console.log("desk");
     }
-
-
 
     function ajaxComparingInfoQuery() {
         $.ajax({
@@ -399,34 +313,18 @@ $(function(){
             crossDomain: true,
             data: { 'comparingCompany':comparingCompanyName },
             error: function (data1) {
-                $('#main').html(data1.responseText);
+                $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                console.error(data1.responseText);
+                //$('#main').html(data1.responseText);
             },
             statusCode: {
                 200: function (data) {
                    //here will be code to parse comparingInfo
                     initOurData(data);
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
-
         });
     }
-
-
 
     function initOurData(data){
         $("#ourCompanyTrees").html(compareIcons.tree);
@@ -435,7 +333,6 @@ $(function(){
         $("#theirCompanyCarbon").html(compareIcons.carbon);
         $("#ourCompanyPanel").html(compareIcons.panel);
         $("#theirCompanyPanel").html(compareIcons.panel);
-
 
         $("#ourCompanyTrees .compareValue").html(new Number(data[0].treesSaved).toFixed(2));
         $("#theirCompanyTrees .compareValue").html(new Number(data[1].treesSaved).toFixed(2));

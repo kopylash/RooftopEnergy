@@ -11,7 +11,6 @@ $(function(){
 function allDateButtons(url1,url2){
     var pickerDate = new Date();
     var season = 1;
-
     var buttonStyles = function(buttId){
         $("#period button").css({'background-color': '#108F38', 'color': '#fffffe'});
         $("#"+buttId).css({'background-color': '#fffff0', 'color': '#108F38'});
@@ -21,7 +20,6 @@ function allDateButtons(url1,url2){
         changeMonth: true,
         changeYear: true,
         dateFormat: "dd-mm-yy"
-
     });
     $("#datepicker").datepicker("setDate", "dd-mm-yy");
     var k = $.datepicker.formatDate("dd-mm-yy", new Date());
@@ -75,14 +73,12 @@ function allDateButtons(url1,url2){
         buttonStyles(this.id);
         season = 1;
         buttonClicker(url1,url2, season,pickerDate);
-
     });
 
     $("#month").click(function(){
         buttonStyles(this.id);
         season = 2;
         buttonClicker(url1,url2,season,pickerDate);
-
     });
 
     $("#year").click(function(){
@@ -95,14 +91,12 @@ function allDateButtons(url1,url2){
         buttonStyles(this.id);
         season = 0;
         buttonClicker(url1,url2, season, pickerDate);
-
     });
 
      $("#datepicker").change(function(){
         picButtons();
         buttonClicker(url1,url2, season ,pickerDate);
     });
-
 }
 
 function ajaxGraphQuery(strUrl1,strUrl2,endDate, tooltipDateFormat) {
@@ -112,7 +106,8 @@ function ajaxGraphQuery(strUrl1,strUrl2,endDate, tooltipDateFormat) {
         crossDomain: true,
         data: { 'date': endDate.getTime()},
         error: function (data1) {
-            $('#main').html(data1.responseText);
+            $('main').html('<p style="text-align: center">Service unavailable!</p>');
+            console.error(data1.responseText);
         },
         statusCode: {
             200: function (data1) {
@@ -122,45 +117,16 @@ function ajaxGraphQuery(strUrl1,strUrl2,endDate, tooltipDateFormat) {
                     crossDomain: true,
                     data: { 'date': endDate.getTime()},
                     error: function (data2) {
-                        $('#main').html(data2.responseText);
+                        $('main').html('<p style="text-align: center">Service unavailable!</p>');
+                        console.error(data2.responseText);
                     },
                     statusCode: {
                         200: function (data2) {
                             graph(data1,data2, tooltipDateFormat);
                             appliancePairData(data1, data2, strUrl1);
-                        },
-                        400: function () {
-                            window.location = "/error.html?code=400";
-                        },
-                        401: function () {
-                            window.location = "/error.html?code=401";
-                        },
-                        403: function () {
-                            window.location = "/error.html?code=403";
-                        },
-                        404: function () {
-                            window.location = "/error.html?code=404";
-                        },
-                        500: function () {
-                            window.location = "/error.html?code=500";
                         }
                     }
                 })
-            },
-            400: function () {
-                window.location = "/error.html?code=400";
-            },
-            401: function () {
-                window.location = "/error.html?code=401";
-            },
-            403: function () {
-                window.location = "/error.html?code=403";
-            },
-            404: function () {
-                window.location = "/error.html?code=404";
-            },
-            500: function () {
-                window.location = "/error.html?code=500";
             }
         }
     });
@@ -194,7 +160,6 @@ function graph (data1,data2, tooltipDateFormat) {
         },
         colors: ['#59AC28','#00BFFF']
     });
-
 
     $('main').highcharts({
 

@@ -34,25 +34,11 @@ $(function(){
     var secondPart = "/overall";
 
     var ratingList = function(data){
-        //var Da = function(company, arrow){
-        //    this.company = company;
-        //    this.arrow = arrow;
-        //};
-        //var arr = [];
-        //for (var i = 0; i<42; i++){
-        //    arr[i] = new Da("company"+i, 1);
-        //}
-        //data = arr;
         if (companyInfo.status === true) {
             $("#main1").html("");
             var arrowValue;
             lengthList = data.length;
-            console.log(lengthList);
-         /*   if(end > lengthList){
-                end = lengthList -1;
-            }*/
             var companyName;
-            //for (i in data) {
             for (var i = begin; i <= end && i < lengthList; i++) {
                 companyName = data[i].company;
                 console.log(data[i].arrow);
@@ -83,10 +69,7 @@ $(function(){
             $("#up1, #down").css({'display':'none'});
             $("#main1").html(htmlCode);
         }
-
-
     };
-
 
     function ajaxScoreQuery(strUrl) {
         $.ajax({
@@ -94,26 +77,12 @@ $(function(){
             url: strUrl,
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                $('#main1').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     ratingList(data);
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -132,7 +101,6 @@ $(function(){
         $("#blockMapTitle p").html("Consumption by regions");
         mapGraph('Consumption (kWt)', '/rest/map/consumption/monthly', 1000);
     });
-
 
     $("#overScore").click(function(){
         buttonStyles(this.id);
@@ -193,6 +161,4 @@ $(function(){
             }
         }
     });
-
-
 });

@@ -36,28 +36,12 @@ $(function(){
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     userInfo = data;
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
-
             }
         });
     }
@@ -91,8 +75,6 @@ $(function(){
         companyInfo.status = stat;
         console.log("stat= "+ stat);
         ajaxSaveSettings( panel, mail, descr, stat);
-
-
     });
 
     $("#res").click(function(){
@@ -107,51 +89,18 @@ $(function(){
             crossDomain: true,
             data: {'description': descr, 'email': mail, 'panelType': panel, 'publicStatus': stat},
             error: function (data) {
-                $('#main').html(data.responseText);
+                $("#settingsAlert").html("<div id=settingsAlertMessage>Settings have not been saved!</div>");
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     $("#settingsAlert").html("<div id=settingsAlertMessage>Settings have been saved!</div>");
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
     }
 
-
     $("#panelType, #email, #description, #statusCompany").change(function(){
-
-        //var emailVal = $("#email").val();
-        //console.log("emailVal="+emailVal);
-        //
-        //var inpVal = $(this).val() + "";
-        //console.log("inpVal="+inpVal);
-        //
-        //var emailRegVar = emailVal.search(regV);
-        //console.log("emailRegVar="+emailRegVar);
-        //
-        //if(inpVal == ""){
-        //    //$("$sub").disable();
-        //    $(this).css({"backgroundColor":"#FF6D6A", "borderWidth":"3px", "borderColor":"#FF0000"});
-        //}
-        //else if(emailRegVar == -1){
-        //    $("$email").css({"backgroundColor":"#FF6D6A", "borderWidth":"3px", "borderColor":"#FF0000"});
-        //}
-        //else {
             if (this.id == "statusCompany") {
                 $("#lab").css({"color": "#108f38"});
             } else
@@ -163,11 +112,9 @@ $(function(){
                 devSize = "38px";
             }
             $(".form .field #" + this.id + "+ i").css({"height": devSize});
-        //}
     });
 
 $("#changePasswordButton").click(function(){
     window.location = "changePassword.html";
 });
-
 });

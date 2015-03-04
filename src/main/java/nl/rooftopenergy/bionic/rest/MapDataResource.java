@@ -207,8 +207,12 @@ public class MapDataResource {
                 oldValue = 0d;
             }
             if (values.containsKey(key)) {
-                newValue = values.getOrDefault(key, 0d) + oldValue + month;
-                values.replace(key, newValue);
+                Double value = values.get(key);
+                if (value == null){
+                    value = 0d;
+                }
+                newValue = value + oldValue + month;
+                values.put(key, newValue);
             } else {
                 newValue = oldValue + month;
                 values.put(key, newValue);

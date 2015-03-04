@@ -22,31 +22,12 @@ $(function() {
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
-            //data: {'city': city, 'days': numberOfDays},
             error: function (info) {
-                $('#main').html(info.responseText);
+                console.error(info.responseText);
             },
             statusCode: {
                 200: function (info) {
                     userInfo(info);
-                },
-                503: function(){
-                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -59,29 +40,12 @@ $(function() {
             crossDomain: true,
             data: {'days': numberOfDays},
             error: function (data) {
-                $('#main').html(data.responseText);
+                $('#weatherContent').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     forecastListSixteen(data);
-                },
-                503: function(){
-                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -131,18 +95,6 @@ $(function() {
                 fillLine(data, i);
                 $("#line"+(data.length-1)).css({'border':'none'});
             }
-
-            //switch(data.length){
-            //    case(3):
-            //        $("#general").css({'height': '455px'});
-            //        break;
-            //    case(7):
-            //        $("#general").css({'height': '1000px'});
-            //        break;
-            //    case(14):
-            //        $("#general").css({'height': '1955px'});
-            //}
-
         };
         list();
         $(".ui-loader h1").css({'display':'none'});
@@ -169,12 +121,10 @@ $(function() {
        //testFunction(14);
     });
 
-
     //userInfo(info);
     //testFunction(3);
     ajaxUserInfoQuery();
     ajaxForecastQuery(3);
-
 
     function fillTemperature(pic, temper) {
         var roundTemper = Math.round(temper);
@@ -210,8 +160,6 @@ $(function() {
         var date, weatherImage, description, nightTemperature, dayTemperature, wind, sunshine, pressure;
 
         date = new Date(data[index].dt);
-        //"<div class='lineIco' id='ico" + i + "'>" + weatherImage + "</div>" +
-        //weatherImage = "<img src='resources/images/weather/" + data[i].skyIcon + ".png'/>";
         weatherImage = WEATHER_PICTURE[data[index].skyIcon];
         nightTemperature = data[index].tempNight;
         dayTemperature = data[index].tempDay;
@@ -219,7 +167,6 @@ $(function() {
         sunshine = 100 - data[index].clouds;
         pressure = data[index].pressure;
         description = data[index].skyDescription;
-
 
         note = "<div class='contentLine' id='line" + index + "'>" +
         "<div class='lineDate' id='date" + index + "'>" +
@@ -237,8 +184,6 @@ $(function() {
         "<div class='lineWind' id='wind" + index + "'></div>" +
         "<div class='lineSun' id='sun" + index + "'></div>" +
         "<div class='linePressure' id='press" + index + "'></div>" +
-
-
         "</div>";
 
         $("#weatherContent").append(note);
@@ -259,5 +204,4 @@ $(function() {
             return press.toFixed(1) + "<span> Hpa</span>"
         });
     }
-
 });

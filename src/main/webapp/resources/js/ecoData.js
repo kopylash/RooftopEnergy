@@ -11,17 +11,16 @@ $(function(){
     var month = new Energy();
     var year = new Energy();
     var tot = new Energy();
+
     /*Testing data ---> */
-    trees = 0.26;
+   /* trees = 0.26;
     carbon = 0.12;
     month.production = 30.4;
     month.consumption = 10.4;
     year.production = 300.56;
     year.consumption = 200.65;
     tot.production = 558888.43;
-    tot.consumption = 5588.43;
-
-
+    tot.consumption = 5588.43;*/
     /*Testing data ----X */
 
     function ajaxTreesQuery() {
@@ -30,26 +29,11 @@ $(function(){
             url: '/rest/eco/trees',
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     trees = new Number(data).toFixed(2);
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -60,26 +44,11 @@ $(function(){
             url: '/rest/eco/carbonOffset',
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     carbon = new Number(data/1000).toFixed(2);
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -90,26 +59,11 @@ $(function(){
             url: '/rest/'+type+'/thisMonthTotal',
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     month[type] = new Number(data).toFixed(1);
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -120,26 +74,11 @@ $(function(){
             url: '/rest/'+type+'/thisYearTotal',
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     year[type] = new Number(data).toFixed(1);
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -150,26 +89,11 @@ $(function(){
             url: '/rest/'+type+'/total_'+type,
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
                     tot[type] = new Number(data).toFixed(1);
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -192,7 +116,6 @@ $(function(){
         ajaxTotalTotalQuery(energy);
     }
 
-
    var htmlCode = '<div id="ecoTrees" class="ecoRow"></div>\
        <div id="ecoCarbon" class="ecoRow"></div>\
        <div id="totalMonthly" class="energyRow"></div>\
@@ -211,8 +134,6 @@ $(function(){
             fillEcoTrees(trees);
             fillEcoCarbon(carbon);
             fillEnergyValues(month, year, tot);
-
-
         } else {
             $("#mobileEcoValues").html("").removeClass("mobilEco");
             $("#ecoSection").addClass("eco");
@@ -220,8 +141,6 @@ $(function(){
             fillEcoTrees(trees);
             fillEcoCarbon(carbon);
             fillEnergyValues(month, year, tot);
-
-
         }
     });
 
@@ -276,7 +195,6 @@ $(function(){
         $("#totalMonthly").html(monthHtml);
         $("#totalYearly").html(yearHtml);
         $("#totalTotal").html(totalHtml);
-
     }
 
     $(document).ajaxComplete(function(){
@@ -299,6 +217,5 @@ $(function(){
     function toKWt(number){
         return new Number(number/1000).toFixed(2);
     }
-
 });
 

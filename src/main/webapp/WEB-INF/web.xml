@@ -6,7 +6,7 @@
   <welcome-file-list>
     <welcome-file>/pages/home.html</welcome-file>
   </welcome-file-list>
-  <error-page>
+  <!--<error-page>
     <error-code>400</error-code>
     <location>/error.html?code=400</location>
   </error-page>
@@ -17,15 +17,15 @@
   <error-page>
     <error-code>403</error-code>
     <location>/error.html?code=403</location>
-  </error-page>
+  </error-page>-->
   <error-page>
     <error-code>404</error-code>
     <location>/error.html?code=404</location>
   </error-page>
-  <error-page>
+  <!--<error-page>
     <error-code>500</error-code>
     <location>/error.html?code=500</location>
-  </error-page>
+  </error-page>-->
 
   <!--       REST        -->
   <servlet>

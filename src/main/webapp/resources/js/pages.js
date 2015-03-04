@@ -1,17 +1,14 @@
 $(function() {
     var firstHead = $('header').html();
-
     var companyName;
     var userName;
-
-
     function ajaxGetUserInfo() {
         $.ajax({
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
             error: function (data) {
-                $('#main').html(data.responseText);
+                console.error(data.responseText);
             },
             statusCode: {
                 200: function (data) {
@@ -19,36 +16,15 @@ $(function() {
                     companyName = data.company;
                     companyInfo.name = companyName;
                     companyInfo.status = data.publicStatus;
-
-                    //loadHtml();
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
     }
-
-
     ajaxGetUserInfo();
-
     $(document).ajaxComplete(function () {
         $("#desktopCompany").html(companyName);
         $("#desktopUser span").html(userName);
     });
-    //function loadHtml() {
     var code = '<div id="mainMenu"><div id="settingsMenu" class="ui-widget-content ui-corner-all">\
     <div id="home" class="mainButtons hideButtons"><i class="fa fa-home"><span>&nbspHome</span></i></div>\
     <div id="settings" class="mainButtons hideButtons"><i class="fa fa-cogs"><span>&nbspSettings</span></i></div>\
@@ -65,9 +41,6 @@ $(function() {
         '<div id="desktopUser"><a href="j_spring_security_logout"><span></span> <i class="fa fa-sign-out"></i></a></div>' +
         '<div id="desktopCompany"></div></div><div id="forClear"></div>';
 
-    /*if (currentPage.name === 'rating' && companyInfo.status == false){
-        $('main').html("Your company is not public");
-    }*/
     function runEffect() {
         if (isMobileDevice()) {
             $("#settingsMenu").show("slide", {direction: "right"}, 500);
@@ -78,22 +51,6 @@ $(function() {
         }
     }
 
-
-    //var foo = function(kod) {
-    //    if (screen.width <= 768) {
-    //        $('footer').html(kod).addClass("footer");
-    //    } else {
-    //        $('header').html(kod).removeClass("header").addClass("header1");
-    //        $("#consumption").html(" ");
-    //        var hh = $("#consumption").html();
-    //
-    //
-    //    }
-    //};
-    //foo(code);
-
-    //USED for redirecting. WTF?
-
     var colorSwitch = function (k, kk) {
         var host = window.location.hostname;
         var page = window.location;
@@ -102,41 +59,20 @@ $(function() {
         var second = page.indexOf(".html");
         var idi = page.slice(first, second);
         $("#" + idi).css({'color': k, 'backgroundColor': kk});
-
         $(".mainButtons").click(function () {
                 if (this.id == "menu") {
                     runEffect();
-                    /*} else {
-                     if (companyInfo.status == false && this.id == "rating") {*/
-                    //$('main').html("Your company is not public");
-                    //window.location = this.id + ".html";
-                    //alert("Your company is not public!");
-
-
                 } else {
                     if (this.id != "logout" ) {
                         window.location = "/pages/" + this.id + ".html";
                     }
                 }
-
             }
         );
-
     };
-
-
 
     colorSwitch();
     var jQmobile = '<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>';
-
-    //var whatDevice = device.mobile() || device.tablet();
-    //var landscape = (screen.width <= 1300) && (screen.height <= 1000);
-    //var portrait = (screen.width <= 1000) && (screen.height <= 1300);
-    //console.log(whatDevice);
-    //window.addEventListener("resize", function () {
-    //    document.location.reload(true);
-    ////});
-    //    $(window).resize(function () {
             if (isMobileDevice()) {
                 $('footer').html(code).addClass("footer");
                 $('header').removeClass("header1").html(firstHead).addClass("header");
@@ -145,7 +81,6 @@ $(function() {
                 $("footer").append(jQmobile);
                 colorSwitch(k1, k3);
                  } else {
-
                 $('header').removeClass('header').html(headerHtml).append("<div id='deskMenu'>" + code + "</div>");
                 if (currentPage.name!='Comparing') {
                     $("#periodMenuButtons").css({"width": "40%", "textAlign": "center", "margin-left": "50%"});
@@ -154,7 +89,6 @@ $(function() {
                     $("#period").css({"margin": "8px 50% 10px", "width": "50%"});
                     $("#date").css({"margin": "8px 50% 10px", "width": "50%"});
                 }
-
                 $("#period .btn").css({"width":"20%"});
                 $('.mainButtons:not(.hideButtons)').each(function () {
                     var buttId = this.id;
@@ -164,21 +98,11 @@ $(function() {
                     $("#menu").text("settings").click(function () {
                         window.location = "settings.html";
                     });
-
                 });
-
                 $('footer').html(" ").removeClass('footer');
                 var k2 = "#fffffe";
                 var k4 = "#108f38";
                 colorSwitch(k2, k4);
                 $("#desktopHeader").addClass("desktopHeaderClass");
-
             }
-        //});
-        //
-        //$(window).resize();
-
-
-    //}
 });
-

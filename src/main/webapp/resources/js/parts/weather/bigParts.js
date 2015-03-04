@@ -22,44 +22,24 @@ $(function() {
         mist : '<ul><li class="icon-mist"></li></ul>'
     };
 
-
     function ajaxCloudsForecastQuery(){
-
         $.ajax({
             type: 'post',
             url: "/rest/weather/cloudsFiveDays",
             crossDomain: true,
-            //data: {'days': numberOfDays},
             error: function (cloudsInfo) {
-                $('#main').html(cloudsInfo.responseText);
+                $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                console.error(cloudsInfo.responseText);
+                //$('#main').html(cloudsInfo.responseText);
                 rez = null;
             },
             statusCode: {
                 200: function (cloudsInfo) {
                     cloudarr = cloudsInfo;
                     init();
-                },
-                503: function(){
-                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
-
     }
 
     var cloudarr;
@@ -70,64 +50,29 @@ $(function() {
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
             error: function (info) {
-                $('#main').html(info.responseText);
+                console.error(info.responseText);
             },
             statusCode: {
                 200: function (info) {
                     userInfo(info);
-                },
-                503: function(){
-                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
     }
-    function ajaxForecastQuery(numberOfDays, startNumber) {
+    function ajaxForecastQuery(numberOfDays) {
         $.ajax({
             type: 'post',
             url: "/rest/weather/daily",
             crossDomain: true,
             data: {'days': numberOfDays},
             error: function (d) {
-                $('#main').html(d.responseText);
+                $('#weatherContent').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                console.error(d.responseText);
             },
             statusCode: {
                 200: function (d) {
                     data = d;
                     forecastListSixteen(data);
-                },
-                503: function(){
-                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                },
-                400: function () {
-                    window.location = "/error.html?code=400";
-                },
-                401: function () {
-                    window.location = "/error.html?code=401";
-                },
-                403: function () {
-                    window.location = "/error.html?code=403";
-                },
-                404: function () {
-                    window.location = "/error.html?code=404";
-                },
-                500: function () {
-                    window.location = "/error.html?code=500";
                 }
             }
         });
@@ -137,24 +82,17 @@ $(function() {
             type: 'post',
             url: "/rest/weather/actualDay",
             crossDomain: true,
-            //data: {'days': numberOfDays},
             error: function (actualDayInfo) {
-                $('#main').html(actualDayInfo.responseText);
+                $('#weatherInfoToday').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                console.error(actualDayInfo.responseText);
             },
             statusCode: {
                 200: function (actualDayInfo) {
                     actualDay(actualDayInfo);
-                },
-                503: function(){
-                    $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
                 }
             }
         });
     }
-
-    //
-
-
 
     function userInfo(info){
         $("#generalHeader").html(info.city);
@@ -333,7 +271,6 @@ $(function() {
     }
 
     function buildGraph(thisDay){
-        console.log("from buildGraph " + cloudarr);
         var day;
         if (thisDay instanceof Date){
             day = thisDay.getDate();
@@ -350,7 +287,6 @@ $(function() {
         weatherGraph(array);
     }
     function actualDay(info){
-        //console.log("dayInfo():ActualDay: " + info);
         var sunriseTime = new Date(info.sunrise);
         var sunsetTime = new Date(info.sunset);
         var sunrise = sunriseTime.getHours() + ":" + sunriseTime.getMinutes();
@@ -369,8 +305,6 @@ $(function() {
                 "<div id='windInfo'>"+ wind +"</div>"+
                 "</div>";
         $("#weatherInfoToday").html(content);
-
-
     }
     function fillTemperature (pic, temper) {
         var roundTemper = Math.round(temper);
@@ -410,7 +344,6 @@ $(function() {
         sunshine = 100 - data[i].clouds;
         pressure = data[i].pressure;
         description = data[i].skyDescription;
-
 
         note = "<button class='contentLine' id='line" + i + "'>" +
         "<div class='lineDate' id='date" + i + "'>" +
@@ -469,7 +402,6 @@ $(function() {
         return Number(id.match(regex)[0]);
     }
     function activateTab(tab){
-        console.log("tab#"+ tab);
         $(".contentLine").css({'background-color': '#c8e5bc', 'border': '1px solid #108f38'});
         $(tab).css({'background-color': '#ffffff', 'border': 'none'});
 
