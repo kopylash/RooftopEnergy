@@ -72,19 +72,19 @@ $(function(){
     };
 
     function ajaxScoreQuery(strUrl) {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            ratingList(data);
+        };
+        code['500'] = function(data){
+            $('#main1').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'post',
             url: strUrl,
             crossDomain: true,
-            error: function (data) {
-                $('#main1').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    ratingList(data);
-                }
-            }
+            statusCode:code
         });
     }
 

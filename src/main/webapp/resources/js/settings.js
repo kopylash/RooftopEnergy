@@ -15,6 +15,9 @@ $(function(){
     });
 
     function fillFields(){
+        if(!(userInfo.userName)){
+            window.location = "/error.html?code=401";
+        }
         $("#userName").val(userInfo.userName);
         $("#country").val(userInfo.country);
         $("#province").val(userInfo.province);
@@ -31,18 +34,18 @@ $(function(){
 
 
     function ajaxGetSettingsQuery() {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            userInfo = data;
+        };
+        code['500'] = function(data){
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
-            error: function (data) {
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    userInfo = data;
-                }
-            }
+            statusCode:code
         });
     }
 
@@ -83,21 +86,21 @@ $(function(){
     });
 
     function ajaxSaveSettings( panel, mail, descr, stat){
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            $("#settingsAlert").html("<div id=settingsAlertMessage>Settings have been saved!</div>");
+        };
+        code['500'] = function(data){
+            $("#settingsAlert").html("<div id=settingsAlertMessage>Settings have not been saved!</div>");
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'post',
             url: "/rest/boxData/saveNewUserInfo",
             crossDomain: true,
             data: {'description': descr, 'email': mail, 'panelType': panel, 'publicStatus': stat},
-            error: function (data) {
-                $("#settingsAlert").html("<div id=settingsAlertMessage>Settings have not been saved!</div>");
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    $("#settingsAlert").html("<div id=settingsAlertMessage>Settings have been saved!</div>");
-                }
-            }
-        });
+            statusCode:code
+         });
     }
 
     $("#panelType, #email, #description, #statusCompany").change(function(){

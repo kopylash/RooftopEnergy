@@ -23,74 +23,75 @@ $(function() {
     };
 
     function ajaxCloudsForecastQuery(){
+        var code = Object.create(errorCode);
+        code['200'] = function(cloudsInfo){
+            cloudarr = cloudsInfo;
+            init();
+        };
+        code['500'] = function(cloudsInfo){
+            $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+            console.error(cloudsInfo.responseText);
+            //$('#main').html(cloudsInfo.responseText);
+            rez = null;
+        };
         $.ajax({
             type: 'post',
             url: "/rest/weather/cloudsFiveDays",
             crossDomain: true,
-            error: function (cloudsInfo) {
-                $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                console.error(cloudsInfo.responseText);
-                //$('#main').html(cloudsInfo.responseText);
-                rez = null;
-            },
-            statusCode: {
-                200: function (cloudsInfo) {
-                    cloudarr = cloudsInfo;
-                    init();
-                }
-            }
+            statusCode:code
+
         });
     }
 
     var cloudarr;
     var data;
     function ajaxUserInfoQuery(){
+        var code = Object.create(errorCode);
+        code['200'] = function(info){
+            userInfo(info);
+        };
+        code['500'] = function(info){
+            console.error(info.responseText);
+        };
         $.ajax({
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
-            error: function (info) {
-                console.error(info.responseText);
-            },
-            statusCode: {
-                200: function (info) {
-                    userInfo(info);
-                }
-            }
+            statusCode:code
         });
     }
     function ajaxForecastQuery(numberOfDays) {
+        var code = Object.create(errorCode);
+        code['200'] = function(d){
+            data = d;
+            forecastListSixteen(data);
+        };
+        code['500'] = function(d){
+            $('#weatherContent').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+            console.error(d.responseText);
+        };
         $.ajax({
             type: 'post',
             url: "/rest/weather/daily",
             crossDomain: true,
             data: {'days': numberOfDays},
-            error: function (d) {
-                $('#weatherContent').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                console.error(d.responseText);
-            },
-            statusCode: {
-                200: function (d) {
-                    data = d;
-                    forecastListSixteen(data);
-                }
-            }
+            statusCode:code
         });
     }
     function ajaxActualDayForecastQuery(){
+        var code = Object.create(errorCode);
+        code['200'] = function(actualDayInfo){
+            actualDay(actualDayInfo);
+        };
+        code['500'] = function(actualDayInfo){
+            $('#weatherInfoToday').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+            console.error(actualDayInfo.responseText);
+        };
         $.ajax({
             type: 'post',
             url: "/rest/weather/actualDay",
             crossDomain: true,
-            error: function (actualDayInfo) {
-                $('#weatherInfoToday').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                console.error(actualDayInfo.responseText);
-            },
-            statusCode: {
-                200: function (actualDayInfo) {
-                    actualDay(actualDayInfo);
-                }
-            }
+            statusCode:code
         });
     }
 

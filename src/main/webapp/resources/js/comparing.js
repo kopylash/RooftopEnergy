@@ -19,18 +19,18 @@ $(function(){
     var comparingCompanyName = str.replace(/%20/," ");
 
     function ajaxGetCompanyName() {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            myCompany = data.company;
+        };
+        code['500'] = function(data){
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
-            error: function (data) {
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    myCompany = data.company;
-                }
-            },
+            statusCode:code,
             complete: function(jqXHR,textStatus) {
                 allDateButtons(restUrl);
                 ajaxComparingInfoQuery();
@@ -142,36 +142,39 @@ $(function(){
     }
 
     function ajaxGraphQuery(strUrl1,companyName,endDate) {
+        var code = Object.create(errorCode);
+        code['200'] = function(data1){
+            var code2 = Object.create(errorCode);
+            code2['200'] = function(data2){
+                graph(data1,data2);
+            };
+            code2['500'] = function(data2){
+                $('main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+                console.error(data2.responseText);
+            };
+            $.ajax({
+                type: 'post',
+                url: strUrl1,
+                crossDomain: true,
+                data: {
+                    'companyName': companyName,
+                    'date': endDate.getTime()
+                },
+                statusCode:code2
+            })
+        };
+        code['500'] = function(data1){
+            $('main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+            console.error(data1.responseText);
+        };
         $.ajax({
                 type: 'post',
                 url: strUrl1,
                 crossDomain: true,
                 data: { 'companyName':myCompany,
-                    'date': endDate.getTime()},
-                error: function (data1) {
-                    $('main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                    console.error(data1.responseText);
+                    'date': endDate.getTime()
                 },
-                statusCode: {
-                    200: function (data1) {
-                        $.ajax({
-                            type: 'post',
-                            url: strUrl1,
-                            crossDomain: true,
-                            data: { 'companyName':companyName,
-                                'date': endDate.getTime()},
-                            error: function (data2) {
-                                $('main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                                console.error(data2.responseText);
-                            },
-                            statusCode: {
-                                200: function (data2) {
-                                    graph(data1,data2);
-                                }
-                            }
-                        })
-                    }
-                }
+                statusCode: code
             }
         );
     }
@@ -307,22 +310,21 @@ $(function(){
     }
 
     function ajaxComparingInfoQuery() {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            initOurData(data);
+        };
+        code['500'] = function(data){
+            $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+            console.error(data1.responseText);
+            //$('#main').html(data1.responseText);
+        };
         $.ajax({
             type: 'post',
             url:'/rest/comparing/comparingInfo',
             crossDomain: true,
             data: { 'comparingCompany':comparingCompanyName },
-            error: function (data1) {
-                $('#main').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                console.error(data1.responseText);
-                //$('#main').html(data1.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                   //here will be code to parse comparingInfo
-                    initOurData(data);
-                }
-            }
+            statusCode:code
         });
     }
 

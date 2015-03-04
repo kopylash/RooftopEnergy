@@ -8,19 +8,19 @@ function mapGraph (state, url, devide ) {
     });
 
     var query = function(){
+        var code = Object.create(errorCode);
+        code['200'] = function(json){
+            graph(json);
+        };
+        code['500'] = function(json){
+            $('#container').html('<p style="text-align: center">Service unavailable!</p>');
+            console.error(json.responseText);
+        };
         $.ajax({
             type: 'get',
             url: url,
             crossDomain: true,
-            error: function (json) {
-                $('#container').html('<p style="text-align: center">Service unavailable!</p>');
-                console.error(json.responseText);
-            },
-            statusCode: {
-                200: function (json) {
-                    graph(json);
-                }
-            }
+            statusCode:code
         });
     };
     var graph = function(json) {

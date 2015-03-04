@@ -18,36 +18,36 @@ $(function() {
     };
 
     function ajaxUserInfoQuery(){
+        var code = Object.create(errorCode);
+        code['200'] = function(info){
+            userInfo(info);
+        };
+        code['500'] = function(info){
+            console.error(info.responseText);
+        };
         $.ajax({
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
-            error: function (info) {
-                console.error(info.responseText);
-            },
-            statusCode: {
-                200: function (info) {
-                    userInfo(info);
-                }
-            }
+            statusCode:code
         });
     }
 
     function ajaxForecastQuery(numberOfDays) {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            forecastListSixteen(data);
+        };
+        code['500'] = function(data){
+            $('#weatherContent').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'post',
             url: "/rest/weather/daily",
             crossDomain: true,
             data: {'days': numberOfDays},
-            error: function (data) {
-                $('#weatherContent').html("<h3 style='text-align: center'>Service Unavailable!</h3>");
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    forecastListSixteen(data);
-                }
-            }
+            statusCode:code
         });
     }
     var userInfo = function(info){

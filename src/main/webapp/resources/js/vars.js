@@ -22,7 +22,14 @@ const SCREEN_RESOLUTION = {
     height:1000
 
 };
-
+var errorCode = {
+    200 :null,
+    400:function(){window.location = "/error.html?code=400"},
+    401:function(){window.location = "/error.html?code=401"},
+    403:function(){window.location = "/error.html?code=403"},
+    404:function(){window.location = "/error.html?code=404"},
+    500:null
+};
 function isMobileDevice(){
     var whatDevice = device.mobile() || device.tablet();
     var landscape = (screen.width <= SCREEN_RESOLUTION.width) && (screen.height <= SCREEN_RESOLUTION.height);

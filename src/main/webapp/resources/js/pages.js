@@ -3,24 +3,28 @@ $(function() {
     var companyName;
     var userName;
     function ajaxGetUserInfo() {
+        console.log("Here!!!");
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            userName = data.userName;
+            companyName = data.company;
+            companyInfo.name = companyName;
+            companyInfo.status = data.publicStatus;
+            console.log(userName);
+        };
+        code['500'] = function(data){
+            console.log("500");
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
-            error: function (data) {
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    userName = data.userName;
-                    companyName = data.company;
-                    companyInfo.name = companyName;
-                    companyInfo.status = data.publicStatus;
-                }
-            }
+            statusCode:code
+
         });
     }
-    ajaxGetUserInfo();
+    $(document).ready(function(){ajaxGetUserInfo();});
     $(document).ajaxComplete(function () {
         $("#desktopCompany").html(companyName);
         $("#desktopUser span").html(userName);

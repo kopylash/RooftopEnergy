@@ -100,35 +100,59 @@ function allDateButtons(url1,url2){
 }
 
 function ajaxGraphQuery(strUrl1,strUrl2,endDate, tooltipDateFormat) {
+    var code = Object.create(errorCode);
+    code['200'] = function(data1){
+        var code2 = Object.create(errorCode);
+        code2['200'] = function(data2){
+            graph(data1,data2, tooltipDateFormat);
+            appliancePairData(data1, data2, strUrl1);
+        };
+        code2['500'] = function(data2){
+            $('main').html('<p style="text-align: center">Service unavailable!</p>');
+            console.error(data2.responseText);
+        };
+        $.ajax({
+            type: 'post',
+            url: strUrl2,
+            crossDomain: true,
+            data: { 'date': endDate.getTime()},
+            statusCode: code2
+        })
+    };
+    code['500'] = function(data1){
+        $('main').html('<p style="text-align: center">Service unavailable!</p>');
+        console.error(data1.responseText);
+    };
     $.ajax({
         type: 'post',
         url: strUrl1,
         crossDomain: true,
         data: { 'date': endDate.getTime()},
-        error: function (data1) {
-            $('main').html('<p style="text-align: center">Service unavailable!</p>');
-            console.error(data1.responseText);
-        },
-        statusCode: {
-            200: function (data1) {
-                $.ajax({
-                    type: 'post',
-                    url: strUrl2,
-                    crossDomain: true,
-                    data: { 'date': endDate.getTime()},
-                    error: function (data2) {
-                        $('main').html('<p style="text-align: center">Service unavailable!</p>');
-                        console.error(data2.responseText);
-                    },
-                    statusCode: {
-                        200: function (data2) {
-                            graph(data1,data2, tooltipDateFormat);
-                            appliancePairData(data1, data2, strUrl1);
-                        }
-                    }
-                })
-            }
-        }
+        statusCode:code
+        //error: function (data1) {
+        //    $('main').html('<p style="text-align: center">Service unavailable!</p>');
+        //    console.error(data1.responseText);
+        //},
+        //statusCode: {
+        //    200: function (data1) {
+        //        $.ajax({
+        //            type: 'post',
+        //            url: strUrl2,
+        //            crossDomain: true,
+        //            data: { 'date': endDate.getTime()},
+        //            error: function (data2) {
+        //                $('main').html('<p style="text-align: center">Service unavailable!</p>');
+        //                console.error(data2.responseText);
+        //            },
+        //            statusCode: {
+        //                200: function (data2) {
+        //                    graph(data1,data2, tooltipDateFormat);
+        //                    appliancePairData(data1, data2, strUrl1);
+        //                }
+        //            }
+        //        })
+        //    }
+        //}
     });
 }
 

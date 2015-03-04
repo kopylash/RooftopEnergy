@@ -24,78 +24,79 @@ $(function(){
     /*Testing data ----X */
 
     function ajaxTreesQuery() {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            trees = new Number(data).toFixed(2);
+        };
+        code['500'] = function(data){
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'post',
             url: '/rest/eco/trees',
             crossDomain: true,
-            error: function (data) {
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    trees = new Number(data).toFixed(2);
-                }
-            }
+            statusCode:code
         });
     }
     function ajaxCarbonQuery() {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            carbon = new Number(data/1000).toFixed(2);
+        };
+        code['500'] = function(data){
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'post',
             url: '/rest/eco/carbonOffset',
             crossDomain: true,
-            error: function (data) {
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    carbon = new Number(data/1000).toFixed(2);
-                }
-            }
+            statusCode:code
         });
     }
     function ajaxTotalMonthQuery(type) {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            month[type] = new Number(data).toFixed(1);
+        };
+        code['500'] = function(data){
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'post',
             url: '/rest/'+type+'/thisMonthTotal',
             crossDomain: true,
-            error: function (data) {
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    month[type] = new Number(data).toFixed(1);
-                }
-            }
+            statusCode:code
         });
     }
     function ajaxTotalYearQuery(type) {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            year[type] = new Number(data).toFixed(1);
+        };
+        code['500'] = function(data){
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'post',
             url: '/rest/'+type+'/thisYearTotal',
             crossDomain: true,
-            error: function (data) {
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    year[type] = new Number(data).toFixed(1);
-                }
-            }
+            statusCode:code
         });
     }
     function ajaxTotalTotalQuery(type) {
+        var code = Object.create(errorCode);
+        code['200'] = function(data){
+            tot[type] = new Number(data).toFixed(1);
+        };
+        code['500'] = function(data){
+            console.error(data.responseText);
+        };
         $.ajax({
             type: 'post',
             url: '/rest/'+type+'/total_'+type,
             crossDomain: true,
-            error: function (data) {
-                console.error(data.responseText);
-            },
-            statusCode: {
-                200: function (data) {
-                    tot[type] = new Number(data).toFixed(1);
-                }
-            }
+            statusCode:code
+
         });
     }
 
