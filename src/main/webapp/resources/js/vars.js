@@ -24,10 +24,10 @@ const SCREEN_RESOLUTION = {
 };
 var errorCode = {
     200 :null,
-    400:function(){window.location = "/error.html?code=400"},
-    401:function(){window.location = "/error.html?code=401"},
-    403:function(){window.location = "/error.html?code=403"},
-    404:function(){window.location = "/error.html?code=404"},
+    400:function(){window.location = "/errors/400.html"},
+    401:function(){window.location = "/errors/401.html"},
+    403:function(){window.location = "/errors/403.html"},
+    //404:function(){window.location = "/error.html?code=404"},
     500:null
 };
 function isMobileDevice(){

@@ -3,14 +3,15 @@ $(function() {
     var companyName;
     var userName;
     function ajaxGetUserInfo() {
-        console.log("Here!!!");
+
         var code = Object.create(errorCode);
         code['200'] = function(data){
+            console.log("2");
             userName = data.userName;
             companyName = data.company;
             companyInfo.name = companyName;
             companyInfo.status = data.publicStatus;
-            console.log(userName);
+            console.log("Page: "+userName);
         };
         code['500'] = function(data){
             console.log("500");
@@ -20,6 +21,7 @@ $(function() {
             type: 'get',
             url: "/rest/boxData/getUserDescription",
             crossDomain: true,
+            cache:false,
             statusCode:code
 
         });

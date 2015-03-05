@@ -44,6 +44,9 @@ public class PrincipalInformation {
             } else {
                 principalName = principal.toString();
             }
+            if (principalName.equals("anonymousUser")){
+                throw new WebApplicationException(401);
+            }
         } catch (NullPointerException e){
             logger.info("User has not been authorized!");
             throw new WebApplicationException(401);
