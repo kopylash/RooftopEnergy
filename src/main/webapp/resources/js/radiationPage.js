@@ -1,5 +1,7 @@
 $(function(){
-
+    var angle =  $("#angle").val();
+    var square = $("#square").val();
+////////DATEPICKER////////////////////////////
     $( "#datepicker" ).datepicker({
         changeMonth: true,
         changeYear: true,
@@ -9,5 +11,148 @@ $(function(){
     $("#datepicker").datepicker("setDate", "dd-mm-yy");
     var k = $.datepicker.formatDate("dd-mm-yy", new Date());
     $( "#datepicker").text(k);
+///////////END DATEPICKER /////////////////////////////////
 
+    $("#butDate").click(function(){
+        angle = $("#angle").val();
+
+        square = $("#square").val();
+        ajaxGraphYear();
+    });
+    ajaxGraphYear();
+    powerD();
+
+    function ajaxGraphYear(){
+        var code = Object.create(errorCode);
+        code['200'] = function(json){
+            powerGraph(json);
+        };
+        code['500'] = function(json){
+            $('#container').html('<p style="text-align: center">Service unavailable!</p>');
+            console.error(json.responseText);
+        };
+        $.ajax({
+            type: 'post',
+            url: "/rest/radiation/year",
+            data:{'tilt' : angle},
+            crossDomain: true,
+            statusCode:code
+        });
+    }
+
+    function powerDay(json, date){
+        var data = json.data;
+       $('#radiationText').html(data[date]);
+    }
+
+    function ajaxDay(date){
+        var code = Object.create(errorCode);
+        code['200'] = function(json){
+            powerDay(json, date);
+        };
+        code['500'] = function(json){
+            $('#radiationText').html('<p style="text-align: center">Service unavailable!</p>');
+            console.error(json.responseText);
+        };
+        $.ajax({
+            type: 'post',
+            url: "/rest/radiation/day",
+            data:{'tilt' : angle, 'day': date},
+            crossDomain: true,
+            statusCode:code
+        });
+    }
+
+    function powerD(){
+        var now = new Date();
+        var start = new Date(now.getFullYear(), 0, 1);
+        var diff = now - start;
+        var oneDay = 1000 * 60 * 60 * 24;
+        var day = Math.floor(diff / oneDay);
+        ajaxDay(day);
+    }
+
+
+//////////Graph//////////////////////////////////////
+    function powerGraph(json) {
+        console.log(json);
+        var dateNow = new Date();
+        var year = dateNow.getFullYear();
+        var date = new Date(year,0,1);
+        console.log(date);
+        var obj = json.data;
+        var arr = [];
+        for (var i = 0; i<365; i++){
+            //arr[i] = [i, obj[i]];
+            arr[i] = [date.getTime()+i*24*3600*1000, parseFloat((obj[i+1]*square).toFixed(2))];
+        }
+        console.log(arr);
+
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+           },
+            colors: ['#59AC28']
+        });
+
+        $('#container').highcharts({
+            chart: {
+                zoomType: 'x',
+                borderWidth: 1,
+                borderColor: '#108f38'
+            },
+            credits: {
+                enabled: false
+            },
+
+            title: {
+                text: 'Energy production per current year, kWt'
+            },
+
+            xAxis: {
+                //categories: arrX
+                type: 'datetime',
+                minRange:  24 * 3600000 // one day
+            },
+            yAxis: {
+                title: {
+                    text: 'Energy production, kWt'
+                }
+            },
+            legend: {
+                enabled: true
+            },
+            plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1},
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 1
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
+            colors: ['#59AC28'],
+            series: [{
+                type: 'area',
+                name: 'Production energy, kWt',
+                pointInterval: 24 * 3600 * 1000,
+                //pointStart: Date.UTC(2006, 0, 1),
+
+                data: arr
+            }]
+        });
+    }
+////////End graph///////////////
 });
