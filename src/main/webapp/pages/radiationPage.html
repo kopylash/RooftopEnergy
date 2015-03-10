@@ -52,27 +52,29 @@
 <body>
 <div class="container-fluid">
     <header class="header"> <span id="logoMobile"><img src="../resources/images/logo_mobile.svg"></span><span id="headerTitle" style="font-size: 14px">Production forecast</span></header>
+    <div id="wrongInf"></div>
     <div class="row">
-        <div class="col-md-3 col-md-offset-2">
+        <div id="firstCol" class="col-md-3 col-md-offset-3 col-xs-6">
             <div class="form-group has-success">
 
-                <input type="text" class="form-control" id="square" placeholder="Enter total square of panel, m&sup2" value="1" title="Enter total square of panel, m&sup2"  required="">
+                <input type="text" maxlength="6" class="form-control" id="square" placeholder="Enter total square of panel, m&sup2" value="1" title="Enter total square of panel, m&sup2"  required="">
 
-                <input type="text" class="form-control" id="angle" placeholder="Enter tilt angle of panel, &deg" value="1" title="Enter tilt angle of panel, &deg"  required=""> <br>
-                <button  id="butDate" class="btn btn-success">Success</button>
+                <input type="text" maxlength="6" class="form-control" id="angle" placeholder="Enter tilt angle of panel, &deg" value="1" title="Enter tilt angle of panel, &deg"  required="">
+                <button  id="butDate" class="btn btn-success">Calculate</button>
             </div>
         </div>
-        <div class="col-md-3">
+
+        <div id="secondCol" class="col-md-3 col-xs-6">
             <div id="date">
                 <p id="pd">
-                    <input type="text" class="form-control" id="datepicker" readonly>
+                    <input type="text" class="form-control" id="datepicker" readonly title="Select the day you want">
                 </p>
                 <p id="radiationText"></p>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
+        <div class="col-md-10 col-md-offset-1 col-sm-12">
             <main id="container">
 
             </main>

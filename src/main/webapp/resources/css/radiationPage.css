@@ -1,0 +1,130 @@
+body{
+   width: 100%;
+   height: 100%;
+}
+
+.row{
+   width: 100%;
+}
+
+main{
+   width: 100%;
+}
+
+
+#firstCol{
+   padding-top: 8px;
+}
+
+#secondCol{
+   padding-left: 0;
+}
+
+#date {
+   width: 100%;
+}
+
+#datepicker{
+   cursor: pointer;
+}
+
+#firstCol input[type=text]{
+   border: 1px solid #108f38;
+   font-family: 'Open Sans', Calibri, Arial, sans-serif;
+   font-size: 14px;
+   font-weight: 400;
+   padding: 10px 15px 10px 55px;
+   position: relative;
+   width: 100%;
+   height: 28px;
+   color: #000000;
+   transition: color 0.3s ease-out;
+   border-radius: 2px;
+   -moz-border-radius: 2px;
+   -webkit-border-radius: 2px;
+}
+
+#firstCol input[type=text] {
+   margin-bottom: 5px;
+}
+
+#firstCol input[type=text]:hover ~ i{
+   color: #ded9cf;
+}
+
+#firstCol input[type=text]:focus ~ i {
+   color: #108f38;
+}
+
+#firstCol input[type=text]:focus {
+   outline: none;
+}
+
+
+#butDate {
+   text-align: center;
+   margin-top: 2px;
+   margin-bottom: 2px;
+}
+#butDate:focus {
+   outline: none;
+}
+#butDate {
+   display: inline;
+   margin-top: 0px;
+   text-align: center;
+   font-size: 1.25em;
+   font-family: 'Open Sans',sans-serif;
+   font-weight: normal;
+   padding: 5px 0;
+   letter-spacing: 0;
+
+   -webkit-box-shadow: inset 0px 0px 0px 0px rgba(16,143,56,1);
+   -moz-box-shadow:    inset 0px 0px 0px 0px rgba(16,143,56,1);
+   box-shadow:         inset 0px 0px 0px 0px rgba(16,143,56,1);
+
+   color: #fff;
+   background-color: #108f38;
+   text-shadow: none;
+   text-transform: uppercase;
+   border: none;
+   cursor: pointer;
+   position: relative;
+   -webkit-animation: shadowFadeOut 0.4s;
+   -moz-animation: shadowFadeOut 0.4s;
+}
+#butDate:focus{
+   color: #fff;
+   -webkit-box-shadow: inset 0px 46px 0px 0px rgba(89,172,40,1);
+   -moz-box-shadow:    inset 0px 46px 0px 0px rgba(89,172,40,1);
+   box-shadow:         inset 0px 46px 0px 0px rgba(89,172,40,1);
+   -webkit-animation: shadowFade 0.4s;
+   -moz-animation: shadowFade 0.4s;
+}
+
+#butDate{
+   /*width: 120px;*/
+   margin-bottom: 0;
+   margin-top: 0;
+   border-radius: 2px;
+   -moz-border-radius: 2px;
+   -webkit-border-radius: 2px;
+}
+
+#butDate{
+   margin-right: 2px;
+   width: 100%;
+}
+
+#wrongInf{
+   padding: 7px;
+   background-color: #E53337;
+   color: #ffffff;
+   width: 100%;
+   height: 40px;
+   text-align: center;
+   font-weight: bolder;
+   font-size: 18px;
+   display: none;
+
+}

@@ -1,6 +1,8 @@
 $(function(){
     var angle =  $("#angle").val();
     var square = $("#square").val();
+    var regExp = /(^\d{1,3}$)|(^\d{1,3}\.\d{1,2}$)/g;
+    var regExp1 = /(^\d{1,3}$)|(^\d{1,3}\.\d{1,2}$)/g;
 ////////DATEPICKER////////////////////////////
     $( "#datepicker" ).datepicker({
         changeMonth: true,
@@ -14,13 +16,25 @@ $(function(){
 ///////////END DATEPICKER /////////////////////////////////
 
     $("#butDate").click(function(){
-        angle = $("#angle").val();
 
+        angle = $("#angle").val();
         square = $("#square").val();
+        var regExpAngle = angle.search(regExp);
+        var regExpSquare = square.search(regExp1);
+        console.log("s="+regExpSquare+" a= "+regExpAngle);
+        if(regExpAngle == -1 || regExpSquare == -1){
+            var wrongData = "<p>You have entered incorrect data!</p>";
+            $("#wrongInf").html(wrongData).css({'display':'block'});
+        } else{
         ajaxGraphYear();
+        }
     });
-    ajaxGraphYear();
+   ajaxGraphYear();
     powerD();
+
+    $("input").focus(function(){
+        $("#wrongInf").css({"display":"none"});
+    });
 
     function ajaxGraphYear(){
         var code = Object.create(errorCode);
