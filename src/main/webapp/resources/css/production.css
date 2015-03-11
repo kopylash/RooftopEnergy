@@ -278,4 +278,13 @@ main{
         height: 60%;
     }
 }
+.spinner{
+    width:inherit;
+    height: inherit;
+}
+.spinner img{
+    margin: 0 auto;
+    width:64px;
+    height: 64px;
+}
 

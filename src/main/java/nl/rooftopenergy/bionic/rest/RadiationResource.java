@@ -49,6 +49,7 @@ public class RadiationResource {
         Double angle;
         if (tilt != null){
             angle = Double.parseDouble(tilt);
+            angle = validateTilt(angle);
         } else {
             angle = PANEL_TILT;
         }
@@ -70,6 +71,7 @@ public class RadiationResource {
             Double angle;
             if (tilt != null) {
                 angle = Double.parseDouble(tilt);
+                angle = validateTilt(angle);
             } else {
                 angle = PANEL_TILT;
             }
@@ -106,6 +108,21 @@ public class RadiationResource {
         }
 
         return result;
+    }
+
+    /*
+     * Using this method is necessarily in case when  the panel's tilt has entered by user is greater then
+     * 90 degrees.
+     */
+    private double validateTilt(Double tilt){
+        final double ALLOWED_MAX_ANGLE = 90d;
+        if (tilt < 0){
+            tilt = Math.abs(tilt);
+        }
+        while (tilt > ALLOWED_MAX_ANGLE){
+            tilt -= ALLOWED_MAX_ANGLE;
+        }
+        return tilt;
     }
 
 
