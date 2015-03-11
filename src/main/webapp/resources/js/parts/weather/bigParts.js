@@ -21,6 +21,9 @@ $(function() {
         snow : '<ul><li class="basecloud"></li><li class="icon-snowy"></li></ul>',
         mist : '<ul><li class="icon-mist"></li></ul>'
     };
+    const loading = '<div class="spinner">\
+                        <img src="../resources/images/loader.gif"/>\
+                    </div>';
 
     function ajaxCloudsForecastQuery(){
         var code = Object.create(errorCode);
@@ -45,6 +48,7 @@ $(function() {
 
     var cloudarr;
     var data;
+    $("#weatherGraph").html(loading);
     function ajaxUserInfoQuery(){
         var code = Object.create(errorCode);
         code['200'] = function(info){

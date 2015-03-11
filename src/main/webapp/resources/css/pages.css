@@ -90,6 +90,16 @@
     clear: both;
 }
 
+.spinner{
+    width:inherit;
+    height: inherit;
+}
+.spinner img{
+    margin: 0 47%;
+    width:64px;
+    height: 64px;
+}
+
 /*@media screen and (max-device-height: 450px)  {*/
     /*main{*/
         /*margin-bottom: 150px;*/
