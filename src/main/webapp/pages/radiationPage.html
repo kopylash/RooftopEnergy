@@ -16,7 +16,7 @@
     <meta name="description" content="Awesome Flat Login Form" />
     <meta name="keywords" content="Login, Flat, HTML5, CSS3" />
     <meta name="author" content="Wahid Anggara - LunarPixel" />
-    <title>Settings</title>
+    <title>Expected production</title>
 
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../resources/css/font-awesome-4.2.0/css/font-awesome.min.css">
@@ -28,6 +28,7 @@
 
     <link rel="stylesheet" href="../resources/css/pages.css">
     <link rel="stylesheet" href="../resources/css/radiationPage.css">
+    <link rel="stylesheet" href="../resources/css/eco/style.css">
 
     <!--<link href="resources/css/login_style.css" rel="stylesheet" type="text/css">-->
     <link href="../resources/css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -56,10 +57,15 @@
     <div class="row">
         <div id="firstCol" class="col-md-3 col-md-offset-3 col-xs-6">
             <div class="form-group has-success">
-
+                <p class="field">
                 <input type="text" maxlength="6" class="form-control" id="square" placeholder="Enter total square of panel, m&sup2" value="1" title="Enter total square of panel, m&sup2"  required="">
+                    <i class="icon-solar-panel-square"></i>
+                </p>
 
+                <p class="field">
                 <input type="text" maxlength="6" class="form-control" id="angle" placeholder="Enter tilt angle of panel, &deg" value="1" title="Enter tilt angle of panel, &deg"  required="">
+                    <i class="icon-solar-panel-tilt"></i>
+                </p>
                 <button  id="butDate" class="btn btn-success">Calculate</button>
             </div>
         </div>
@@ -69,7 +75,7 @@
                 <p id="pd">
                     <input type="text" class="form-control" id="datepicker" readonly title="Select the day you want">
                 </p>
-                <p id="radiationText"></p>
+                <p id="radiationText">This day might be produced <span></span>&nbspkWt</p>
             </div>
         </div>
     </div>

@@ -1,8 +1,10 @@
 $(function(){
+
     var angle =  $("#angle").val();
     var square = $("#square").val();
-    var regExp = /(^\d{1,3}$)|(^\d{1,3}\.\d{1,2}$)/g;
-    var regExp1 = /(^\d{1,3}$)|(^\d{1,3}\.\d{1,2}$)/g;
+    var chosenDate;
+    var regExpAngle = /(^\d{1,2}$)|(^\d{1,2}\.\d{1,2}$)/g;
+    var regExpSquare = /(^\d{1,3}$)|(^\d{1,3}\.\d{1,2}$)/g;
 ////////DATEPICKER////////////////////////////
     $( "#datepicker" ).datepicker({
         changeMonth: true,
@@ -12,25 +14,36 @@ $(function(){
 
     $("#datepicker").datepicker("setDate", "dd-mm-yy");
     var k = $.datepicker.formatDate("dd-mm-yy", new Date());
+    chosenDate =  $("#datepicker").datepicker("getDate");
+    console.log(chosenDate);
     $( "#datepicker").text(k);
-///////////END DATEPICKER /////////////////////////////////
+    $("#datepicker").change(function(){
 
+        console.log("ww "+ chosenDate);
+        ajaxGraphYear();
+        powerD();
+
+    });
+///////////END DATEPICKER /////////////////////////////////
+//    $('#radiationText span').html("120.30");
     $("#butDate").click(function(){
 
         angle = $("#angle").val();
         square = $("#square").val();
-        var regExpAngle = angle.search(regExp);
-        var regExpSquare = square.search(regExp1);
-        console.log("s="+regExpSquare+" a= "+regExpAngle);
-        if(regExpAngle == -1 || regExpSquare == -1){
+        var regExpAngleVar = angle.search(regExpAngle);
+        var regExpSquareVar = square.search(regExpSquare);
+        //console.log("s="+regExpSquareVar+" a= "+regExpAngleVar);
+        if(regExpAngleVar == -1 || regExpSquareVar == -1){
             var wrongData = "<p>You have entered incorrect data!</p>";
             $("#wrongInf").html(wrongData).css({'display':'block'});
         } else{
-        ajaxGraphYear();
+            powerD();
+            ajaxGraphYear();
         }
     });
-   ajaxGraphYear();
     powerD();
+    ajaxGraphYear();
+
 
     $("input").focus(function(){
         $("#wrongInf").css({"display":"none"});
@@ -56,7 +69,8 @@ $(function(){
 
     function powerDay(json, date){
         var data = json.data;
-       $('#radiationText').html(data[date]);
+        var value = new Number(data[date]) * square;
+       $('#radiationText span').html(value.toFixed(2));
     }
 
     function ajaxDay(date){
@@ -78,29 +92,39 @@ $(function(){
     }
 
     function powerD(){
-        var now = new Date();
+        chosenDate =  $("#datepicker").datepicker("getDate");
+        var now = chosenDate;
         var start = new Date(now.getFullYear(), 0, 1);
         var diff = now - start;
         var oneDay = 1000 * 60 * 60 * 24;
         var day = Math.floor(diff / oneDay);
+        console.log('day = ' + day);
         ajaxDay(day);
     }
 
 
 //////////Graph//////////////////////////////////////
     function powerGraph(json) {
-        console.log(json);
+        //console.log(json);
         var dateNow = new Date();
         var year = dateNow.getFullYear();
         var date = new Date(year,0,1);
-        console.log(date);
+        //console.log(date);
         var obj = json.data;
         var arr = [];
         for (var i = 0; i<365; i++){
             //arr[i] = [i, obj[i]];
             arr[i] = [date.getTime()+i*24*3600*1000, parseFloat((obj[i+1]*square).toFixed(2))];
+            /*if (arr[i][0] === chosenDate.getTime()){
+                arr[i][1] = {
+                    y:  parseFloat((obj[i+1]*square).toFixed(2)),
+                        marker: {
+                    symbol: 'url(../images/sun.png)'
+                }
+                }
+            }*/
         }
-        console.log(arr);
+        //console.log(arr);
 
         Highcharts.setOptions({
             global: {
@@ -169,4 +193,5 @@ $(function(){
         });
     }
 ////////End graph///////////////
+    $(".ui-loader h1").css({'display':'none'});
 });

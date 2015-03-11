@@ -31,12 +31,12 @@ main{
 #firstCol input[type=text]{
    border: 1px solid #108f38;
    font-family: 'Open Sans', Calibri, Arial, sans-serif;
-   font-size: 14px;
+   font-size: 16px;
    font-weight: 400;
    padding: 10px 15px 10px 55px;
    position: relative;
    width: 100%;
-   height: 28px;
+   height: 34px;
    color: #000000;
    transition: color 0.3s ease-out;
    border-radius: 2px;
@@ -136,4 +136,50 @@ main{
    margin: 0 auto;
    width:64px;
    height: 64px;
+}
+
+ .field {
+   position: relative;
+   margin: 0 auto;
+}
+.field i{
+   font-size: 2.8em;
+   padding-top: 0px;
+   left: 0px;
+   top: 0px;
+   position: absolute;
+   height: 34px;
+   width: 34px;
+   color: #FFFFFE;
+   background: #108f38;
+   text-align: center;
+   line-height: 30px;
+   transition: all 0.3s ease-out;
+   pointer-events: none;
+   cursor: default;
+   border-bottom-left-radius: 2px;
+   border-top-left-radius: 2px;
+ }
+
+ input[type=text]:hover ~ i {
+   color: #ded9cf;
+}
+
+ input[type=text]:focus ~ i {
+   color: #108f38;
+}
+
+#radiationText{
+   font-size:2em;
+   line-height: 1.3em;
+   color:#108F38;
+   text-align:center;
+}
+
+@media screen and (max-device-width: 500px){
+   #radiationText{
+      font-size: 1.5em;
+      line-height: 1.1em;
+   }
+
 }
