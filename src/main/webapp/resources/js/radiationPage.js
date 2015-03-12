@@ -2,7 +2,9 @@ $(function(){
 
     var angle =  $("#angle").val();
     var square = $("#square").val();
-    var chosenDate;
+    //var chosenDate = new Date();
+    var chosenDate = $.datepicker.formatDate("yy-mm-dd", new Date());
+    var chosenDay = 1;
     var regExpAngle = /(^\d{1,2}$)|(^\d{1,2}\.\d{1,2}$)/g;
     var regExpSquare = /(^\d{1,3}$)|(^\d{1,3}\.\d{1,2}$)/g;
 ////////DATEPICKER////////////////////////////
@@ -99,6 +101,7 @@ $(function(){
         var oneDay = 1000 * 60 * 60 * 24;
         var day = Math.floor(diff / oneDay);
         console.log('day = ' + day);
+        chosenDay = day;
         ajaxDay(day);
     }
 
@@ -115,16 +118,7 @@ $(function(){
         for (var i = 0; i<365; i++){
             //arr[i] = [i, obj[i]];
             arr[i] = [date.getTime()+i*24*3600*1000, parseFloat((obj[i+1]*square).toFixed(2))];
-            /*if (arr[i][0] === chosenDate.getTime()){
-                arr[i][1] = {
-                    y:  parseFloat((obj[i+1]*square).toFixed(2)),
-                        marker: {
-                    symbol: 'url(../images/sun.png)'
-                }
-                }
-            }*/
         }
-        //console.log(arr);
 
         Highcharts.setOptions({
             global: {
@@ -160,6 +154,9 @@ $(function(){
             legend: {
                 enabled: true
             },
+            tooltip: {
+                xDateFormat: "%a, %d %b %Y"
+            },
             plotOptions: {
                 area: {
                     fillColor: {
@@ -189,7 +186,17 @@ $(function(){
                 //pointStart: Date.UTC(2006, 0, 1),
 
                 data: arr
-            }]
+            },
+                {
+                    name: 'Current day',
+                  data: [ {
+                    x: chosenDate.getTime(),
+                      y: parseFloat((obj[chosenDay+1]*square).toFixed(2)),
+                    marker: {
+                        symbol: 'url(http://www.highcharts.com/demo/gfx/sun.png)'
+                    }
+                }]
+                }]
         });
     }
 ////////End graph///////////////
