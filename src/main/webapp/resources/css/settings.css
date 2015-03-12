@@ -321,6 +321,10 @@ textarea {
     background-color: #ffffff;
 }
 
+ #description{
+    border-color: #108f38;
+}
+
 #description{
     text-indent: 29px;
     /*line-height: 20px;*/
