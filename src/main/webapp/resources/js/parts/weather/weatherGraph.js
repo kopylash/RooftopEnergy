@@ -8,6 +8,13 @@ function weatherGraph (data) {
     //    arr[i] =  [data[i]["dt"], data[i]["clouds"]];
     //}
     var arr = data;
+    var arrClear = [];
+    for (var i = 0; i < arr.length; i++){
+        arrClear[i] = [arr[i][0], 100 - arr[i][1]];
+    }
+
+    console.log(arr);
+    console.log(arrClear);
 
 
     Highcharts.setOptions({
@@ -49,7 +56,7 @@ function weatherGraph (data) {
         legend: {
             enabled: true
         },
-        plotOptions: {
+        /*plotOptions: {
             area: {
                 fillColor: {
                     linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
@@ -70,17 +77,31 @@ function weatherGraph (data) {
                 },
                 threshold: null
             }
+        },*/
+        tooltip: {
+            pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+            shared: true
+        },
+        plotOptions: {
+            column: {
+                stacking: 'percent'
+            }
         },
 
-        colors:['#59AC28'],
+        colors:['#82B2E4','#FFA500'],
 
         series: [{
             type: 'column',
             name: 'Clouds (%)',
             pointInterval:  12*300 * 1000,
-            //pointStart: arrDate[0],
             data: arr
 
+
+        },{
+            type: 'column',
+            name: 'Clear sky (%)',
+            pointInterval:  12*300 * 1000,
+            data: arrClear
 
         }]
     });
