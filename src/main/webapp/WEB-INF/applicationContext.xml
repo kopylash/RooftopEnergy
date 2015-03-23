@@ -95,4 +95,23 @@
 
 	<import resource="mapDataContext.xml"/>
 
+	<bean id="locationMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map key-type="java.lang.String" value-type="java.lang.Double">
+				<entry key="Rotterdam" value="51.92"/>
+				<entry key="Amsterdam" value="52.37"/>
+				<entry key="Almere" value="52.38"/>
+				<entry key="Ultrecht" value="52.09"/>
+				<entry key="Nijmegen" value="51.84"/>
+				<entry key="Groningen" value="53.22"/>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="cityLatitude" class="nl.rooftopenergy.bionic.rest.util.Location">
+		<constructor-arg>
+			<ref bean="locationMap"/>
+		</constructor-arg>
+	</bean>
+
 </beans>

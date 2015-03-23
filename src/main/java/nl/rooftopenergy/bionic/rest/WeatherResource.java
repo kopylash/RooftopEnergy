@@ -33,12 +33,13 @@ import java.util.*;
 @RestController
 @Path("weather")
 public class WeatherResource {
-    private static final Logger logger = Logger.getLogger(WeatherResource.class.getName());
+    private static final Logger logger = Logger.getLogger(WeatherResource.class);
     private static final String DAILY_URL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
     private static final String FIVE_DAYS_URL = "http://api.openweathermap.org/data/2.5/forecast?q=";
     private static final String ACTUAL_DAY_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
     private static final int MAX_DAYS_FORECAST = 14;
     private static final double ZERO_IN_KELVIN = 273.15;
+    private static final int SERVICE_ERROR_CODE = 500; //HTTP error code
 
     @Inject
     private PrincipalInformation principalInformation;
@@ -55,7 +56,7 @@ public class WeatherResource {
             thisDays = MAX_DAYS_FORECAST;
         }
         try {
-            HttpResponse<JsonNode> response1 = Unirest.get( DAILY_URL + thisCity + "&cnt=" + thisDays + "&mode=json").asJson();
+            HttpResponse<JsonNode> response1 = Unirest.get( DAILY_URL + thisCity + "%20NL&cnt=" + thisDays + "&mode=json").asJson();
             String json = response1.getBody().toString();
            /* Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/sixteen.json")));
             out.write(json);
@@ -75,12 +76,16 @@ public class WeatherResource {
             }
         } catch (UnirestException e){
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (JsonMappingException e) {
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         }
         return resultList;
     }
@@ -92,7 +97,7 @@ public class WeatherResource {
         List<WeatherFiveDaysDataTransfer> resultList = null;
         String thisCity = principalInformation.getCompany().getTown();
         try {
-            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "&mode=json").asJson();
+            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "%20NL&mode=json").asJson();
             String json = response1.getBody().toString();
 //            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/fiveDays.json")));
 //            out.write(json);
@@ -113,12 +118,16 @@ public class WeatherResource {
             }
         } catch (UnirestException e){
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (JsonMappingException e) {
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         }
         return resultList;
 
@@ -131,7 +140,7 @@ public class WeatherResource {
         String thisCity = principalInformation.getCompany().getTown();
         WeatherActualDataTransfer result = null;
         try {
-            HttpResponse<JsonNode> response1 = Unirest.get( ACTUAL_DAY_URL + thisCity + "&mode=json").asJson();
+            HttpResponse<JsonNode> response1 = Unirest.get( ACTUAL_DAY_URL + thisCity + "%20NL&mode=json").asJson();
             String json = response1.getBody().toString();
 //            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/actual.json")));
 //            out.write(json);
@@ -145,12 +154,16 @@ public class WeatherResource {
 
         } catch (UnirestException e){
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (JsonMappingException e) {
             logger.warn(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         }
         return result;
     }
@@ -162,7 +175,7 @@ public class WeatherResource {
         List<WeatherCloudsTransfer> resultList = null;
         String thisCity = principalInformation.getCompany().getTown();
         try {
-            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "&mode=json").asJson();
+            HttpResponse<JsonNode> response1 = Unirest.get(FIVE_DAYS_URL + thisCity + "%20NL&mode=json").asJson();
             String json = response1.getBody().toString();
 //            Writer out = new OutputStreamWriter(new FileOutputStream(new File("/home/alex/fiveDays.json")));
 //            out.write(json);
@@ -179,23 +192,22 @@ public class WeatherResource {
             for (Info obj : weatherInfoList){
                 dataTransfer = getCloudsForecast(obj);
                 resultList.add(dataTransfer);
-
             }
         } catch (UnirestException e){
             logger.warn(e.getMessage(), e);
-            throw new WebApplicationException(503);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
-            throw new WebApplicationException(503);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (JsonMappingException e) {
             logger.warn(e.getMessage(), e);
-            throw new WebApplicationException(503);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
-            throw new WebApplicationException(503);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         } catch (NullPointerException e){
             logger.error(e.getMessage(), e);
-            throw new WebApplicationException(503);
+            throw new WebApplicationException(SERVICE_ERROR_CODE);
         }
         return resultList;
 

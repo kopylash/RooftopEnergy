@@ -6,6 +6,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import nl.rooftopenergy.bionic.entity.Company;
 import nl.rooftopenergy.bionic.pojo.weather.WeatherForecastActualDay;
+import nl.rooftopenergy.bionic.rest.util.Location;
 import nl.rooftopenergy.bionic.rest.util.PrincipalInformation;
 import nl.rooftopenergy.bionic.rest.util.Solar;
 import nl.rooftopenergy.bionic.transfer.RadiationTransfer;
@@ -39,6 +40,9 @@ public class RadiationResource {
 
     @Inject
     private PrincipalInformation principalInformation;
+
+    @Inject
+    private Location cityLatitude;
 
 
     @POST
@@ -91,7 +95,7 @@ public class RadiationResource {
     private double getLatitude(String city){
         Double result = null;
         try {
-            HttpResponse<JsonNode> response1 = Unirest.get(URL+city).asJson();
+            HttpResponse<JsonNode> response1 = Unirest.get(URL + city +"%20NL").asJson();
             String json = response1.getBody().toString();
             ObjectMapper mapper = new ObjectMapper();
             WeatherForecastActualDay weather = mapper.readValue(json, WeatherForecastActualDay.class);
@@ -99,12 +103,16 @@ public class RadiationResource {
             result = weather.getCoord().getLat();
         } catch (UnirestException e){
             logger.warn(e.getMessage(), e);
+            result = cityLatitude.get(city);
         } catch (JsonGenerationException e) {
             logger.warn(e.getMessage(), e);
+            result = cityLatitude.get(city);
         } catch (JsonMappingException e) {
             logger.warn(e.getMessage(), e);
+            result = cityLatitude.get(city);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
+            result = cityLatitude.get(city);
         }
 
         return result;
