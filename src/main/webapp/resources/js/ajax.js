@@ -3,6 +3,7 @@ function ajaxGraphQuery(strUrl,endDate, tooltipDateFormat) {
     code['200'] = function(data){
         graph(data, tooltipDateFormat);
         applianceSingleData(data, strUrl);
+        $("#radiation").show();
     };
     code['500'] = function(data){
         $('#main').html("<h3 style='text-align: center'>500. Service Unavailable!</h3>");

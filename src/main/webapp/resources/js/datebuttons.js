@@ -51,6 +51,7 @@ function allDateButtons(url1){
                 break;
             default :
         }
+        $("#radiation").hide();
         ajaxGraphQuery(url2,pickerDate, tooltipDateFormat);
     };
     var tt = url1+"/daily";

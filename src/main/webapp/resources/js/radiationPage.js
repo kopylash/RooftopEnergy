@@ -122,7 +122,7 @@ $(function(){
 
         Highcharts.setOptions({
             global: {
-                useUTC: false
+                useUTC: true
            },
             colors: ['#59AC28']
         });
@@ -182,6 +182,7 @@ $(function(){
             series: [{
                 type: 'area',
                 name: 'Production energy, kWt',
+                showInLegend: false,
                 pointInterval: 24 * 3600 * 1000,
                 //pointStart: Date.UTC(2006, 0, 1),
 
@@ -189,6 +190,7 @@ $(function(){
             },
                 {
                     name: 'Current day',
+                    showInLegend: false,
                   data: [ {
                     x: chosenDate.getTime(),
                       y: parseFloat((obj[chosenDay+1]*square).toFixed(2)),

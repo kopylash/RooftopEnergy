@@ -180,7 +180,7 @@ function graph (data1,data2, tooltipDateFormat) {
 
     Highcharts.setOptions({
         global: {
-            useUTC: false
+            useUTC: true
         },
         colors: ['#59AC28','#00BFFF']
     });

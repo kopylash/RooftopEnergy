@@ -8,7 +8,7 @@
 
         Highcharts.setOptions({
             global: {
-                useUTC: false
+                useUTC: true
             },
             colors: ['#59AC28']
         });

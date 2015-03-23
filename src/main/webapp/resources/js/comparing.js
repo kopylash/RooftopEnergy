@@ -195,7 +195,7 @@ $(function(){
 
         Highcharts.setOptions({
             global: {
-                useUTC: false
+                useUTC: true
             },
             colors: ['#59AC28','#DC143C']
         });
